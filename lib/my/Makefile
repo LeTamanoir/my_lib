@@ -83,6 +83,5 @@ clean:
 fclean:	clean
 	rm -f $(NAME)
 	rm -f $(LIB_DIR)$(NAME)
-	rm -f $(INCLUDE_DIR)/my.h
-
+	
 re:	fclean all
