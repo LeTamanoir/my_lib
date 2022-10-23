@@ -5,9 +5,9 @@
 ** returns 1 if char is printable
 */
 
-int my_isprintable(char const *str, int i)
+int my_isprintable(char chr)
 {
     return (
-        str[i] >= ' ' && str[i] <= '~'
+        chr >= ' ' && chr <= '~'
     );
 }

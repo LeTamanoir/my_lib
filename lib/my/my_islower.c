@@ -5,9 +5,9 @@
 ** returns 1 if char is lower
 */
 
-int my_islower(char const *str, int i)
+int my_islower(char chr)
 {
     return (
-        str[i] >= 'a' && str[i] <= 'z'
+        chr >= 'a' && chr <= 'z'
     );
 }

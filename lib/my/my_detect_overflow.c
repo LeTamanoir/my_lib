@@ -5,9 +5,7 @@
 ** helper function to detect int overflows
 */
 
-int my_detect_overflow(int number, int to_multiply)
+int my_detect_overflow(long number, long to_multiply)
 {
-    long int correct_number = (long)number * (long)to_multiply;
-
-    return correct_number != number * to_multiply;
+    return number * to_multiply != (int)((int)number * (int)to_multiply);
 }

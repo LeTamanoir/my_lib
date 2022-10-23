@@ -5,10 +5,10 @@
 ** return 1 if char is alpha
 */
 
-int my_isalpha(char const *str, int i)
+int my_isalpha(char chr)
 {
     return (
-        (str[i] >= 'A' && str[i] <= 'Z') ||
-        (str[i] >= 'a' && str[i] <= 'z')
+        (chr >= 'A' && chr <= 'Z') ||
+        (chr >= 'a' && chr <= 'z')
     );
 }

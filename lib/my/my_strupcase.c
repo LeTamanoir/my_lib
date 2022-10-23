@@ -11,10 +11,9 @@ char *my_strupcase(char *str)
 {
     int i = 0;
 
-    while (str[i] != '\0') {
-        if (my_islower(str, i))
+    for (i = 0; str[i] != '\0'; i++) {
+        if (my_islower(str[i]))
             str[i] = str[i] - ('a' - 'A');
-        i++;
     }
 
     return str;

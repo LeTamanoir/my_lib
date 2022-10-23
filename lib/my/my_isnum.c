@@ -5,9 +5,9 @@
 ** returns 1 if char is numeric
 */
 
-int my_isnum(char const *str, int i)
+int my_isnum(char chr)
 {
     return (
-        str[i] >= '0' && str[i] <= '9'
+        chr >= '0' && chr <= '9'
     );
 }

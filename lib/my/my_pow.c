@@ -12,8 +12,9 @@ int my_pow(int number, int power)
     int num = 1;
 
     for (int i = 0; i < power; i++) {
-        int test = my_detect_overflow(num, number);
-        if (test) return -1;
+        if (my_detect_overflow(num, number)) {
+            return -1;
+        }
         num = num * number;
     }
 

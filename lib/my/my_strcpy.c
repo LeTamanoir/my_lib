@@ -5,16 +5,13 @@
 ** copies a string into an other
 */
 
-char *my_strcpy(char *dest, char const *src)
+void my_strcpy(char *dest, char const *src)
 {
-    int index = 0;
+    int i = 0;
 
-    while (src[index] != '\0') {
-        dest[index] = src[index];
-        index++;
+    for (i = 0; src[i] != '\0'; i++) {
+        dest[i] = src[i];
     }
 
-    dest[index] = '\0';
-
-    return dest;
+    dest[i] = '\0';
 }

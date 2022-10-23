@@ -16,6 +16,7 @@ static void populate_word(
     for (int i = 0; i < length; i++) {
         arr_at_i[i] = str[(str_i - length) + i];
     }
+
     arr_at_i[length] = '\0';
 }
 
@@ -25,11 +26,11 @@ static int compute_arr_length(char const *str)
     int length = 0;
 
     for (int i = 0; str[i] != '\0'; i++) {
-        if (my_isalphanum(str, i) && can_inc) {
+        if (my_isalphanum(str[i]) && can_inc) {
             length++;
             can_inc = 0;
         }
-        if (!my_isalphanum(str, i)) can_inc = 1;
+        if (!my_isalphanum(str[i])) can_inc = 1;
     }
 
     return length;
@@ -41,12 +42,12 @@ static void convert_to_words(char const *str, char **arr)
     int arr_i = 0;
 
     for (int i = 0; str[i] != '\0'; i++) {
-
-        if (my_isalphanum(str, i) && str[i + 1] != '\0') {
+        if (my_isalphanum(str[i]) && str[i + 1] != '\0') {
             length_arr_i++;
             continue;
         }
-        int include_last = str[i + 1] == '\0' && my_isalphanum(str, i);
+
+        int include_last = str[i + 1] == '\0' && my_isalphanum(str[i]);
         if (include_last) length_arr_i++;
         if (length_arr_i == 0) continue;
 
@@ -60,8 +61,7 @@ static void convert_to_words(char const *str, char **arr)
 char **my_str_to_word_array(char const *str)
 {
     int length_arr = compute_arr_length(str);
-    char **arr;
-    arr = malloc(sizeof(arr) * (length_arr + 1));
+    char **arr = malloc(sizeof(arr) * (length_arr + 1));
     if (arr == NULL)
         return NULL;
 

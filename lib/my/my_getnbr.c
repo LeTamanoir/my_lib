@@ -12,10 +12,7 @@ static int test_overflow(int number, int to_add, int sign)
     if (sign == -1)
         calc--;
 
-    if (calc < 0)
-        return 1;
-    else
-        return 0;
+    return calc < 0;
 }
 
 int my_getnbr(char const *str)

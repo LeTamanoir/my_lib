@@ -10,8 +10,7 @@ LIB_DIR	=	../
 INCLUDE_DIR	=	../../include
 
 
-SRC	=	my_compute_power_rec.c	\
-		my_compute_square_root.c \
+SRC	=	my_int_sqrt.c \
 		my_detect_overflow.c	\
 		my_find_prime_sup.c	\
 		my_getnbr_base.c	\
@@ -19,7 +18,6 @@ SRC	=	my_compute_power_rec.c	\
 		my_isalpha.c	\
 		my_isalphanum.c	\
 		my_islower.c	\
-		my_isneg.c	\
 		my_isnum.c	\
 		my_is_prime.c	\
 		my_isprintable.c	\
@@ -83,5 +81,5 @@ clean:
 fclean:	clean
 	rm -f $(NAME)
 	rm -f $(LIB_DIR)$(NAME)
-	
+
 re:	fclean all

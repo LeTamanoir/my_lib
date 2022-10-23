@@ -6,11 +6,11 @@
 */
 
 #include <unistd.h>
+#include "my.h"
 
-void my_putstderr(char const *str)
+int my_putstderr(char const *str)
 {
-    while (*str != '\0') {
-        write(2, str, 1);
-        str++;
-    }
+    write(2, str, my_strlen(str));
+
+    return 0;
 }

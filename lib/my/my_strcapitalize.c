@@ -9,7 +9,7 @@
 
 static int is_first(char *str, int i)
 {
-    if (my_islower(str, i) && (
+    if (my_islower(str[i]) && (
         str[i - 1] == '-' ||
         str[i - 1] == '+' ||
         str[i - 1] == ' ')) {
@@ -26,15 +26,14 @@ char *my_strcapitalize(char *str)
     if (str[0] == '\0')
         return '\0';
 
-    if (my_islower(str, 0))
+    if (my_islower(str[0]))
         str[0] = str[0] - ('a' - 'A');
 
-    while (str[i] != '\0') {
-        if (my_isupper(str, i))
+    for (i = 1; str[i] != '\0'; i++) {
+        if (my_isupper(str[i]))
             str[i] = str[i] - ('A' - 'a');
         if (is_first(str, i))
             str[i] = str[i] - ('a' - 'A');
-        i++;
     }
 
     return str;

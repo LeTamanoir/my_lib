@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** my_compute_square_root.c
+** my_int_sqrt.c
 ** File description:
 ** returns the sqrt of a given number if the sqrt is whole
 ** else returns 0
@@ -8,15 +8,13 @@
 
 #include "my.h"
 
-int my_compute_square_root(int nb)
+int my_int_sqrt(int nb)
 {
     int sqrt_try = 0;
-    int index = 0;
+    int index = (nb % 2 != 0) ? 1 : 0;
 
     if (nb <= 0)
         return 0;
-    if (nb % 2 != 0)
-        index = 1;
 
     while (sqrt_try < nb) {
         sqrt_try = index * index;

@@ -27,8 +27,9 @@ static int my_nbr_length(long nb)
 {
     int nb_digit = 0;
 
-    while (my_long_pow(10, nb_digit) <= nb) {
-        nb_digit = nb_digit + 1;
+    while (nb) {
+        nb = nb / 10;
+        nb_digit++;
     }
 
     return nb_digit;

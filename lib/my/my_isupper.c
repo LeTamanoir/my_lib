@@ -5,9 +5,9 @@
 ** returns 1 if char is upper
 */
 
-int my_isupper(char const *str, int i)
+int my_isupper(char chr)
 {
     return (
-        str[i] >= 'A' && str[i] <= 'Z'
+        chr >= 'A' && chr <= 'Z'
     );
 }

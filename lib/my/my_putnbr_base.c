@@ -12,8 +12,8 @@ static int get_new_nbr_length(int nbr, int base)
     int new_length = 0;
 
     while (nbr != 0) {
-        new_length++;
         nbr = nbr / base;
+        new_length++;
     }
 
     return new_length;

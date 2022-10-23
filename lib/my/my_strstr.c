@@ -23,20 +23,18 @@ static char *find_str(char *str, const char *to_find, int idx, int *find_idx)
 
 char *my_strstr(char *str, char const *to_find)
 {
-    int index = 0;
-    int find_index = 0;
+    int i = 0;
+    int find_idx = 0;
 
     if (to_find[0] == '\0')
         return str;
 
-    while (str[index] != '\0') {
-        char *first_occ = find_str(str, to_find, index, &find_index);
+    for (i = 0; str[i] != '\0'; i++) {
+        char *first_occ = find_str(str, to_find, i, &find_idx);
 
         if (first_occ != NULL)
             return first_occ;
-
-        index++;
     }
 
-    return '\0';
+    return NULL;
 }

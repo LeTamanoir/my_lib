@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** my_calloc.c
 ** File description:
-** calloc clone
+** calloc small clone
 */
 
 #include <stdlib.h>
