@@ -5,7 +5,19 @@
 ** declarations for my lib
 */
 
+#include <bits/types/FILE.h>
+
 #pragma once
+
+// stdio functions
+
+int my_printf(const char *format, ...);
+
+int my_sprintf(char *str, const char *format, ...);
+
+int my_dprintf(int fd, const char * format, ...);
+
+int my_fprintf(FILE *stream, const char *format, ...);
 
 
 // print helpers
@@ -17,6 +29,8 @@ int my_putstr(char const *str);
 int my_putstderr(char const *str);
 
 int my_put_nbr(int nb);
+
+int printf(const char *restrict format, ...);
 
 
 // compute helpers
@@ -33,6 +47,11 @@ int my_getnbr(char const *str);
 
 void my_sort_int_array(int *tab, int size);
 
+int my_nbr_length(long long nb);
+
+long long my_ll_pow(long long number, int power);
+
+char *my_itoa(long long nb);
 
 // str helpers
 

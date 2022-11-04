@@ -1,4 +1,7 @@
 *.o
 *.a
 .vscode
-TODO.md
+
+a.out
+main.c
+libmy.a
