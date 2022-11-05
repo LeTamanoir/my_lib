@@ -40,6 +40,10 @@ static const fn_map_exec_t SPEC_EXEC[] = {
     { 's', &post_processor_str, &exec_spec_str },
 
     { 'c', &post_processor_str, &exec_spec_char },
+
+    { 'T', NULL, &exec_spec_ptr },
+
+    { '%', NULL, NULL },
 };
 
 static const int SPEC_EXEC_SIZE = sizeof(SPEC_EXEC) / sizeof(fn_map_exec_t);
@@ -97,18 +101,22 @@ char *exec_spec_float(va_list ap, parse_state_t *state, fn_map_t spec)
 char *exec_speficier(va_list ap, parse_state_t *state, fn_map_t spec)
 {
     char key = spec.key;
-
-    if (key == '%') return (*spec.func)(NULL);
+    char *res = NULL;
 
     for (int i = 0; i < SPEC_EXEC_SIZE; i++) {
-        if (SPEC_EXEC[i].key == key) {
-            return (*SPEC_EXEC[i].post_proc)(
-                (*SPEC_EXEC[i].spec_exec)(
-                    ap, state, spec
-                ), state
-            );
+        if (SPEC_EXEC[i].key != key) {
+            continue;
         }
+        if ((*SPEC_EXEC[i].spec_exec) != NULL) {
+            res = (*SPEC_EXEC[i].spec_exec)(ap, state, spec);
+        } else {
+            res = (*spec.func)(NULL);
+        }
+        if ((*SPEC_EXEC[i].post_proc) != NULL) {
+            res = (*SPEC_EXEC[i].post_proc)(res, state);
+        }
+        break;
     }
 
-    return NULL;
+    return res;
 }

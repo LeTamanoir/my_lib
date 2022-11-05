@@ -37,3 +37,11 @@ void print_buffer(buffer_t *buffer, int fd)
 
     free(to_write);
 }
+
+void add_buffer_to_str(buffer_t *buffer, char *dest)
+{
+    while (buffer != NULL) {
+        my_strcat(dest, buffer->content);
+        buffer = buffer->next;
+    }
+}

@@ -24,4 +24,6 @@ void print_buffer(buffer_t *buffer, int fd);
 
 int get_buffer_length(buffer_t *node);
 
+void add_buffer_to_str(buffer_t *buffer, char *dest);
+
 #define BUFF_MAX_SIZE 64

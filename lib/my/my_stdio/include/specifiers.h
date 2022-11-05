@@ -46,3 +46,5 @@ char *compute_spec_lo_g(void *ptr);
 char *compute_spec_up_g(void *ptr);
 
 char *compute_spec_u(void *ptr);
+
+char *compute_spec_t(void *ptr);

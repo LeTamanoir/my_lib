@@ -44,8 +44,10 @@ static const fn_map_t SPECIFIERS[] = {
     { 'a', &compute_spec_lo_a, },
     { 'A', &compute_spec_up_a, },
 
-    { 'p', &compute_spec_p},
-    { 'n', &compute_spec_n},
+    { 'p', &compute_spec_p },
+    { 'n', &compute_spec_n },
+
+    { 'T', &compute_spec_t },
 };
 
 static const int SPECIFIER_SIZE = sizeof(SPECIFIERS) / sizeof(fn_map_t);

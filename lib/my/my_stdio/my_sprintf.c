@@ -12,14 +12,6 @@
 #include "core.h"
 #include "buffer.h"
 
-static void add_buffer_to_str(buffer_t *buffer, char *dest)
-{
-    while (buffer != NULL) {
-        my_strcat(dest, buffer->content);
-        buffer = buffer->next;
-    }
-}
-
 int my_sprintf(char *str, const char *format, ...)
 {
     va_list ap;

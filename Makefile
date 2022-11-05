@@ -85,6 +85,7 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/src/specifiers/compute_spec_f.c			\
 				$(STDIO_DIR)/src/specifiers/compute_spec_n.c			\
 				$(STDIO_DIR)/src/specifiers/compute_spec_p.c			\
+				$(STDIO_DIR)/src/specifiers/compute_spec_t.c			\
 				$(STDIO_DIR)/src/specifiers/compute_spec_s.c			\
 				$(STDIO_DIR)/src/specifiers/compute_spec_x.c			\
 				$(STDIO_DIR)/src/specifiers/compute_spec_percent.c		\
