@@ -5,7 +5,7 @@
 ** utils for post processor
 */
 
-#include <stddef.h>
+#include <stdlib.h>
 
 #include "my.h"
 #include "state.h"
@@ -24,7 +24,7 @@ char *apply_precision(char *res, parse_state_t *state, int is_neg)
     new_res[state->precision - len] = '\0';
 
     my_strcat(new_res, res);
-
+    free(res);
     return new_res;
 }
 

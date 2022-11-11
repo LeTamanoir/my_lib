@@ -61,7 +61,7 @@ static void convert_to_words(char const *str, char **arr)
 char **my_str_to_word_array(char const *str)
 {
     int length_arr = compute_arr_length(str);
-    char **arr = malloc(sizeof(arr) * (length_arr + 1));
+    char **arr = malloc(sizeof(char *) * (length_arr + 1));
     if (arr == NULL)
         return NULL;
 

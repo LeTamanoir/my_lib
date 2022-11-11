@@ -3,5 +3,4 @@
 .vscode
 
 a.out
-main.c
 libmy.a

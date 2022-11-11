@@ -42,8 +42,7 @@ static char *parse_float_util(
 char *post_processor_float(char *float_str, parse_state_t *state)
 {
     if ((state->specifier == 'a' || state->specifier == 'A') &&
-        state->precision == 0)
-        state->precision = DOUBLE_PRECISION;
+        state->precision == 0) state->precision = DOUBLE_PRECISION;
     int precision = state->precision == -2 ? 0 :
         (state->precision == 0 ? 6 : state->precision);
     int size = DOUBLE_PRECISION + (precision > 0 ? precision : 0);
@@ -58,8 +57,9 @@ char *post_processor_float(char *float_str, parse_state_t *state)
         my_strlen(new_res) : state->width) + sign_space;
     char *padded_res = my_calloc('\0', sizeof(char) * (new_size + 1));
     int utils[3] = { sign_space, new_size, float_str[0] == '-' };
-
     apply_alignment(new_res, padded_res, utils, state);
+    free(new_res);
+    free(float_str);
     return padded_res;
 }
 
@@ -74,16 +74,16 @@ char *post_processor_str(char *str, parse_state_t *state)
     new_res[new_size] = '\0';
     if (state->precision == -2 && state->specifier != 'c')
         return my_strdup("");
-    if (state->precision != 0 && state->specifier != 'c') {
+    if (state->precision != 0 && state->specifier != 'c')
         for (int i = 0; str[i] != '\0'; i++)
             str[i] = (i >= state->precision) ? '\0' : str[i];
-    }
     if (state->width != 0 && !state->flags.align_left)
         my_revstr(str);
     for (int i = 0; str[i] != '\0'; i++)
         new_res[i] = str[i];
     if (state->width != 0 && !state->flags.align_left)
         my_revstr(new_res);
+    free(str);
     return new_res;
 }
 
@@ -101,9 +101,8 @@ char *post_processor_int(char *res, parse_state_t *state)
     char *new_res = my_calloc('\0', sizeof(char) *
         (new_size + sign_space + 1));
     int utils[3] = { sign_space, new_size, is_neg };
-
     apply_alignment(res, new_res, utils, state);
-
+    free(res);
     return new_res;
 }
 
@@ -118,6 +117,6 @@ char *post_processor_uint(char *res, parse_state_t *state)
         (new_size + 1 + (state->flags.hashtag ? 2 : 0)));
 
     apply_alignment_u(res, new_res, new_size, state);
-
+    free(res);
     return new_res;
 }

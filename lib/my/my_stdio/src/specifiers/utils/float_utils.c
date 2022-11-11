@@ -5,7 +5,7 @@
 ** utils for float specifiers
 */
 
-#include <stddef.h>
+#include <stdlib.h>
 #include <math.h>
 
 #include "my.h"
@@ -49,7 +49,6 @@ static char *not_null_double(
     pwr_2_str[(DOUBLE_PRECISION / 2) + 1] = '\0';
     pwr_2_str[1] = '.';
     pwr_2_str[2] = '5';
-
     for (long mask = 0x8000000000000, i = 1; mask != 0; mask >>= 1, i++) {
         if (i > 1) pwr_2_str = divide_str_2(pwr_2_str, 2);
         if (inspector.bytes & mask)
@@ -63,6 +62,7 @@ static char *not_null_double(
     my_revstr(res);
     res[DOUBLE_PRECISION - idx + sign] = '\0';
     my_revstr(res);
+    free(pwr_2_str);
     return res;
 }
 

@@ -2,62 +2,63 @@
 ## EPITECH PROJECT, 2022
 ## Makefile
 ## File description:
-## the makefile for compiling my lib
+## the makefile for my_ls
 ##
 
 CC = gcc
 
-LIB_DIR	=	./lib/my
-INCLUDE_DIR	=	./include
-STDIO_DIR	=	./lib/my/my_stdio
-INCLUDE_STDIO_DIR	=	./lib/my/my_stdio/include
+STDIO_DIR	=	./my_stdio
+INCLUDE_STDIO_DIR	=	./my_stdio/include
 
-LIB	=	$(LIB_DIR)/my_int_sqrt.c 			\
-		$(LIB_DIR)/my_detect_overflow.c		\
-		$(LIB_DIR)/my_find_prime_sup.c		\
-		$(LIB_DIR)/my_getnbr_base.c			\
-		$(LIB_DIR)/my_getnbr.c				\
-		$(LIB_DIR)/my_isalpha.c				\
-		$(LIB_DIR)/my_isalphanum.c			\
-		$(LIB_DIR)/my_islower.c				\
-		$(LIB_DIR)/my_isnum.c				\
-		$(LIB_DIR)/my_is_prime.c			\
-		$(LIB_DIR)/my_isprintable.c			\
-		$(LIB_DIR)/my_isupper.c				\
-		$(LIB_DIR)/my_nbr_length.c			\
-		$(LIB_DIR)/my_pow.c					\
-		$(LIB_DIR)/my_putchar.c				\
-		$(LIB_DIR)/my_putnbr_base.c			\
-		$(LIB_DIR)/my_put_nbr.c				\
-		$(LIB_DIR)/my_putstr.c				\
-		$(LIB_DIR)/my_revstr.c				\
-		$(LIB_DIR)/my_showmem.c				\
-		$(LIB_DIR)/my_showstr.c				\
-		$(LIB_DIR)/my_show_word_array.c		\
-		$(LIB_DIR)/my_sort_int_array.c		\
-		$(LIB_DIR)/my_strcapitalize.c		\
-		$(LIB_DIR)/my_swap.c				\
-		$(LIB_DIR)/my_str_isalpha.c			\
-		$(LIB_DIR)/my_str_islower.c			\
-		$(LIB_DIR)/my_str_isnum.c			\
-		$(LIB_DIR)/my_str_isprintable.c		\
-		$(LIB_DIR)/my_str_isupper.c			\
-		$(LIB_DIR)/my_strlowcase.c			\
-		$(LIB_DIR)/my_strupcase.c			\
-		$(LIB_DIR)/my_strcat.c				\
-		$(LIB_DIR)/my_strcmp.c				\
-		$(LIB_DIR)/my_strcpy.c				\
-		$(LIB_DIR)/my_strdup.c				\
-		$(LIB_DIR)/my_strlen.c				\
-		$(LIB_DIR)/my_strncat.c				\
-		$(LIB_DIR)/my_strncmp.c				\
-		$(LIB_DIR)/my_strncpy.c				\
-		$(LIB_DIR)/my_strstr.c				\
-		$(LIB_DIR)/my_str_to_word_array.c 	\
-		$(LIB_DIR)/my_calloc.c 				\
-		$(LIB_DIR)/my_putstderr.c			\
-		$(LIB_DIR)/my_ll_pow.c				\
-		$(LIB_DIR)/my_itoa.c				\
+LIB	=	./my_int_sqrt.c 			\
+		./my_detect_overflow.c		\
+		./my_find_prime_sup.c		\
+		./my_getnbr_base.c			\
+		./my_getnbr.c				\
+		./my_isalpha.c				\
+		./my_isalphanum.c			\
+		./my_islower.c				\
+		./my_isnum.c				\
+		./my_is_prime.c				\
+		./my_isprintable.c			\
+		./my_isupper.c				\
+		./my_nbr_length.c			\
+		./my_pow.c					\
+		./my_putchar.c				\
+		./my_putnbr_base.c			\
+		./my_put_nbr.c				\
+		./my_putstr.c				\
+		./my_puts.c					\
+		./my_revstr.c				\
+		./my_showmem.c				\
+		./my_showstr.c				\
+		./my_show_word_array.c		\
+		./my_sort_int_array.c		\
+		./my_strcapitalize.c		\
+		./my_swap.c					\
+		./my_str_isalpha.c			\
+		./my_str_islower.c			\
+		./my_str_isnum.c			\
+		./my_str_isprintable.c		\
+		./my_str_isupper.c			\
+		./my_strlowcase.c			\
+		./my_lowcase.c				\
+		./my_upcase.c				\
+		./my_strupcase.c			\
+		./my_strcat.c				\
+		./my_strcmp.c				\
+		./my_strcpy.c				\
+		./my_strdup.c				\
+		./my_strlen.c				\
+		./my_strncat.c				\
+		./my_strncmp.c				\
+		./my_strncpy.c				\
+		./my_strstr.c				\
+		./my_str_to_word_array.c 	\
+		./my_calloc.c 				\
+		./my_putstderr.c			\
+		./my_ll_pow.c				\
+		./my_itoa.c
 
 
 MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
@@ -97,9 +98,9 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/src/specifiers/utils/spec_a_utils.c
 
 
-INCLUDE	=	-I$(INCLUDE_DIR) -I$(INCLUDE_STDIO_DIR)
+INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I.
 
-CFLAGS += -Werror -Wextra -Wall -pedantic -std=c99 $(INCLUDE)
+CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
 
 OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o)
 
@@ -107,17 +108,18 @@ NAME	=	libmy.a
 
 all:	$(NAME)
 
-
 $(NAME):	$(OBJ)
-	ar rc $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ) && \
+	cp $(NAME) ../../
+	cp ./my.h ../../include
 
 clean:
 	rm -f $(OBJ)
 	find \( -name "*.gcda" -or -name "*.gcno" -or -name "vgcore*" \) -delete
 
-
 fclean:	clean
 	rm -f $(NAME)
+	rm -f ../../$(NAME)
 
 re:	fclean all
 
