@@ -41,7 +41,7 @@ int my_is_prime(int nb);
 
 int my_find_prime_sup(int nb);
 
-int my_getnbr(char const *str);
+int my_atoi(char const *str);
 
 void my_sort_int_array(int *tab, int size);
 

@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** my_getnbr.c
+** my_atoi.c
 ** File description:
 ** returns a number from a string
 */
@@ -15,7 +15,7 @@ static int test_overflow(int number, int to_add, int sign)
     return calc < 0;
 }
 
-int my_getnbr(char const *str)
+int my_atoi(char const *str)
 {
     int sign = 1;
     int number = 0;

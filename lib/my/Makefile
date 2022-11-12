@@ -14,7 +14,7 @@ LIB	=	./my_int_sqrt.c 			\
 		./my_detect_overflow.c		\
 		./my_find_prime_sup.c		\
 		./my_getnbr_base.c			\
-		./my_getnbr.c				\
+		./my_atoi.c					\
 		./my_isalpha.c				\
 		./my_isalphanum.c			\
 		./my_islower.c				\

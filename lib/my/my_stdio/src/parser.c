@@ -34,7 +34,7 @@ void parse_width(const char *format, int *i, parse_state_t *state)
         return;
     }
 
-    state->width = my_getnbr(&(format[*i]));
+    state->width = my_atoi(&(format[*i]));
     (*i) += my_nbr_length(state->width);
 }
 
@@ -59,7 +59,7 @@ void parse_precision(const char *format, int *i, parse_state_t *state)
     }
 
     if (my_isnum(format[*i])) {
-        state->precision = my_getnbr(&(format[*i]));
+        state->precision = my_atoi(&(format[*i]));
         if (state->precision == 0)
             state->precision = -2;
         (*i) += my_nbr_length(state->precision);

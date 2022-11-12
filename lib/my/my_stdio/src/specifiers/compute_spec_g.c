@@ -82,7 +82,7 @@ static char *generic(
     char *float_str = post_processor_float((*fn_f)(ptr), state);
     state->precision -= (null_precision) ? 3 : 1;
     state->width = temp;
-    int exp = my_getnbr(extract_exp(exp_str) + 1);
+    int exp = my_atoi(extract_exp(exp_str) + 1);
 
     if (exp < -4 || exp >= precision) {
         modify_state_exp(state, precision, exp);
