@@ -8,7 +8,11 @@
 CC = gcc
 
 STDIO_DIR	=	./my_stdio
-INCLUDE_STDIO_DIR	=	./my_stdio/include
+INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
+
+LK_LIST_DIR	=	./my_lk_list
+INCLUDE_LK_LIST_DIR	=	$(LK_LIST_DIR)/include
+
 
 LIB	=	./my_int_sqrt.c 			\
 		./my_detect_overflow.c		\
@@ -61,6 +65,10 @@ LIB	=	./my_int_sqrt.c 			\
 		./my_itoa.c
 
 
+MY_LK_LIST	=	$(LK_LIST_DIR)/my_lk_list.c				\
+				$(LK_LIST_DIR)/my_lk_list_utils.c
+
+
 MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/my_sprintf.c								\
 				$(STDIO_DIR)/my_fprintf.c								\
@@ -98,20 +106,21 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/src/specifiers/utils/spec_a_utils.c
 
 
-INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I.
+INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I.
 
 CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
 
-OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o)
+OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o) $(MY_LK_LIST:.c=.o)
 
 NAME	=	libmy.a
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	ar rc $(NAME) $(OBJ) && \
+	ar rc $(NAME) $(OBJ)
 	cp $(NAME) ../../
 	cp ./my.h ../../include
+	cp $(INCLUDE_LK_LIST_DIR)/my_lk_list.h ../../include
 
 clean:
 	rm -f $(OBJ)

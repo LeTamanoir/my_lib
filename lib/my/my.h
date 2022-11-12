@@ -6,6 +6,7 @@
 */
 
 #include <bits/types/FILE.h>
+#include "my_lk_list.h"
 
 #pragma once
 
@@ -99,7 +100,6 @@ char **my_str_to_word_array(char const *str);
 
 int my_show_word_array(char * const *tab);
 
-
 // character helpers
 
 int my_isalpha(char chr);
@@ -113,7 +113,6 @@ int my_isprintable(char chr);
 int my_isupper(char chr);
 
 int my_isalphanum(char chr);
-
 
 // misc
 
@@ -134,3 +133,9 @@ char *my_convert_base(
 void my_swap(int *a, int *b);
 
 void *my_calloc(char pad, int size);
+
+// linked list
+
+lk_list_t *lk_list_create(void);
+
+void lk_list_free(lk_list_t *list);
