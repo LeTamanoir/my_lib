@@ -5,8 +5,8 @@
 ** allocates memory and copies the string given in argument in it
 */
 
-#include <stdlib.h>
-#include "my.h"
+#include "my_stdlib.h"
+#include "my_string.h"
 
 char *my_strdup(char const *src)
 {

@@ -5,9 +5,9 @@
 ** reverses a string
 */
 
-#include "my.h"
+#include "my_string.h"
 
-void my_revstr(char *str)
+char *my_revstr(char *str)
 {
     int index = 0;
     int length = my_strlen(str);
@@ -19,4 +19,6 @@ void my_revstr(char *str)
         str[length - index - 1] = temp;
         index++;
     }
+
+    return str;
 }

@@ -5,7 +5,10 @@
 ** specifier %a
 */
 
-#include "my.h"
+#include <stdio.h>
+
+#include "my_stdlib.h"
+#include "my_string.h"
 #include "float_utils.h"
 #include "spec_a_utils.h"
 

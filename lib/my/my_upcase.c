@@ -5,7 +5,7 @@
 ** puts a letter in uppercase
 */
 
-#include "my.h"
+#include "my_string.h"
 
 char my_upcase(char chr)
 {

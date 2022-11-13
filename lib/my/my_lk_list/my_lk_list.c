@@ -5,9 +5,8 @@
 ** linked list utils
 */
 
-#include <stdlib.h>
-
-#include "my.h"
+#include "my_stdlib.h"
+#include "my_string.h"
 #include "my_lk_list.h"
 #include "my_lk_list_utils.h"
 

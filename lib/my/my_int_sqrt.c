@@ -6,8 +6,6 @@
 ** else returns 0
 */
 
-#include "my.h"
-
 int my_int_sqrt(int nb)
 {
     int sqrt_try = 0;

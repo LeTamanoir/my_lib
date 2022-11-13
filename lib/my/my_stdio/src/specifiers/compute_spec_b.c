@@ -5,9 +5,8 @@
 ** specifier %b
 */
 
-#include <stdlib.h>
-
-#include "my.h"
+#include "my_stdlib.h"
+#include "my_string.h"
 #include "spec_int_utils.h"
 
 char *compute_spec_b(void *ptr)

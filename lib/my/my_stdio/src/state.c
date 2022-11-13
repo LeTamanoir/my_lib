@@ -5,9 +5,6 @@
 ** state management for the parser
 */
 
-#include <stdlib.h>
-
-#include "my.h"
 #include "state.h"
 
 void clear_state(parse_state_t *state)

@@ -5,7 +5,8 @@
 ** specifier oct %o
 */
 
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "spec_int_utils.h"
 
 char *compute_spec_o(void *ptr)

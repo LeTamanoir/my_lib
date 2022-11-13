@@ -5,7 +5,8 @@
 ** prints number into a given base
 */
 
-#include "my.h"
+#include "my_stdio.h"
+#include "my_string.h"
 
 static int get_new_nbr_length(int nbr, int base)
 {

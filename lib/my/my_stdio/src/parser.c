@@ -5,7 +5,9 @@
 ** % parser
 */
 
-#include "my.h"
+#include "my_stdlib.h"
+#include "my_math.h"
+#include "my_string.h"
 #include "state.h"
 
 void parse_flag(const char *format, int *i, parse_state_t *state)
@@ -35,7 +37,9 @@ void parse_width(const char *format, int *i, parse_state_t *state)
     }
 
     state->width = my_atoi(&(format[*i]));
-    (*i) += my_nbr_length(state->width);
+    if (state->width > 0) {
+        (*i) += my_nbr_length(state->width);
+    }
 }
 
 void parse_is_precision(const char *format, int *i, parse_state_t *state)

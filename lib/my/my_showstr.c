@@ -5,7 +5,8 @@
 ** prints a string and returns 0
 */
 
-#include "my.h"
+#include "my_stdio.h"
+#include "my_base.h"
 
 int my_showstr(char const *str)
 {

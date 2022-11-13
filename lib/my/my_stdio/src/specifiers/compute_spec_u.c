@@ -5,9 +5,7 @@
 ** specifier %u
 */
 
-#include <stdlib.h>
-
-#include "my.h"
+#include "my_stdlib.h"
 #include "spec_int_utils.h"
 
 static void get_res(long long int verify, char *res, long long int nb, int i)

@@ -5,9 +5,7 @@
 ** specifier %d and %i
 */
 
-#include <stdlib.h>
-
-#include "my.h"
+#include "my_stdlib.h"
 #include "spec_int_utils.h"
 
 static void get_res(

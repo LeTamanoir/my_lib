@@ -5,7 +5,7 @@
 ** specifier %a and %A
 */
 
-#include "my.h"
+#include "my_stdlib.h"
 #include "spec_a_utils.h"
 
 static char *generic(double nb, int is_upper, char const *base)

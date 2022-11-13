@@ -7,6 +7,8 @@
 
 CC = gcc
 
+INCLUDE_DIR	=	../../include
+
 STDIO_DIR	=	./my_stdio
 INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
 
@@ -15,7 +17,6 @@ INCLUDE_LK_LIST_DIR	=	$(LK_LIST_DIR)/include
 
 
 LIB	=	./my_int_sqrt.c 			\
-		./my_detect_overflow.c		\
 		./my_find_prime_sup.c		\
 		./my_getnbr_base.c			\
 		./my_atoi.c					\
@@ -106,7 +107,9 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/src/specifiers/utils/spec_a_utils.c
 
 
-INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I.
+INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I$(INCLUDE_DIR)
+
+
 
 CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
 
@@ -119,8 +122,6 @@ all:	$(NAME)
 $(NAME):	$(OBJ)
 	ar rc $(NAME) $(OBJ)
 	cp $(NAME) ../../
-	cp ./my.h ../../include
-	cp $(INCLUDE_LK_LIST_DIR)/my_lk_list.h ../../include
 
 clean:
 	rm -f $(OBJ)

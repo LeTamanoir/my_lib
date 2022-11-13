@@ -5,7 +5,7 @@
 ** specifier %c
 */
 
-#include "my.h"
+#include "my_stdlib.h"
 
 char *compute_spec_c(void *ptr)
 {

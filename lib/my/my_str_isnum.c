@@ -5,7 +5,7 @@
 ** returns 1 if every chars of the string is digit
 */
 
-#include "my.h"
+#include "my_string.h"
 
 int my_str_isnum(char const *str)
 {

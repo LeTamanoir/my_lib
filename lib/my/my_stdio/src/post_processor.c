@@ -5,9 +5,8 @@
 ** post processor for the specifiers output
 */
 
-#include <stdlib.h>
-
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "state.h"
 #include "post_processor.h"
 #include "float_utils.h"

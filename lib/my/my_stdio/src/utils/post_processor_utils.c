@@ -5,9 +5,9 @@
 ** utils for post processor
 */
 
-#include <stdlib.h>
+#include "my_string.h"
+#include "my_stdlib.h"
 
-#include "my.h"
 #include "state.h"
 #include "post_processor.h"
 

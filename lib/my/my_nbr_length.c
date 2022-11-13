@@ -9,6 +9,10 @@ int my_nbr_length(long long nb)
 {
     int nb_digit = 0;
 
+    if (nb == 0) {
+        return 1;
+    }
+
     while (nb) {
         nb = nb / 10;
         nb_digit++;

@@ -5,8 +5,8 @@
 ** printfs a string to the error output
 */
 
-#include <unistd.h>
-#include "my.h"
+#include "my_stdio.h"
+#include "my_string.h"
 
 int my_putstderr(char const *str)
 {

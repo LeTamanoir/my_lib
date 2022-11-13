@@ -5,7 +5,8 @@
 ** specifier %g and %G
 */
 
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "specifiers.h"
 #include "state.h"
 #include "post_processor.h"

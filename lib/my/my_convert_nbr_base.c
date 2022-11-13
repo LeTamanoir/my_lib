@@ -5,8 +5,8 @@
 ** displays the content of an array of words
 */
 
-#include <stdlib.h>
-#include "my.h"
+#include "my_string.h"
+#include "my_base.h"
 
 static int get_new_nbr_length(int nbr, int base)
 {
@@ -36,7 +36,7 @@ static void compute_number(char *arr, char const *base, int *utils)
 static char *my_putnbr_base_into_str(int nbr, char const *base)
 {
     int base_len = my_strlen(base);
-    if (nbr == 0) return "0\0";
+    if (nbr == 0) return "0";
 
     int new_length = get_new_nbr_length(nbr, base_len);
     if (nbr < 0) new_length++;

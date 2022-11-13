@@ -5,7 +5,6 @@
 ** specifier %n
 */
 
-#include "my.h"
 #include "exec_specifier.h"
 #include "spec_int_utils.h"
 #include "buffer.h"

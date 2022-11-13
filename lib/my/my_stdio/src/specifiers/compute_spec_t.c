@@ -5,7 +5,9 @@
 ** specifier %T
 */
 
-#include "my.h"
+#include "my_math.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "exec_specifier.h"
 
 static const int INT_ARR_END = -1;
@@ -31,7 +33,7 @@ static int get_int_arr_length(int *nb, int end)
     int len = 0;
 
     while (*nb != end) {
-        len += my_nbr_length(*nb) + (*nb == 0);
+        len += my_nbr_length(*nb);
         len += my_strlen(INT_ARR_CHAR_END);
         nb++;
     }

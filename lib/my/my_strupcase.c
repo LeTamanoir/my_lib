@@ -5,7 +5,7 @@
 ** puts every letter in uppercase
 */
 
-#include "my.h"
+#include "my_string.h"
 
 char *my_strupcase(char *str)
 {

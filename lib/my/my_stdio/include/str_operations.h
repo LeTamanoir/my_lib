@@ -5,8 +5,6 @@
 ** declarations for str operations
 */
 
-#include "my.h"
-
 #pragma once
 
 char *add_str(char *res, char *add);

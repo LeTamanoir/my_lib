@@ -5,7 +5,7 @@
 ** displays the characters of a string
 */
 
-#include "my.h"
+#include "my_stdio.h"
 
 int my_puts(char const *str)
 {

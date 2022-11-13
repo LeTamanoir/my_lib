@@ -5,7 +5,8 @@
 ** returns a number into base 10 from a given base
 */
 
-#include "my.h"
+#include "my_math.h"
+#include "my_string.h"
 
 static int get_chr_base(char digit, char const *base)
 {
@@ -42,8 +43,7 @@ int my_getnbr_base(char const *str, char const *base)
     for (int i = sign_cnt; str[i] != '\0'; i++) {
         int my_pow_res = my_pow(base_int, str_len - i);
         int nbr_from_chr = get_chr_base(str[i], base);
-        int test = my_detect_overflow(nbr_from_chr, my_pow_res);
-        if (test || my_pow_res == -1) return 0;
+        if (my_pow_res == -1) return 0;
         computed_nbr += nbr_from_chr * my_pow_res;
     }
 

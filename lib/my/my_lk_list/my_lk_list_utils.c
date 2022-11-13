@@ -5,8 +5,7 @@
 ** lk_list utils
 */
 
-#include <stdlib.h>
-
+#include "my_stdlib.h"
 #include "my_lk_list.h"
 
 void free_node(lk_list_elem_t *node)

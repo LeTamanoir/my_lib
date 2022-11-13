@@ -5,9 +5,7 @@
 ** specifier %e and %E
 */
 
-#include <stdlib.h>
-
-#include "my.h"
+#include "my_stdlib.h"
 #include "float_utils.h"
 #include "spec_e_utils.h"
 

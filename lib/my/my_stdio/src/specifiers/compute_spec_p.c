@@ -5,7 +5,8 @@
 ** specifier %p
 */
 
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "exec_specifier.h"
 #include "spec_int_utils.h"
 

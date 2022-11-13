@@ -5,10 +5,9 @@
 ** utils for float specifiers
 */
 
-#include <stdlib.h>
-#include <math.h>
-
-#include "my.h"
+#include "my_math.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "float_utils.h"
 #include "str_operations.h"
 

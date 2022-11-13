@@ -5,9 +5,7 @@
 ** specifier lofloat %f
 */
 
-#include <stddef.h>
-
-#include "my.h"
+#include "my_stdlib.h"
 #include "float_utils.h"
 
 static char *generic(double nb, int is_upper)

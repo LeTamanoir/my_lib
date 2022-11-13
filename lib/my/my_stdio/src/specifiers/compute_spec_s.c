@@ -7,7 +7,8 @@
 
 #include <stddef.h>
 
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "spec_int_utils.h"
 
 static char *get_octal(unsigned char oct)

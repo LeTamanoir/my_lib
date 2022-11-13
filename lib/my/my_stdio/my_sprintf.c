@@ -8,7 +8,6 @@
 #include <stddef.h>
 #include <stdarg.h>
 
-#include "my.h"
 #include "core.h"
 #include "buffer.h"
 

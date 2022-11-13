@@ -7,7 +7,6 @@
 
 #include <stdarg.h>
 
-#include "my.h"
 #include "mapper.h"
 #include "exec_specifier.h"
 #include "state.h"

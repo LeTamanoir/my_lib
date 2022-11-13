@@ -5,10 +5,9 @@
 ** buffer helper functions
 */
 
-#include <stdlib.h>
-#include <unistd.h>
-
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
+#include "my_stdio.h"
 #include "buffer.h"
 
 buffer_t *create_buffer(void)

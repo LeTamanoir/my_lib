@@ -5,7 +5,7 @@
 ** displays the content of an array of words
 */
 
-#include "my.h"
+#include "my_stdio.h"
 
 int my_show_word_array(char * const *tab)
 {

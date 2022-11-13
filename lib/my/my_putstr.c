@@ -5,8 +5,8 @@
 ** displays the characters of a string
 */
 
-#include <unistd.h>
-#include "my.h"
+#include "my_stdio.h"
+#include "my_string.h"
 
 int my_putstr(char const *str)
 {

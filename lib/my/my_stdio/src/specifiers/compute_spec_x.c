@@ -5,7 +5,8 @@
 ** specifier %x and %X
 */
 
-#include "my.h"
+#include "my_stdlib.h"
+#include "my_string.h"
 #include "spec_int_utils.h"
 
 static char *generic(unsigned long long int nb, const char *base)

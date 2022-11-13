@@ -5,7 +5,8 @@
 ** round float utils
 */
 
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 #include "float_utils.h"
 #include "post_processor.h"
 

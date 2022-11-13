@@ -5,7 +5,8 @@
 ** prints number into a given base
 */
 
-#include "my.h"
+#include "my_base.h"
+#include "my_stdio.h"
 
 static void print_adress(int row)
 {

@@ -5,7 +5,7 @@
 ** capitalizes the first letter of each word
 */
 
-#include "my.h"
+#include "my_string.h"
 
 static int is_first(char *str, int i)
 {

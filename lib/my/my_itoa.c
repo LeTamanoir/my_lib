@@ -5,13 +5,16 @@
 ** converts a number to a string
 */
 
-#include "my.h"
+#include <stdio.h>
+
+#include "my_stdlib.h"
+#include "my_math.h"
 
 char *my_itoa(long long nb)
 {
     int is_neg = nb < 0;
     int len = my_nbr_length(nb);
-    char *res = my_calloc('\0', sizeof(char) * (len + 1 + (nb == 0) + is_neg));
+    char *res = my_calloc('\0', sizeof(char) * (len + is_neg + 1));
     int i = 0;
     long long pow_10 = my_ll_pow(10, len - 1);
 
@@ -19,9 +22,6 @@ char *my_itoa(long long nb)
         nb *= -1;
         res[i++] = '-';
     }
-    if (nb == 0)
-        res[i] = '0';
-
     while (pow_10) {
         res[i] = (nb / pow_10) % 10 + '0';
         pow_10 /= 10;

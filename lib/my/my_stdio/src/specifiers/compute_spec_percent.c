@@ -5,7 +5,7 @@
 ** specifier %%
 */
 
-#include "my.h"
+#include "my_stdlib.h"
 
 char *compute_spec_percent(void *ptr)
 {

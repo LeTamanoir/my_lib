@@ -5,7 +5,7 @@
 ** puts a letter in lowercase
 */
 
-#include "my.h"
+#include "my_string.h"
 
 char my_lowcase(char chr)
 {

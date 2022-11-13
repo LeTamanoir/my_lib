@@ -8,7 +8,6 @@
 #include <stdarg.h>
 #include <wchar.h>
 
-#include "my.h"
 #include "mapper.h"
 #include "state.h"
 #include "post_processor.h"

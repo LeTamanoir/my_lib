@@ -5,7 +5,7 @@
 ** returns 1 if every chars of the string is printable
 */
 
-#include "my.h"
+#include "my_string.h"
 
 int my_str_isprintable(char const *str)
 {

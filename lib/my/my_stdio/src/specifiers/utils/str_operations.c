@@ -5,7 +5,7 @@
 ** helper for str operations
 */
 
-#include "my.h"
+#include "my_string.h"
 
 char *add_str(char *res, char *add)
 {

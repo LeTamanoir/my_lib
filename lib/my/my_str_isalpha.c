@@ -5,7 +5,7 @@
 ** returns 1 if every chars of the string is alpha
 */
 
-#include "my.h"
+#include "my_string.h"
 
 int my_str_isalpha(char const *str)
 {

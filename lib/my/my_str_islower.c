@@ -5,7 +5,7 @@
 ** returns 1 if every chars of the string is lower
 */
 
-#include "my.h"
+#include "my_string.h"
 
 int my_str_islower(char const *str)
 {

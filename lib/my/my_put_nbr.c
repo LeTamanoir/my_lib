@@ -5,7 +5,8 @@
 ** displays the number giben as param
 */
 
-#include "my.h"
+#include "my_stdio.h"
+#include "my_math.h"
 
 int my_put_nbr(int nb)
 {

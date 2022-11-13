@@ -29,3 +29,7 @@ typedef struct lk_list_s {
 
     lk_list_elem_t *(*get)(struct lk_list_s *this, int index);
 } lk_list_t;
+
+lk_list_t *lk_list_create(void);
+
+void lk_list_free(lk_list_t *list);

@@ -5,10 +5,9 @@
 ** utils for buffer
 */
 
-#include <stdlib.h>
-#include <unistd.h>
-
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
+#include "my_stdio.h"
 #include "buffer.h"
 
 int get_buffer_length(buffer_t *node)

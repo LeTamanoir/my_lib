@@ -5,8 +5,8 @@
 ** splits a str into an array of words
 */
 
-#include <stdlib.h>
-#include "my.h"
+#include "my_string.h"
+#include "my_stdlib.h"
 
 static void populate_word(
     char const *str, char *arr_at_i,
@@ -61,11 +61,10 @@ static void convert_to_words(char const *str, char **arr)
 char **my_str_to_word_array(char const *str)
 {
     int length_arr = compute_arr_length(str);
-    char **arr = malloc(sizeof(char *) * (length_arr + 1));
+    char **arr = my_calloc(0, sizeof(char *) * (length_arr + 1));
     if (arr == NULL)
         return NULL;
 
     convert_to_words(str, arr);
-    arr[length_arr] = 0;
     return arr;
 }
