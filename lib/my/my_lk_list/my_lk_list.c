@@ -17,12 +17,12 @@ static void lk_list_add(lk_list_t *this, void *value)
     new_node->value = value;
     this->length++;
 
-    if (*this->first_node == NULL) {
-        *this->first_node = new_node;
-        *this->last_node = new_node;
+    if (this->first_node == NULL) {
+        this->first_node = new_node;
+        this->last_node = new_node;
     } else {
-        (*this->last_node)->next = new_node;
-        *this->last_node = new_node;
+        this->last_node->next = new_node;
+        this->last_node = new_node;
     }
 }
 
@@ -32,7 +32,7 @@ static void lk_list_delete(
 )
 {
     lk_list_elem_t *prev = NULL;
-    lk_list_elem_t *curr = *this->first_node;
+    lk_list_elem_t *curr = this->first_node;
     while (curr != NULL) {
         if ((*cmp)(curr->value, del_value) != 0) {
             prev = curr;
@@ -41,20 +41,21 @@ static void lk_list_delete(
         }
         this->length--;
         if (prev == NULL) {
-            *this->first_node = curr->next;
+            this->first_node = curr->next;
             (*delete_fn)(curr);
-            curr = *this->first_node;
+            curr = this->first_node;
             continue;
         }
         prev->next = curr->next;
         (*delete_fn)(curr);
         curr = prev->next;
-    } *this->last_node = prev;
+    }
+    this->last_node = prev;
 }
 
 static lk_list_elem_t *lk_list_get(lk_list_t *this, int index)
 {
-    lk_list_elem_t *curr = *this->first_node;
+    lk_list_elem_t *curr = this->first_node;
     int idx = 0;
 
     while (curr != NULL) {
@@ -73,8 +74,8 @@ lk_list_t *lk_list_create(void)
 {
     lk_list_t *lk_list = malloc(sizeof(lk_list_t));
 
-    lk_list->first_node = my_calloc(0, sizeof(lk_list_elem_t *));
-    lk_list->last_node = my_calloc(0, sizeof(lk_list_elem_t *));
+    lk_list->first_node = NULL;
+    lk_list->last_node = NULL;
     lk_list->length = 0;
 
     lk_list->add = &lk_list_add;

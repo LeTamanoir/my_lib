@@ -26,8 +26,8 @@ lk_list_elem_t *create_new_node(void)
 
 void lk_list_free(lk_list_t *list, void (*free_fn)())
 {
-    lk_list_elem_t *temp = *list->first_node;
-    lk_list_elem_t *old = *list->first_node;
+    lk_list_elem_t *temp = list->first_node;
+    lk_list_elem_t *old = list->first_node;
 
     while (temp != NULL) {
         old = temp;
