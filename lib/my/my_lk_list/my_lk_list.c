@@ -10,52 +10,51 @@
 #include "my_lk_list.h"
 #include "my_lk_list_utils.h"
 
-static void lk_list_add(struct lk_list_s *this, void *value)
+static void lk_list_add(lk_list_t *this, void *value)
 {
     lk_list_elem_t *new_node = create_new_node();
 
     new_node->value = value;
     this->length++;
 
-    if (this->first_node == NULL) {
-        this->first_node = new_node;
-        this->last_node = new_node;
+    if (*this->first_node == NULL) {
+        *this->first_node = new_node;
+        *this->last_node = new_node;
     } else {
-        this->last_node->next = new_node;
-        this->last_node = new_node;
+        (*this->last_node)->next = new_node;
+        *this->last_node = new_node;
     }
 }
 
 static void lk_list_delete(
-    struct lk_list_s *this, void *del_value,
-    int (*cmp)(), int delete_all
+    lk_list_t *this, void *del_value,
+    int (*cmp)(), void (*delete_fn)()
 )
 {
-    lk_list_elem_t *prev = this->first_node;
-    lk_list_elem_t *curr = this->first_node;
-    lk_list_elem_t *temp = this->first_node;
-    int idx = -1;
+    lk_list_elem_t *prev = NULL;
+    lk_list_elem_t *curr = *this->first_node;
     while (curr != NULL) {
-        idx++;
         if ((*cmp)(curr->value, del_value) != 0) {
             prev = curr;
             curr = curr->next;
             continue;
-        } if (idx == 0) {
-            this->first_node = curr->next;
-        } else {
-            prev->next = curr->next;
-        } temp = curr->next;
-        free_node(curr);
-        curr = temp;
+        }
         this->length--;
-        if (!delete_all) return;
-    }
+        if (prev == NULL) {
+            *this->first_node = curr->next;
+            (*delete_fn)(curr);
+            curr = *this->first_node;
+            continue;
+        }
+        prev->next = curr->next;
+        (*delete_fn)(curr);
+        curr = prev->next;
+    } *this->last_node = prev;
 }
 
-static lk_list_elem_t *lk_list_get(struct lk_list_s *this, int index)
+static lk_list_elem_t *lk_list_get(lk_list_t *this, int index)
 {
-    lk_list_elem_t *curr = this->first_node;
+    lk_list_elem_t *curr = *this->first_node;
     int idx = 0;
 
     while (curr != NULL) {
@@ -74,8 +73,8 @@ lk_list_t *lk_list_create(void)
 {
     lk_list_t *lk_list = malloc(sizeof(lk_list_t));
 
-    lk_list->first_node = NULL;
-    lk_list->last_node = lk_list->first_node;
+    lk_list->first_node = my_calloc(0, sizeof(lk_list_elem_t *));
+    lk_list->last_node = my_calloc(0, sizeof(lk_list_elem_t *));
     lk_list->length = 0;
 
     lk_list->add = &lk_list_add;

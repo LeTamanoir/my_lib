@@ -26,19 +26,21 @@ static void round_float_base(char **float_str, char const *base)
     int carry = 1;
     int tmp = 0;
     int base_len = my_strlen(base);
-
-    for (int i = my_strlen(*float_str) - 1; i >= 0; i--) {
+    int is_neg = (*float_str[0] == '-');
+    for (int i = my_strlen(*float_str) - 1; i >= is_neg; i--) {
         if ((*float_str)[i] == 'x' || (*float_str)[i] == 'X') return;
         if ((*float_str)[i] == '.') continue;
         tmp = get_value((*float_str)[i], base) + carry;
         (*float_str)[i] = base[(tmp % base_len)];
         carry = tmp / base_len;
     }
-
     if (carry != 0) {
-        char *new = my_calloc('\0', sizeof(char) * (my_strlen(*float_str) + 2));
-        new[0] = base[carry];
-        my_strcat(new, *float_str);
+        char *new = my_calloc('\0', sizeof(char) * (
+            my_strlen(*float_str) + is_neg + 2));
+        if (is_neg)
+            new[0] = '-';
+        new[is_neg] = base[carry];
+        my_strcat(new, &((*float_str)[is_neg]));
         *float_str = new;
     }
 }

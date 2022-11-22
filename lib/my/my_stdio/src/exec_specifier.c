@@ -87,7 +87,7 @@ char *exec_spec_uint(va_list ap, parse_state_t *state, fn_map_t spec)
 
 char *exec_spec_float(va_list ap, parse_state_t *state, fn_map_t spec)
 {
-    double d = 0;
+    double d = 0.0;
 
     switch (state->length[0]) {
         case 'L': d = va_arg(ap, long double); break;
