@@ -34,51 +34,49 @@ Test(compute_spec_lo_g, prefer_spe_f_test, .init = redirect_all_std) {
 }
 
 Test(compute_spec_lo_g, error_inf, .init = redirect_all_std) {
-    double input = 5.00 / 0.00;
+    double input = INFINITY;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("inf\n");
 }
 
 Test(compute_spec_lo_g, error_nelo_gative_inf, .init = redirect_all_std) {
-    double input = -5.00 / 0.00;
+    double input = -INFINITY;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("-inf\n");
 }
 
 Test(compute_spec_lo_g, error_nan, .init = redirect_all_std) {
-    double input = 0.00 / 0.00;
-    *(long *)&input = (*(long *)&input) ^ (1l << 63);
+    double input = NAN;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("nan\n");
 }
 
 Test(compute_spec_lo_g, error_nelo_gative_nan, .init = redirect_all_std) {
-    double input = 0.00 / 0.00;
+    double input = -NAN;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("-nan\n");
 }
 
 Test(compute_spec_lo_g, lonlo_g_double_error_inf, .init = redirect_all_std) {
-    double input = 5.00 / 0.00;
+    double input = INFINITY;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("inf\n");
 }
 
 Test(compute_spec_lo_g, lonlo_g_double_error_nelo_gative_inf, .init = redirect_all_std) {
-    double input = -5.00 / 0.00;
+    double input = -INFINITY;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("-inf\n");
 }
 
 Test(compute_spec_lo_g, lonlo_g_double_error_nan, .init = redirect_all_std) {
-    double input = 0.00 / 0.00;
-    *(long *)&input = (*(long *)&input) ^ (1l << 63);
+    double input = NAN;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("nan\n");
 }
 
 Test(compute_spec_lo_g, lonlo_g_double_error_nelo_gative_nan, .init = redirect_all_std) {
-    double input = 0.00 / 0.00;
+    double input = -NAN;
     my_printf("%g\n", input);
     cr_assert_stdout_eq_str("-nan\n");
 }

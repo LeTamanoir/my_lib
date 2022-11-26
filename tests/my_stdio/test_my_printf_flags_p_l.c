@@ -176,7 +176,7 @@ Test(my_printf, test_flag_less_with_p, .init = redirect_all_std)
     char *out = "Hello world";
     int verif = 0;
     my_printf("%-p%n\n", &out, &verif);
-    cr_assert_eq(verif, 14);
+    cr_assert_eq(verif, 14, "verif: %d", verif);
 }
 
 Test(my_printf, test_flag_plus_with_p, .init = redirect_all_std)

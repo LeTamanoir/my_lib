@@ -78,57 +78,49 @@ Test(compute_spec_lo_e, loexp_with_big_pres, .init = redirect_all_std) {
 }
 
 Test(compute_spec_lo_e, error_inf) {
-    double input;
-    input = (double)5.00 / 0.00;
+    double input = INFINITY;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "inf");
 }
 
 Test(compute_spec_lo_e, error_negative_inf) {
-    double input;
-    input = (double)-5.00 / 0.00;
+    double input = -INFINITY;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "-inf");
 }
 
 Test(compute_spec_lo_e, error_nan) {
-    double input;
-    input = (double)nan("");
+    double input = NAN;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "nan");
 }
 
 Test(compute_spec_lo_e, error_negative_nan) {
-    double input;
-    input = (double)0.00 / 0.00;
+    double input = -NAN;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "-nan");
 }
 
 Test(compute_spec_lo_e, long_double_error_inf) {
-    double input;
-    input = (double)5.00 / 0.00;
+    double input = INFINITY;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "inf");
 }
 
 Test(compute_spec_lo_e, long_double_error_negative_inf) {
-    double input;
-    input = (double)-5.00 / 0.00;
+    double input = -INFINITY;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "-inf");
 }
 
 Test(compute_spec_lo_e, long_double_error_nan) {
-    double input;
-    input = (double)nan("");
+    double input = NAN;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "nan");
 }
 
 Test(compute_spec_lo_e, long_double_error_negative_nan) {
-    double input;
-    input = (double)0.00 / 0.00;
+    double input = -NAN;
     char *res = compute_spec_lo_e(&input);
     cr_assert_str_eq(res, "-nan");
 }
@@ -159,57 +151,49 @@ Test(compute_spec_up_e, upexp_with_big_pres, .init = redirect_all_std) {
 }
 
 Test(compute_spec_up_e, error_inf) {
-    double input;
-    input = (double)5.00 / 0.00;
+    double input = INFINITY;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "inf");
 }
 
 Test(compute_spec_up_e, error_negative_inf) {
-    double input;
-    input = (double)-5.00 / 0.00;
+    double input = -INFINITY;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "-inf");
 }
 
 Test(compute_spec_up_e, error_nan) {
-    double input;
-    input = (double)nan("");
+    double input = NAN;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "nan");
 }
 
 Test(compute_spec_up_e, error_negative_nan) {
-    double input;
-    input = (double)0.00 / 0.00;
+    double input = -NAN;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "-nan");
 }
 
 Test(compute_spec_up_e, long_double_error_inf) {
-    double input;
-    input = (double)5.00 / 0.00;
+    double input = INFINITY;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "inf");
 }
 
 Test(compute_spec_up_e, long_double_error_negative_inf) {
-    double input;
-    input = (double)-5.00 / 0.00;
+    double input = -INFINITY;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "-inf");
 }
 
 Test(compute_spec_up_e, long_double_error_nan) {
-    double input;
-    input = (double)nan("");
+    double input = NAN;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "nan");
 }
 
 Test(compute_spec_up_e, long_double_error_negative_nan) {
-    double input;
-    input = (double)0.00 / 0.00;
+    double input = -NAN;
     char *res = compute_spec_up_e(&input);
     cr_assert_str_eq(res, "-nan");
 }
