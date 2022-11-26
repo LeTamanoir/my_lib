@@ -8,18 +8,6 @@
 #include "my_string.h"
 #include "my_stdlib.h"
 
-static void populate_word(
-    char const *str, char *arr_at_i,
-    int str_i, int length
-)
-{
-    for (int i = 0; i < length; i++) {
-        arr_at_i[i] = str[(str_i - length) + i];
-    }
-
-    arr_at_i[length] = '\0';
-}
-
 static int compute_arr_length(char const *str)
 {
     int can_inc = 1;
@@ -38,23 +26,24 @@ static int compute_arr_length(char const *str)
 
 static void convert_to_words(char const *str, char **arr)
 {
-    int length_arr_i = 0;
+    int len_arr_i = 0;
     int arr_i = 0;
+    int inc_last;
 
     for (int i = 0; str[i] != '\0'; i++) {
         if (my_isalphanum(str[i]) && str[i + 1] != '\0') {
-            length_arr_i++;
+            len_arr_i++;
             continue;
         }
 
-        int include_last = str[i + 1] == '\0' && my_isalphanum(str[i]);
-        if (include_last) length_arr_i++;
-        if (length_arr_i == 0) continue;
+        inc_last = str[i + 1] == '\0' && my_isalphanum(str[i]);
+        if (inc_last) len_arr_i++;
+        if (len_arr_i == 0) continue;
 
-        arr[arr_i] = malloc(sizeof(char) * (length_arr_i + 1));
-        populate_word(str, arr[arr_i], i + include_last, length_arr_i);
+        arr[arr_i] = my_calloc(0, sizeof(char) * (len_arr_i + 1));
+        my_strncat(arr[arr_i], &(str[(i + inc_last) - len_arr_i]), len_arr_i);
         arr_i++;
-        length_arr_i = 0;
+        len_arr_i = 0;
     }
 }
 
@@ -62,9 +51,8 @@ char **my_str_to_word_array(char const *str)
 {
     int length_arr = compute_arr_length(str);
     char **arr = my_calloc(0, sizeof(char *) * (length_arr + 1));
-    if (arr == NULL)
-        return NULL;
 
     convert_to_words(str, arr);
+
     return arr;
 }

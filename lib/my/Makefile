@@ -9,6 +9,8 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
+STRING_DIR	=	./my_string
+
 STDIO_DIR	=	./my_stdio
 INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
 
@@ -69,10 +71,13 @@ LIB	=	./my_int_sqrt.c 			\
 MY_LK_LIST	=	$(LK_LIST_DIR)/my_lk_list.c				\
 				$(LK_LIST_DIR)/my_lk_list_utils.c
 
+MY_STRING	=	$(STRING_DIR)/my_string.c
+
 
 MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/my_sprintf.c								\
 				$(STDIO_DIR)/my_dprintf.c								\
+				$(STDIO_DIR)/my_vasprintf.c								\
 				$(STDIO_DIR)/src/core.c    								\
 				$(STDIO_DIR)/src/parser.c								\
 				$(STDIO_DIR)/src/buffer.c								\
@@ -109,10 +114,9 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I$(INCLUDE_DIR)
 
 
-
 CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
 
-OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o) $(MY_LK_LIST:.c=.o)
+OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o) $(MY_LK_LIST:.c=.o) $(MY_STRING:.c=.o)
 
 NAME	=	libmy.a
 

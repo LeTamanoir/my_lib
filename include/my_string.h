@@ -68,3 +68,13 @@ int my_showstr(char const *str);
 char **my_str_to_word_array(char const *str);
 
 int my_show_word_array(char * const *tab);
+
+typedef struct string_s string_t;
+typedef struct string_s {
+    char *content;
+
+    void (*add)(string_t *this, char *new);
+    void (*fadd)(string_t *this, char *fmt, ...);
+} string_t;
+
+string_t *string_create(char *init);
