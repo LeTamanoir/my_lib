@@ -17,7 +17,7 @@ int my_printf(const char *format, ...)
     int buff_size = 0;
 
     va_start(ap, format);
-    compute_char(ap, buffer, format);
+    compute_char(&ap, buffer, format);
     va_end(ap);
 
     print_buffer(buffer, 1);

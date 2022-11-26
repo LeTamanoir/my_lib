@@ -11,4 +11,4 @@
 
 #pragma once
 
-int compute_char(va_list ap, buffer_t *buffer, const char *format);
+int compute_char(va_list *ap, buffer_t *buffer, const char *format);

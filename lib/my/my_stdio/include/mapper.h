@@ -17,5 +17,5 @@ typedef struct fn_map_s {
 typedef struct fn_map_exec_s {
     char key;
     char *(*post_proc)(char *res, parse_state_t *state);
-    char *(*spec_exec)(va_list ap, parse_state_t *state, fn_map_t spec);
+    char *(*spec_exec)(va_list *ap, parse_state_t *state, fn_map_t spec);
 } fn_map_exec_t;

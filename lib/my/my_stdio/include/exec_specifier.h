@@ -24,18 +24,18 @@ typedef struct state_ptr_s {
     parse_state_t *state;
 } state_ptr_t;
 
-char *exec_speficier(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_speficier(va_list *ap, parse_state_t *state, fn_map_t spec);
 
-char *exec_spec_float_g(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_spec_float_g(va_list *ap, parse_state_t *state, fn_map_t spec);
 
-char *exec_spec_ptr(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_spec_ptr(va_list *ap, parse_state_t *state, fn_map_t spec);
 
-char *exec_spec_char(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_spec_char(va_list *ap, parse_state_t *state, fn_map_t spec);
 
-char *exec_spec_str(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_spec_str(va_list *ap, parse_state_t *state, fn_map_t spec);
 
-char *exec_spec_int(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_spec_int(va_list *ap, parse_state_t *state, fn_map_t spec);
 
-char *exec_spec_uint(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_spec_uint(va_list *ap, parse_state_t *state, fn_map_t spec);
 
-char *exec_spec_float(va_list ap, parse_state_t *state, fn_map_t spec);
+char *exec_spec_float(va_list *ap, parse_state_t *state, fn_map_t spec);

@@ -47,57 +47,57 @@ static const fn_map_exec_t SPEC_EXEC[] = {
 
 static const int SPEC_EXEC_SIZE = sizeof(SPEC_EXEC) / sizeof(fn_map_exec_t);
 
-char *exec_spec_int(va_list ap, parse_state_t *state, fn_map_t spec)
+char *exec_spec_int(va_list *ap, parse_state_t *state, fn_map_t spec)
 {
     long long int arg = 0;
 
     switch (state->length[0]) {
         case 'h': arg = (state->length[1] == 'h') ?
-            (signed char)va_arg(ap, int) : (short)va_arg(ap, int); break;
+            (signed char)va_arg(*ap, int) : (short)va_arg(*ap, int); break;
         case 'l': arg = (state->length[1] == 'l') ?
-            va_arg(ap, long long int) : va_arg(ap, long int); break;
-        case 'j': arg = va_arg(ap, intmax_t); break;
-        case 'z': arg = va_arg(ap, size_t); break;
-        case 't': arg = va_arg(ap, ptrdiff_t); break;
-        default: arg = va_arg(ap, int);
+            va_arg(*ap, long long int) : va_arg(*ap, long int); break;
+        case 'j': arg = va_arg(*ap, intmax_t); break;
+        case 'z': arg = va_arg(*ap, size_t); break;
+        case 't': arg = va_arg(*ap, ptrdiff_t); break;
+        default: arg = va_arg(*ap, int);
     }
 
     return (*spec.func)(&arg);
 }
 
-char *exec_spec_uint(va_list ap, parse_state_t *state, fn_map_t spec)
+char *exec_spec_uint(va_list *ap, parse_state_t *state, fn_map_t spec)
 {
     unsigned long long int new = 0;
 
     switch (state->length[0]) {
         case 'h': new = (state->length[1] == 'h') ?
-            (unsigned char)va_arg(ap, int) :
-            (unsigned short int)va_arg(ap, int); break;
+            (unsigned char)va_arg(*ap, int) :
+            (unsigned short int)va_arg(*ap, int); break;
         case 'l': new = (state->length[1] == 'l') ?
-            va_arg(ap, unsigned long long int) :
-            va_arg(ap, unsigned long int); break;
-        case 'j': new = va_arg(ap, uintmax_t); break;
-        case 'z': new = va_arg(ap, size_t); break;
-        case 't': new = va_arg(ap, ptrdiff_t); break;
-        default: new = va_arg(ap, unsigned int);
+            va_arg(*ap, unsigned long long int) :
+            va_arg(*ap, unsigned long int); break;
+        case 'j': new = va_arg(*ap, uintmax_t); break;
+        case 'z': new = va_arg(*ap, size_t); break;
+        case 't': new = va_arg(*ap, ptrdiff_t); break;
+        default: new = va_arg(*ap, unsigned int);
     }
 
     return (*spec.func)(&new);
 }
 
-char *exec_spec_float(va_list ap, parse_state_t *state, fn_map_t spec)
+char *exec_spec_float(va_list *ap, parse_state_t *state, fn_map_t spec)
 {
     double d = 0.0;
 
     switch (state->length[0]) {
-        case 'L': d = va_arg(ap, long double); break;
-        default: d = va_arg(ap, double);
+        case 'L': d = va_arg(*ap, long double); break;
+        default: d = va_arg(*ap, double);
     }
 
     return (*spec.func)(&d);
 }
 
-char *exec_speficier(va_list ap, parse_state_t *state, fn_map_t spec)
+char *exec_speficier(va_list *ap, parse_state_t *state, fn_map_t spec)
 {
     char key = spec.key;
     char *res = NULL;

@@ -5,6 +5,7 @@
 ** capitalizes the first letter of each word
 */
 
+#include "my_stdio.h"
 #include "my_string.h"
 
 static int is_first(char *str, int i)
@@ -24,7 +25,7 @@ char *my_strcapitalize(char *str)
     int i = 1;
 
     if (str[0] == '\0')
-        return '\0';
+        return NULL;
 
     if (my_islower(str[0]))
         str[0] = str[0] - ('a' - 'A');

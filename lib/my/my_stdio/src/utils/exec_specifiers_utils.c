@@ -13,9 +13,9 @@
 #include "post_processor.h"
 #include "exec_specifier.h"
 
-char *exec_spec_ptr(va_list ap, parse_state_t *state, fn_map_t spec)
+char *exec_spec_ptr(va_list *ap, parse_state_t *state, fn_map_t spec)
 {
-    void *ptr = va_arg(ap, void *);
+    void *ptr = va_arg(*ap, void *);
     ptr_data_t ptr_data = {
         .ptr = ptr,
         .length_mod = state->length,
@@ -27,7 +27,7 @@ char *exec_spec_ptr(va_list ap, parse_state_t *state, fn_map_t spec)
 }
 
 char *exec_spec_float_g(
-    va_list ap, parse_state_t *state, fn_map_t spec
+    va_list *ap, parse_state_t *state, fn_map_t spec
 )
 {
     double d = 0;
@@ -35,42 +35,42 @@ char *exec_spec_float_g(
 
     switch (state->length[0]) {
         case 'L':
-            d = va_arg(ap, long double);
+            d = va_arg(*ap, long double);
             ptr_data.ptr = &d;
             return (*spec.func)(&ptr_data);
         default:
-            d = va_arg(ap, double);
+            d = va_arg(*ap, double);
             ptr_data.ptr = &d;
             return (*spec.func)(&ptr_data);
     }
 }
 
-char *exec_spec_char(va_list ap, parse_state_t *state, fn_map_t spec)
+char *exec_spec_char(va_list *ap, parse_state_t *state, fn_map_t spec)
 {
     wint_t arg_wint;
     int arg_int;
 
     switch (state->length[0]) {
         case 'l':
-            arg_wint = va_arg(ap, wint_t);
+            arg_wint = va_arg(*ap, wint_t);
             return (*spec.func)(&arg_wint);
         default:
-            arg_int = va_arg(ap, int);
+            arg_int = va_arg(*ap, int);
             return (*spec.func)(&arg_int);
     }
 }
 
-char *exec_spec_str(va_list ap, parse_state_t *state, fn_map_t spec)
+char *exec_spec_str(va_list *ap, parse_state_t *state, fn_map_t spec)
 {
     wchar_t *arg_wchar;
     char *arg_char;
 
     switch (state->length[0]) {
         case 'l':
-            arg_wchar = va_arg(ap, wchar_t *);
+            arg_wchar = va_arg(*ap, wchar_t *);
             return (*spec.func)(arg_wchar);
         default:
-            arg_char = va_arg(ap, char *);
+            arg_char = va_arg(*ap, char *);
             return (*spec.func)(arg_char);
     }
 }

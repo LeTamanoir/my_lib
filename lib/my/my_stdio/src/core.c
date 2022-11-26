@@ -40,8 +40,8 @@ static const fn_map_t SPECIFIERS[] = {
     { 'E', &compute_spec_up_e },
     { 'g', &compute_spec_lo_g },
     { 'G', &compute_spec_up_g },
-    { 'a', &compute_spec_lo_a, },
-    { 'A', &compute_spec_up_a, },
+    { 'a', &compute_spec_lo_a },
+    { 'A', &compute_spec_up_a },
 
     { 'p', &compute_spec_p },
     { 'n', &compute_spec_n },
@@ -60,7 +60,7 @@ static void align_from_pwr(parse_state_t *state)
 }
 
 static char *parse_specifier(
-    va_list ap, const char *format,
+    va_list *ap, const char *format,
     int *i, parse_state_t *state
 )
 {
@@ -70,11 +70,11 @@ static char *parse_specifier(
         if (SPECIFIERS[k].key != format[*i]) continue;
 
         if (state->width == -1) {
-            state->width = (int)va_arg(ap, int);
+            state->width = (int)va_arg(*ap, int);
             align_from_pwr(state);
         }
         if (state->precision == -1)
-            state->precision = (int)va_arg(ap, int);
+            state->precision = (int)va_arg(*ap, int);
 
         state->specifier = SPECIFIERS[k].key;
         res = exec_speficier(ap, state, SPECIFIERS[k]);
@@ -87,7 +87,7 @@ static char *parse_specifier(
 }
 
 static char *parse_wrapper(
-    va_list ap, const char *format,
+    va_list *ap, const char *format,
     int *i, parse_state_t *state
 )
 {
@@ -128,7 +128,7 @@ static int is_not_percent(
     return 0;
 }
 
-int compute_char(va_list ap, buffer_t *buffer, char *format)
+int compute_char(va_list *ap, buffer_t *buffer, char *format)
 {
     char *res;
     parse_state_t state = {0};

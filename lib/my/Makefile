@@ -72,7 +72,6 @@ MY_LK_LIST	=	$(LK_LIST_DIR)/my_lk_list.c				\
 
 MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/my_sprintf.c								\
-				$(STDIO_DIR)/my_fprintf.c								\
 				$(STDIO_DIR)/my_dprintf.c								\
 				$(STDIO_DIR)/src/core.c    								\
 				$(STDIO_DIR)/src/parser.c								\
@@ -125,7 +124,7 @@ $(NAME):	$(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	find \( -name "*.gcda" -or -name "*.gcno" -or -name "vgcore*" \) -delete
+	find . \( -name "*.gcda" -or -name "*.gcno" -or -name "vgcore*" \) -delete
 
 fclean:	clean
 	rm -f $(NAME)
