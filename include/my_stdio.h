@@ -6,7 +6,6 @@
 */
 
 #include <unistd.h>
-#include <bits/types/FILE.h>
 
 #pragma once
 
@@ -15,8 +14,6 @@ int my_printf(const char *format, ...);
 int my_sprintf(char *str, const char *format, ...);
 
 int my_dprintf(int fd, const char * format, ...);
-
-int my_fprintf(FILE *stream, const char *format, ...);
 
 void my_putchar(char c);
 

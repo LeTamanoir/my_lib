@@ -22,14 +22,14 @@ typedef struct lk_list_s {
 
     void (*delete)(
         struct lk_list_s *this, void *del_value,
-        int (*cmp)(), int delete_all
+        int (*cmp)(), void (*delete_fn)()
     );
-
-    // void (*sort)(struct lk_list_s *this);
 
     lk_list_elem_t *(*get)(struct lk_list_s *this, int index);
 } lk_list_t;
 
 lk_list_t *lk_list_create(void);
 
-void lk_list_free(lk_list_t *list);
+void lk_list_free(lk_list_t *list, void (*free_fn)());
+
+void lk_list_free_simple_node(lk_list_elem_t *node);

@@ -52,7 +52,7 @@ tests_run:
 
 clean:
 	rm -f $(OBJ)
-	find \( -name "*.gcda" -or -name "*.gcno" -or -name "vgcore*" \) -delete
+	../../clean.sh
 
 fclean:	clean
 	rm -f $(TEST_NAME)
