@@ -31,7 +31,7 @@ static void string_fadd(string_t *this, char *fmt, ...)
     char *dest;
 
     va_start(ap, fmt);
-    my_vasprintf(&dest, fmt, ap);
+    my_vasprintf(&dest, fmt, &ap);
     va_end(ap);
 
     (*this->add)(this, dest);
@@ -49,4 +49,10 @@ string_t *string_create(char *init)
     string->fadd = &string_fadd;
 
     return string;
+}
+
+void string_free(string_t *string)
+{
+    free(string->content);
+    free(string);
 }

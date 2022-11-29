@@ -78,3 +78,4 @@ typedef struct string_s {
 } string_t;
 
 string_t *string_create(char *init);
+void string_free(string_t *string);
