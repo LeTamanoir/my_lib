@@ -20,19 +20,20 @@ int my_atoi(char const *str)
     int sign = 1;
     int number = 0;
     int error = 0;
+    int idx = 0;
 
-    while (*str != '\0') {
-        if (*str == '-')
+    while (str[idx] != '\0') {
+        if (str[idx] == '-')
             sign = sign * -1;
-        if (*str != '+' && *str != '-' && *str >= '0' && *str <= '9') {
-            error = test_overflow(number, *str - 48, sign);
-            number = number * 10 + (*str - 48);
+        if (str[idx] != '+' && str[idx] != '-' &&
+            str[idx] >= '0' && str[idx] <= '9') {
+            error = test_overflow(number, str[idx] - '0', sign);
+            number = number * 10 + (str[idx] - '0');
         }
-        if (error)
-            return 0;
-        if (*str != '+' && *str != '-' && (*str > '9' || *str < '0'))
-            break;
-        str++;
+        if (error) return 0;
+        if (str[idx] != '+' && str[idx] != '-' &&
+            (str[idx] > '9' || str[idx] < '0')) break;
+        idx++;
     }
     return sign * number;
 }

@@ -13,6 +13,7 @@
 /.vscode
 .bash_history
 .DS_Store
+.cache
 
 # project bin
-/[PROJECT-NAM]
+/[PROJECT-NAME]

@@ -10,6 +10,10 @@ CC = gcc
 INCLUDE_DIR	=	../../include
 
 STRING_DIR	=	./my_string
+INCLUDE_STRING_DIR	=	$(STRING_DIR)/include
+
+FILE_DIR	=	./my_file
+INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
 
 STDIO_DIR	=	./my_stdio
 INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
@@ -71,8 +75,13 @@ LIB	=	./my_int_sqrt.c 			\
 MY_LK_LIST	=	$(LK_LIST_DIR)/my_lk_list.c				\
 				$(LK_LIST_DIR)/my_lk_list_utils.c
 
-MY_STRING	=	$(STRING_DIR)/my_string.c
+MY_STRING	=	$(STRING_DIR)/my_string.c	\
+				$(STRING_DIR)/setters.c
 
+MY_FILE		=	$(FILE_DIR)/my_file.c 			\
+				$(FILE_DIR)/getters.c 			\
+				$(FILE_DIR)/setters.c			\
+				$(FILE_DIR)/get_line_utils.c
 
 MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/my_sprintf.c								\
@@ -111,12 +120,14 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/src/specifiers/utils/spec_a_utils.c
 
 
-INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I$(INCLUDE_DIR)
+INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I$(INCLUDE_DIR) \
+			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_STRING_DIR)
 
 
-CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
+CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE) -g3
 
-OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o) $(MY_LK_LIST:.c=.o) $(MY_STRING:.c=.o)
+OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o) $(MY_LK_LIST:.c=.o) $(MY_STRING:.c=.o) \
+		$(MY_FILE:.c=.o)
 
 NAME	=	libmy.a
 

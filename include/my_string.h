@@ -26,7 +26,7 @@ char my_lowcase(char chr);
 
 char *my_strcat(char *dest, char const *src);
 
-char *my_strncat(char *dest, char const *src, int nb);
+char *my_strncat(char *dest, char const *src, int n);
 
 char *my_strdup(char const *src);
 
@@ -72,8 +72,11 @@ int my_show_word_array(char * const *tab);
 typedef struct string_s string_t;
 typedef struct string_s {
     char *content;
+    int length;
 
+    void (*slice)(string_t *this, int start, int end);
     void (*add)(string_t *this, char *new);
+    void (*nadd)(string_t *this, char *new, int n);
     void (*fadd)(string_t *this, char *fmt, ...);
 } string_t;
 
