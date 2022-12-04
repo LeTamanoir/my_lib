@@ -10,6 +10,7 @@
 #include "my_stdio.h"
 
 #include "./include/setters.h"
+#include "./include/getters.h"
 
 string_t *string_create(char *init)
 {
@@ -18,6 +19,7 @@ string_t *string_create(char *init)
     string->content = my_strdup(init);
     string->length = my_strlen(init);
 
+    string->split = &string_split;
     string->add = &string_add;
     string->nadd = &string_nadd;
     string->fadd = &string_fadd;

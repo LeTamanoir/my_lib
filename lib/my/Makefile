@@ -76,7 +76,8 @@ MY_LK_LIST	=	$(LK_LIST_DIR)/my_lk_list.c				\
 				$(LK_LIST_DIR)/my_lk_list_utils.c
 
 MY_STRING	=	$(STRING_DIR)/my_string.c	\
-				$(STRING_DIR)/setters.c
+				$(STRING_DIR)/setters.c		\
+				$(STRING_DIR)/getters.c
 
 MY_FILE		=	$(FILE_DIR)/my_file.c 			\
 				$(FILE_DIR)/getters.c 			\

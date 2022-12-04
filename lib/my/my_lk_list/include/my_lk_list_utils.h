@@ -9,6 +9,6 @@
 
 #pragma once
 
-lk_list_elem_t *create_new_node(void);
-
-void free_node(lk_list_elem_t *node);
+lk_node_t *create_new_node(void);
+void lk_list_insert(lk_list_t *this, lk_node_t *node);
+void lk_list_add(lk_list_t *this, void *value);

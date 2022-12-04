@@ -74,6 +74,7 @@ typedef struct string_s {
     char *content;
     int length;
 
+    char **(*split)(string_t *this, char delimiter);
     void (*slice)(string_t *this, int start, int end);
     void (*add)(string_t *this, char *new);
     void (*nadd)(string_t *this, char *new, int n);

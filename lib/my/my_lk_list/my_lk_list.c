@@ -10,19 +10,30 @@
 #include "my_lk_list.h"
 #include "my_lk_list_utils.h"
 
-static void lk_list_add(lk_list_t *this, void *value)
+static lk_node_t *lk_list_pop(lk_list_t *this)
 {
-    lk_list_elem_t *new_node = create_new_node();
+    lk_node_t *first = this->first_node;
 
-    new_node->value = value;
+    if (first == NULL) return NULL;
+
+    this->length--;
+    this->first_node = this->first_node->next;
+
+    first->next = NULL;
+
+    return first;
+}
+
+static void lk_list_append(lk_list_t *this, lk_node_t *node)
+{
     this->length++;
 
     if (this->first_node == NULL) {
-        this->first_node = new_node;
-        this->last_node = new_node;
+        this->first_node = node;
+        this->last_node = node;
     } else {
-        this->last_node->next = new_node;
-        this->last_node = new_node;
+        this->last_node->next = node;
+        this->last_node = node;
     }
 }
 
@@ -31,8 +42,8 @@ static void lk_list_delete(
     int (*cmp)(), void (*delete_fn)()
 )
 {
-    lk_list_elem_t *prev = NULL;
-    lk_list_elem_t *curr = this->first_node;
+    lk_node_t *prev = NULL;
+    lk_node_t *curr = this->first_node;
     while (curr != NULL) {
         if ((*cmp)(curr->value, del_value) != 0) {
             prev = curr;
@@ -53,9 +64,9 @@ static void lk_list_delete(
     this->last_node = prev;
 }
 
-static lk_list_elem_t *lk_list_get(lk_list_t *this, int index)
+static lk_node_t *lk_list_get(lk_list_t *this, int index)
 {
-    lk_list_elem_t *curr = this->first_node;
+    lk_node_t *curr = this->first_node;
     int idx = 0;
 
     while (curr != NULL) {
@@ -79,6 +90,9 @@ lk_list_t *lk_list_create(void)
     lk_list->length = 0;
 
     lk_list->add = &lk_list_add;
+    lk_list->insert = &lk_list_insert;
+    lk_list->append = &lk_list_append;
+    lk_list->pop = &lk_list_pop;
     lk_list->delete = &lk_list_delete;
     lk_list->get = &lk_list_get;
 
