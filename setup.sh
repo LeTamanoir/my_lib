@@ -12,7 +12,7 @@ if [ $# != 1 ]; then
 fi
 
 project_name=$1
-replace='[PROJECT-NAME]'
+replace='\[PROJECT-NAME\]'
 temp=''
 
 files=(
