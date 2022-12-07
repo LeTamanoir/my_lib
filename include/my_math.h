@@ -22,3 +22,8 @@ void my_sort_int_array(int *tab, int size);
 int my_nbr_length(long long nb);
 
 long long my_ll_pow(long long number, int power);
+
+typedef struct vec_s {
+    int x;
+    int y;
+} vec_t;

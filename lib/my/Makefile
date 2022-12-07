@@ -21,6 +21,10 @@ INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
 LK_LIST_DIR	=	./my_lk_list
 INCLUDE_LK_LIST_DIR	=	$(LK_LIST_DIR)/include
 
+MATRIX_DIR	=	./my_matrix
+INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
+
+ARRAY_DIR	=	./my_array
 
 LIB	=	./my_int_sqrt.c 			\
 		./my_find_prime_sup.c		\
@@ -71,6 +75,13 @@ LIB	=	./my_int_sqrt.c 			\
 		./my_ll_pow.c				\
 		./my_itoa.c
 
+MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
+				$(MATRIX_DIR)/advanced_op.c	\
+				$(MATRIX_DIR)/simple_op.c	\
+				$(MATRIX_DIR)/inverse.c		\
+				$(MATRIX_DIR)/determinant.c
+
+MY_ARRAY 	=	$(ARRAY_DIR)/char_array.c
 
 MY_LK_LIST	=	$(LK_LIST_DIR)/my_lk_list.c				\
 				$(LK_LIST_DIR)/my_lk_list_utils.c
@@ -122,13 +133,14 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 
 
 INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I$(INCLUDE_DIR) \
-			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_STRING_DIR)
+			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_STRING_DIR) \
+			-I$(INCLUDE_MATRIX_DIR)
 
 
 CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE) -g3
 
 OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o) $(MY_LK_LIST:.c=.o) $(MY_STRING:.c=.o) \
-		$(MY_FILE:.c=.o)
+		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o)
 
 NAME	=	libmy.a
 

@@ -12,9 +12,22 @@ if [ $# != 1 ]; then
 fi
 
 project_name=$1
+replace='[PROJECT-NAME]'
+temp=''
 
-cp .gitignore temp
+files=(
+    '.gitignore'
+    'Makefile'
+    '.vscode/settings.json'
+    'src/main.c'
+)
 
-sed "s/\[PROJECT\-NAME\]/$project_name/g" temp > .gitignore
+for file in ${files[@]}; do
+    temp="${file}_temp"
 
-rm temp
+    cp $file $temp
+
+    sed "s/$replace/$project_name/g" $temp > $file
+
+    rm $temp
+done
