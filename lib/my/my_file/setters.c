@@ -8,17 +8,17 @@
 #include <fcntl.h>
 #include <stdarg.h>
 
-#include "my_string.h"
+#include "my_str.h"
 #include "my_stdio.h"
 #include "my_stdlib.h"
 #include "my_file.h"
 
-void file_write(file_t *this, char *new)
+void file_write(file_t *file, char *str)
 {
-    write(this->fd, new, my_strlen(new));
+    write(file->fd, str, my_strlen(str));
 }
 
-void file_fwrite(file_t *this, char *fmt, ...)
+void file_fwrite(file_t *file, char *fmt, ...)
 {
     va_list ap;
     char *dest;
@@ -27,7 +27,7 @@ void file_fwrite(file_t *this, char *fmt, ...)
     my_vasprintf(&dest, fmt, &ap);
     va_end(ap);
 
-    (*this->write)(this, dest);
+    file_write(file, dest);
 
     free(dest);
 }

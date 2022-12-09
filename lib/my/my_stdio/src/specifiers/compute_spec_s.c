@@ -7,7 +7,7 @@
 
 #include <stddef.h>
 
-#include "my_string.h"
+#include "my_str.h"
 #include "my_stdlib.h"
 #include "spec_int_utils.h"
 

@@ -10,7 +10,6 @@
 #pragma once
 
 void *my_calloc(char pad, size_t size);
-
 char *my_itoa(long long nb);
-
 int my_atoi(char const *str);
+double my_atof(char const *str);

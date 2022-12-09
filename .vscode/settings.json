@@ -1,3 +1,7 @@
 {
-    "header-generator-tek.project-name": "[PROJECT-NAME]"
+    "header-generator-tek.project-name": "[PROJECT-NAME]",
+    "files.associations": {
+        "*.ejs": "html",
+        "__node_handle": "c"
+    }
 }

@@ -10,7 +10,7 @@
 #include <stddef.h>
 #include <stdarg.h>
 
-#include "my_string.h"
+#include "my_str.h"
 #include "my_stdlib.h"
 #include "buffer.h"
 #include "mapper.h"

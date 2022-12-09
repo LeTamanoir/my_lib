@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 #include "my_stdlib.h"
-#include "my_string.h"
+#include "my_str.h"
 #include "float_utils.h"
 #include "spec_a_utils.h"
 

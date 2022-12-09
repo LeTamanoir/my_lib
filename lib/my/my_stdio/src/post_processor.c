@@ -5,7 +5,7 @@
 ** post processor for the specifiers output
 */
 
-#include "my_string.h"
+#include "my_str.h"
 #include "my_stdlib.h"
 #include "state.h"
 #include "post_processor.h"

@@ -6,12 +6,13 @@
 */
 
 #include "my_file.h"
-#include "my_string.h"
+#include "my_str.h"
+#include "my_stdio.h"
 
 void clear_buffer(char *buffer)
 {
     for (int i = 0; i < F_BUFF_SIZE; i++) {
-        buffer[i] = 0;
+        buffer[i] = '\0';
     }
 }
 
@@ -25,33 +26,35 @@ int get_newline_idx(char *buffer, int size)
     return size;
 }
 
-void add_from_cache(file_t *this, string_t *line)
+void add_from_cache(file_t *file, str_t *line, int *can_stop)
 {
     int new_line_idx = get_newline_idx(
-        this->__line->content, this->__line->length
+        file->__line->content, file->__line->length
     );
 
-    line->nadd(line, this->__line->content, new_line_idx
-    );
+    str_nadd(line, file->__line->content, new_line_idx);
 
-    int slice_st = new_line_idx + (new_line_idx != this->__line->length);
-    int slice_en = this->__line->length;
+    int slice_st = new_line_idx + (new_line_idx != file->__line->length);
+    int slice_en = file->__line->length;
 
-    this->__line->slice(this->__line, slice_st, slice_en);
+    if (new_line_idx == file->__line->length - 1) {
+        *can_stop = 1;
+    }
+    str_slice(file->__line, slice_st, slice_en);
 }
 
-int add_from_read(file_t *this, string_t *line)
+int add_from_read(file_t *file, str_t *line)
 {
-    char buffer[F_BUFF_SIZE] = {0};
+    char buffer[F_BUFF_SIZE + 1] = {0};
     int size = 0;
     int new_line_idx = 0;
 
-    while ((size = read(this->fd, buffer, F_BUFF_SIZE)) != 0) {
+    while ((size = read(file->fd, buffer, F_BUFF_SIZE)) != 0) {
         new_line_idx = get_newline_idx(buffer, F_BUFF_SIZE);
-        line->nadd(line, buffer, new_line_idx);
+        str_nadd(line, buffer, new_line_idx);
         if (new_line_idx != F_BUFF_SIZE) {
-            this->__line->nadd(this->__line, &(buffer[new_line_idx + 1]),
-                F_BUFF_SIZE - new_line_idx - 1);
+            str_nadd(file->__line, &(buffer[new_line_idx + 1]),
+                F_BUFF_SIZE - new_line_idx);
             break;
         }
         clear_buffer(buffer);

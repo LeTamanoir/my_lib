@@ -9,46 +9,48 @@
 #include <fcntl.h>
 
 #include "my_stdlib.h"
-#include "my_string.h"
+#include "my_str.h"
 #include "my_file.h"
 
-#include "./include/getters.h"
+#include "get_line_utils.h"
 
-char *file_get_content(file_t *this)
+char *file_get_content(file_t *file)
 {
     struct stat file_stat;
-    stat(this->file_path, &file_stat);
+    stat(file->file_path, &file_stat);
     int size = file_stat.st_size;
 
     char *content = my_calloc(0, sizeof(char) * (size + 1));
-    read(this->fd, content, size);
+    read(file->fd, content, size);
 
-    this->content->slice(this->content, 0, 0);
-    this->content->add(this->content, content);
-    close(this->fd);
+    str_slice(file->content, 0, 0);
+    str_add(file->content, content);
+    close(file->fd);
+    file->fd = -1;
 
     return content;
 }
 
-char *file_get_line(file_t *this)
+char *file_get_line(file_t *file)
 {
-    string_t *line = string_create("");
-    int last_line = my_strlen(this->content->content);
+    str_t *line = str_create("");
+    int last_line = my_strlen(file->content->content);
     int size = 0;
+    int can_stop = 0;
 
-    if (this->__line->length == -1) {
-        close(this->fd);
+    if (file->__line->length == -1) {
+        close(file->fd);
+        file->fd = -1;
         return NULL;
     }
-    if (this->__line->length != 0)
-        add_from_cache(this, line);
-    if (this->__line->length == 0) {
-        size = add_from_read(this, line);
-
-        if (size == 0 && this->__line->length == 0)
-            this->__line->length = -1;
+    if (file->__line->length != 0)
+        add_from_cache(file, line, &can_stop);
+    if (file->__line->length == 0 && !can_stop) {
+        size = add_from_read(file, line);
+        if (size == 0 && file->__line->length == 0)
+            file->__line->length = -1;
     }
-    this->content->add(this->content, line->content);
-    string_free(line);
-    return &(this->content->content[last_line]);
+    str_add(file->content, line->content);
+    str_free(line);
+    return &(file->content->content[last_line]);
 }

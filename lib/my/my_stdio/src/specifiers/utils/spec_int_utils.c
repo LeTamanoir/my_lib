@@ -5,7 +5,7 @@
 ** utils for the specifiers
 */
 
-#include "my_string.h"
+#include "my_str.h"
 
 int my_int_nbr_length(long long int nb)
 {

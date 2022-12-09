@@ -8,8 +8,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#include "my_lk_list.h"
-#include "my_string.h"
+#include "my_list.h"
+#include "my_str.h"
 
 #pragma once
 
@@ -23,19 +23,16 @@
 
 #define F_BUFF_SIZE    (128)
 
-typedef struct file_s file_t;
 typedef struct file_s {
     int fd;
     char *file_path;
-    string_t *content;
-    string_t *__line;
-
-    char *(*get_line)(file_t *this);
-    char *(*get_content)(file_t *this);
-
-    void (*write)(file_t *this, char *new);
-    void (*fwrite)(file_t *this, char *fmt, ...);
+    str_t *content;
+    str_t *__line;
 } file_t;
 
 file_t *file_create(char const *file_path, int const file_mode);
+char *file_get_line(file_t *file);
+char *file_get_content(file_t *file);
+void file_write(file_t *file, char *str);
+void file_fwrite(file_t *file, char *fmt, ...);
 void file_free(file_t *file);

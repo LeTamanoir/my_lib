@@ -7,7 +7,7 @@
 
 #include "my_stdlib.h"
 #include "my_math.h"
-#include "my_string.h"
+#include "my_str.h"
 #include "state.h"
 
 void parse_flag(const char *format, int *i, parse_state_t *state)

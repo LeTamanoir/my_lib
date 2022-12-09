@@ -6,7 +6,7 @@
 */
 
 #include "my_stdlib.h"
-#include "my_string.h"
+#include "my_str.h"
 #include "spec_int_utils.h"
 
 char *compute_spec_b(void *ptr)

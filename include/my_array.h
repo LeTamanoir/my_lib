@@ -8,5 +8,4 @@
 #pragma once
 
 int char_arr_len(char **arr);
-
 void char_arr_free(char **arr);

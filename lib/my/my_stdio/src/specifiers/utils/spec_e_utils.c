@@ -5,7 +5,7 @@
 ** utils for exp modifiers
 */
 
-#include "my_string.h"
+#include "my_str.h"
 #include "my_stdlib.h"
 #include "float_utils.h"
 #include "spec_e_utils.h"

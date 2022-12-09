@@ -7,7 +7,7 @@
 
 #include <stddef.h>
 
-#include "my_string.h"
+#include "my_str.h"
 
 void extract_a_p_hex(char *new_res, char *res, char spec, int show_sign)
 {

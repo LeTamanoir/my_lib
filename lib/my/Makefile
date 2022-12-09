@@ -9,8 +9,7 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
-STRING_DIR	=	./my_string
-INCLUDE_STRING_DIR	=	$(STRING_DIR)/include
+STR_DIR	=	./my_str
 
 FILE_DIR	=	./my_file
 INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
@@ -18,62 +17,15 @@ INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
 STDIO_DIR	=	./my_stdio
 INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
 
-LK_LIST_DIR	=	./my_lk_list
-INCLUDE_LK_LIST_DIR	=	$(LK_LIST_DIR)/include
+LIST_DIR	=	./my_list
+INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
 
 MATRIX_DIR	=	./my_matrix
 INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
 
 ARRAY_DIR	=	./my_array
 
-LIB	=	./my_int_sqrt.c 			\
-		./my_find_prime_sup.c		\
-		./my_getnbr_base.c			\
-		./my_atoi.c					\
-		./my_isalpha.c				\
-		./my_isalphanum.c			\
-		./my_islower.c				\
-		./my_isnum.c				\
-		./my_is_prime.c				\
-		./my_isprintable.c			\
-		./my_isupper.c				\
-		./my_nbr_length.c			\
-		./my_pow.c					\
-		./my_putchar.c				\
-		./my_putnbr_base.c			\
-		./my_put_nbr.c				\
-		./my_putstr.c				\
-		./my_puts.c					\
-		./my_revstr.c				\
-		./my_showmem.c				\
-		./my_showstr.c				\
-		./my_show_word_array.c		\
-		./my_sort_int_array.c		\
-		./my_strcapitalize.c		\
-		./my_swap.c					\
-		./my_str_isalpha.c			\
-		./my_str_islower.c			\
-		./my_str_isnum.c			\
-		./my_str_isprintable.c		\
-		./my_str_isupper.c			\
-		./my_strlowcase.c			\
-		./my_lowcase.c				\
-		./my_upcase.c				\
-		./my_strupcase.c			\
-		./my_strcat.c				\
-		./my_strcmp.c				\
-		./my_strcpy.c				\
-		./my_strdup.c				\
-		./my_strlen.c				\
-		./my_strncat.c				\
-		./my_strncmp.c				\
-		./my_strncpy.c				\
-		./my_strstr.c				\
-		./my_str_to_word_array.c 	\
-		./my_calloc.c 				\
-		./my_putstderr.c			\
-		./my_ll_pow.c				\
-		./my_itoa.c
+
 
 MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
 				$(MATRIX_DIR)/advanced_op.c	\
@@ -81,24 +33,60 @@ MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
 				$(MATRIX_DIR)/inverse.c		\
 				$(MATRIX_DIR)/determinant.c
 
+
 MY_ARRAY 	=	$(ARRAY_DIR)/char_array.c
 
-MY_LK_LIST	=	$(LK_LIST_DIR)/my_lk_list.c				\
-				$(LK_LIST_DIR)/my_lk_list_utils.c
 
-MY_STRING	=	$(STRING_DIR)/my_string.c	\
-				$(STRING_DIR)/setters.c		\
-				$(STRING_DIR)/getters.c
+MY_LIST		=	$(LIST_DIR)/my_list.c		\
+				$(LIST_DIR)/setters.c
+
+
+MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
+				$(STR_DIR)/str_type/setters.c	\
+				$(STR_DIR)/str_type/getters.c	\
+				$(STR_DIR)/my_isalpha.c		 	\
+				$(STR_DIR)/my_isalphanum.c		\
+				$(STR_DIR)/my_islower.c			\
+				$(STR_DIR)/my_isnum.c			\
+				$(STR_DIR)/my_isprintable.c		\
+				$(STR_DIR)/my_isupper.c			\
+				$(STR_DIR)/my_lowcase.c			\
+				$(STR_DIR)/my_nbr_length.c		\
+				$(STR_DIR)/my_revstr.c			\
+				$(STR_DIR)/my_str_isalpha.c		\
+				$(STR_DIR)/my_str_islower.c		\
+				$(STR_DIR)/my_str_isnum.c		\
+				$(STR_DIR)/my_str_isprintable.c	\
+				$(STR_DIR)/my_str_isupper.c		\
+				$(STR_DIR)/my_strcapitalize.c	\
+				$(STR_DIR)/my_strcat.c			\
+				$(STR_DIR)/my_strcmp.c			\
+				$(STR_DIR)/my_strcpy.c			\
+				$(STR_DIR)/my_strdup.c			\
+				$(STR_DIR)/my_strlen.c			\
+				$(STR_DIR)/my_strlowcase.c		\
+				$(STR_DIR)/my_strncat.c			\
+				$(STR_DIR)/my_strncmp.c			\
+				$(STR_DIR)/my_strncpy.c			\
+				$(STR_DIR)/my_strstr.c			\
+				$(STR_DIR)/my_strupcase.c		\
+				$(STR_DIR)/my_upcase.c
+
 
 MY_FILE		=	$(FILE_DIR)/my_file.c 			\
 				$(FILE_DIR)/getters.c 			\
 				$(FILE_DIR)/setters.c			\
 				$(FILE_DIR)/get_line_utils.c
 
+
 MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/my_sprintf.c								\
 				$(STDIO_DIR)/my_dprintf.c								\
 				$(STDIO_DIR)/my_vasprintf.c								\
+				$(STDIO_DIR)/my_putchar.c								\
+				$(STDIO_DIR)/my_puts.c									\
+				$(STDIO_DIR)/my_putstderr.c								\
+				$(STDIO_DIR)/my_putstr.c								\
 				$(STDIO_DIR)/src/core.c    								\
 				$(STDIO_DIR)/src/parser.c								\
 				$(STDIO_DIR)/src/buffer.c								\
@@ -132,14 +120,13 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/src/specifiers/utils/spec_a_utils.c
 
 
-INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LK_LIST_DIR) -I$(INCLUDE_DIR) \
-			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_STRING_DIR) \
-			-I$(INCLUDE_MATRIX_DIR)
+INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
+			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_MATRIX_DIR)
 
 
-CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE) -g3
+CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
 
-OBJ	=	$(MY_STDIO:.c=.o) $(LIB:.c=.o) $(MY_LK_LIST:.c=.o) $(MY_STRING:.c=.o) \
+OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o)
 
 NAME	=	libmy.a

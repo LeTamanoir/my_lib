@@ -5,7 +5,7 @@
 ** buffer helper functions
 */
 
-#include "my_string.h"
+#include "my_str.h"
 #include "my_stdlib.h"
 #include "my_stdio.h"
 #include "buffer.h"
