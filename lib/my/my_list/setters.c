@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** my_stdio
 ** File description:
-** lk_list utils
+** list utils
 */
 
 #include "my_stdlib.h"

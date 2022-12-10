@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** my_lk_list
+** my_list
 ** File description:
 ** linked_list declarations
 */

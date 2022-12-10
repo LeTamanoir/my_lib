@@ -5,7 +5,7 @@
 ** returns 1 if the given number is prime else 0
 */
 
-static int find_closest_sqrt_(int nb)
+static int find_closest_sqrt(int nb)
 {
     int sqrt_try = 0;
     int index = 0;
@@ -32,7 +32,7 @@ int my_is_prime(int nb)
     if (nb == 2 || nb == 3)
         return 1;
 
-    for (int i = 2; i < find_closest_sqrt_(nb); i++) {
+    for (int i = 2; i < find_closest_sqrt(nb); i++) {
         if (nb % i == 0)
             return 0;
     }
