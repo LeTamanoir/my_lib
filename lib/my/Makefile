@@ -9,22 +9,34 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
-STR_DIR	=	./my_str
 
+MATH_DIR	=	./my_math
+STDLIB_DIR	=	./my_stdlib
+STR_DIR		=	./my_str
 FILE_DIR	=	./my_file
-INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
-
 STDIO_DIR	=	./my_stdio
-INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
-
 LIST_DIR	=	./my_list
-INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
-
 MATRIX_DIR	=	./my_matrix
-INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
-
 ARRAY_DIR	=	./my_array
 
+INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
+INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
+INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
+INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
+
+
+
+MY_MATH		=	$(MATH_DIR)/my_int_sqrt.c			\
+				$(MATH_DIR)/my_pow.c	 			\
+				$(MATH_DIR)/my_ll_pow.c	 			\
+				$(MATH_DIR)/my_is_prime.c			\
+				$(MATH_DIR)/my_sort_int_array.c
+
+
+MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
+				$(STDLIB_DIR)/my_itoa.c		\
+				$(STDLIB_DIR)/my_atof.c		\
+				$(STDLIB_DIR)/my_calloc.c	\
 
 
 MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
@@ -127,7 +139,8 @@ INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
 CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
 
 OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
-		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o)
+		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \
+		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o)
 
 NAME	=	libmy.a
 

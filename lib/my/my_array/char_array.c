@@ -7,7 +7,7 @@
 
 #include "my_stdlib.h"
 
-int char_arr_len(char **arr)
+int arr_len(void **arr)
 {
     int len = 0;
 
@@ -18,7 +18,7 @@ int char_arr_len(char **arr)
     return len;
 }
 
-void char_arr_free(char **arr)
+void arr_free(void **arr)
 {
     for (int i = 0; arr[i] != NULL; i++) {
         free(arr[i]);

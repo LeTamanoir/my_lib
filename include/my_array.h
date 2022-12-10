@@ -7,5 +7,5 @@
 
 #pragma once
 
-int char_arr_len(char **arr);
-void char_arr_free(char **arr);
+int arr_len(char **arr);
+void arr_free(char **arr);
