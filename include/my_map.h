@@ -23,6 +23,9 @@ typedef struct map_s {
 void map_set(map_t *map, char *key, void *data);
 void *map_get(map_t *map, char *key);
 map_t *map_create(int capacity);
+void map_free(map_t *map);
+void map_elem_free(void *elem);
+unsigned int map_hash_key(char *key);
 
 
 #endif /* INCLUDE_MY_MAP_ */

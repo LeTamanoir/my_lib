@@ -11,7 +11,7 @@
 #include "my_stdio.h"
 #include "my_matrix.h"
 
-mat_t *matrix_create(vec2d_t d)
+mat_t *matrix_create(vec2i_t d)
 {
     mat_t *mat = malloc(sizeof(mat_t));
     mat->m = malloc(sizeof(double *) * d.y);

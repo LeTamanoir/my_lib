@@ -39,7 +39,7 @@ void vec_remove(vec_t *vec, int idx);
 void vec_insert(vec_t *vec, void *elem, int idx);
 void vec_resize(vec_t *vec, int new_size);
 void vec_push_back(vec_t *vec, void *elem);
-void vec_void_free(vec_void_t *vec);
+void vec_void_free(vec_void_t *vec, void (*free_fn)(void*));
 void vec_free(vec_t *vec);
 vec_t *vec_create(int nb_data, int el_size);
 

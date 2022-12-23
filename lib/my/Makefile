@@ -78,6 +78,7 @@ MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/my_str_isalpha.c		\
 				$(STR_DIR)/my_str_islower.c		\
 				$(STR_DIR)/my_str_isnum.c		\
+				$(STR_DIR)/my_str_isfloat.c		\
 				$(STR_DIR)/my_str_isprintable.c	\
 				$(STR_DIR)/my_str_isupper.c		\
 				$(STR_DIR)/my_strcapitalize.c	\
