@@ -4,14 +4,15 @@
 ** File description:
 ** declarations for specifier
 */
-#include <stdint.h>
-#include <stddef.h>
-#include <stdarg.h>
 
-#include "mapper.h"
-#include "state.h"
+#ifndef EXEC_SPECIFIER_
+    #define EXEC_SPECIFIER_
+    #include <stdint.h>
+    #include <stddef.h>
+    #include <stdarg.h>
+    #include "mapper.h"
+    #include "state.h"
 
-#pragma once
 
 typedef struct ptr_data_s {
     void *ptr;
@@ -39,3 +40,6 @@ char *exec_spec_int(va_list *ap, parse_state_t *state, fn_map_t spec);
 char *exec_spec_uint(va_list *ap, parse_state_t *state, fn_map_t spec);
 
 char *exec_spec_float(va_list *ap, parse_state_t *state, fn_map_t spec);
+
+
+#endif /* EXEC_SPECIFIER_ */

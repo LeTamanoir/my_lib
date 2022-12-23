@@ -5,7 +5,12 @@
 ** array utils
 */
 
-#pragma once
+#ifndef INCLUDE_MY_ARRAY_
+    #define INCLUDE_MY_ARRAY_
 
-int arr_len(char **arr);
-void arr_free(char **arr);
+
+int arr_len(void **arr);
+void arr_free(void **arr);
+
+
+#endif /* INCLUDE_MY_ARRAY_ */

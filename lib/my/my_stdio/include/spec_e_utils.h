@@ -5,7 +5,9 @@
 ** declarations for exp modifiers utils
 */
 
-#pragma once
+#ifndef SPEC_E_UTILS_
+    #define SPEC_E_UTILS_
+
 
 void convert_to_exp(
     char *res, char *int_part,
@@ -25,3 +27,6 @@ void convert_dec_to_exp(
 );
 
 void add_exponent(char *res, char sign, int pow_10, int is_upper);
+
+
+#endif /* SPEC_E_UTILS_ */

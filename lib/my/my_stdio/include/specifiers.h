@@ -5,7 +5,9 @@
 ** declarations for specifiers
 */
 
-#pragma once
+#ifndef SPECIFIERS_
+    #define SPECIFIERS_
+
 
 char *compute_spec_lo_a(void *ptr);
 
@@ -48,3 +50,6 @@ char *compute_spec_up_g(void *ptr);
 char *compute_spec_u(void *ptr);
 
 char *compute_spec_t(void *ptr);
+
+
+#endif /* SPECIFIERS_ */

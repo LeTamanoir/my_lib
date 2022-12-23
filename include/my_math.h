@@ -5,9 +5,16 @@
 ** declarations
 */
 
-#include <math.h>
+#ifndef INCLUDE_MY_MATH_
+    #define INCLUDE_MY_MATH_
+    #include <math.h>
+    #define MY_MAX(a, b)    ((a > b) ? (a) : (b))
+    #define MY_MIN(a, b)    ((a < b) ? (a) : (b))
+    #define MY_ABS(a)       ((a > 0) ? (a) : -(a))
+    #define MY_FABS(a)      ((a > 0.0) ? (a) : -(a))
+    #define MY_TO_DEG(r)    (r * (180.0 / (float)M_PI))
+    #define MY_TO_RAD(r)    (r * ((float)M_PI / 180.0))
 
-#pragma once
 
 int my_pow(int number, int power);
 int my_int_sqrt(int nb);
@@ -16,7 +23,10 @@ void my_sort_int_array(int *tab, int size);
 int my_nbr_length(long long nb);
 long long my_ll_pow(long long number, int power);
 
-typedef struct vec_s {
+typedef struct vec2d_s {
     int x;
     int y;
-} vec_t;
+} vec2d_t;
+
+
+#endif /* INCLUDE_MY_MATH_ */

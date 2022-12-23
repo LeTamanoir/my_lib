@@ -5,7 +5,9 @@
 ** declarations for the utils
 */
 
-#pragma once
+#ifndef SPEC_INT_UTILS_
+    #define SPEC_INT_UTILS_
+
 
 int my_int_nbr_length(long long int nb);
 
@@ -19,3 +21,6 @@ void compute_number(
 );
 
 void remove_useless_zeros(char *str);
+
+
+#endif /* SPEC_INT_UTILS_ */

@@ -5,11 +5,15 @@
 ** utils for specifier %a and %A
 */
 
-#include "float_utils.h"
+#ifndef SPEC_A_UTILS_
+    #define SPEC_A_UTILS_
+    #include "float_utils.h"
 
-#pragma once
 
 void my_specifier_a_helper(
     char *res, inspector_t inspector,
     int is_upp, char const *base
 );
+
+
+#endif /* SPEC_A_UTILS_ */

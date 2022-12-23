@@ -5,9 +5,10 @@
 ** declarations for function mapper
 */
 
-#include "state.h"
+#ifndef MAPPER_
+    #define MAPPER_
+    #include "state.h"
 
-#pragma once
 
 typedef struct fn_map_s {
     char key;
@@ -19,3 +20,6 @@ typedef struct fn_map_exec_s {
     char *(*post_proc)(char *res, parse_state_t *state);
     char *(*spec_exec)(va_list *ap, parse_state_t *state, fn_map_t spec);
 } fn_map_exec_t;
+
+
+#endif /* MAPPER_ */

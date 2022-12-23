@@ -5,7 +5,11 @@
 ** my_str declarations
 */
 
-#pragma once
+#ifndef INCLUDE_MY_STR_
+    #define INCLUDE_MY_STR_
+    #include <stddef.h>
+    #include "my_vec.h"
+    #define STR_SIZE     (128)
 
 int my_isalpha(char chr);
 int my_islower(char chr);
@@ -37,14 +41,20 @@ int my_str_isupper(char const *str);
 int my_str_isprintable(char const *str);
 
 typedef struct str_s {
-    char *content;
     int length;
+    int capacity;
+    char *data;
 } str_t;
 
-str_t *str_create(char *init);
-char **str_split(str_t *str, char delimiter);
+str_t *str_create(char const *init);
+vec_void_t *str_split(str_t *str, char delim);
 void str_slice(str_t *str, int start, int end);
-void str_add(str_t *str, char *new);
-void str_nadd(str_t *str, char *new, int n);
-void str_fadd(str_t *str, char *fmt, ...);
+void str_add(str_t *str, char const *new);
+void str_resize(str_t *str, int new_len);
+void str_nadd(str_t *str, char const *new, int n);
+void str_fadd(str_t *str, char const *fmt, ...);
 void str_free(str_t *str);
+void str_clear(str_t *str);
+
+
+#endif /* INCLUDE_MY_STR_ */

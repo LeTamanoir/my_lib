@@ -5,10 +5,11 @@
 ** my_stdio declarations
 */
 
-#include <unistd.h>
-#include <stdarg.h>
+#ifndef INCLUDE_MY_STDIO_
+    #define INCLUDE_MY_STDIO_
+    #include <unistd.h>
+    #include <stdarg.h>
 
-#pragma once
 
 int my_printf(const char *format, ...);
 int my_sprintf(char *str, const char *format, ...);
@@ -19,3 +20,6 @@ void my_putchar(char c);
 int my_putstr(char const *str);
 int my_putstderr(char const *str);
 int my_puts(char const *str);
+
+
+#endif /* INCLUDE_MY_STDIO_ */

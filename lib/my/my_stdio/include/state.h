@@ -5,9 +5,10 @@
 ** declarations for the state management
 */
 
-#include "buffer.h"
+#ifndef STATE_
+    #define STATE_
+    #include "buffer.h"
 
-#pragma once
 
 typedef struct parse_state_s {
     struct {
@@ -34,3 +35,6 @@ typedef struct parse_state_s {
 } parse_state_t;
 
 void clear_state(parse_state_t *state);
+
+
+#endif /* STATE_ */

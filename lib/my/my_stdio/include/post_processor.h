@@ -5,9 +5,10 @@
 ** declarations for the post processor
 */
 
-#include "state.h"
+#ifndef POST_PROCESSOR_
+    #define POST_PROCESSOR_
+    #include "state.h"
 
-#pragma once
 
 char *post_processor_float(char *float_str, parse_state_t *state);
 
@@ -34,3 +35,6 @@ char *extract_exp(char *float_str);
 void extract_a_p_hex(char *new_res, char *res, char spec, int is_neg);
 
 char *extract_exp(char *float_str);
+
+
+#endif /* POST_PROCESSOR_ */

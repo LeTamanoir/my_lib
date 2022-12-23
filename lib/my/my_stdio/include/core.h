@@ -5,10 +5,13 @@
 ** declarations of core functions
 */
 
-#include <stdarg.h>
+#ifndef CORE_
+    #define CORE_
+    #include <stdarg.h>
+    #include "buffer.h"
 
-#include "buffer.h"
-
-#pragma once
 
 int compute_char(va_list *ap, buffer_t *buffer, const char *format);
+
+
+#endif /* CORE_ */
