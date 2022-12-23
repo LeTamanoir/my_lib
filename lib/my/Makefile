@@ -9,6 +9,7 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
+YAML_DIR	=	./my_yaml
 MAP_DIR		=	./my_map
 VEC_DIR		=	./my_vec
 MATH_DIR	=	./my_math
@@ -24,6 +25,9 @@ INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
 INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
 INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
 INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
+
+
+MY_YAML		=	$(YAML_DIR)/my_yaml.c
 
 
 MY_VEC		=	$(VEC_DIR)/my_vec.c			\
@@ -48,7 +52,7 @@ MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_itoa.c		\
 				$(STDLIB_DIR)/my_atof.c		\
 				$(STDLIB_DIR)/my_calloc.c	\
-				$(STDLIB_DIR)/my_memcpy.c	\
+				$(STDLIB_DIR)/my_memcpy.c
 
 
 MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
@@ -155,7 +159,7 @@ CFLAGS += -Werror -Wextra -Wall $(INCLUDE) -g3
 OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \
 		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o) $(MY_VEC:.c=.o) \
-		$(MY_MAP:.c=.o)
+		$(MY_MAP:.c=.o) $(MY_YAML:.c=.o)
 
 NAME	=	libmy.a
 
