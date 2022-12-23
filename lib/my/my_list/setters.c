@@ -12,14 +12,15 @@ void list_push_front(list_t *list, void *value)
 {
     node_t *new_node = node_create();
     new_node->value = value;
-    list->length++;
+    list->size++;
 
-    if (list->first == NULL && list->last == NULL) {
-        list->first = new_node;
-        list->last = new_node;
+    if (list->front == NULL && list->back == NULL) {
+        list->front = new_node;
+        list->back = new_node;
     } else {
-        new_node->next = list->first;
-        list->first = new_node;
+        new_node->next = list->front;
+        list->front->prev = new_node;
+        list->front = new_node;
     }
 }
 
@@ -27,39 +28,53 @@ void list_push_back(list_t *list, void *value)
 {
     node_t *new_node = node_create();
     new_node->value = value;
-    list->length++;
+    list->size++;
 
-    if (list->first == NULL && list->last == NULL) {
-        list->first = new_node;
-        list->last = new_node;
+    if (list->front == NULL && list->back == NULL) {
+        list->front = new_node;
+        list->back = new_node;
     } else {
-        list->last->next = new_node;
-        list->last = new_node;
+        list->back->next = new_node;
+        new_node->prev = list->back;
+        list->back = new_node;
     }
 }
 
 void list_pop_front(list_t *list)
 {
-    node_t *first = list->first;
-    node_t *temp = first;
+    if (list->front == NULL && list->back == NULL) {
+        return;
+    }
 
-    if (first == NULL) return;
+    node_t *temp = list->front;
+    list->size--;
 
-    list->first = list->first->next;
-    list->length--;
+    list->front = list->front->next;
+    if (list->front == NULL) {
+        list->back = NULL;
+    } else {
+        list->front->prev = NULL;
+    }
 
     node_free(temp);
 }
 
 void list_pop_back(list_t *list)
 {
-    node_t *last = list->last;
-    node_t *temp = last;
+    if (list->front == NULL && list->back == NULL) {
+        return;
+    }
 
-    if (last == NULL) return;
+    node_t *temp = list->back;
+    list->size--;
 
-    list->last = list->last->prev;
-    list->length--;
+    list->back = list->back->prev;
+
+    if (list->back == NULL) {
+        list->front = NULL;
+    } else {
+        list->back->next = NULL;
+    }
 
     node_free(temp);
 }

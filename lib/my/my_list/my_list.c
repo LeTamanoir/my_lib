@@ -24,9 +24,9 @@ list_t *list_create(void)
 {
     list_t *list = malloc(sizeof(list_t));
 
-    list->first = NULL;
-    list->last = NULL;
-    list->length = 0;
+    list->front = NULL;
+    list->back = NULL;
+    list->size = 0;
 
     return list;
 }
@@ -39,8 +39,8 @@ void node_free(node_t *node)
 
 void list_free(list_t *list)
 {
-    node_t *temp = list->first;
-    node_t *old = list->first;
+    node_t *temp = list->front;
+    node_t *old = list->front;
 
     while (temp != NULL) {
         old = temp;

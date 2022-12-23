@@ -11,7 +11,7 @@
 
 static mat_t *matrix_augment(mat_t *mat)
 {
-    mat_t *aug_mat = matrix_create((vec_t){.x = 2.0 * mat->x,.y = mat->y});
+    mat_t *aug_mat = matrix_create((vec2d_t){.x = 2.0 * mat->x,.y = mat->y});
     int start_x = mat->x;
 
     for (int y = 0; y < mat->y; y++, start_x++) {
@@ -59,7 +59,7 @@ static void gauss_pivoting(mat_t *mat)
 mat_t *matrix_inverse(mat_t *mat)
 {
     mat_t *aug_mat = matrix_augment(mat);
-    mat_t *inverse = matrix_create((vec_t){.x = mat->x, .y = mat->y});
+    mat_t *inverse = matrix_create((vec2d_t){.x = mat->x, .y = mat->y});
 
     gauss_pivoting(aug_mat);
 

@@ -6,42 +6,33 @@
 */
 
 #include <stdarg.h>
+
 #include "my_stdlib.h"
 #include "my_stdio.h"
-
 #include "my_str.h"
+#include "my_vec.h"
 
-void str_add(str_t *str, char *new)
+void str_add(str_t *str, char const *new)
 {
-    char *tmp = my_calloc(0, sizeof(char) *
-        (my_strlen(str->content) + my_strlen(new) + 1)
-    );
+    int new_len = my_strlen(new);
 
-    my_strcat(tmp, str->content);
-    my_strcat(tmp, new);
+    if (str->length + new_len >= str->capacity)
+        str_resize(str, str->length + new_len);
 
-    free(str->content);
-
-    str->content = tmp;
-    str->length = my_strlen(tmp);
+    my_strcat(str->data, new);
+    str->length += new_len;
 }
 
-void str_nadd(str_t *str, char *new, int n)
+void str_nadd(str_t *str, char const *new, int n)
 {
-    char *tmp = my_calloc(0, sizeof(char) *
-        (my_strlen(str->content) + n + 1)
-    );
+    if (str->length + n >= str->capacity)
+        str_resize(str, str->length + n);
 
-    my_strcat(tmp, str->content);
-    my_strncat(tmp, new, n);
-
-    free(str->content);
-
-    str->content = tmp;
-    str->length = my_strlen(tmp);
+    my_strncat(str->data, new, n);
+    str->length += n;
 }
 
-void str_fadd(str_t *str, char *fmt, ...)
+void str_fadd(str_t *str, char const *fmt, ...)
 {
     va_list ap;
     char *dest;
@@ -57,14 +48,12 @@ void str_fadd(str_t *str, char *fmt, ...)
 
 void str_slice(str_t *str, int start, int end)
 {
-    char *tmp = my_calloc(0, sizeof(char) *
-        (end - start + 1)
-    );
+    int i;
 
-    my_strncat(tmp, &(str->content[start]), end - start);
+    for (i = 0; i < end - start; i++) {
+        str->data[i] = str->data[start + i];
+    }
 
-    free(str->content);
-
-    str->content = tmp;
-    str->length = my_strlen(tmp);
+    str->data[i] = '\0';
+    str->length = end - start;
 }

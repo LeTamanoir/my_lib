@@ -9,7 +9,8 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
-
+MAP_DIR		=	./my_map
+VEC_DIR		=	./my_vec
 MATH_DIR	=	./my_math
 STDLIB_DIR	=	./my_stdlib
 STR_DIR		=	./my_str
@@ -25,6 +26,12 @@ INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
 INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
 
 
+MY_VEC		=	$(VEC_DIR)/my_vec.c			\
+				$(VEC_DIR)/setters.c		\
+				$(VEC_DIR)/misc.c
+
+MY_MAP		=	$(MAP_DIR)/my_map.c
+
 
 MY_MATH		=	$(MATH_DIR)/my_int_sqrt.c			\
 				$(MATH_DIR)/my_pow.c	 			\
@@ -37,6 +44,7 @@ MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_itoa.c		\
 				$(STDLIB_DIR)/my_atof.c		\
 				$(STDLIB_DIR)/my_calloc.c	\
+				$(STDLIB_DIR)/my_memcpy.c	\
 
 
 MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
@@ -46,15 +54,17 @@ MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
 				$(MATRIX_DIR)/determinant.c
 
 
-MY_ARRAY 	=	$(ARRAY_DIR)/char_array.c
+MY_ARRAY 	=	$(ARRAY_DIR)/array.c
 
 
 MY_LIST		=	$(LIST_DIR)/my_list.c		\
-				$(LIST_DIR)/setters.c
+				$(LIST_DIR)/setters.c		\
+				$(LIST_DIR)/iterators.c
 
 
 MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/str_type/setters.c	\
+				$(STR_DIR)/str_type/misc.c		\
 				$(STR_DIR)/str_type/getters.c	\
 				$(STR_DIR)/my_isalpha.c		 	\
 				$(STR_DIR)/my_isalphanum.c		\
@@ -136,11 +146,12 @@ INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
 			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_MATRIX_DIR)
 
 
-CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
+CFLAGS += -Werror -Wextra -Wall $(INCLUDE) -g3
 
 OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \
-		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o)
+		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o) $(MY_VEC:.c=.o) \
+		$(MY_MAP:.c=.o)
 
 NAME	=	libmy.a
 

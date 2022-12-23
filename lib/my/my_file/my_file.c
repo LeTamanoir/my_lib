@@ -14,6 +14,8 @@
 
 #include "my_file.h"
 
+static int const BUFF_SIZE = 4096;
+
 static int file_is_valid(char const *file_path)
 {
     struct stat file_stat;
@@ -37,9 +39,11 @@ file_t *file_create(char const *file_path, int const file_mode)
     }
     file_t *file = malloc(sizeof(file_t));
 
+    lstat(file_path, &file->stats);
     file->file_path = my_strdup(file_path);
     file->content = str_create("");
-    file->__line = str_create("");
+    file->__cache = str_create("");
+    str_resize(file->__cache, BUFF_SIZE);
     file->fd = open(file_path, file_mode);
 
     return file;
@@ -57,7 +61,7 @@ void file_free(file_t *file)
         file_close(file);
     }
     str_free(file->content);
-    str_free(file->__line);
+    str_free(file->__cache);
     free(file->file_path);
     free(file);
 }

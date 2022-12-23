@@ -11,7 +11,7 @@
 
 mat_t *matrix_transpose(mat_t *mat)
 {
-    mat_t *transp = matrix_create((vec_t){.x = mat->y, .y = mat->x});
+    mat_t *transp = matrix_create((vec2d_t){.x = mat->y, .y = mat->x});
 
     for (int i = 0; i < transp->y; i++) {
         for (int j = 0; j < transp->x; j++) {
@@ -24,7 +24,7 @@ mat_t *matrix_transpose(mat_t *mat)
 
 mat_t *matrix_dup(mat_t *mat)
 {
-    mat_t *copy = matrix_create((vec_t){.x = mat->x, .y = mat->y});
+    mat_t *copy = matrix_create((vec2d_t){.x = mat->x, .y = mat->y});
 
     for (int y = 0; y < mat->y; y++)
         for (int x = 0; x < mat->x; x++)

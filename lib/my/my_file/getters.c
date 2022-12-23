@@ -12,6 +12,7 @@
 #include "my_str.h"
 #include "my_file.h"
 
+#include "my_file.h"
 #include "get_line_utils.h"
 
 char *file_get_content(file_t *file)
@@ -19,38 +20,34 @@ char *file_get_content(file_t *file)
     struct stat file_stat;
     stat(file->file_path, &file_stat);
     int size = file_stat.st_size;
+    str_t *ct = file->content;
 
-    char *content = my_calloc(0, sizeof(char) * (size + 1));
-    read(file->fd, content, size);
+    str_resize(ct, size);
+    ct->length = read(file->fd, ct->data, size);
+    file_close(file);
 
-    str_slice(file->content, 0, 0);
-    str_add(file->content, content);
-    close(file->fd);
-    file->fd = -1;
-
-    return content;
+    return ct->data;
 }
 
 char *file_get_line(file_t *file)
 {
-    str_t *line = str_create("");
-    int last_line = my_strlen(file->content->content);
+    int last_line = file->content->length;
+    int can_add = 1;
     int size = 0;
-    int can_stop = 0;
+    str_t *cache = file->__cache;
+    str_t *ct = file->content;
 
-    if (file->__line->length == -1) {
-        close(file->fd);
-        file->fd = -1;
+    if (cache->length == -1) {
+        file_close(file);
         return NULL;
     }
-    if (file->__line->length != 0)
-        add_from_cache(file, line, &can_stop);
-    if (file->__line->length == 0 && !can_stop) {
-        size = add_from_read(file, line);
-        if (size == 0 && file->__line->length == 0)
-            file->__line->length = -1;
+    if (cache->length != 0)
+        can_add = add_from_cache(file);
+    if (cache->length == 0 && can_add) {
+        size = add_from_read(file);
+        if (size == 0 && cache->length == 0)
+            cache->length = -1;
     }
-    str_add(file->content, line->content);
-    str_free(line);
-    return &(file->content->content[last_line]);
+
+    return &(ct->data[last_line]);
 }
