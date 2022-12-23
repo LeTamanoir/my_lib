@@ -19,7 +19,7 @@ typedef struct mat_s {
 mat_t *matrix_mult_k(mat_t *mat, double k);
 mat_t *matrix_add(mat_t *m1, mat_t *m2);
 mat_t *matrix_mult(mat_t *m1, mat_t *m2);
-mat_t *matrix_create(vec2d_t d);
+mat_t *matrix_create(vec2i_t d);
 mat_t *matrix_dup(mat_t *mat);
 mat_t *matrix_transpose(mat_t *mat);
 mat_t *matrix_inverse(mat_t *mat);

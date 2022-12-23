@@ -20,10 +20,10 @@ vec_t *vec_create(int nb_data, int el_size)
     return vec;
 }
 
-void vec_void_free(vec_void_t *vec)
+void vec_void_free(vec_void_t *vec, void (*free_fn)(void*))
 {
     for (int i = 0; i < vec->base.size; i++) {
-        free(vec->data[i]);
+        free_fn(vec->data[i]);
     }
     free(vec->data);
     free(vec);

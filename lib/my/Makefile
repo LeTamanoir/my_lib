@@ -30,7 +30,11 @@ MY_VEC		=	$(VEC_DIR)/my_vec.c			\
 				$(VEC_DIR)/setters.c		\
 				$(VEC_DIR)/misc.c
 
-MY_MAP		=	$(MAP_DIR)/my_map.c
+
+MY_MAP		=	$(MAP_DIR)/my_map.c				\
+				$(MAP_DIR)/getters.c			\
+				$(MAP_DIR)/setters.c			\
+				$(MAP_DIR)/utils.c
 
 
 MY_MATH		=	$(MATH_DIR)/my_int_sqrt.c			\
@@ -78,7 +82,6 @@ MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/my_str_isalpha.c		\
 				$(STR_DIR)/my_str_islower.c		\
 				$(STR_DIR)/my_str_isnum.c		\
-				$(STR_DIR)/my_str_isfloat.c		\
 				$(STR_DIR)/my_str_isprintable.c	\
 				$(STR_DIR)/my_str_isupper.c		\
 				$(STR_DIR)/my_strcapitalize.c	\

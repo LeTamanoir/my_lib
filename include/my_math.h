@@ -23,10 +23,34 @@ void my_sort_int_array(int *tab, int size);
 int my_nbr_length(long long nb);
 long long my_ll_pow(long long number, int power);
 
-typedef struct vec2d_s {
+
+typedef struct vec2i_s {
     int x;
     int y;
+} vec2i_t;
+
+typedef struct vec2d_s {
+    double x;
+    double y;
 } vec2d_t;
+
+typedef struct vec3i_s {
+    int x;
+    int y;
+    int z;
+} vec3i_t;
+
+typedef struct vec3f_s {
+    float x;
+    float y;
+    float z;
+} vec3f_t;
+
+typedef struct vec3d_s {
+    double x;
+    double y;
+    double z;
+} vec3d_t;
 
 
 #endif /* INCLUDE_MY_MATH_ */
