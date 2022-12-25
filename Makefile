@@ -18,7 +18,7 @@ SRC	=	$(SRC_DIR)/main.c
 
 INCLUDE	=	-I$(INCLUDE_DIR)
 
-CFLAGS += -Werror -Wextra -Wall -pedantic $(INCLUDE)
+CFLAGS += -Werror -Wextra -Wall $(INCLUDE)
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -16,7 +16,7 @@ typedef struct yaml_elem_s {
         DOUBLE,
         STRING
     } type;
-    void *data;
+    char data[0];
 } yaml_elem_t;
 
 yaml_elem_t *yaml_get(map_t *map, char *key);
