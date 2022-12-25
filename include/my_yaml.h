@@ -10,6 +10,16 @@
     #include "my_map.h"
 
 
+typedef struct yaml_elem_s {
+    enum {
+        INT,
+        DOUBLE,
+        STRING
+    } type;
+    void *data;
+} yaml_elem_t;
+
+yaml_elem_t *yaml_get(map_t *map, char *key);
 map_t *yaml_parse(char const *file_path);
 
 

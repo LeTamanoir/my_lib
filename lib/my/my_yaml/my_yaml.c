@@ -8,12 +8,35 @@
 #include "my_map.h"
 #include "my_str.h"
 #include "my_file.h"
+#include "my_yaml.h"
 
-static const int APPROX_LINE_WD = 100;
 static const char LINE_DELIM = '\n';
 static const char DATA_DELIM = ':';
 
-#include "my_stdio.h"
+static void add_type_dispatch(map_t *map, str_t *key, str_t *data)
+{
+    yaml_elem_t *elem = malloc(sizeof(yaml_elem_t));
+
+    if (my_str_isint(data->data)) {
+        elem->data = malloc(sizeof(int));
+        elem->type = INT;
+        *(int*)elem->data = my_atoi(data->data);
+    } else if (my_str_isfloat(data->data)) {
+        elem->data = malloc(sizeof(double));
+        elem->type = DOUBLE;
+        *(double*)elem->data = my_atof(data->data);
+    } else {
+        elem->data = my_strdup(data->data);
+        elem->type = STRING;
+    }
+
+    map_set(map, key->data, elem);
+}
+
+yaml_elem_t *yaml_get(map_t *map, char *key)
+{
+    return (yaml_elem_t*)map_get(map, key);
+}
 
 map_t *yaml_parse(char const *file_path)
 {
@@ -22,26 +45,16 @@ map_t *yaml_parse(char const *file_path)
         return NULL;
 
     file_get_content(file);
-    map_t *map = map_create(file->stats.st_size / APPROX_LINE_WD);
     vec_void_t *content = str_split(file->content, LINE_DELIM);
-    str_t *line_temp = NULL;
-    vec_void_t *line_split = NULL;
+    map_t *map = map_create(content->base.size);
+    vec_void_t *split_ = NULL;
 
     for (int i = 0; i < content->base.size; i++) {
-        line_temp = str_create(content->data[i]);
-        line_split = str_split(line_temp, DATA_DELIM);
-        str_free(line_temp);
-
-        // if (line)
-
-        my_printf("str[%d] = %s\n", i, content->data[i]);
-
-        my_printf("line_split[0] = %s\n", line_split->data[0]);
-        my_printf("line_split[1] = %s\n\n", line_split->data[1]);
+        split_ = str_split(content->data[i], DATA_DELIM);
+        str_trim(split_->data[0]);
+        str_trim(split_->data[1]);
+        add_type_dispatch(map, split_->data[0], split_->data[1]);
     }
-
-    vec_void_free(content, &free);
-
+    vec_void_free(content, (void (*)(void*))&str_free);
     return map;
 }
-

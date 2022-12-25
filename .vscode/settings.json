@@ -42,6 +42,11 @@
         "unordered_map": "c",
         "utility": "c",
         "variant": "c",
-        "vector": "c"
+        "vector": "c",
+        "__tree": "c",
+        "map": "c",
+        "set": "c",
+        "unordered_set": "c",
+        "__nullptr": "c"
     }
 }

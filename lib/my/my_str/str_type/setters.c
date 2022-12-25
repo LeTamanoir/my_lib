@@ -57,3 +57,16 @@ void str_slice(str_t *str, int start, int end)
     str->data[i] = '\0';
     str->length = end - start;
 }
+
+void str_trim(str_t *str)
+{
+    int start = 0;
+    int end = str->length - 1;
+
+    while (str->data[start] == ' ')
+        start++;
+    while (str->data[end] == ' ')
+        end--;
+
+    str_slice(str, start, end + 1);
+}

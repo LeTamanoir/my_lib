@@ -17,13 +17,11 @@
 
 char *file_get_content(file_t *file)
 {
-    struct stat file_stat;
-    stat(file->file_path, &file_stat);
-    int size = file_stat.st_size;
     str_t *ct = file->content;
 
-    str_resize(ct, size);
-    ct->length = read(file->fd, ct->data, size);
+    str_resize(ct, file->stats.st_size);
+    ct->length = read(file->fd, ct->data, file->stats.st_size);
+    ct->data[ct->length] = '\0';
     file_close(file);
 
     return ct->data;

@@ -16,6 +16,8 @@ int my_islower(char chr);
 int my_isnum(char chr);
 int my_isprintable(char chr);
 int my_isupper(char chr);
+int my_str_isfloat(char const *str);
+int my_str_isint(char const *str);
 int my_isalphanum(char chr);
 char my_upcase(char chr);
 char my_lowcase(char chr);
@@ -55,6 +57,7 @@ void str_nadd(str_t *str, char const *new, int n);
 void str_fadd(str_t *str, char const *fmt, ...);
 void str_free(str_t *str);
 void str_clear(str_t *str);
+void str_trim(str_t *str);
 
 
 #endif /* INCLUDE_MY_STR_ */

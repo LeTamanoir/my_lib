@@ -15,7 +15,9 @@ int main(void)
 {
     map_t *map = yaml_parse("./test.yaml");
 
-    (void)map;
+    my_printf("map[%s] = %d\n", "tot", *(int*)yaml_get(map, "tot")->data);
+
+    map_free(map);
 
     return 0;
 }
