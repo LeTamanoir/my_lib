@@ -12,9 +12,9 @@
 
 typedef struct yaml_elem_s {
     enum {
-        INT,
-        DOUBLE,
-        STRING
+        YAML_INT,
+        YAML_DOUBLE,
+        YAML_STR
     } type;
     char data[0];
 } yaml_elem_t;

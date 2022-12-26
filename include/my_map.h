@@ -20,6 +20,7 @@ typedef struct map_s {
     int capacity;
 } map_t;
 
+vec_void_t *map_get_keys(map_t *map);
 void map_set(map_t *map, char *key, void *data);
 void *map_get(map_t *map, char *key);
 map_t *map_create(int capacity);

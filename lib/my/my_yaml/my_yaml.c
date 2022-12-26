@@ -13,25 +13,36 @@
 static const char LINE_DELIM = '\n';
 static const char DATA_DELIM = ':';
 
+static int get_type(char *str)
+{
+    if (my_str_isint(str))
+        return YAML_INT;
+    if (my_str_isfloat(str))
+        return YAML_DOUBLE;
+    return YAML_STR;
+}
+
 static void add_type_dispatch(map_t *map, str_t *key, str_t *data)
 {
     yaml_elem_t *elem = NULL;
-
-    if (my_str_isint(data->data)) {
-        elem = malloc(sizeof(int) + sizeof(int));
-        elem->type = INT;
-        int temp = my_atoi(data->data);
-        my_memcpy(elem->data, &temp, sizeof(int));
-    } else if (my_str_isfloat(data->data)) {
-        elem = malloc(sizeof(int) + sizeof(double));
-        elem->type = DOUBLE;
-        double temp = my_atof(data->data);
-        my_memcpy(elem->data, &temp, sizeof(double));
-    } else {
-        elem = malloc(sizeof(int) + sizeof(char) * (data->length + 1));
-        elem->type = STRING;
-        my_memcpy(elem->data, data->data, data->length);
-    }
+    int type = get_type(data->data);
+    switch (type) {
+        case YAML_INT:
+            elem = malloc(sizeof(yaml_elem_t) + sizeof(int));
+            int temp_i = my_atoi(data->data);
+            my_memcpy(elem->data, &temp_i, sizeof(int));
+            break;
+        case YAML_DOUBLE:
+            elem = malloc(sizeof(yaml_elem_t) + sizeof(double));
+            double temp_d = my_atof(data->data);
+            my_memcpy(elem->data, &temp_d, sizeof(double));
+            break;
+        case YAML_STR:
+            elem = malloc(sizeof(yaml_elem_t) + (data->length + 1));
+            elem->data[0] = 0;
+            my_strcat(elem->data, data->data);
+            break;
+    } elem->type = type;
     map_set(map, key->data, elem);
 }
 
@@ -52,10 +63,11 @@ map_t *yaml_parse(char const *file_path)
 
     for (int i = 0; i < content->base.size; i++) {
         split_ = str_split(content->data[i], DATA_DELIM);
-        if (split_->base.size != 2) return NULL;
-        str_trim(split_->data[0]);
-        str_trim(split_->data[1]);
-        add_type_dispatch(map, split_->data[0], split_->data[1]);
+        if (split_->base.size == 2) {
+            str_trim(split_->data[0]);
+            str_trim(split_->data[1]);
+            add_type_dispatch(map, split_->data[0], split_->data[1]);
+        }
         vec_void_free(split_, (void (*)(void*))&str_free);
     }
     file_free(file);
