@@ -21,8 +21,9 @@ map_t *map_create(int capacity)
 
 void map_elem_free(void *elem)
 {
-    free(((map_elem_t*)elem)->data);
-    free(((map_elem_t*)elem)->key);
+    map_elem_t *temp = elem;
+    free(temp->data);
+    free(temp->key);
     free(elem);
 }
 

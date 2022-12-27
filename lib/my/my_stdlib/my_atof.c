@@ -5,26 +5,27 @@
 ** atof clone
 */
 
+#include "my_str.h"
+
 double my_atof(char const *str)
 {
     double sign = 1;
-    double number = 0;
-    double pow_10 = 1;
-    int idx = 0;
-    int inc_pow = 0;
+    double nb = 0;
+    double offset = 1;
+    int found_dot = 0;
 
-    while (str[idx] != '\0') {
-        if (str[idx] == '-')
-            sign *= -1;
-        if (str[idx] != '+' && str[idx] != '-' &&
-            str[idx] >= '0' && str[idx] <= '9') {
-            number = number * 10 + (str[idx] - '0');
-            pow_10 = (inc_pow) ? pow_10 * 10 : pow_10;
-        }
-        if (str[idx] == '.') inc_pow = 1;
-        if (str[idx] != '+' && str[idx] != '-' && str[idx] != '.' &&
-            (str[idx] > '9' || str[idx] < '0')) break;
-        idx++;
+    if (*str == '-') {
+        sign = -1;
+        str++;
     }
-    return sign * (number / pow_10);
+    while (*str != '\0' && (my_isnum(*str) || (*str == '.' && !found_dot))) {
+        if (*str == '.') {
+            found_dot = 1;
+        } else {
+            nb = nb * 10 + (*str - '0');
+            offset *= ((found_dot) ? 10 : 1);
+        }
+        str++;
+    }
+    return sign * (nb / offset);
 }

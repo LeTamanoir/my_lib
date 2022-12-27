@@ -5,7 +5,7 @@
 ** returns the length of a number
 */
 
-int my_nbr_length(long long nb)
+int my_nbr_length(long int nb)
 {
     int nb_digit = 0;
 
@@ -14,8 +14,8 @@ int my_nbr_length(long long nb)
     }
 
     while (nb) {
-        nb = nb / 10;
         nb_digit++;
+        nb /= 10;
     }
 
     return nb_digit;

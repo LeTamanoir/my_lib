@@ -52,7 +52,8 @@ MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_itoa.c		\
 				$(STDLIB_DIR)/my_atof.c		\
 				$(STDLIB_DIR)/my_calloc.c	\
-				$(STDLIB_DIR)/my_memcpy.c
+				$(STDLIB_DIR)/my_memcpy.c	\
+				$(STDLIB_DIR)/my_memset.c
 
 
 MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
