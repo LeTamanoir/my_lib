@@ -47,6 +47,12 @@
         "map": "c",
         "set": "c",
         "unordered_set": "c",
-        "__nullptr": "c"
+        "__nullptr": "c",
+        "__bit_reference": "c",
+        "__mutex_base": "c",
+        "exception": "c",
+        "sstream": "c",
+        "streambuf": "c",
+        "*.inc": "c"
     }
 }

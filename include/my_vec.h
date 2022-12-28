@@ -8,7 +8,8 @@
 #ifndef INCLUDE_MY_VEC_
     #define INCLUDE_MY_VEC_
     #include "my_stdlib.h"
-    #define VEC_SIZE    (32)
+    #define VEC_SIZE            (64)
+    #define MAX_VEC_ELEM_SIZE   (1024)
 
 
 typedef struct vec_base_s {
@@ -39,7 +40,9 @@ void vec_remove(vec_t *vec, int idx);
 void vec_insert(vec_t *vec, void *elem, int idx);
 void vec_resize(vec_t *vec, int new_size);
 void vec_push_back(vec_t *vec, void *elem);
+void vec_sort(vec_t *vec, int (*key)(vec_t*, int));
 void vec_void_free(vec_void_t *vec, void (*free_fn)(void*));
+void vec_swap(vec_t *v, int i, int j);
 void vec_free(vec_t *vec);
 vec_t *vec_create(int nb_data, int el_size);
 
