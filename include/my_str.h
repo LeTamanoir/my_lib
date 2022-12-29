@@ -9,7 +9,6 @@
     #define INCLUDE_MY_STR_
     #include <stddef.h>
     #include "my_vec.h"
-    #define STR_SIZE     (128)
 
 
 int my_isalpha(char chr);
@@ -59,6 +58,7 @@ void str_fadd(str_t *str, char const *fmt, ...);
 void str_free(str_t *str);
 void str_clear(str_t *str);
 void str_trim(str_t *str);
+void str_print(str_t *str);
 
 
 #endif /* INCLUDE_MY_STR_ */

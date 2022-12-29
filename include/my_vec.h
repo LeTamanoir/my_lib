@@ -8,7 +8,6 @@
 #ifndef INCLUDE_MY_VEC_
     #define INCLUDE_MY_VEC_
     #include "my_stdlib.h"
-    #define VEC_SIZE            (64)
     #define MAX_VEC_ELEM_SIZE   (1024)
 
 
@@ -33,7 +32,7 @@ typedef struct vec_void_s {
     void **data;
 } vec_void_t;
 
-int get_padded_size(int size, int pad);
+int get_padded_size(int size);
 
 void vec_clear(vec_t *vec);
 void vec_remove(vec_t *vec, int idx);

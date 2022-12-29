@@ -13,23 +13,26 @@
 
 #include <time.h>
 
+
+
 int main(void)
 {
-    vec_int_t *test = (vec_int_t*)vec_create(1000000, sizeof(int));
 
-    time_t t;
-    srand(time(&t));
+    // vec_int_t *test = (vec_int_t*)vec_create(10, sizeof(int));
 
-    for (int i = 0; i < 1000000; i++) {
-        int temp = rand() % 100000;
-        vec_push_back((vec_t*)test, &temp);
-    }
+    // time_t t;
+    // srand(time(&t));
 
-    my_puts("flag 1\n");
-    vec_sort((vec_t*)test, NULL);
-    my_puts("flag 2\n");
+    // for (int i = 0; i < 1000000; i++) {
+    //     int temp = rand() % 100000;
+    //     vec_push_back((vec_t*)test, &temp);
+    // }
 
-    vec_free((vec_t*)test);
+    // my_puts("flag 1\n");
+    // vec_sort((vec_t*)test, NULL);
+    // my_puts("flag 2\n");
+
+    // vec_free((vec_t*)test);
 
     // map_t *map = yaml_parse("./test.yaml");
 

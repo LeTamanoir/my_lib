@@ -10,11 +10,14 @@
 
 vec_t *vec_create(int nb_data, int el_size)
 {
+    if (el_size > MAX_VEC_ELEM_SIZE)
+        return NULL;
+
     vec_t *vec = malloc(sizeof(vec_t));
 
     vec->base.size = 0;
     vec->base.el_size = el_size;
-    vec->base.capacity = get_padded_size(nb_data, VEC_SIZE);
+    vec->base.capacity = get_padded_size(nb_data);
     vec->data = my_calloc(0, el_size * vec->base.capacity);
 
     return vec;
@@ -22,9 +25,9 @@ vec_t *vec_create(int nb_data, int el_size)
 
 void vec_void_free(vec_void_t *vec, void (*free_fn)(void*))
 {
-    for (int i = 0; i < vec->base.size; i++) {
+    for (int i = 0; i < vec->base.size; i++)
         free_fn(vec->data[i]);
-    }
+
     free(vec->data);
     free(vec);
 }

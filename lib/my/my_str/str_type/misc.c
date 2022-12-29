@@ -21,7 +21,7 @@ void str_clear(str_t *str)
 
 void str_resize(str_t *str, int new_len)
 {
-    int new_cap = get_padded_size(new_len, STR_SIZE);
+    int new_cap = get_padded_size(new_len);
     char *old = str->data;
 
     str->data = malloc(sizeof(char) * (new_cap + 1));
@@ -30,4 +30,9 @@ void str_resize(str_t *str, int new_len)
     my_strcat(str->data, old);
     str->capacity = new_cap;
     free(old);
+}
+
+void str_print(str_t *str)
+{
+    write(1, str->data, str->length);
 }

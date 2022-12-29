@@ -14,14 +14,13 @@ str_t *str_create(char const *init)
 {
     str_t *str = malloc(sizeof(str_t));
     int str_len = my_strlen(init);
-    int capacity = get_padded_size(str_len, STR_SIZE);
+    int capacity = get_padded_size(str_len);
 
     str->data = malloc(sizeof(char) * (capacity + 1));
-    str->data[0] = '\0';
     str->length = str_len;
     str->capacity = capacity;
 
-    my_strcat(str->data, init);
+    my_strcpy(str->data, init);
 
     return str;
 }

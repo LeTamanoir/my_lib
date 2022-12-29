@@ -12,7 +12,7 @@
 
 vec_void_t *str_split(str_t *str, char delim)
 {
-    vec_void_t *arr = (vec_void_t*)vec_create(10, sizeof(char *));
+    vec_void_t *arr = (vec_void_t*)vec_create(10, sizeof(char*));
     int last_idx = 0;
     str_t *temp = NULL;
 

@@ -9,12 +9,8 @@
 
 char *my_strlowcase(char *str)
 {
-    int i = 0;
-
-    for (i = 0; str[i] != '\0'; i++) {
-        if (my_isupper(str[i]))
-            str[i] = str[i] - ('A' - 'a');
-    }
+    for (int i = 0; str[i]; i++)
+        str[i] = my_lowcase(str[i]);
 
     return str;
 }

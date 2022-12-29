@@ -10,7 +10,7 @@
 
 void vec_resize(vec_t *vec, int new_size)
 {
-    int new_cap = get_padded_size(new_size, VEC_SIZE);
+    int new_cap = get_padded_size(new_size);
     char *data = my_calloc(0, vec->base.el_size * new_cap);
 
     my_memcpy(data, vec->data, vec->base.capacity * vec->base.el_size);

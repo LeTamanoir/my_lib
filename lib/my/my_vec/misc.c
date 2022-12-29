@@ -7,12 +7,12 @@
 
 #include "my_vec.h"
 
-int get_padded_size(int size, int pad)
+int get_padded_size(int size)
 {
-    int size_pad = 0;
+    int size_pad = 1;
 
     while (size_pad < size)
-        size_pad += pad;
+        size_pad *= 2;
 
     return size_pad;
 }
