@@ -12,9 +12,8 @@ void *my_memcpy(void *dest, const void *src, size_t n)
     char *dest_chr = dest;
     const char *src_chr = src;
 
-    while (n--) {
+    while (n--)
         *dest_chr++ = *src_chr++;
-    }
 
     return dest;
 }

@@ -11,9 +11,8 @@ void *my_memset(void *dest, char c, size_t len)
 {
     char *dest_chr = dest;
 
-    while (len--) {
+    while (len--)
         *dest_chr++ = c;
-    }
 
     return dest;
 }

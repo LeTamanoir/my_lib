@@ -13,7 +13,7 @@ static int default_key(vec_t *v, int i)
     return ((vec_int_t*)v)->data[i];
 }
 
-static int partition(vec_t *v, int (*key)(vec_t*, int), int start, int end)
+static int partition(vec_t *v, int (*key)(vec_t *, int), int start, int end)
 {
     int pivot = key(v, end);
     int i = start - 1;
@@ -30,7 +30,7 @@ static int partition(vec_t *v, int (*key)(vec_t*, int), int start, int end)
     return i;
 }
 
-static void quick_sort(vec_t *v, int (*key)(vec_t*, int), int start, int end)
+static void quick_sort(vec_t *v, int (*key)(vec_t *, int), int start, int end)
 {
     if (start >= end)
         return;
@@ -41,7 +41,7 @@ static void quick_sort(vec_t *v, int (*key)(vec_t*, int), int start, int end)
     quick_sort(v, key, center + 1, end);
 }
 
-void vec_sort(vec_t *vec, int (*key)(vec_t*, int))
+void vec_sort(vec_t *vec, int (*key)(vec_t *, int))
 {
     if (key == NULL)
         key = &default_key;

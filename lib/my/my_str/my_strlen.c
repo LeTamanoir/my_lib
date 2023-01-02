@@ -5,9 +5,11 @@
 ** returns the number of characters of a string
 */
 
-int my_strlen(char const *str)
+#include "my_stdlib.h"
+
+size_t my_strlen(char const *str)
 {
-    int len = 0;
+    size_t len = 0;
 
     while (*str++)
         len++;

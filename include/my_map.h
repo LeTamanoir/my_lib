@@ -16,8 +16,8 @@ typedef struct map_elem_s {
 } map_elem_t;
 
 typedef struct map_s {
-    vec_void_t *elems;
     int capacity;
+    vec_void_t *elems;
 } map_t;
 
 vec_void_t *map_get_keys(map_t *map);

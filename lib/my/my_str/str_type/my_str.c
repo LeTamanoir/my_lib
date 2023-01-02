@@ -12,21 +12,14 @@
 
 str_t *str_create(char const *init)
 {
-    str_t *str = malloc(sizeof(str_t));
-    int str_len = my_strlen(init);
-    int capacity = get_padded_size(str_len);
+    size_t str_len = my_strlen(init);
+    size_t capacity = get_padded_size(str_len);
+    str_t *str = malloc(sizeof(str_t) + sizeof(char) * (capacity + 1));
 
-    str->data = malloc(sizeof(char) * (capacity + 1));
     str->length = str_len;
     str->capacity = capacity;
 
     my_strcpy(str->data, init);
 
     return str;
-}
-
-void str_free(str_t *str)
-{
-    free(str->data);
-    free(str);
 }

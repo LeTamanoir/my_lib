@@ -7,10 +7,10 @@
 
 #include "my_str.h"
 
-char *my_strncat(char *dest, char const *src, int n)
+char *my_strncat(char *dest, char const *src, size_t n)
 {
-    int dest_len = my_strlen(dest);
-    int i = 0;
+    size_t dest_len = my_strlen(dest);
+    size_t i = 0;
 
     for (i = 0; i < n && src[i] != '\0'; i++)
         dest[dest_len + i] = src[i];

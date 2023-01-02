@@ -53,6 +53,7 @@
         "exception": "c",
         "sstream": "c",
         "streambuf": "c",
-        "*.inc": "c"
+        "*.inc": "c",
+        "limits": "c"
     }
 }

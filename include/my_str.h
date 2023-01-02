@@ -25,15 +25,15 @@ char *my_strlowcase(char *str);
 char *my_strcapitalize(char *str);
 
 char *my_strcat(char *dest, char const *src);
-char *my_strncat(char *dest, char const *src, int n);
+char *my_strncat(char *dest, char const *src, size_t n);
 char *my_strdup(char const *src);
-int my_strlen(char const *str);
+size_t my_strlen(char const *str);
 void my_strcpy(char *dest, char const *src);
-char *my_strncpy(char *dest, char const *src, int n);
+char *my_strncpy(char *dest, char const *src, size_t n);
 char *my_revstr(char *str);
 char *my_strstr(char *str, char const *to_find);
 int my_strcmp(char const *s1, char const *s2);
-int my_strncmp(char const *s1, char const *s2, int n);
+int my_strncmp(char const *s1, char const *s2, size_t n);
 char *my_strupcase(char *str);
 
 int my_str_isalpha(char const *str);
@@ -43,19 +43,23 @@ int my_str_isupper(char const *str);
 int my_str_isprintable(char const *str);
 
 typedef struct str_s {
-    int length;
-    int capacity;
-    char *data;
+    size_t length;
+    size_t capacity;
+    char data[0];
 } str_t;
 
+typedef struct vec_str_s {
+    vec_base_t base;
+    str_t *data[0];
+} vec_str_t;
+
 str_t *str_create(char const *init);
-vec_void_t *str_split(str_t *str, char delim);
-void str_slice(str_t *str, int start, int end);
-void str_add(str_t *str, char const *new);
-void str_resize(str_t *str, int new_len);
-void str_nadd(str_t *str, char const *new, int n);
-void str_fadd(str_t *str, char const *fmt, ...);
-void str_free(str_t *str);
+vec_str_t *str_split(str_t *str, char delim);
+void str_slice(str_t *str, size_t start, size_t end);
+void str_add(str_t **str, char const *new);
+void str_resize(str_t **str, size_t new_len);
+void str_nadd(str_t **str, char const *new, size_t n);
+void str_fadd(str_t **str, char const *fmt, ...);
 void str_clear(str_t *str);
 void str_trim(str_t *str);
 void str_print(str_t *str);

@@ -7,10 +7,8 @@
 
 #include "my_stdio.h"
 
-int my_puts(char const *str)
+void my_puts(char const *str)
 {
     my_putstr(str);
     my_putchar('\n');
-
-    return 0;
 }

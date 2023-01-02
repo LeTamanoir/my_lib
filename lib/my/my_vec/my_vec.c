@@ -8,32 +8,27 @@
 #include "my_stdlib.h"
 #include "my_vec.h"
 
-vec_t *vec_create(int nb_data, int el_size)
+vec_t *vec_create(size_t nb_data, size_t el_size)
 {
     if (el_size > MAX_VEC_ELEM_SIZE)
         return NULL;
 
-    vec_t *vec = malloc(sizeof(vec_t));
+    size_t capacity = get_padded_size(nb_data);
+    vec_t *vec = malloc(sizeof(vec_t) + el_size * capacity);
 
     vec->base.size = 0;
     vec->base.el_size = el_size;
-    vec->base.capacity = get_padded_size(nb_data);
-    vec->data = my_calloc(0, el_size * vec->base.capacity);
+    vec->base.capacity = capacity;
 
     return vec;
 }
 
-void vec_void_free(vec_void_t *vec, void (*free_fn)(void*))
+void vec_free(vec_t *vec, void (*free_fn)(void*))
 {
-    for (int i = 0; i < vec->base.size; i++)
-        free_fn(vec->data[i]);
+    vec_void_t *vec_void = (vec_void_t*)vec;
 
-    free(vec->data);
-    free(vec);
-}
+    for (size_t i = 0; i < vec->base.size; i++)
+        free_fn(vec_void->data[i]);
 
-void vec_free(vec_t *vec)
-{
-    free(vec->data);
     free(vec);
 }

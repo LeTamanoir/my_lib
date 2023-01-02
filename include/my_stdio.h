@@ -17,9 +17,9 @@ int my_vasprintf(char **ret, const char *format, va_list *ap);
 int my_dprintf(int fd, const char * format, ...);
 
 void my_putchar(char c);
-int my_putstr(char const *str);
-int my_putstderr(char const *str);
-int my_puts(char const *str);
+void my_putstr(char const *str);
+void my_putstderr(char const *str);
+void my_puts(char const *str);
 
 
 #endif /* INCLUDE_MY_STDIO_ */

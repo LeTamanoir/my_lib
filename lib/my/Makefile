@@ -33,6 +33,7 @@ MY_YAML		=	$(YAML_DIR)/my_yaml.c
 MY_VEC		=	$(VEC_DIR)/my_vec.c			\
 				$(VEC_DIR)/setters.c		\
 				$(VEC_DIR)/misc.c			\
+				$(VEC_DIR)/iterators.c		\
 				$(VEC_DIR)/sort.c
 
 

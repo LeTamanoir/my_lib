@@ -43,7 +43,7 @@ file_t *file_create(char const *file_path, int const file_mode)
     file->file_path = my_strdup(file_path);
     file->content = str_create("");
     file->__cache = str_create("");
-    str_resize(file->__cache, BUFF_SIZE);
+    str_resize(&file->__cache, BUFF_SIZE);
     file->fd = open(file_path, file_mode);
 
     return file;
@@ -60,8 +60,8 @@ void file_free(file_t *file)
     if (file->fd != -1) {
         file_close(file);
     }
-    str_free(file->content);
-    str_free(file->__cache);
+    free(file->content);
+    free(file->__cache);
     free(file->file_path);
     free(file);
 }

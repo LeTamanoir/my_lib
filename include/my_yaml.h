@@ -10,12 +10,14 @@
     #include "my_map.h"
 
 
+enum yaml_type_e {
+    YAML_INT,
+    YAML_DOUBLE,
+    YAML_STR
+};
+
 typedef struct yaml_elem_s {
-    enum {
-        YAML_INT,
-        YAML_DOUBLE,
-        YAML_STR
-    } type;
+    enum yaml_type_e type;
     char data[0];
 } yaml_elem_t;
 

@@ -18,8 +18,8 @@ void map_set(map_t *map, char *key, void *data)
 
     if (map->elems->data[hash_idx] == NULL) {
         vec_void_t *temp = (vec_void_t*)vec_create(1, sizeof(void*));
-        vec_insert((vec_t*)map->elems, &temp, hash_idx);
+        vec_insert((vec_t**)&map->elems, &temp, hash_idx);
     }
 
-    vec_push_back((vec_t*)map->elems->data[hash_idx], &elem);
+    vec_push_back((vec_t**)map->elems->data + hash_idx, &elem);
 }
