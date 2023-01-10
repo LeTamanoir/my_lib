@@ -17,7 +17,7 @@ void map_set(map_t *map, char *key, void *data)
     elem->data = data;
 
     if (map->elems->data[hash_idx] == NULL) {
-        vec_void_t *temp = (vec_void_t*)vec_create(1, sizeof(void*));
+        vec_void_t *temp = (vec_void_t*)vec_create(10, sizeof(void*));
         vec_insert((vec_t**)&map->elems, &temp, hash_idx);
     }
 

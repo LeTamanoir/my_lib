@@ -16,6 +16,7 @@ int my_atoi(char const *str);
 double my_atof(char const *str);
 void *my_memcpy(void *dest, const void *src, size_t n);
 void *my_memset(void *dest, char c, size_t len);
+void vfree(int argc, ...);
 
 
 #endif /* INCLUDE_MY_STDLIB_ */

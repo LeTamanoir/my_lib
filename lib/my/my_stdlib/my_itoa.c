@@ -17,8 +17,11 @@ char *my_itoa(long int nb)
 
     res[len] = '\0';
     nb = MY_ABS(nb);
+
     if (is_neg)
         res[0] = '-';
+    if (nb == 0)
+        res[i--] = '0';
 
     while (nb) {
         res[i--] = (nb % 10) + '0';

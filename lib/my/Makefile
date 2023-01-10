@@ -55,7 +55,8 @@ MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_atof.c		\
 				$(STDLIB_DIR)/my_calloc.c	\
 				$(STDLIB_DIR)/my_memcpy.c	\
-				$(STDLIB_DIR)/my_memset.c
+				$(STDLIB_DIR)/my_memset.c	\
+				$(STDLIB_DIR)/vfree.c
 
 
 MY_MATRIX	=	$(MATRIX_DIR)/my_matrix.c 	\
@@ -75,6 +76,7 @@ MY_LIST		=	$(LIST_DIR)/my_list.c		\
 
 MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/str_type/setters.c	\
+				$(STR_DIR)/str_type/format.c	\
 				$(STR_DIR)/str_type/misc.c		\
 				$(STR_DIR)/str_type/getters.c	\
 				$(STR_DIR)/my_isalpha.c		 	\
@@ -159,7 +161,7 @@ INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
 			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_MATRIX_DIR)
 
 
-CFLAGS += -Werror -Wextra -Wall $(INCLUDE) -g3
+CFLAGS += -Werror -Wextra -Wall $(INCLUDE)
 
 OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \

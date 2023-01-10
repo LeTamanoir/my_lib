@@ -9,9 +9,6 @@
 #include "my_vec.h"
 #include "my_str.h"
 
-#include "my_stdio.h"
-
-
 map_t *map_create(int capacity)
 {
     map_t *map = malloc(sizeof(map_t));

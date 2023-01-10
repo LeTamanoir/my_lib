@@ -19,7 +19,7 @@ static int const BUFF_SIZE = 4096;
 static int file_is_valid(char const *file_path)
 {
     struct stat file_stat;
-    int st = lstat(file_path, &file_stat);
+    int st = stat(file_path, &file_stat);
     int fd = open(file_path, O_RDONLY);
 
     if (fd == -1) return 1;
@@ -39,7 +39,7 @@ file_t *file_create(char const *file_path, int const file_mode)
     }
     file_t *file = malloc(sizeof(file_t));
 
-    lstat(file_path, &file->stats);
+    stat(file_path, &file->stats);
     file->file_path = my_strdup(file_path);
     file->content = str_create("");
     file->__cache = str_create("");

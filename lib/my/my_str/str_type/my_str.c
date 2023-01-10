@@ -7,7 +7,6 @@
 
 #include "my_str.h"
 #include "my_stdlib.h"
-#include "my_stdio.h"
 #include "my_vec.h"
 
 str_t *str_create(char const *init)
@@ -19,7 +18,8 @@ str_t *str_create(char const *init)
     str->length = str_len;
     str->capacity = capacity;
 
-    my_strcpy(str->data, init);
+    my_memcpy(str->data, init, sizeof(char) * str_len);
+    str->data[str->length] = '\0';
 
     return str;
 }

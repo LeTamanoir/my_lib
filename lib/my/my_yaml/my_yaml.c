@@ -64,8 +64,8 @@ map_t *yaml_parse(char const *file_path)
     for (size_t i = 0; i < content->base.size; i++) {
         split_ = str_split(content->data[i], DATA_DELIM);
         if (split_->base.size == 2) {
-            str_trim(split_->data[0]);
-            str_trim(split_->data[1]);
+            str_trim(split_->data);
+            str_trim(split_->data + 1);
             add_type_dispatch(map, split_->data[0], split_->data[1]);
         } vec_free((vec_t*)split_, &free);
     } file_free(file);

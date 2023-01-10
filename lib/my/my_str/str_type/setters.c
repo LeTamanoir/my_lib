@@ -12,60 +12,64 @@
 #include "my_str.h"
 #include "my_vec.h"
 
-void str_add(str_t **str, char const *new)
+str_t **str_add(str_t **str, char const *new)
 {
     int new_len = my_strlen(new);
 
     if ((*str)->length + new_len >= (*str)->capacity)
         str_resize(str, (*str)->length + new_len);
 
-    my_strcpy((*str)->data + (*str)->length, new);
+    my_memcpy((*str)->data + (*str)->length, new, new_len);
     (*str)->length += new_len;
+    (*str)->data[(*str)->length] = '\0';
+
+    return str;
 }
 
-void str_nadd(str_t **str, char const *new, size_t n)
+str_t **str_sadd(str_t **str, char const *new, size_t n)
 {
     if ((*str)->length + n >= (*str)->capacity)
         str_resize(str, (*str)->length + n);
 
-    my_strncpy((*str)->data + (*str)->length, new, n);
+    my_memcpy((*str)->data + (*str)->length, new, n);
     (*str)->length += n;
+    (*str)->data[(*str)->length] = '\0';
+
+    return str;
 }
 
-void str_fadd(str_t **str, char const *fmt, ...)
+str_t **str_cadd(str_t **str, char const new)
+{
+    if ((*str)->length + 1 >= (*str)->capacity)
+        str_resize(str, (*str)->length + 1);
+
+    (*str)->data[(*str)->length] = new;
+    (*str)->length++;
+    (*str)->data[(*str)->length] = '\0';
+
+    return str;
+}
+
+str_t **str_vadd(str_t **str, int argc, ...)
 {
     va_list ap;
-    char *dest;
 
-    va_start(ap, fmt);
-    my_vasprintf(&dest, fmt, &ap);
+    va_start(ap, argc);
+    while (argc--)
+        str_add(str, va_arg(ap, char *));
     va_end(ap);
 
-    str_add(str, dest);
-
-    free(dest);
+    return str;
 }
 
-void str_slice(str_t *str, size_t start, size_t end)
+str_t **str_nadd(str_t **str, char const *new, size_t n)
 {
-    size_t i;
+    if ((*str)->length + n >= (*str)->capacity)
+        str_resize(str, (*str)->length + n);
 
-    for (i = 0; i < end - start; i++)
-        str->data[i] = str->data[start + i];
+    my_memcpy((*str)->data + (*str)->length, new, n);
+    (*str)->length += n;
+    (*str)->data[(*str)->length] = '\0';
 
-    str->data[i] = '\0';
-    str->length = end - start;
-}
-
-void str_trim(str_t *str)
-{
-    size_t start = 0;
-    size_t end = str->length - 1;
-
-    while (str->data[start] == ' ')
-        start++;
-    while (str->data[end] == ' ')
-        end--;
-
-    str_slice(str, start, end + 1);
+    return str;
 }

@@ -55,14 +55,17 @@ typedef struct vec_str_s {
 
 str_t *str_create(char const *init);
 vec_str_t *str_split(str_t *str, char delim);
-void str_slice(str_t *str, size_t start, size_t end);
-void str_add(str_t **str, char const *new);
-void str_resize(str_t **str, size_t new_len);
-void str_nadd(str_t **str, char const *new, size_t n);
-void str_fadd(str_t **str, char const *fmt, ...);
-void str_clear(str_t *str);
-void str_trim(str_t *str);
+str_t **str_slice(str_t **str, size_t start, size_t end);
+str_t **str_resize(str_t **str, size_t new_len);
+str_t **str_add(str_t **str, char const *new);
+str_t **str_nadd(str_t **str, char const *new, size_t n);
+str_t **str_fadd(str_t **str, char const *fmt, ...);
+str_t **str_clear(str_t **str);
+str_t **str_trim(str_t **str);
 void str_print(str_t *str);
+str_t **str_vadd(str_t **str, int argc, ...);
+str_t **str_cadd(str_t **str, char const new);
+str_t **str_sadd(str_t **str, char const *new, size_t n);
 
 
 #endif /* INCLUDE_MY_STR_ */
