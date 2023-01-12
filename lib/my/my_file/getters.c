@@ -19,7 +19,10 @@ char *file_get_content(file_t *file)
     str_t **ct = &file->content;
 
     str_resize(ct, file->stats.st_size);
-    (*ct)->length = read(file->fd, (char*)(*ct)->data, file->stats.st_size);
+    ssize_t read_len = read(file->fd, (*ct)->data, file->stats.st_size);
+    if (read_len == -1)
+        return NULL;
+    (*ct)->length = read_len;
     (*ct)->data[(*ct)->length] = '\0';
     file_close(file);
 
@@ -31,20 +34,20 @@ char *file_get_line(file_t *file)
     int last_line = file->content->length;
     int can_add = 1;
     int size = 0;
-    str_t *cache = file->__cache;
-    str_t *ct = file->content;
+    str_t **cache = &file->__cache;
+    str_t **ct = &file->content;
 
     if (file->__cache == NULL) {
         file_close(file);
         return NULL;
     }
-    if (cache->length != 0)
+    if ((*cache)->length != 0)
         can_add = add_from_cache(file);
-    if (cache->length == 0 && can_add)
+    if ((*cache)->length == 0 && can_add)
         size = add_from_read(file);
-    if (size == 0 && cache->length == 0) {
+    if (size == 0 && (*cache)->length == 0) {
         free(file->__cache);
         file->__cache = NULL;
     }
-    return &(ct->data[last_line]);
+    return &((*ct)->data[last_line]);
 }

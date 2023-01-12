@@ -13,6 +13,9 @@ map_t *map_create(int capacity)
 {
     map_t *map = malloc(sizeof(map_t));
 
+    if (map == NULL)
+        return NULL;
+
     map->capacity = capacity;
     map->elems = (vec_void_t*)vec_create(capacity, sizeof(void*));
     my_memset(map->elems->data, 0, sizeof(void*) * map->elems->base.capacity);

@@ -13,6 +13,10 @@ void map_set(map_t *map, char *key, void *data)
 {
     unsigned int hash_idx = map_hash_key(key) % map->capacity;
     map_elem_t *elem = malloc(sizeof(map_elem_t));
+
+    if (elem == NULL)
+        return;
+
     elem->key = my_strdup(key);
     elem->data = data;
 

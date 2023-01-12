@@ -31,7 +31,6 @@ str_t **str_resize(str_t **str, size_t new_len)
     my_memcpy((*str)->data, old->data, old->length);
     (*str)->length = old->length;
     (*str)->capacity = new_cap;
-
     free(old);
 
     return str;

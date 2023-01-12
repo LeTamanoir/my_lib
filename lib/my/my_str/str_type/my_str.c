@@ -15,6 +15,9 @@ str_t *str_create(char const *init)
     size_t capacity = get_padded_size(str_len);
     str_t *str = malloc(sizeof(str_t) + sizeof(char) * (capacity + 1));
 
+    if (str == NULL)
+        return NULL;
+
     str->length = str_len;
     str->capacity = capacity;
 

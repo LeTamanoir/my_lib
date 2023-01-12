@@ -34,15 +34,20 @@ static int file_is_valid(char const *file_path)
 
 file_t *file_create(char const *file_path, int const file_mode)
 {
-    if (file_is_valid(file_path) != 0) {
+    if (file_is_valid(file_path) != 0)
         return NULL;
-    }
+
     file_t *file = malloc(sizeof(file_t));
+
+    if (file == NULL)
+        return NULL;
 
     stat(file_path, &file->stats);
     file->file_path = my_strdup(file_path);
     file->content = str_create("");
     file->__cache = str_create("");
+    if (file->__cache == NULL)
+        return NULL;
     str_resize(&file->__cache, BUFF_SIZE);
     file->fd = open(file_path, file_mode);
 

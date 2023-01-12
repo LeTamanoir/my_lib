@@ -13,6 +13,9 @@ node_t *node_create(void)
 {
     node_t *new_node = malloc(sizeof(node_t));
 
+    if (new_node == NULL)
+        return NULL;
+
     new_node->prev = NULL;
     new_node->next = NULL;
     new_node->value = NULL;
@@ -23,6 +26,9 @@ node_t *node_create(void)
 list_t *list_create(void)
 {
     list_t *list = malloc(sizeof(list_t));
+
+    if (list == NULL)
+        return NULL;
 
     list->front = NULL;
     list->back = NULL;

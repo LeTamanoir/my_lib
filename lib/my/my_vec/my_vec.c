@@ -16,6 +16,9 @@ vec_t *vec_create(size_t nb_data, size_t el_size)
     size_t capacity = get_padded_size(nb_data);
     vec_t *vec = malloc(sizeof(vec_t) + el_size * capacity);
 
+    if (vec == NULL)
+        return NULL;
+
     vec->base.size = 0;
     vec->base.el_size = el_size;
     vec->base.capacity = capacity;
