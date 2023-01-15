@@ -15,7 +15,5 @@
 .cache
 /.vscode
 
-/lib/my/temp
-
 # project bin
 /[PROJECT-NAME]

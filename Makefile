@@ -29,11 +29,14 @@ all:	$(NAME)
 $(NAME):	lib	$(OBJ)
 	$(CC) -o $(NAME) $(OBJ)	$(LIB_MY) $(LIB_MATH)
 
+tests_run:
+	make -C ./tests/unit_tests
+
 lib:
-	cd ./lib/my && make && cd ../../
+	make -C ./lib/my
 
 clean_lib:
-	cd ./lib/my && make fclean && cd ../../
+	make -C ./lib/my
 
 clean:
 	rm -f $(OBJ)

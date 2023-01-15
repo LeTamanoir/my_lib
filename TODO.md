@@ -1,4 +1,0 @@
-**YAML**
-- nesting
-- comment
-- array
