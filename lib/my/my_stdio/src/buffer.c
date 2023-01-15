@@ -14,7 +14,7 @@ buffer_t *create_buffer(void)
 {
     buffer_t *node = malloc(sizeof(buffer_t));
 
-    node->content = my_calloc('\0', sizeof(char) * (BUFF_MAX_SIZE + 1));
+    node->content = my_calloc(BUFF_MAX_SIZE + 1, sizeof(char));
     node->next = NULL;
 
     return node;

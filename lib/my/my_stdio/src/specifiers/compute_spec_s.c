@@ -19,9 +19,9 @@ static char *get_octal(unsigned char oct)
     int new_length = 4;
 
     int utils[] = { 3, base_len };
-    char *str = my_calloc('0', sizeof(char) * (new_length + 1));
+    char *str = my_memset(
+        my_calloc(new_length + 1, sizeof(char)), '0', new_length);
     str[0] = '\\';
-    str[new_length] = '\0';
 
     compute_number(str, base, oct, utils);
 
@@ -69,7 +69,7 @@ char *compute_spec_lo_s(void *ptr)
     char *str = (char *)ptr;
 
     if (str != NULL) {
-        char *res = my_calloc('\0', sizeof(char) * (my_strlen(str) + 1));
+        char *res = my_calloc(my_strlen(str) + 1, sizeof(char));
         my_strcat(res, str);
         return res;
     } else {

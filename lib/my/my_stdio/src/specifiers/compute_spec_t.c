@@ -46,7 +46,7 @@ char *compute_spec_t(void *ptr)
     ptr_data_t data = *((ptr_data_t *)ptr);
     int *nb = (int *)data.ptr;
     int len = get_int_arr_length(nb, INT_ARR_END);
-    char *res = my_calloc('\0', sizeof(char) * (len + 1));
+    char *res = my_calloc(len + 1, sizeof(char));
 
     add_int_arr_to_str(res, nb);
 

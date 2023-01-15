@@ -11,7 +11,7 @@
 static char *generic(double nb, int is_upper, char const *base)
 {
     int MAX_SIZE = 25;
-    char *res = my_calloc('\0', sizeof(char) * MAX_SIZE);
+    char *res = my_calloc(MAX_SIZE, sizeof(char));
     inspector_t inspector = {.nb = nb};
 
     my_specifier_a_helper(res, inspector, is_upper, base);

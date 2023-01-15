@@ -14,7 +14,7 @@ static char *generic(unsigned long long int nb, const char *base)
     int base_len = my_strlen(base);
     int new_length = get_base_nbr_length(nb, base_len);
     int utils[] = { new_length - 1, base_len };
-    char *str = my_calloc('\0', sizeof(char) * (new_length + 1));
+    char *str = my_calloc(new_length + 1, sizeof(char));
 
     compute_number(str, base, nb, utils);
 

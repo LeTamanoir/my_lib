@@ -43,9 +43,9 @@ static char *not_null_double(
     inspector_t inspector
 )
 {
-    char *pwr_2_str = my_calloc('0', sizeof(char) *
-        ((DOUBLE_PRECISION / 2) + 2));
-    pwr_2_str[(DOUBLE_PRECISION / 2) + 1] = '\0';
+    char *pwr_2_str = my_memset(
+        my_calloc((DOUBLE_PRECISION / 2) + 2, sizeof(char)), '0',
+        (DOUBLE_PRECISION / 2) + 1);
     pwr_2_str[1] = '.';
     pwr_2_str[2] = '5';
     for (long mask = 0x8000000000000, i = 1; mask != 0; mask >>= 1, i++) {
@@ -71,8 +71,8 @@ char *compute_double(double nb)
     int sign = (inspector.bytes >> 63) & 1;
     int exp = ((inspector.bytes & 0x7ff0000000000000) >> 52) - 1023;
 
-    char *res = my_calloc('0', sizeof(char) * (DOUBLE_PRECISION + 1));
-    res[DOUBLE_PRECISION] = '\0';
+    char *res = my_memset(
+        my_calloc(DOUBLE_PRECISION + 1, sizeof(char)), '0', DOUBLE_PRECISION);
     res[(DOUBLE_PRECISION / 2) - 1] = '1';
     res[(DOUBLE_PRECISION / 2)] = '.';
 

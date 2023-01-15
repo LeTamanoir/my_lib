@@ -36,7 +36,7 @@ char *compute_spec_d(void *ptr)
         i = 1;
     }
 
-    char *res = my_calloc('\0', sizeof(char) * (number_size + 1));
+    char *res = my_calloc(number_size + 1, sizeof(char));
     while (nb / verify >= 10)
         verify *= 10;
     get_res(verify, res, nb, i);

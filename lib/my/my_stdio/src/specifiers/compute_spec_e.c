@@ -11,8 +11,8 @@
 
 static char *generic(double nb, int is_upper)
 {
-    char *res = my_calloc('0', sizeof(char) * (DOUBLE_PRECISION + 1));
-    res[DOUBLE_PRECISION] = '\0';
+    char *res = my_memset(
+        my_calloc(DOUBLE_PRECISION + 1, sizeof(char)), '0', DOUBLE_PRECISION);
     char *err = handle_errors_float(nb, 0);
 
     if (err != NULL) return err;

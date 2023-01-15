@@ -10,7 +10,7 @@
 char *compute_spec_c(void *ptr)
 {
     char c = *(char *)ptr;
-    char *res = my_calloc('\0', sizeof(char) * 2);
+    char *res = my_calloc(2, sizeof(char));
     res[0] = c;
     return res;
 }

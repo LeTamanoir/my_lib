@@ -35,8 +35,7 @@ static void round_float_base(char **float_str, char const *base)
         carry = tmp / base_len;
     }
     if (carry != 0) {
-        char *new = my_calloc('\0', sizeof(char) * (
-            my_strlen(*float_str) + is_neg + 2));
+        char *new = my_calloc(my_strlen(*float_str) + is_neg + 2, sizeof(char));
         if (is_neg)
             new[0] = '-';
         new[is_neg] = base[carry];

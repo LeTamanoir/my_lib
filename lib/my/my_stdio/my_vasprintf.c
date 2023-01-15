@@ -20,7 +20,7 @@ int my_vasprintf(char **ret, const char *format, va_list *ap)
     compute_char(ap, buffer, format);
 
     buff_size = get_buffer_length(buffer);
-    char *tmp = my_calloc(0, sizeof(char) * (buff_size + 1));
+    char *tmp = my_calloc(buff_size + 1, sizeof(char));
     add_buffer_to_str(buffer, tmp);
     free_buffer(buffer);
 

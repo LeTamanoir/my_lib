@@ -25,7 +25,7 @@ int get_buffer_length(buffer_t *node)
 void print_buffer(buffer_t *buffer, int fd)
 {
     int size = get_buffer_length(buffer);
-    char *to_write = my_calloc('\0', sizeof(char) * (size + 1));
+    char *to_write = my_calloc(size + 1, sizeof(char));
 
     while (buffer != NULL) {
         my_strcat(to_write, buffer->content);

@@ -45,16 +45,15 @@ char *post_processor_float(char *float_str, parse_state_t *state)
     int precision = state->precision == -2 ? 0 :
         (state->precision == 0 ? 6 : state->precision);
     int size = DOUBLE_PRECISION + (precision > 0 ? precision : 0);
-    char *new_res = my_calloc('0', sizeof(char) * (size + 1));
+    char *new_res = my_memset(my_calloc(size + 1, sizeof(char)), '0', size);
     new_res[0] = '\0';
-    new_res[size] = '\0';
     char *temp = parse_float_util(&new_res, float_str, precision, state);
     if (temp != NULL) return temp;
     int sign_space = state->flags.show_sign ||
         state->flags.space_if_pos || float_str[0] == '-';
     int new_size = (my_strlen(new_res) > (size_t)state->width ?
         my_strlen(new_res) : (size_t)state->width) + sign_space;
-    char *padded_res = my_calloc('\0', sizeof(char) * (new_size + 1));
+    char *padded_res = my_calloc(new_size + 1, sizeof(char));
     int utils[3] = { sign_space, new_size, float_str[0] == '-' };
     apply_alignment(new_res, padded_res, utils, state);
     free(new_res);
@@ -69,7 +68,7 @@ char *post_processor_str(char *str, parse_state_t *state)
     if (state->width == 0 && state->precision > 0 &&
         (size_t)state->precision < my_strlen(str))
         new_size = state->precision;
-    char *new_res = my_calloc(' ', sizeof(char) * (new_size + 1));
+    char *new_res = my_memset(my_calloc(new_size + 1, 1), ' ', new_size);
     new_res[new_size] = '\0';
     if (state->precision == -2 && state->specifier != 'c')
         return my_strdup("");
@@ -97,8 +96,7 @@ char *post_processor_int(char *res, parse_state_t *state)
     int new_size = (my_strlen(res) > (size_t)state->width ?
         my_strlen(res) : (size_t)state->width) +
         (!state->flags.align_left && sign_space);
-    char *new_res = my_calloc('\0', sizeof(char) *
-        (new_size + sign_space + 1));
+    char *new_res = my_calloc(new_size + sign_space + 1, sizeof(char));
     int utils[3] = { sign_space, new_size, is_neg };
     apply_alignment(res, new_res, utils, state);
     free(res);
@@ -112,9 +110,7 @@ char *post_processor_uint(char *res, parse_state_t *state)
     size_t new_size = (my_strlen(res) > (size_t)state->width ?
         my_strlen(res) : (size_t)state->width);
 
-    char *new_res = my_calloc('\0', sizeof(char) *
-        (new_size + 1 + (state->flags.hashtag ? 2 : 0)));
-
+    char *new_res = my_calloc(new_size + 1 + (state->flags.hashtag ? 2 : 0), 1);
     apply_alignment_u(res, new_res, new_size, state);
     free(res);
     return new_res;

@@ -19,7 +19,7 @@ char *compute_spec_p(void *ptr)
     int base_len = my_strlen(base);
     int new_length = get_base_nbr_length(temp, base_len);
     int utils[] = { new_length - 1, base_len };
-    char *str = my_calloc('\0', sizeof(char) * (new_length + 1));
+    char *str = my_calloc(new_length + 1, sizeof(char));
 
     compute_number(str, base, temp, utils);
 

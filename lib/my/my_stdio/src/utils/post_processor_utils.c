@@ -19,8 +19,8 @@ char *apply_precision(char *res, parse_state_t *state, int is_neg)
         return res;
     }
 
-    char *new_res = my_calloc('0', sizeof(char) * (state->precision + 1));
-    new_res[state->precision] = '\0';
+    char *new_res = my_memset(
+        my_calloc(state->precision + 1, sizeof(char)), '0', state->precision);
     new_res[state->precision - len] = '\0';
 
     my_strcat(new_res, res);
