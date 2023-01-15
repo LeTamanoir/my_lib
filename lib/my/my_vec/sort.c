@@ -8,18 +8,21 @@
 #include "my_stdlib.h"
 #include "my_vec.h"
 
-static int default_key(vec_t *v, int i)
+static int default_compare(vec_t *v, size_t i, size_t pivot)
 {
-    return ((vec_int_t*)v)->data[i];
+    return (((vec_int_t*)v)->data[i] < ((vec_int_t*)v)->data[pivot]);
 }
 
-static int partition(vec_t *v, int (*key)(vec_t *, int), int start, int end)
+static int partition(
+    vec_t *v, int (*cmp_fn)(vec_t *, size_t, size_t),
+    int start, int end
+)
 {
-    int pivot = key(v, end);
+    int pivot = end;
     int i = start - 1;
 
     for (int j = start; j < end; j++) {
-        if (key(v, j) < pivot) {
+        if (cmp_fn(v, j, pivot) <= 0) {
             i++;
             vec_swap(v, i, j);
         }
@@ -30,21 +33,24 @@ static int partition(vec_t *v, int (*key)(vec_t *, int), int start, int end)
     return i;
 }
 
-static void quick_sort(vec_t *v, int (*key)(vec_t *, int), int start, int end)
+static void quick_sort(
+    vec_t *v, int (*cmp_fn)(vec_t *, size_t, size_t),
+    int start, int end
+)
 {
     if (start >= end)
         return;
 
-    int center = partition(v, key, start, end);
+    int center = partition(v, cmp_fn, start, end);
 
-    quick_sort(v, key, start, center - 1);
-    quick_sort(v, key, center + 1, end);
+    quick_sort(v, cmp_fn, start, center - 1);
+    quick_sort(v, cmp_fn, center + 1, end);
 }
 
-void vec_sort(vec_t *vec, int (*key)(vec_t *, int))
+void vec_sort(vec_t *vec, int (*cmp_fn)(vec_t *, size_t, size_t))
 {
-    if (key == NULL)
-        key = &default_key;
+    if (cmp_fn == NULL)
+        cmp_fn = &default_compare;
 
-    quick_sort(vec, key, 0, vec->base.size - 1);
+    quick_sort(vec, cmp_fn, 0, vec->base.size - 1);
 }

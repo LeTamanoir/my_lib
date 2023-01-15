@@ -14,7 +14,7 @@
 #include "my_file.h"
 #include "get_line_utils.h"
 
-char *file_get_content(file_t *file)
+str_t *file_get_content(file_t *file)
 {
     str_t **ct = &file->content;
 
@@ -23,10 +23,9 @@ char *file_get_content(file_t *file)
     if (read_len == -1)
         return NULL;
     (*ct)->length = read_len;
-    (*ct)->data[(*ct)->length] = '\0';
     file_close(file);
 
-    return (*ct)->data;
+    return *ct;
 }
 
 char *file_get_line(file_t *file)

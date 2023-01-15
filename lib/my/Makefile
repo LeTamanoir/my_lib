@@ -46,8 +46,7 @@ MY_MAP		=	$(MAP_DIR)/my_map.c				\
 MY_MATH		=	$(MATH_DIR)/my_int_sqrt.c			\
 				$(MATH_DIR)/my_pow.c	 			\
 				$(MATH_DIR)/my_ll_pow.c	 			\
-				$(MATH_DIR)/my_is_prime.c			\
-				$(MATH_DIR)/my_sort_int_array.c
+				$(MATH_DIR)/my_is_prime.c
 
 
 MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
@@ -56,6 +55,7 @@ MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_calloc.c	\
 				$(STDLIB_DIR)/my_memcpy.c	\
 				$(STDLIB_DIR)/my_memset.c	\
+				$(STDLIB_DIR)/auto_free.c	\
 				$(STDLIB_DIR)/vfree.c
 
 
@@ -75,7 +75,10 @@ MY_LIST		=	$(LIST_DIR)/my_list.c		\
 
 
 MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
-				$(STR_DIR)/str_type/setters.c	\
+				$(STR_DIR)/str_type/adders.c	\
+				$(STR_DIR)/str_type/compare.c	\
+				$(STR_DIR)/str_type/checks.c	\
+				$(STR_DIR)/str_type/trim.c		\
 				$(STR_DIR)/str_type/format.c	\
 				$(STR_DIR)/str_type/misc.c		\
 				$(STR_DIR)/str_type/getters.c	\
@@ -95,7 +98,6 @@ MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/my_str_isnum.c		\
 				$(STR_DIR)/my_str_isprintable.c	\
 				$(STR_DIR)/my_str_isupper.c		\
-				$(STR_DIR)/my_strcapitalize.c	\
 				$(STR_DIR)/my_strcat.c			\
 				$(STR_DIR)/my_strcmp.c			\
 				$(STR_DIR)/my_strcpy.c			\
@@ -105,7 +107,6 @@ MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/my_strncat.c			\
 				$(STR_DIR)/my_strncmp.c			\
 				$(STR_DIR)/my_strncpy.c			\
-				$(STR_DIR)/my_strstr.c			\
 				$(STR_DIR)/my_strupcase.c		\
 				$(STR_DIR)/my_upcase.c
 
@@ -161,7 +162,7 @@ INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
 			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_MATRIX_DIR)
 
 
-CFLAGS += -Werror -Wextra -Wall $(INCLUDE)
+CFLAGS += -Werror -Wextra -Wall $(INCLUDE) -g3
 
 OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \

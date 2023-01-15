@@ -9,15 +9,15 @@
 
 char *my_revstr(char *str)
 {
-    int index = 0;
-    int length = my_strlen(str);
+    size_t length = my_strlen(str);
+    size_t idx = 0;
     char temp;
 
-    while (index < length / 2) {
-        temp = str[index];
-        str[index] = str[length - index - 1];
-        str[length - index - 1] = temp;
-        index++;
+    while (idx < length / 2) {
+        temp = str[idx];
+        str[idx] = str[length - idx - 1];
+        str[length - idx - 1] = temp;
+        idx++;
     }
 
     return str;

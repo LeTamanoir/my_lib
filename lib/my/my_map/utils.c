@@ -5,14 +5,14 @@
 ** utils
 */
 
-// from some gourou lol
+#include "my_str.h"
 
-unsigned int map_hash_key(char *key)
+unsigned int map_hash_key(str_t *key)
 {
-    unsigned h = 0x811c9dc5;
+    unsigned int h = 0x811c9dc5U;
 
-    for (int i = 0; key[i]; i++)
-        h = (h ^ key[i]) * 0x01000193;
+    for (size_t i = 0; i < key->length; ++i)
+        h = (h ^ key->data[i]) * 0x01000193U;
 
     return h;
 }

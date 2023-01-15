@@ -10,8 +10,8 @@
 #include "my_file.h"
 #include "my_yaml.h"
 
-static const char LINE_DELIM = '\n';
-static const char DATA_DELIM = ':';
+static const char LINE_DELIM[] = "\n";
+static const char DATA_DELIM[] = ":";
 
 static int get_type(char *str)
 {
@@ -43,32 +43,34 @@ static void add_type_dispatch(map_t *map, str_t *key, str_t *data)
             my_strcpy(elem->data, data->data);
             break;
     } elem->type = type;
-    map_set(map, key->data, elem);
+    map_set(map, key, elem);
 }
 
-yaml_elem_t *yaml_get(map_t *map, char *key)
+yaml_elem_t *yaml_get(map_t *map, str_t *key)
 {
     return (yaml_elem_t*)map_get(map, key);
 }
 
 map_t *yaml_parse(char const *file_path)
 {
-    file_t *file = file_create(file_path, F_R);
-    if (file == NULL) return NULL;
-
+    SMART_FILE file_t *file = file_create(file_path, F_R);
+    SMART_STR str_t *line_delim = str_create(LINE_DELIM);
+    SMART_STR str_t *data_delim = str_create(DATA_DELIM);
+    if (!file || !line_delim || !data_delim)
+        return NULL;
     file_get_content(file);
-    vec_str_t *content = str_split(file->content, LINE_DELIM);
+    vec_str_t *content = str_split(file->content, line_delim);
     map_t *map = map_create(content->base.size);
     vec_str_t *split_ = NULL;
 
     for (size_t i = 0; i < content->base.size; i++) {
-        split_ = str_split(content->data[i], DATA_DELIM);
+        split_ = str_split(content->data[i], data_delim);
         if (split_->base.size == 2) {
-            str_trim(split_->data);
-            str_trim(split_->data + 1);
+            str_trim(split_->data, ' ');
+            str_trim(split_->data + 1, ' ');
             add_type_dispatch(map, split_->data[0], split_->data[1]);
         } vec_free((vec_t*)split_, &free);
-    } file_free(file);
+    }
     vec_free((vec_t*)content, &free);
     return map;
 }

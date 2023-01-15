@@ -13,8 +13,7 @@ void vfree(int argc, ...)
     va_list ap;
 
     va_start(ap, argc);
-    while (argc--) {
+    while (argc--)
         free(va_arg(ap, void *));
-    }
     va_end(ap);
 }

@@ -14,38 +14,35 @@
 
 str_t **str_add(str_t **str, char const *new)
 {
-    int new_len = my_strlen(new);
+    size_t new_len = my_strlen(new);
 
-    if ((*str)->length + new_len >= (*str)->capacity)
+    if ((*str)->length + new_len > (*str)->capacity)
         str_resize(str, (*str)->length + new_len);
 
     my_memcpy((*str)->data + (*str)->length, new, new_len);
     (*str)->length += new_len;
-    (*str)->data[(*str)->length] = '\0';
 
     return str;
 }
 
-str_t **str_sadd(str_t **str, char const *new, size_t n)
+str_t **str_stradd(str_t **str, str_t const *new)
 {
-    if ((*str)->length + n >= (*str)->capacity)
-        str_resize(str, (*str)->length + n);
+    if ((*str)->length + new->length > (*str)->capacity)
+        str_resize(str, (*str)->length + new->length);
 
-    my_memcpy((*str)->data + (*str)->length, new, n);
-    (*str)->length += n;
-    (*str)->data[(*str)->length] = '\0';
+    my_memcpy((*str)->data + (*str)->length, new->data, new->length);
+    (*str)->length += new->length;
 
     return str;
 }
 
 str_t **str_cadd(str_t **str, char const new)
 {
-    if ((*str)->length + 1 >= (*str)->capacity)
+    if ((*str)->length + 1 > (*str)->capacity)
         str_resize(str, (*str)->length + 1);
 
     (*str)->data[(*str)->length] = new;
     (*str)->length++;
-    (*str)->data[(*str)->length] = '\0';
 
     return str;
 }
@@ -64,12 +61,11 @@ str_t **str_vadd(str_t **str, int argc, ...)
 
 str_t **str_nadd(str_t **str, char const *new, size_t n)
 {
-    if ((*str)->length + n >= (*str)->capacity)
+    if ((*str)->length + n > (*str)->capacity)
         str_resize(str, (*str)->length + n);
 
     my_memcpy((*str)->data + (*str)->length, new, n);
     (*str)->length += n;
-    (*str)->data[(*str)->length] = '\0';
 
     return str;
 }
