@@ -21,7 +21,7 @@ typedef struct yaml_elem_s {
     char data[0];
 } yaml_elem_t;
 
-yaml_elem_t *yaml_get(map_t *map, char *key);
+yaml_elem_t *yaml_get(map_t *map, str_t *key);
 map_t *yaml_parse(char const *file_path);
 
 
