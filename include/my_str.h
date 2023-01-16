@@ -54,6 +54,38 @@ typedef struct vec_str_s {
 } vec_str_t;
 
 /**
+ * @brief checks if a string is composed of only alphanumeric characters
+ *
+ * @param str   the string to perform the check on
+ * @return 1 or 0
+ */
+int str_isalpha(str_t const *str);
+
+/**
+ * @brief checks if a string is composed of only digits
+ *
+ * @param str   the string to perform the check on
+ * @return 1 or 0
+ */
+int str_isnum(str_t const *str);
+
+/**
+ * @brief checks if a string is composed of only lowercase letters
+ *
+ * @param str   the string to perform the check on
+ * @return 1 or 0
+ */
+int str_islower(str_t const *str);
+
+/**
+ * @brief checks if a string is composed of only uppercase letters
+ *
+ * @param str   the string to perform the check on
+ * @return 1 or 0
+ */
+int str_isupper(str_t const *str);
+
+/**
  * @brief creates a string
  *
  * @param init      char* to init the string
@@ -257,6 +289,22 @@ str_t **str_stradd(str_t **str, str_t const *new);
  * @return 1 if string 1 and string 2 are equal or 0
  */
 int str_eq(str_t *s1, str_t *s2);
+
+/**
+ * @brief converts a string to an int
+ *
+ * @param str   the string to extract the integer from
+ * @return the integer represented by the string
+ */
+int str_atoi(str_t const *str);
+
+/**
+ * @brief converts a string to a double
+ *
+ * @param str   the string to extract the double from
+ * @return the double represented by the string
+ */
+double str_atof(str_t const *str);
 
 
 #endif /* INCLUDE_MY_STR_ */

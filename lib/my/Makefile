@@ -76,6 +76,8 @@ MY_LIST		=	$(LIST_DIR)/my_list.c		\
 
 MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/str_type/adders.c	\
+				$(STR_DIR)/str_type/content_check.c	\
+				$(STR_DIR)/str_type/convert.c	\
 				$(STR_DIR)/str_type/compare.c	\
 				$(STR_DIR)/str_type/checks.c	\
 				$(STR_DIR)/str_type/trim.c		\

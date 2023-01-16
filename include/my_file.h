@@ -24,6 +24,7 @@ typedef struct file_s {
     int fd;
     char *file_path;
     str_t *content;
+    str_t *current_line;
     str_t *__cache;
     struct stat stats;
 } file_t;
@@ -38,12 +39,12 @@ typedef struct file_s {
 file_t *file_create(char const *file_path, int const file_mode);
 
 /**
- * @brief gets a new line in a file
+ * @brief gets a new line in a file stored in a string
  *
  * @param file  the file to get the line from
  * @return the new line in the file
  */
-char *file_get_line(file_t *file);
+str_t *file_get_line(file_t *file);
 
 /**
  * @brief loads the content of the file into file->content

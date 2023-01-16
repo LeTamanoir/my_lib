@@ -28,13 +28,12 @@ str_t *file_get_content(file_t *file)
     return *ct;
 }
 
-char *file_get_line(file_t *file)
+str_t *file_get_line(file_t *file)
 {
-    int last_line = file->content->length;
     int can_add = 1;
     int size = 0;
     str_t **cache = &file->__cache;
-    str_t **ct = &file->content;
+    str_t **line = str_clear(&file->current_line);
 
     if (file->__cache == NULL) {
         file_close(file);
@@ -48,5 +47,5 @@ char *file_get_line(file_t *file)
         free(file->__cache);
         file->__cache = NULL;
     }
-    return &((*ct)->data[last_line]);
+    return *line;
 }

@@ -10,13 +10,13 @@
     #include <stdlib.h>
 
     #define SMART_ANY(fn)   __attribute__((cleanup(fn)))
-    #define SMART_STR       SMART_ANY(auto_str_free)
+    #define SMART_STR       SMART_ANY(auto_simple_free)
     #define SMART_FILE      SMART_ANY(auto_file_free)
     #define SMART_MAP       SMART_ANY(auto_map_free)
     #define SAMRT_LIST      SMART_ANY(auto_list_free)
     #define SMART_VEC       SMART_ANY(auto_vec_free)
 
-void auto_str_free(void *ptr);
+void auto_simple_free(void *ptr);
 void auto_map_free(void *ptr);
 void auto_file_free(void *ptr);
 void auto_list_free(void *ptr);

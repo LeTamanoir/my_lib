@@ -12,9 +12,9 @@
 #include "my_vec.h"
 #include "my_file.h"
 
-void auto_str_free(void *ptr)
+void auto_simple_free(void *ptr)
 {
-    str_t *str = *(str_t **)ptr;
+    void *str = *(void **)ptr;
     if (str == NULL)
         return;
     free(str);
@@ -49,5 +49,5 @@ void auto_vec_free(void *ptr)
     vec_t *vec = *(vec_t **)ptr;
     if (vec == NULL)
         return;
-    free(vec);
+    vec_free(vec, &free);
 }

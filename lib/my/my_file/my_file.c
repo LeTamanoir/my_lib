@@ -46,6 +46,7 @@ file_t *file_create(char const *file_path, int const file_mode)
     file->file_path = my_strdup(file_path);
     file->content = str_create("");
     file->__cache = str_create("");
+    file->current_line = str_create("");
     if (!file->__cache || !file->file_path || !file->content)
         return NULL;
     str_resize(&file->__cache, BUFF_SIZE);

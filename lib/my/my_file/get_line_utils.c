@@ -26,6 +26,7 @@ int add_from_cache(file_t *file)
     int add_next = new_nl != cache->length;
 
     str_nadd(&file->content, cache->data, new_nl);
+    str_nadd(&file->current_line, cache->data, new_nl);
     str_slice(&cache, new_nl + add_next, cache->length);
 
     return !add_next;
@@ -42,6 +43,7 @@ int add_from_read(file_t *file)
         new_nl = get_nl_idx(cache->data, cache->length);
 
         if (new_nl != cache->length) {
+            str_nadd(&file->current_line, cache->data, new_nl);
             str_nadd(&file->content, cache->data, new_nl);
             str_slice(&cache, new_nl + 1, cache->length);
             break;
