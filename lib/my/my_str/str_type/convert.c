@@ -47,6 +47,5 @@ double str_atof(str_t const *str)
             offset *= ((found_dot) ? 10 : 1);
         }
         i++;
-    }
-    return sign * (nb / offset);
+    } return sign * (nb / offset);
 }

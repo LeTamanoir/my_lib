@@ -306,5 +306,21 @@ int str_atoi(str_t const *str);
  */
 double str_atof(str_t const *str);
 
+/**
+ * @brief converts a string to lowercase
+ *
+ * @param str   the string to convert
+ * @return sting in lowercase
+ */
+str_t *str_lowcase(str_t *str);
+
+/**
+ * @brief converts a string to uppercase
+ *
+ * @param str   the string to convert
+ * @return string in uppercase
+ */
+str_t *str_upcase(str_t *str);
+
 
 #endif /* INCLUDE_MY_STR_ */

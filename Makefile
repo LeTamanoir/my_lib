@@ -36,7 +36,7 @@ lib:
 	make -C ./lib/my
 
 clean_lib:
-	make -C ./lib/my
+	make -C ./lib/my fclean
 
 clean:
 	rm -f $(OBJ)

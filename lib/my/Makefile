@@ -33,6 +33,7 @@ MY_YAML		=	$(YAML_DIR)/my_yaml.c
 MY_VEC		=	$(VEC_DIR)/my_vec.c			\
 				$(VEC_DIR)/setters.c		\
 				$(VEC_DIR)/misc.c			\
+				$(VEC_DIR)/filter.c			\
 				$(VEC_DIR)/iterators.c		\
 				$(VEC_DIR)/sort.c
 
@@ -81,6 +82,7 @@ MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
 				$(STR_DIR)/str_type/compare.c	\
 				$(STR_DIR)/str_type/checks.c	\
 				$(STR_DIR)/str_type/trim.c		\
+				$(STR_DIR)/str_type/modifiers.c		\
 				$(STR_DIR)/str_type/format.c	\
 				$(STR_DIR)/str_type/misc.c		\
 				$(STR_DIR)/str_type/getters.c	\

@@ -11,62 +11,40 @@
 #include "my_map.h"
 #include "my_yaml.h"
 
-#include <time.h>
-
-void print_number(void *vec_item, void *ext_data)
+int keep_fn(vec_t *v, size_t i)
 {
-    (void)ext_data;
-    my_printf("%d\t", *(int*)vec_item);
+    return (((vec_str_t*)v)->data[i]->length > 0);
 }
 
-int main(void)
+int compare_fn(vec_t *v, size_t i, size_t j)
 {
-    vec_int_t *test = (vec_int_t*)vec_create(10, sizeof(int));
+    SMART_STR str_t *s1 = str_lowcase(str_dup(((vec_str_t*)v)->data[i]));
+    SMART_STR str_t *s2 = str_lowcase(str_dup(((vec_str_t*)v)->data[j]));
 
-    time_t t;
-    srand(time(&t));
+    return str_compare(s1, s2);
+}
 
-    for (int i = 0; i < 100; i++) {
-        int temp = rand() % 100000;
-        vec_push_back((vec_t**)&test, &temp);
+int main(int ac, char **av)
+{
+    if (ac != 2)
+        return 1;
+
+    SMART_STR str_t *temp = str_create(av[1]);
+    SMART_STR str_t *delim = str_create(" ");
+    SMART_VEC vec_str_t *split_ = str_split(temp, delim);
+    SMART vec_str_t *words = (vec_str_t*)vec_filter((vec_t*)split_, &keep_fn);
+    SMART_STR str_t *output = str_create("");
+
+    vec_sort((vec_t*)words, &compare_fn);
+
+    for (size_t i = 0; i < words->base.size; ++i) {
+        if (i != 0)
+            str_cadd(&output, ' ');
+        str_stradd(&output, words->data[i]);
     }
+    str_cadd(&output, '\n');
 
-    vec_for_each((vec_t*)test, &print_number, NULL);
-    my_puts("\n=======\n");
-
-    vec_sort((vec_t*)test, NULL);
-
-    vec_for_each((vec_t*)test, &print_number, NULL);
-    my_puts("\n=======\n");
-
-    free(test);
-
-    map_t *map = yaml_parse("./test.yaml");
-
-    vec_void_t *keys = map_get_keys(map);
-    char *key;
-    yaml_elem_t *temp;
-
-    for (size_t i = 0; i < keys->base.size; i++) {
-        key = keys->data[i];
-        temp = yaml_get(map, key);
-
-        switch (temp->type) {
-            case YAML_INT:
-                my_printf("map[%s] = %i\n", key, *(int*)temp->data);
-                break;
-            case YAML_DOUBLE:
-                my_printf("map[%s] = %f\n", key, *(double*)temp->data);
-                break;
-            case YAML_STR:
-                my_printf("map[%s] = %s\n", key, (char*)temp->data);
-                break;
-        }
-    }
-
-    vec_free((vec_t*)keys, &free);
-    map_free(map);
-
+    str_print(output);
 
     return 0;
 }

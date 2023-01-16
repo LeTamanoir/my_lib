@@ -22,6 +22,7 @@ TEST_NAME	=	unit_tests
 all: tests_run
 
 unit_tests:
+	../../clean.sh
 	make -C ../../lib/my
 	$(CC) -o $(TEST_NAME) $(SRC) $(TESTS) $(LIB) $(INCLUDE) \
 	--coverage -lcriterion

@@ -9,7 +9,7 @@
 
 char *my_strupcase(char *str)
 {
-    for (int i = 0; str[i]; i++)
+    for (size_t i = 0; str[i]; i++)
         str[i] = my_upcase(str[i]);
 
     return str;

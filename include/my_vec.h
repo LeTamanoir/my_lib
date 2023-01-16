@@ -118,5 +118,14 @@ void vec_free(vec_t *vec, void (*free_fn)(void *));
  */
 vec_t *vec_create(size_t nb_data, size_t el_size);
 
+/**
+ * @brief filters a vector
+ *
+ * @param vec       the vector to filter
+ * @param keep_fn   the function to filter the elements
+ * @return a new vector with the filterd elements
+ */
+vec_t *vec_filter(vec_t *vec, int (*keep_fn)(vec_t *, size_t));
+
 
 #endif /* INCLUDE_MY_VEC_ */

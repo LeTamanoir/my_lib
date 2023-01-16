@@ -10,6 +10,7 @@
     #include <stdlib.h>
 
     #define SMART_ANY(fn)   __attribute__((cleanup(fn)))
+    #define SMART           SMART_ANY(auto_simple_free)
     #define SMART_STR       SMART_ANY(auto_simple_free)
     #define SMART_FILE      SMART_ANY(auto_file_free)
     #define SMART_MAP       SMART_ANY(auto_map_free)

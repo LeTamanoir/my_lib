@@ -9,7 +9,7 @@
 
 char *my_strlowcase(char *str)
 {
-    for (int i = 0; str[i]; i++)
+    for (size_t i = 0; str[i]; i++)
         str[i] = my_lowcase(str[i]);
 
     return str;
