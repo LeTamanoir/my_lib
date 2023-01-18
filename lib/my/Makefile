@@ -32,6 +32,7 @@ MY_YAML		=	$(YAML_DIR)/my_yaml.c
 
 MY_VEC		=	$(VEC_DIR)/my_vec.c			\
 				$(VEC_DIR)/setters.c		\
+				$(VEC_DIR)/find.c			\
 				$(VEC_DIR)/misc.c			\
 				$(VEC_DIR)/filter.c			\
 				$(VEC_DIR)/iterators.c		\
@@ -56,6 +57,7 @@ MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_calloc.c	\
 				$(STDLIB_DIR)/my_memcpy.c	\
 				$(STDLIB_DIR)/my_memset.c	\
+				$(STDLIB_DIR)/my_memcmp.c	\
 				$(STDLIB_DIR)/auto_free.c	\
 				$(STDLIB_DIR)/vfree.c
 
@@ -76,6 +78,7 @@ MY_LIST		=	$(LIST_DIR)/my_list.c		\
 
 
 MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
+				$(STR_DIR)/str_type/join.c		\
 				$(STR_DIR)/str_type/adders.c	\
 				$(STR_DIR)/str_type/content_check.c	\
 				$(STR_DIR)/str_type/convert.c	\
@@ -166,7 +169,11 @@ INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
 			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_MATRIX_DIR)
 
 
-CFLAGS += -Werror -Wextra -Wall $(INCLUDE) -g3
+CFLAGS += -Werror -Wextra -Wall $(INCLUDE)
+
+ifeq ($(DEBUG),1)
+	CFLAGS += -g3
+endif
 
 OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \

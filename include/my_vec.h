@@ -127,5 +127,23 @@ vec_t *vec_create(size_t nb_data, size_t el_size);
  */
 vec_t *vec_filter(vec_t *vec, int (*keep_fn)(vec_t *, size_t));
 
+/**
+ * @brief finds an item from a vector with a given search function
+ *
+ * @param vec       the vector to search
+ * @param find_fn   the function to describe what you look for
+ * @return the item if it exists or NULL
+ */
+void *vec_find_fn(vec_t *vec, int (*find_fn)(vec_t *, size_t));
+
+/**
+ * @brief finds the exact copy of an item in a vector
+ *
+ * @param vec       the vector to search
+ * @param to_find   the data to find
+ * @return the item if it exists or NULL
+ */
+void *vec_find(vec_t *vec, void *to_find);
+
 
 #endif /* INCLUDE_MY_VEC_ */

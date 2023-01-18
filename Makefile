@@ -20,6 +20,10 @@ INCLUDE	=	-I$(INCLUDE_DIR)
 
 CFLAGS += -Werror -Wextra -Wall $(INCLUDE)
 
+ifeq ($(DEBUG),1)
+	CFLAGS += -g3
+endif
+
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	[PROJECT-NAME]

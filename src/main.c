@@ -33,15 +33,11 @@ int main(int ac, char **av)
     SMART_STR str_t *delim = str_create(" ");
     SMART_VEC vec_str_t *split_ = str_split(temp, delim);
     SMART vec_str_t *words = (vec_str_t*)vec_filter((vec_t*)split_, &keep_fn);
-    SMART_STR str_t *output = str_create("");
+    SMART_STR str_t *output = NULL;
 
     vec_sort((vec_t*)words, &compare_fn);
 
-    for (size_t i = 0; i < words->base.size; ++i) {
-        if (i != 0)
-            str_cadd(&output, ' ');
-        str_stradd(&output, words->data[i]);
-    }
+    output = str_join(words, delim);
     str_cadd(&output, '\n');
 
     str_print(output);

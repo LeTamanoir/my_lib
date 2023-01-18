@@ -28,6 +28,7 @@ char *my_itoa(long int nb);
 int my_atoi(char const *str);
 double my_atof(char const *str);
 void *my_memcpy(void *dest, const void *src, size_t n);
+int my_memcmp(void const *m1, void const *m2, size_t el);
 void *my_memset(void *dest, char c, size_t len);
 void vfree(int argc, ...);
 

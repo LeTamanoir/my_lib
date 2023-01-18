@@ -112,6 +112,15 @@ str_t *str_ncreate(char const *init, size_t n);
 vec_str_t *str_split(str_t *str, str_t *delims);
 
 /**
+ * @brief joins a vector of strings
+ *
+ * @param vec   the vector to join
+ * @param delim the delimitor to add between each elem
+ * @return the string of the joined vector
+ */
+str_t *str_join(vec_str_t *vec, str_t *delim);
+
+/**
  * @brief checks if str starts with start
  *
  * @param str       string to perform the check on
