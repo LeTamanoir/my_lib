@@ -305,7 +305,7 @@ int str_eq(str_t *s1, str_t *s2);
  * @param str   the string to extract the integer from
  * @return the integer represented by the string
  */
-int str_atoi(str_t const *str);
+int str_toint(str_t const *str);
 
 /**
  * @brief converts a string to a double
@@ -313,7 +313,15 @@ int str_atoi(str_t const *str);
  * @param str   the string to extract the double from
  * @return the double represented by the string
  */
-double str_atof(str_t const *str);
+double str_tofloat(str_t const *str);
+
+/**
+ * @brief reverses a string in memory
+ *
+ * @param str   the string to reverse
+ * @return the string reversed
+ */
+str_t *str_reverse(str_t *str);
 
 /**
  * @brief converts a string to lowercase

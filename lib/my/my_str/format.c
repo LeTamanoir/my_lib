@@ -25,13 +25,3 @@ str_t **str_fadd(str_t **str, char const *fmt, ...)
 
     return str;
 }
-
-str_t **str_slice(str_t **str, size_t start, size_t end)
-{
-    for (size_t i = 0; i < end - start; i++)
-        (*str)->data[i] = (*str)->data[start + i];
-
-    (*str)->length = end - start;
-
-    return str;
-}

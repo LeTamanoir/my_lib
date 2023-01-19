@@ -9,7 +9,7 @@
 
 char *my_strcat(char *dest, char const *src)
 {
-    int str_len = my_strlen(dest);
+    size_t str_len = my_strlen(dest);
     int i;
 
     for (i = 0; src[i] != '\0'; i++)

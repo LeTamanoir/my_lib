@@ -77,45 +77,45 @@ MY_LIST		=	$(LIST_DIR)/my_list.c		\
 				$(LIST_DIR)/iterators.c
 
 
-MY_STR		=	$(STR_DIR)/str_type/my_str.c	\
-				$(STR_DIR)/str_type/join.c		\
-				$(STR_DIR)/str_type/adders.c	\
-				$(STR_DIR)/str_type/content_check.c	\
-				$(STR_DIR)/str_type/convert.c	\
-				$(STR_DIR)/str_type/compare.c	\
-				$(STR_DIR)/str_type/checks.c	\
-				$(STR_DIR)/str_type/trim.c		\
-				$(STR_DIR)/str_type/modifiers.c		\
-				$(STR_DIR)/str_type/format.c	\
-				$(STR_DIR)/str_type/misc.c		\
-				$(STR_DIR)/str_type/getters.c	\
-				$(STR_DIR)/my_isalpha.c		 	\
-				$(STR_DIR)/my_isalphanum.c		\
-				$(STR_DIR)/my_islower.c			\
-				$(STR_DIR)/my_isnum.c			\
-				$(STR_DIR)/my_isprintable.c		\
-				$(STR_DIR)/my_isupper.c			\
-				$(STR_DIR)/my_lowcase.c			\
-				$(STR_DIR)/my_nbr_length.c		\
-				$(STR_DIR)/my_revstr.c			\
-				$(STR_DIR)/my_str_isalpha.c		\
-				$(STR_DIR)/my_str_islower.c		\
-				$(STR_DIR)/my_str_isfloat.c		\
-				$(STR_DIR)/my_str_isint.c		\
-				$(STR_DIR)/my_str_isnum.c		\
-				$(STR_DIR)/my_str_isprintable.c	\
-				$(STR_DIR)/my_str_isupper.c		\
-				$(STR_DIR)/my_strcat.c			\
-				$(STR_DIR)/my_strcmp.c			\
-				$(STR_DIR)/my_strcpy.c			\
-				$(STR_DIR)/my_strdup.c			\
-				$(STR_DIR)/my_strlen.c			\
-				$(STR_DIR)/my_strlowcase.c		\
-				$(STR_DIR)/my_strncat.c			\
-				$(STR_DIR)/my_strncmp.c			\
-				$(STR_DIR)/my_strncpy.c			\
-				$(STR_DIR)/my_strupcase.c		\
-				$(STR_DIR)/my_upcase.c
+MY_STR		=	$(STR_DIR)/my_str.c						\
+				$(STR_DIR)/join.c						\
+				$(STR_DIR)/adders.c						\
+				$(STR_DIR)/content_check.c				\
+				$(STR_DIR)/convert.c					\
+				$(STR_DIR)/compare.c					\
+				$(STR_DIR)/checks.c						\
+				$(STR_DIR)/trim.c						\
+				$(STR_DIR)/modifiers.c					\
+				$(STR_DIR)/format.c						\
+				$(STR_DIR)/misc.c						\
+				$(STR_DIR)/getters.c					\
+				$(STR_DIR)/c_string/my_isalpha.c	 	\
+				$(STR_DIR)/c_string/my_isalphanum.c		\
+				$(STR_DIR)/c_string/my_islower.c		\
+				$(STR_DIR)/c_string/my_isnum.c			\
+				$(STR_DIR)/c_string/my_isprintable.c	\
+				$(STR_DIR)/c_string/my_isupper.c		\
+				$(STR_DIR)/c_string/my_lowcase.c		\
+				$(STR_DIR)/c_string/my_nbr_length.c		\
+				$(STR_DIR)/c_string/my_revstr.c			\
+				$(STR_DIR)/c_string/my_str_isalpha.c	\
+				$(STR_DIR)/c_string/my_str_islower.c	\
+				$(STR_DIR)/c_string/my_str_isfloat.c	\
+				$(STR_DIR)/c_string/my_str_isint.c		\
+				$(STR_DIR)/c_string/my_str_isnum.c		\
+				$(STR_DIR)/c_string/my_str_isprintable.c \
+				$(STR_DIR)/c_string/my_str_isupper.c	\
+				$(STR_DIR)/c_string/my_strcat.c			\
+				$(STR_DIR)/c_string/my_strcmp.c			\
+				$(STR_DIR)/c_string/my_strcpy.c			\
+				$(STR_DIR)/c_string/my_strdup.c			\
+				$(STR_DIR)/c_string/my_strlen.c			\
+				$(STR_DIR)/c_string/my_strlowcase.c		\
+				$(STR_DIR)/c_string/my_strncat.c		\
+				$(STR_DIR)/c_string/my_strncmp.c		\
+				$(STR_DIR)/c_string/my_strncpy.c		\
+				$(STR_DIR)/c_string/my_strupcase.c		\
+				$(STR_DIR)/c_string/my_upcase.c
 
 
 MY_FILE		=	$(FILE_DIR)/my_file.c 			\

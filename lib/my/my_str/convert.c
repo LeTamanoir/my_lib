@@ -7,7 +7,7 @@
 
 #include "my_str.h"
 
-int str_atoi(str_t const *str)
+int str_toint(str_t const *str)
 {
     size_t i = 0;
     int nb = 0;
@@ -26,7 +26,7 @@ int str_atoi(str_t const *str)
     return nb * sign;
 }
 
-double str_atof(str_t const *str)
+double str_tofloat(str_t const *str)
 {
     size_t i = 0;
     double sign = 1;
