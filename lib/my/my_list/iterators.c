@@ -13,7 +13,7 @@ void list_for_each(list_t *list, void (*fn)(void *, void *), void *data)
     node_t *temp = list->front;
 
     while (temp != NULL) {
-        fn(temp->value, data);
+        fn(temp->data, data);
         temp = temp->next;
     }
 }

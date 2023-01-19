@@ -10,7 +10,7 @@
 
 
 typedef struct node_s {
-    void *value;
+    void *data;
     struct node_s *prev;
     struct node_s *next;
 } node_t;
@@ -30,27 +30,27 @@ list_t *list_create(void);
 
 /**
  * @brief frees a list and its content
- *        the content has to be freeable with a single free
  *
- * @param list the list to free
+ * @param list      the list to free
+ * @param free_fn   the function to free an element
  */
-void list_free(list_t *list);
+void list_free(list_t *list, void (*free_fn)(void *));
 
 /**
  * @brief adds a new element to the front of a list
  *
  * @param list  the list to add the element to
- * @param value the value of the element
+ * @param data the data of the element
  */
-void list_push_front(list_t *list, void *value);
+void list_push_front(list_t *list, void *data);
 
 /**
  * @brief adds a new element to the back of a list
  *
  * @param list  the list to add the element to
- * @param value the value of the element
+ * @param data the data of the element
  */
-void list_push_back(list_t *list, void *value);
+void list_push_back(list_t *list, void *data);
 
 /**
  * @brief removes the first element of a list

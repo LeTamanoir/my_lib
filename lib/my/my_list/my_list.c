@@ -18,7 +18,7 @@ node_t *node_create(void)
 
     new_node->prev = NULL;
     new_node->next = NULL;
-    new_node->value = NULL;
+    new_node->data = NULL;
 
     return new_node;
 }
@@ -37,13 +37,7 @@ list_t *list_create(void)
     return list;
 }
 
-void node_free(node_t *node)
-{
-    free(node->value);
-    free(node);
-}
-
-void list_free(list_t *list)
+void list_free(list_t *list, void (*free_fn)(void *))
 {
     node_t *temp = list->front;
     node_t *old = list->front;
@@ -51,7 +45,8 @@ void list_free(list_t *list)
     while (temp != NULL) {
         old = temp;
         temp = temp->next;
-        node_free(old);
+        free_fn(old->data);
+        free(old);
     }
 
     free(list);

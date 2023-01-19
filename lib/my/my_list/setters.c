@@ -8,10 +8,10 @@
 #include "my_stdlib.h"
 #include "my_list.h"
 
-void list_push_front(list_t *list, void *value)
+void list_push_front(list_t *list, void *data)
 {
     node_t *new_node = node_create();
-    new_node->value = value;
+    new_node->data = data;
     list->size++;
 
     if (list->front == NULL && list->back == NULL) {
@@ -24,10 +24,10 @@ void list_push_front(list_t *list, void *value)
     }
 }
 
-void list_push_back(list_t *list, void *value)
+void list_push_back(list_t *list, void *data)
 {
     node_t *new_node = node_create();
-    new_node->value = value;
+    new_node->data = data;
     list->size++;
 
     if (list->front == NULL && list->back == NULL) {
@@ -69,7 +69,6 @@ void list_pop_back(list_t *list)
     list->size--;
 
     list->back = list->back->prev;
-
     if (list->back == NULL) {
         list->front = NULL;
     } else {
