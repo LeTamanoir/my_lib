@@ -18,8 +18,8 @@ int keep_fn(vec_t *v, size_t i)
 
 int compare_fn(vec_t *v, size_t i, size_t j)
 {
-    SMART_STR str_t *s1 = str_lowcase(str_dup(((vec_str_t*)v)->data[i]));
-    SMART_STR str_t *s2 = str_lowcase(str_dup(((vec_str_t*)v)->data[j]));
+    SMART_STR str_t *s1 = str_tolowcase(str_dup(((vec_str_t*)v)->data[i]));
+    SMART_STR str_t *s2 = str_tolowcase(str_dup(((vec_str_t*)v)->data[j]));
 
     return str_compare(s1, s2);
 }

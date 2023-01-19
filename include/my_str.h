@@ -339,7 +339,7 @@ str_t *str_substr(str_t *str, size_t start, size_t end);
  * @param str   the string to convert
  * @return sting in lowercase
  */
-str_t *str_lowcase(str_t *str);
+str_t *str_tolowcase(str_t *str);
 
 /**
  * @brief converts a string to uppercase
@@ -347,7 +347,7 @@ str_t *str_lowcase(str_t *str);
  * @param str   the string to convert
  * @return string in uppercase
  */
-str_t *str_upcase(str_t *str);
+str_t *str_toupcase(str_t *str);
 
 
 #endif /* INCLUDE_MY_STR_ */
