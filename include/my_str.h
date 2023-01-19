@@ -324,6 +324,16 @@ double str_tofloat(str_t const *str);
 str_t *str_reverse(str_t *str);
 
 /**
+ * @brief creates a substring of a given string
+ *
+ * @param str       the string to create the substring from
+ * @param start     start index of the substring
+ * @param end       end index of the substring
+ * @return the created substring
+ */
+str_t *str_substr(str_t *str, size_t start, size_t end);
+
+/**
  * @brief converts a string to lowercase
  *
  * @param str   the string to convert

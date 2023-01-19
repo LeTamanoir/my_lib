@@ -38,3 +38,13 @@ str_t *str_dup(str_t *old)
 
     return new;
 }
+
+str_t *str_substr(str_t *str, size_t start, size_t end)
+{
+    str_t *new = str_create("");
+
+    str_stradd(&new, str);
+    str_slice(&new, start, end);
+
+    return new;
+}
