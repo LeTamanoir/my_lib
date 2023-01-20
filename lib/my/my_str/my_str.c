@@ -11,6 +11,13 @@
 
 str_t *str_ncreate(char const *init, size_t n)
 {
+
+    // static metadata
+
+    // malloc + sizeof(metadata)
+
+    // read str - sizeof(metadata)
+
     size_t capacity = get_padded_size(n);
     str_t *str = malloc(sizeof(str_t) + sizeof(char) * capacity);
 
