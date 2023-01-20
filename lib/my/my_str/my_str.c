@@ -9,9 +9,13 @@
 #include "my_stdlib.h"
 #include "my_vec.h"
 
+typedef struct obj_meta_s {
+
+} obj_meta_t;
+
 str_t *str_ncreate(char const *init, size_t n)
 {
-
+    static obj_meta = {0};
     // static metadata
 
     // malloc + sizeof(metadata)
