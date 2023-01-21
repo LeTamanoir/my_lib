@@ -85,5 +85,13 @@ void file_close(file_t *file);
  */
 void file_free(file_t *file);
 
+/**
+ * @brief create a file instance from a FD
+ *
+ * @param fd    the FD
+ * @return the created file instance
+ */
+file_t *file_dcreate(int fd);
+
 
 #endif /* INCLUDE_MY_FILE_ */
