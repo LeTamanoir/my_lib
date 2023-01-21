@@ -46,5 +46,14 @@ void obj_set_destructor(void *obj, void (*destructor)(void *));
  */
 void obj_free(void *obj);
 
+/**
+ * @brief frees multiple objects
+ *
+ * @param argc the number of args to free
+ * @param ... the objects to free
+ */
+void obj_vfree(int argc, ...);
+
+
 
 #endif /* INCLUDE_MY_OBJ_ */
