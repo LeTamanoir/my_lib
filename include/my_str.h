@@ -263,6 +263,21 @@ str_t **str_trim(str_t **str, char pad);
 void str_print(str_t *str);
 
 /**
+ * @brief prints a string to the stdout with an added newline
+ *
+ * @param str   string to print
+ */
+void str_println(str_t *str);
+
+/**
+ * @brief prints a string to a given fd
+ *
+ * @param fd  fd to print to
+ * @param str string to print
+ */
+void str_dprint(int fd, str_t *str);
+
+/**
  * @brief adds mutliple char* to a string
  *
  * @param str   destination string

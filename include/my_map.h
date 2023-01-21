@@ -69,7 +69,7 @@ void map_free(map_t *map);
  *
  * @param elem  the element to free
  */
-void map_elem_free(void *elem);
+void map_elem_free(map_elem_t *elem);
 
 /**
  * @brief hash a key to find its index in the map

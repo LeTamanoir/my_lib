@@ -73,8 +73,9 @@ void vec_insert(vec_t **vec, void *elem, size_t idx);
  *
  * @param vec       the vector to resize
  * @param new_size  the new size
+ * @return the resized vector
  */
-void vec_resize(vec_t **vec, size_t new_size);
+vec_t **vec_resize(vec_t **vec, size_t new_size);
 
 /**
  * @brief adds an element at the back of a vector
@@ -103,20 +104,29 @@ void vec_swap(vec_t *vec, size_t i, size_t j);
 
 /**
  * @brief frees a vector composed of pointers
+ *        every element must ve freeable with a single free call
  *
  * @param vec       the vector to free
- * @param free_fn   the function to free an element
  */
-void vec_free(vec_t *vec, void (*free_fn)(void *));
+void vec_free(vec_t *vec);
 
 /**
- * @brief creates a vector
+ * @brief creates a vector with vec_free as its default destructor
+ *        use obj_set_destructor to modify it if needed
  *
  * @param nb_data   the number of elements in the vector
  * @param el_size   the size of an element of the vector
  * @return the created vector
  */
 vec_t *vec_create(size_t nb_data, size_t el_size);
+
+/**
+ * @brief frees a vector composed of pointers with a given free function
+ *
+ * @param vec       the vector to free
+ * @param free_fn   the free function
+ */
+void vec_free_fn(vec_t *vec, void (*free_fn)(void *));
 
 /**
  * @brief filters a vector

@@ -53,13 +53,13 @@ yaml_elem_t *yaml_get(map_t *map, str_t *key)
 
 map_t *yaml_parse(char const *file_path)
 {
-    SMART_FILE file_t *file = file_create(file_path, F_R);
-    SMART_STR str_t *line_delim = str_create(LINE_DELIM);
-    SMART_STR str_t *data_delim = str_create(DATA_DELIM);
+    SMART file_t *file = file_create(file_path, F_R);
+    SMART str_t *line_delim = str_create(LINE_DELIM);
+    SMART str_t *data_delim = str_create(DATA_DELIM);
     if (!file || !line_delim || !data_delim)
         return NULL;
     file_get_content(file);
-    vec_str_t *content = str_split(file->content, line_delim);
+    SMART vec_str_t *content = str_split(file->content, line_delim);
     map_t *map = map_create(content->base.size);
     vec_str_t *split_ = NULL;
 
@@ -69,8 +69,7 @@ map_t *yaml_parse(char const *file_path)
             str_trim(split_->data, ' ');
             str_trim(split_->data + 1, ' ');
             add_type_dispatch(map, split_->data[0], split_->data[1]);
-        } vec_free((vec_t*)split_, &free);
+        } vec_free((vec_t*)split_);
     }
-    vec_free((vec_t*)content, &free);
     return map;
 }

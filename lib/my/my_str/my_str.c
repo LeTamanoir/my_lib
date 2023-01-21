@@ -8,22 +8,12 @@
 #include "my_str.h"
 #include "my_stdlib.h"
 #include "my_vec.h"
-
-typedef struct obj_meta_s {
-
-} obj_meta_t;
+#include "my_obj.h"
 
 str_t *str_ncreate(char const *init, size_t n)
 {
-    static obj_meta = {0};
-    // static metadata
-
-    // malloc + sizeof(metadata)
-
-    // read str - sizeof(metadata)
-
     size_t capacity = get_padded_size(n);
-    str_t *str = malloc(sizeof(str_t) + sizeof(char) * capacity);
+    str_t *str = obj_alloc(sizeof(str_t) + sizeof(char) * capacity);
 
     if (str == NULL)
         return NULL;

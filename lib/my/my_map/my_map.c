@@ -8,14 +8,16 @@
 #include "my_map.h"
 #include "my_vec.h"
 #include "my_str.h"
+#include "my_obj.h"
 
 map_t *map_create(int capacity)
 {
-    map_t *map = malloc(sizeof(map_t));
+    map_t *map = obj_alloc(sizeof(map_t));
 
     if (map == NULL)
         return NULL;
 
+    obj_set_destructor(map, (void (*)(void *))&map_free);
     map->capacity = capacity;
     map->elems = (vec_void_t*)vec_create(capacity, sizeof(void*));
     my_memset(map->elems->data, 0, sizeof(void*) * map->elems->base.capacity);
@@ -23,12 +25,11 @@ map_t *map_create(int capacity)
     return map;
 }
 
-void map_elem_free(void *elem)
+void map_elem_free(map_elem_t *elem)
 {
-    map_elem_t *temp = elem;
-    free(temp->data);
-    free(temp->key);
-    free(temp);
+    obj_free(elem->data);
+    obj_free(elem->key);
+    free(elem);
 }
 
 void map_free(map_t *map)
@@ -39,8 +40,8 @@ void map_free(map_t *map)
         elem_col = map->elems->data[i];
         if (elem_col == NULL)
             continue;
-        vec_free((vec_t*)elem_col, &map_elem_free);
+        vec_free((vec_t*)elem_col);
     }
-    free(map->elems);
+    obj_free(map->elems);
     free(map);
 }

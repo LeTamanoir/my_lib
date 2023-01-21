@@ -7,16 +7,22 @@
 
 #include "my_stdlib.h"
 #include "my_vec.h"
+#include "my_obj.h"
 
-void vec_resize(vec_t **vec, size_t new_size)
+vec_t **vec_resize(vec_t **vec, size_t new_size)
 {
     vec_t *old = *vec;
     *vec = vec_create(new_size, old->base.el_size);
 
+    if (*vec == NULL)
+        return NULL;
+
+    obj_set_destructor(*vec, obj_get_destructor(old));
     my_memcpy((*vec)->data, old->data, old->base.size * old->base.el_size);
     (*vec)->base.size = old->base.size;
-
-    free(old);
+    obj_set_destructor(old, NULL);
+    obj_free(old);
+    return vec;
 }
 
 void vec_remove(vec_t *vec, size_t idx)

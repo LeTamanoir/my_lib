@@ -18,7 +18,9 @@ SRC	=	$(SRC_DIR)/main.c
 
 INCLUDE	=	-I$(INCLUDE_DIR)
 
-CFLAGS += -Werror -Wextra -Wall $(INCLUDE)
+CFLAGS += -Werror -Wextra -Wall
+CPPFLAGS += $(INCLUDE)
+LDDFLAGS += $(LIB_MY) $(LIB_MATH)
 
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3
@@ -31,7 +33,7 @@ NAME	=	[PROJECT-NAME]
 all:	$(NAME)
 
 $(NAME):	lib	$(OBJ)
-	$(CC) -o $(NAME) $(OBJ)	$(LIB_MY) $(LIB_MATH)
+	$(CC) -o $(NAME) $(OBJ) $(LDDFLAGS)
 
 tests_run:
 	make -C ./tests/unit_tests

@@ -8,6 +8,7 @@
 #include "my_stdlib.h"
 #include "my_str.h"
 #include "my_list.h"
+#include "my_obj.h"
 
 node_t *node_create(void)
 {
@@ -25,11 +26,12 @@ node_t *node_create(void)
 
 list_t *list_create(void)
 {
-    list_t *list = malloc(sizeof(list_t));
+    list_t *list = obj_alloc(sizeof(list_t));
 
     if (list == NULL)
         return NULL;
 
+    obj_set_destructor(list, (void (*)(void *))&list_free);
     list->front = NULL;
     list->back = NULL;
     list->size = 0;
@@ -37,7 +39,7 @@ list_t *list_create(void)
     return list;
 }
 
-void list_free(list_t *list, void (*free_fn)(void *))
+void list_free(list_t *list)
 {
     node_t *temp = list->front;
     node_t *old = list->front;
@@ -45,9 +47,14 @@ void list_free(list_t *list, void (*free_fn)(void *))
     while (temp != NULL) {
         old = temp;
         temp = temp->next;
-        free_fn(old->data);
-        free(old);
+        node_free(old);
     }
 
     free(list);
+}
+
+void node_free(node_t *node)
+{
+    obj_free(node->data);
+    free(node);
 }

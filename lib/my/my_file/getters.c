@@ -7,11 +7,10 @@
 
 #include <sys/stat.h>
 #include <fcntl.h>
-
 #include "my_stdlib.h"
 #include "my_str.h"
 #include "my_file.h"
-#include "my_file.h"
+#include "my_obj.h"
 #include "get_line_utils.h"
 
 str_t *file_get_content(file_t *file)
@@ -44,7 +43,7 @@ str_t *file_get_line(file_t *file)
     if ((*cache)->length == 0 && can_add)
         size = add_from_read(file);
     if (size == 0 && (*cache)->length == 0) {
-        free(file->__cache);
+        obj_free(file->__cache);
         file->__cache = NULL;
     }
     return *line;

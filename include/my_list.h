@@ -22,7 +22,8 @@ typedef struct list_s {
 } list_t;
 
 /**
- * @brief creates a doubly linked list
+ * @brief creates a doubly linked list with list_free as its default destructor
+ *        use obj_set_destructor to modify it if needed
  *
  * @return a new list
  */
@@ -30,11 +31,11 @@ list_t *list_create(void);
 
 /**
  * @brief frees a list and its content
+ *        each node's data must be freeable with only one free call
  *
  * @param list      the list to free
- * @param free_fn   the function to free an element
  */
-void list_free(list_t *list, void (*free_fn)(void *));
+void list_free(list_t *list);
 
 /**
  * @brief adds a new element to the front of a list

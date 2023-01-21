@@ -21,7 +21,7 @@ void file_write(file_t *file, char *str)
 void file_fwrite(file_t *file, char *fmt, ...)
 {
     va_list ap;
-    char *dest;
+    char *dest = NULL;
 
     va_start(ap, fmt);
     my_vasprintf(&dest, fmt, &ap);

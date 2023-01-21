@@ -6,48 +6,14 @@
 */
 
 #include "my_stdlib.h"
-#include "my_str.h"
-#include "my_list.h"
-#include "my_map.h"
-#include "my_vec.h"
-#include "my_file.h"
+#include "my_obj.h"
 
-void auto_simple_free(void *ptr)
+void auto_free(void *ptr)
 {
-    void *str = *(void **)ptr;
-    if (str == NULL)
-        return;
-    free(str);
-}
+    void *obj = *(void **)ptr;
 
-void auto_file_free(void *ptr)
-{
-    file_t *file = *(file_t **)ptr;
-    if (file == NULL)
+    if (obj == NULL)
         return;
-    file_free(file);
-}
 
-void auto_map_free(void *ptr)
-{
-    map_t *map = *(map_t **)ptr;
-    if (map == NULL)
-        return;
-    map_free(map);
-}
-
-void auto_list_free(void *ptr)
-{
-    list_t *list = *(list_t **)ptr;
-    if (list == NULL)
-        return;
-    list_free(list);
-}
-
-void auto_vec_free(void *ptr)
-{
-    vec_t *vec = *(vec_t **)ptr;
-    if (vec == NULL)
-        return;
-    vec_free(vec, &free);
+    obj_free(obj);
 }

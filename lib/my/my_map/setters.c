@@ -7,6 +7,7 @@
 
 #include "my_map.h"
 #include "my_vec.h"
+#include "my_obj.h"
 #include "my_str.h"
 
 static int overwrite_if_in_map(vec_void_t *cands, str_t *key, void *data)
@@ -21,6 +22,20 @@ static int overwrite_if_in_map(vec_void_t *cands, str_t *key, void *data)
     return 0;
 }
 
+map_elem_t *map_elem_create(str_t *key, void *data)
+{
+    map_elem_t *elem = obj_alloc(sizeof(map_elem_t));
+
+    if (elem == NULL)
+        return NULL;
+
+    obj_set_destructor(elem, (void (*)(void *))&map_elem_free);
+    elem->key = str_dup(key);
+    elem->data = data;
+
+    return elem;
+}
+
 void map_set(map_t *map, str_t *key, void *data)
 {
     unsigned int hash_idx = map_hash_key(key) % map->capacity;
@@ -32,10 +47,7 @@ void map_set(map_t *map, str_t *key, void *data)
     }
     if (overwrite_if_in_map(map->elems->data[hash_idx], key, data))
         return;
-    elem = malloc(sizeof(map_elem_t));
-    if (elem == NULL)
-        return;
-    elem->key = str_dup(key);
-    elem->data = data;
+
+    elem = map_elem_create(key, data);
     vec_push_back((vec_t**)map->elems->data + hash_idx, &elem);
 }

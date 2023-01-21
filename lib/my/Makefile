@@ -9,6 +9,7 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
+OBJ_DIR		=	./my_obj
 YAML_DIR	=	./my_yaml
 MAP_DIR		=	./my_map
 VEC_DIR		=	./my_vec
@@ -25,6 +26,9 @@ INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
 INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
 INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
 INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
+
+
+MY_OBJ		=	$(OBJ_DIR)/my_obj.c
 
 
 MY_YAML		=	$(YAML_DIR)/my_yaml.c
@@ -85,6 +89,7 @@ MY_STR		=	$(STR_DIR)/my_str.c						\
 				$(STR_DIR)/compare.c					\
 				$(STR_DIR)/checks.c						\
 				$(STR_DIR)/trim.c						\
+				$(STR_DIR)/print.c						\
 				$(STR_DIR)/modifiers.c					\
 				$(STR_DIR)/format.c						\
 				$(STR_DIR)/misc.c						\
@@ -169,7 +174,8 @@ INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
 			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_MATRIX_DIR)
 
 
-CFLAGS += -Werror -Wextra -Wall $(INCLUDE)
+CFLAGS += -Werror -Wextra -Wall
+CPPFLAGS += $(INCLUDE)
 
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3
@@ -178,7 +184,7 @@ endif
 OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \
 		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o) $(MY_VEC:.c=.o) \
-		$(MY_MAP:.c=.o) $(MY_YAML:.c=.o)
+		$(MY_MAP:.c=.o) $(MY_YAML:.c=.o) $(MY_OBJ:.c=.o)
 
 NAME	=	libmy.a
 
