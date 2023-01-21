@@ -94,33 +94,17 @@ MY_STR		=	$(STR_DIR)/my_str.c						\
 				$(STR_DIR)/format.c						\
 				$(STR_DIR)/misc.c						\
 				$(STR_DIR)/getters.c					\
-				$(STR_DIR)/c_string/my_isalpha.c	 	\
-				$(STR_DIR)/c_string/my_isalphanum.c		\
-				$(STR_DIR)/c_string/my_islower.c		\
-				$(STR_DIR)/c_string/my_isnum.c			\
-				$(STR_DIR)/c_string/my_isprintable.c	\
-				$(STR_DIR)/c_string/my_isupper.c		\
-				$(STR_DIR)/c_string/my_lowcase.c		\
-				$(STR_DIR)/c_string/my_nbr_length.c		\
-				$(STR_DIR)/c_string/my_revstr.c			\
-				$(STR_DIR)/c_string/my_str_isalpha.c	\
-				$(STR_DIR)/c_string/my_str_islower.c	\
-				$(STR_DIR)/c_string/my_str_isfloat.c	\
-				$(STR_DIR)/c_string/my_str_isint.c		\
-				$(STR_DIR)/c_string/my_str_isnum.c		\
-				$(STR_DIR)/c_string/my_str_isprintable.c \
-				$(STR_DIR)/c_string/my_str_isupper.c	\
-				$(STR_DIR)/c_string/my_strcat.c			\
-				$(STR_DIR)/c_string/my_strcmp.c			\
-				$(STR_DIR)/c_string/my_strcpy.c			\
-				$(STR_DIR)/c_string/my_strdup.c			\
-				$(STR_DIR)/c_string/my_strlen.c			\
-				$(STR_DIR)/c_string/my_strlowcase.c		\
-				$(STR_DIR)/c_string/my_strncat.c		\
-				$(STR_DIR)/c_string/my_strncmp.c		\
-				$(STR_DIR)/c_string/my_strncpy.c		\
-				$(STR_DIR)/c_string/my_strupcase.c		\
-				$(STR_DIR)/c_string/my_upcase.c
+				$(STR_DIR)/c_string/char_infos.c 		\
+				$(STR_DIR)/c_string/char_modifiers.c 	\
+				$(STR_DIR)/c_string/misc.c 				\
+				$(STR_DIR)/c_string/my_strcat.c 		\
+				$(STR_DIR)/c_string/my_strcpy.c 		\
+				$(STR_DIR)/c_string/my_strcmp.c 		\
+				$(STR_DIR)/c_string/my_strdup.c 		\
+				$(STR_DIR)/c_string/my_strlen.c 		\
+				$(STR_DIR)/c_string/str_infos.c 		\
+				$(STR_DIR)/c_string/str_modifiers.c 	\
+				$(STR_DIR)/c_string/char_infos.c
 
 
 MY_FILE		=	$(FILE_DIR)/my_file.c 			\

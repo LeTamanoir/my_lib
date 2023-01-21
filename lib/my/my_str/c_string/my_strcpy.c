@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2022
-** my_strcpy.c
+** my_str
 ** File description:
-** copies a string into an other
+** strcpy and strncpy
 */
 
 #include "my_stdlib.h"
@@ -15,4 +15,17 @@ void my_strcpy(char *dest, char const *src)
         dest[i] = src[i];
 
     dest[i] = '\0';
+}
+
+char *my_strncpy(char *dest, char const *src, size_t n)
+{
+    size_t i = 0;
+
+    for (i = 0; src[i] != '\0' && i < n; i++)
+        dest[i] = src[i];
+
+    for (; i <= n; i++)
+        dest[i] = '\0';
+
+    return dest;
 }

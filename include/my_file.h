@@ -22,7 +22,7 @@
 
 typedef struct file_s {
     int fd;
-    char *file_path;
+    str_t *file_path;
     str_t *content;
     str_t *current_line;
     str_t *__cache;

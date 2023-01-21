@@ -1,11 +1,20 @@
 /*
 ** EPITECH PROJECT, 2022
-** my_upcase.c
+** my_str
 ** File description:
-** puts a letter in uppercase
+** puts a letter in lowercase/uppercase
 */
 
 #include "my_str.h"
+
+char my_lowcase(char chr)
+{
+    if (my_isupper(chr)) {
+        return (chr - ('A' - 'a'));
+    } else {
+        return chr;
+    }
+}
 
 char my_upcase(char chr)
 {
