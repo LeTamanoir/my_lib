@@ -36,7 +36,7 @@ void map_free(map_t *map)
 {
     vec_void_t *elem_col = NULL;
 
-    for (size_t i = 0; i < map->elems->base.capacity; i++) {
+    for (size_t i = 0; i < map->elems->base.capacity; ++i) {
         elem_col = map->elems->data[i];
         if (elem_col == NULL)
             continue;

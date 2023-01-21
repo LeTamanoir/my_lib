@@ -12,7 +12,7 @@
 
 static int overwrite_if_in_map(vec_void_t *cands, str_t *key, void *data)
 {
-    for (size_t i = 0; i < cands->base.size; i++) {
+    for (size_t i = 0; i < cands->base.size; ++i) {
         if (str_eq(((map_elem_t*)cands->data[i])->key, key)) {
             ((map_elem_t*)cands->data[i])->data = data;
             return 1;
