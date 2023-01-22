@@ -69,6 +69,7 @@ MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_memset.c	\
 				$(STDLIB_DIR)/my_memcmp.c	\
 				$(STDLIB_DIR)/auto_free.c	\
+				$(STDLIB_DIR)/my_swap.c		\
 				$(STDLIB_DIR)/vfree.c
 
 

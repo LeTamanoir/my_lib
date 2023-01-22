@@ -5,6 +5,9 @@
 - vector
 - string
 - map
+- formatter
+- file
+- object (with destructor)
 
 ## Standard C functions used in this library:
 

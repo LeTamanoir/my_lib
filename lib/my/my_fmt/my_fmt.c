@@ -10,6 +10,14 @@
 #include "my_str.h"
 #include "my_fmt.h"
 
+void fmt_add_int(fmt_state_t *state);
+void fmt_add_str(fmt_state_t *state);
+void fmt_add_str_t(fmt_state_t *state);
+void fmt_add_char(fmt_state_t *state);
+void fmt_add_float(fmt_state_t *state);
+void fmt_add_lobase(fmt_state_t *state);
+void fmt_add_upbase(fmt_state_t *state);
+
 static const fmt_map_t FORMATS[] = {
     { '%', NULL },
     { 'c', &fmt_add_char },

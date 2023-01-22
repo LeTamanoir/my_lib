@@ -23,10 +23,10 @@
  * @param %b -> base lowercase : expected base
  * @param %B -> base uppercase : expected base
  *
- * @category width
+ * @category width <NOT SUPPORTED>
  *
- * @param * -> width in va_arg
- * @param X -> width
+ * @param * -> width in va_arg <NOT SUPPORTED>
+ * @param X -> width <NOT SUPPORTED>
  *
  * @category precision
  *
@@ -49,16 +49,6 @@ typedef struct fmt_map_s {
     char fmt;
     void (*fmt_fn)(fmt_state_t *);
 } fmt_map_t;
-
-// DON'T USE THESE
-void fmt_add_int(fmt_state_t *state);
-void fmt_add_str(fmt_state_t *state);
-void fmt_add_str_t(fmt_state_t *state);
-void fmt_add_char(fmt_state_t *state);
-void fmt_add_float(fmt_state_t *state);
-void fmt_add_lobase(fmt_state_t *state);
-void fmt_add_upbase(fmt_state_t *state);
-
 
 /**
  * @brief creates a formated string

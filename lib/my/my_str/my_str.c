@@ -26,6 +26,21 @@ str_t *str_ncreate(char const *init, size_t n)
     return str;
 }
 
+str_t *str_temp(char const *init)
+{
+    static struct {
+        size_t length;
+        size_t capacity;
+        char data[MAX_SWAP_SIZE];
+    } temp_str = {0};
+
+    temp_str.capacity = MAX_SWAP_SIZE;
+    temp_str.length = my_strlen(init);
+    my_memcpy(temp_str.data, init, temp_str.length);
+
+    return (str_t*)&temp_str;
+}
+
 str_t *str_create(char const *init)
 {
     size_t len = my_strlen(init);

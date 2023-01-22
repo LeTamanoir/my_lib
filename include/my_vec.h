@@ -8,7 +8,6 @@
 #ifndef INCLUDE_MY_VEC_
     #define INCLUDE_MY_VEC_
     #include "my_stdlib.h"
-    #define MAX_VEC_ELEM_SIZE   (1024)
 
 
 typedef struct vec_base_s {
@@ -94,15 +93,6 @@ void vec_push_back(vec_t **vec, void *elem);
 void vec_sort(vec_t *vec, int (*cmp_fn)(vec_t *, size_t, size_t));
 
 /**
- * @brief swaps 2 elements in a vector
- *
- * @param vec   the vector to perform the swap on
- * @param i     the index of the 1st element
- * @param j     the index of the 2nd element
- */
-void vec_swap(vec_t *vec, size_t i, size_t j);
-
-/**
  * @brief frees a vector composed of pointers
  *        every element must ve freeable with a single free call
  *
@@ -119,14 +109,6 @@ void vec_free(vec_t *vec);
  * @return the created vector
  */
 vec_t *vec_create(size_t nb_data, size_t el_size);
-
-/**
- * @brief frees a vector composed of pointers with a given free function
- *
- * @param vec       the vector to free
- * @param free_fn   the free function
- */
-void vec_free_fn(vec_t *vec, void (*free_fn)(void *));
 
 /**
  * @brief filters a vector

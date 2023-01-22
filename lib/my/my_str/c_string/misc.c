@@ -12,7 +12,7 @@ char *my_revstr(char *str)
 {
     size_t length = my_strlen(str);
     size_t idx = 0;
-    char temp;
+    char temp = '\0';
 
     while (idx < length / 2) {
         temp = str[idx];

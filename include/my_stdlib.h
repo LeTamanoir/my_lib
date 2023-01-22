@@ -10,7 +10,7 @@
     #include <stdlib.h>
 
     #define SMART           __attribute__((cleanup(auto_free)))
-
+    #define MAX_SWAP_SIZE   (1024)
 
 void auto_free(void *ptr);
 
@@ -22,6 +22,8 @@ char *my_ftoa(double data, int precision);
 
 void *my_calloc(size_t count, size_t elem_size);
 void vfree(int argc, ...);
+
+void my_swap(void *a, void *b, size_t el_size);
 
 void *my_memcpy(void *dest, const void *src, size_t n);
 int my_memcmp(void const *m1, void const *m2, size_t el);

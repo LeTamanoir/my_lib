@@ -11,7 +11,7 @@
 
 vec_t *vec_create(size_t nb_data, size_t el_size)
 {
-    if (el_size > MAX_VEC_ELEM_SIZE)
+    if (el_size > MAX_SWAP_SIZE)
         return NULL;
 
     size_t capacity = get_padded_size(nb_data);

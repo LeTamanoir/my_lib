@@ -9,6 +9,7 @@
     #define INCLUDE_MY_STR_
     #include <stddef.h>
     #include "my_vec.h"
+    #define MAX_TEMP_STR_SIZE   (256)
 
 
 char my_upcase(char chr);
@@ -284,6 +285,16 @@ void str_dprint(int fd, str_t const *str);
  * @return string with all the char* added to its content
  */
 str_t **str_vadd(str_t **str, int argc, ...);
+
+/**
+ * @brief creates a temporary string,
+ *        use it only for readonly actions !
+ *        its size is limited to 256 chars
+ *
+ * @param init  the content of the string
+ * @return the created string
+ */
+str_t *str_temp(char const *init);
 
 /**
  * @brief adds a character to a string
