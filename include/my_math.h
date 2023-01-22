@@ -16,11 +16,11 @@
     #define MY_TO_RAD(r)    (r * ((float)M_PI / 180.0))
 
 
-int my_pow(int number, int power);
 int my_int_sqrt(int nb);
 int my_is_prime(int nb);
-int my_nbr_length(long int nb);
-long long my_ll_pow(long long number, int power);
+int my_pow(int number, int power);
+long int my_powl(long int number, int power);
+long long int my_powll(long long int number, int power);
 
 
 typedef struct vec2i_s {

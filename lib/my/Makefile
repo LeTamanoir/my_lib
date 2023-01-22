@@ -9,6 +9,7 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
+FMT_DIR		=	./my_fmt
 OBJ_DIR		=	./my_obj
 YAML_DIR	=	./my_yaml
 MAP_DIR		=	./my_map
@@ -29,6 +30,10 @@ INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
 
 
 MY_OBJ		=	$(OBJ_DIR)/my_obj.c
+
+MY_FMT		=	$(FMT_DIR)/my_fmt.c			\
+				$(FMT_DIR)/add_base.c		\
+				$(FMT_DIR)/adders.c
 
 
 MY_YAML		=	$(YAML_DIR)/my_yaml.c
@@ -51,13 +56,14 @@ MY_MAP		=	$(MAP_DIR)/my_map.c				\
 
 MY_MATH		=	$(MATH_DIR)/my_int_sqrt.c			\
 				$(MATH_DIR)/my_pow.c	 			\
-				$(MATH_DIR)/my_ll_pow.c	 			\
 				$(MATH_DIR)/my_is_prime.c
 
 
 MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
 				$(STDLIB_DIR)/my_itoa.c		\
 				$(STDLIB_DIR)/my_atof.c		\
+				$(STDLIB_DIR)/my_ftoa.c		\
+				$(STDLIB_DIR)/my_nbrlen.c	\
 				$(STDLIB_DIR)/my_calloc.c	\
 				$(STDLIB_DIR)/my_memcpy.c	\
 				$(STDLIB_DIR)/my_memset.c	\
@@ -114,44 +120,8 @@ MY_FILE		=	$(FILE_DIR)/my_file.c 			\
 
 
 MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
-				$(STDIO_DIR)/my_sprintf.c								\
 				$(STDIO_DIR)/my_dprintf.c								\
-				$(STDIO_DIR)/my_vasprintf.c								\
-				$(STDIO_DIR)/my_putchar.c								\
-				$(STDIO_DIR)/my_puts.c									\
-				$(STDIO_DIR)/my_putstderr.c								\
-				$(STDIO_DIR)/my_putstr.c								\
-				$(STDIO_DIR)/src/core.c    								\
-				$(STDIO_DIR)/src/parser.c								\
-				$(STDIO_DIR)/src/buffer.c								\
-				$(STDIO_DIR)/src/exec_specifier.c						\
-				$(STDIO_DIR)/src/post_processor.c						\
-				$(STDIO_DIR)/src/state.c								\
-				$(STDIO_DIR)/src/utils/buffer_utils.c					\
-				$(STDIO_DIR)/src/utils/exec_specifiers_utils.c			\
-				$(STDIO_DIR)/src/utils/post_processor_utils.c			\
-				$(STDIO_DIR)/src/utils/post_processor_extractors.c		\
-				$(STDIO_DIR)/src/specifiers/compute_spec_a.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_c.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_e.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_g.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_o.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_u.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_b.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_d.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_f.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_n.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_p.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_t.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_s.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_x.c			\
-				$(STDIO_DIR)/src/specifiers/compute_spec_percent.c		\
-				$(STDIO_DIR)/src/specifiers/utils/spec_int_utils.c		\
-				$(STDIO_DIR)/src/specifiers/utils/str_operations.c		\
-				$(STDIO_DIR)/src/specifiers/utils/float_utils.c			\
-				$(STDIO_DIR)/src/specifiers/utils/round_float.c			\
-				$(STDIO_DIR)/src/specifiers/utils/spec_e_utils.c		\
-				$(STDIO_DIR)/src/specifiers/utils/spec_a_utils.c
+				$(STDIO_DIR)/my_put.c
 
 
 INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
@@ -165,10 +135,11 @@ ifeq ($(DEBUG),1)
 	CFLAGS += -g3
 endif
 
-OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o) \
-		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o) \
-		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o) $(MY_VEC:.c=.o) \
-		$(MY_MAP:.c=.o) $(MY_YAML:.c=.o) $(MY_OBJ:.c=.o)
+OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o)		\
+		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o)	\
+		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o) $(MY_VEC:.c=.o)		\
+		$(MY_MAP:.c=.o) $(MY_YAML:.c=.o) $(MY_OBJ:.c=.o)		\
+		$(MY_FMT:.c=.o)
 
 NAME	=	libmy.a
 

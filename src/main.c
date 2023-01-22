@@ -10,35 +10,13 @@
 #include "my_vec.h"
 #include "my_map.h"
 #include "my_yaml.h"
+#include "my_fmt.h"
 
-int keep_fn(vec_t *v, size_t i)
+int main(void)
 {
-    return (((vec_str_t*)v)->data[i]->length > 0);
-}
+    char *temp = "Hello world";
 
-int compare_fn(vec_t *v, size_t i, size_t j)
-{
-    SMART str_t *s1 = str_tolowcase(str_dup(((vec_str_t*)v)->data[i]));
-    SMART str_t *s2 = str_tolowcase(str_dup(((vec_str_t*)v)->data[j]));
-
-    return str_compare(s1, s2);
-}
-
-int main(int ac, char **av)
-{
-    if (ac != 2)
-        return 1;
-
-    SMART str_t *temp = str_create(av[1]);
-    SMART str_t *delim = str_create(" ");
-    SMART vec_str_t *split_ = str_split(temp, delim);
-    SMART vec_str_t *words = (vec_str_t*)vec_filter((vec_t*)split_, &keep_fn);
-    SMART str_t *output = NULL;
-
-    vec_sort((vec_t*)words, &compare_fn);
-
-    output = str_join(words, delim);
-    str_println(output);
+    my_printf("|%d| |%s| |%c| |%f|", 1234, temp, 't', 1234.5678);
 
     return 0;
 }

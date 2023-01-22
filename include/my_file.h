@@ -60,7 +60,15 @@ str_t *file_get_content(file_t *file);
  * @param file  the file to write to
  * @param str   the char* to write
  */
-void file_write(file_t *file, char *str);
+void file_write(file_t *file, char const *str);
+
+/**
+ * @brief writes a str_t into a file
+ *
+ * @param file  the file to write to
+ * @param str   the str_t to write
+ */
+void file_strwrite(file_t *file, str_t const *str);
 
 /**
  * @brief writes a formatted char* into a file (using printf syntax)
@@ -69,7 +77,7 @@ void file_write(file_t *file, char *str);
  * @param fmt   the format string
  * @param ...   printf like arguments
  */
-void file_fwrite(file_t *file, char *fmt, ...);
+void file_fwrite(file_t *file, char const *fmt, ...);
 
 /**
  * @brief closes a file

@@ -6,23 +6,19 @@
 */
 
 #include <stdarg.h>
+#include "my_str.h"
+#include "my_fmt.h"
 
-#include "core.h"
-#include "buffer.h"
-
-int my_printf(const char *format, ...)
+int my_printf(const char *fmt, ...)
 {
     va_list ap;
-    buffer_t *buffer = create_buffer();
-    int buff_size = 0;
+    SMART str_t *buff = NULL;
 
-    va_start(ap, format);
-    compute_char(&ap, buffer, format);
+    va_start(ap, fmt);
+    buff = fmt_create(fmt, &ap);
     va_end(ap);
 
-    print_buffer(buffer, 1);
-    buff_size = get_buffer_length(buffer);
-    free_buffer(buffer);
+    str_print(buff);
 
-    return buff_size;
+    return buff->length;
 }

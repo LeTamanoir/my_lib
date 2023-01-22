@@ -8,21 +8,6 @@
 #include "my_stdlib.h"
 #include "my_str.h"
 
-int my_nbr_length(long int nb)
-{
-    int nb_digit = 0;
-
-    if (nb == 0)
-        return 1;
-
-    while (nb) {
-        nb_digit++;
-        nb /= 10;
-    }
-
-    return nb_digit;
-}
-
 char *my_revstr(char *str)
 {
     size_t length = my_strlen(str);
