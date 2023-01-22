@@ -14,14 +14,18 @@
 
 void auto_free(void *ptr);
 
-void *my_calloc(size_t count, size_t elem_size);
+int my_nbrlen(long int nb, int base);
 char *my_itoa(long int nb);
 int my_atoi(char const *str);
 double my_atof(char const *str);
+char *my_ftoa(double data, int precision);
+
+void *my_calloc(size_t count, size_t elem_size);
+void vfree(int argc, ...);
+
 void *my_memcpy(void *dest, const void *src, size_t n);
 int my_memcmp(void const *m1, void const *m2, size_t el);
 void *my_memset(void *dest, char c, size_t len);
-void vfree(int argc, ...);
 
 
 #endif /* INCLUDE_MY_STDLIB_ */

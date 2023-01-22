@@ -22,14 +22,13 @@ char *my_strncat(char *dest, char const *src, size_t n);
 char *my_strdup(char const *src);
 void my_strcpy(char *dest, char const *src);
 char *my_strncpy(char *dest, char const *src, size_t n);
-char *my_revstr(char *str);
 int my_strcmp(char const *s1, char const *s2);
 int my_strncmp(char const *s1, char const *s2, size_t n);
+char *my_revstr(char *str);
 
 int my_isalpha(char chr);
 int my_islower(char chr);
 int my_isnum(char chr);
-int my_isprintable(char chr);
 int my_isupper(char chr);
 int my_isalphanum(char chr);
 
@@ -39,7 +38,6 @@ int my_str_isint(char const *str);
 int my_str_isnum(char const *str);
 int my_str_islower(char const *str);
 int my_str_isupper(char const *str);
-int my_str_isprintable(char const *str);
 
 
 typedef struct str_s {
@@ -260,14 +258,14 @@ str_t **str_trim(str_t **str, char pad);
  *
  * @param str   string to print
  */
-void str_print(str_t *str);
+void str_print(str_t const *str);
 
 /**
  * @brief prints a string to the stdout with an added newline
  *
  * @param str   string to print
  */
-void str_println(str_t *str);
+void str_println(str_t const *str);
 
 /**
  * @brief prints a string to a given fd
@@ -275,7 +273,7 @@ void str_println(str_t *str);
  * @param fd  fd to print to
  * @param str string to print
  */
-void str_dprint(int fd, str_t *str);
+void str_dprint(int fd, str_t const *str);
 
 /**
  * @brief adds mutliple char* to a string

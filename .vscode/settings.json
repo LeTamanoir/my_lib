@@ -54,6 +54,7 @@
         "sstream": "c",
         "streambuf": "c",
         "*.inc": "c",
-        "limits": "c"
+        "limits": "c",
+        "__config": "c"
     }
 }
