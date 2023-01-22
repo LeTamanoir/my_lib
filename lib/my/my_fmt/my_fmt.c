@@ -31,7 +31,9 @@ static void check_precision(fmt_state_t *state, char const **str)
     if (**str == '*') {
         state->precision = va_arg(*(state->ap), int);
         ++*str;
-    } else if (my_isnum(**str)) {
+        return;
+    }
+    if (my_isnum(**str)) {
         state->precision = my_atoi(*str);
         while (my_isnum(*++*str));
     }
@@ -78,4 +80,3 @@ str_t *fmt_create(char const *fmt, va_list *ap)
 
     return state.buffer;
 }
-
