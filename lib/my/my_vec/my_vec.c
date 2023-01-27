@@ -20,7 +20,7 @@ vec_t *vec_create(size_t nb_data, size_t el_size)
     if (vec == NULL)
         return NULL;
 
-    obj_set_destructor(vec, (void (*)(void *))&vec_free);
+    obj_set_destructor(vec, NULL);
     vec->base.size = 0;
     vec->base.el_size = el_size;
     vec->base.capacity = capacity;

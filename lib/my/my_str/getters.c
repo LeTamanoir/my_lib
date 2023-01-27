@@ -8,10 +8,12 @@
 #include "my_stdlib.h"
 #include "my_str.h"
 #include "my_vec.h"
+#include "my_obj.h"
 
 vec_str_t *str_split(str_t *str, str_t *delims)
 {
     vec_str_t *arr = (vec_str_t*)vec_create(8, sizeof(str_t*));
+    obj_set_destructor(arr, (void (*)(void*))&vec_free);
     size_t last_idx = 0;
     str_t *temp = NULL;
 

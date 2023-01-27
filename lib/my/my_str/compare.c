@@ -21,7 +21,7 @@ int str_ncompare(str_t *s1, str_t *s2, size_t n)
     int status = 0;
 
     if (s1->length == 0 || s2->length == 0)
-        return 1;
+        return 0;
     while (
         i < s1->length - 1 && i < s2->length - 1 &&
         i < n && s1->data[i] == s2->data[i]
@@ -39,7 +39,7 @@ int str_compare(str_t *s1, str_t *s2)
     int status = 0;
 
     if (s1->length == 0 || s2->length == 0)
-        return 1;
+        return 0;
     while (
         i < s1->length - 1 && i < s2->length - 1 &&
         s1->data[i] == s2->data[i]

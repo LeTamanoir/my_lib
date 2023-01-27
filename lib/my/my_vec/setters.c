@@ -28,6 +28,13 @@ vec_t **vec_resize(vec_t **vec, size_t new_size)
 void vec_remove(vec_t *vec, size_t idx)
 {
     my_memset(vec->data + idx * vec->base.el_size, 0, vec->base.el_size);
+    if (idx < vec->base.size - 1) {
+        my_memcpy(
+            vec->data + idx * vec->base.el_size,
+            vec->data + (idx + 1) * vec->base.el_size,
+            (vec->base.size - idx) * vec->base.el_size
+        );
+    }
     vec->base.size--;
 }
 
