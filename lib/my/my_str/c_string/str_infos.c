@@ -10,7 +10,7 @@
 int my_str_isalpha(char const *str)
 {
     if (*str == '\0')
-        return 1;
+        return 0;
 
     while (*str) {
         if (!my_isalpha(*str))
@@ -24,7 +24,7 @@ int my_str_isalpha(char const *str)
 int my_str_isupper(char const *str)
 {
     if (*str == '\0')
-        return 1;
+        return 0;
 
     while (*str) {
         if (!my_isupper(*str))
@@ -38,7 +38,7 @@ int my_str_isupper(char const *str)
 int my_str_isnum(char const *str)
 {
     if (*str == '\0')
-        return 1;
+        return 0;
 
     while (*str) {
         if (!my_isnum(*str))
@@ -52,7 +52,7 @@ int my_str_isnum(char const *str)
 int my_str_islower(char const *str)
 {
     if (*str == '\0')
-        return 1;
+        return 0;
 
     while (*str) {
         if (!my_islower(*str))

@@ -10,7 +10,7 @@
 int str_isalpha(str_t const *str)
 {
     if (str->length == 0)
-        return 1;
+        return 0;
 
     for (size_t i = 0; i < str->length; ++i)
         if (!my_isalpha(str->data[i]))
@@ -22,7 +22,7 @@ int str_isalpha(str_t const *str)
 int str_isnum(str_t const *str)
 {
     if (str->length == 0)
-        return 1;
+        return 0;
 
     for (size_t i = 0; i < str->length; ++i)
         if (!my_isnum(str->data[i]))
@@ -34,7 +34,7 @@ int str_isnum(str_t const *str)
 int str_islower(str_t const *str)
 {
     if (str->length == 0)
-        return 1;
+        return 0;
 
     for (size_t i = 0; i < str->length; ++i)
         if (!my_islower(str->data[i]))
@@ -46,7 +46,7 @@ int str_islower(str_t const *str)
 int str_isupper(str_t const *str)
 {
     if (str->length == 0)
-        return 1;
+        return 0;
 
     for (size_t i = 0; i < str->length; ++i)
         if (!my_isupper(str->data[i]))

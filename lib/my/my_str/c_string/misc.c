@@ -27,10 +27,10 @@ char *my_revstr(char *str)
 int my_str_isint(char const *str)
 {
     if (str[0] == '\0')
-        return 1;
+        return 0;
 
     for (size_t i = 0; str[i] != '\0'; i++) {
-        if (i == 0 && str[i] == '-')
+        if (i == 0 && (str[i] == '-' || str[i] == '+'))
             continue;
         if (!my_isnum(str[i]))
             return 0;
@@ -44,7 +44,7 @@ int my_str_isfloat(char const *str)
     int float_pt = 0;
 
     if (str[0] == '\0')
-        return 1;
+        return 0;
 
     for (size_t i = 0; str[i] != '\0'; i++) {
         if (i == 0 && str[i] == '-')
