@@ -17,6 +17,7 @@ void fmt_add_char(fmt_state_t *state);
 void fmt_add_float(fmt_state_t *state);
 void fmt_add_lobase(fmt_state_t *state);
 void fmt_add_upbase(fmt_state_t *state);
+void fmt_add_join(fmt_state_t *state);
 
 static const fmt_map_t FORMATS[] = {
     { '%', NULL },
@@ -27,6 +28,7 @@ static const fmt_map_t FORMATS[] = {
     { 'f', &fmt_add_float },
     { 'b', &fmt_add_lobase },
     { 'B', &fmt_add_upbase },
+    { 'j', &fmt_add_join },
 };
 static const int FORMATS_SIZE = sizeof(FORMATS) / sizeof(fmt_map_t);
 

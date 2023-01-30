@@ -10,19 +10,18 @@
 
 char *my_ftoa(double nb, int precision)
 {
-    char *int_part = my_itoa((long int)nb);
+    char *int_ = my_itoa((long int)nb);
+    char *float_ = NULL;
+    char *res = NULL;
+
     nb -= (long int)nb;
-    char *float_part = my_itoa((long int)(nb * my_powl(10, precision)));
-
-    char *res = malloc(sizeof(char) *
-        (my_strlen(int_part) + my_strlen(float_part) + 2));
-
-    my_strcpy(res, int_part);
+    float_ = my_itoa((long int)(MY_FABS(nb) * my_powl(10, precision)));
+    res = malloc(sizeof(char) * (my_strlen(int_) + my_strlen(float_) + 2));
+    my_strcpy(res, int_);
     if (precision > 0) {
         my_strcat(res, ".");
-        my_strcat(res, float_part);
+        my_strcat(res, float_);
     }
-    vfree(2, int_part, float_part);
-
+    vfree(2, int_, float_);
     return res;
 }

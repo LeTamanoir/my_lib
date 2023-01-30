@@ -6,12 +6,16 @@
 */
 
 #include "my_stdlib.h"
-#include "my_str.h"
 
-int my_memcmp(void const *m1, void const *m2, size_t el)
+int my_memcmp(void const *m1, void const *m2, size_t n)
 {
-    char *m1_char = (char *)m1;
-    char *m2_char = (char *)m2;
+    char const *s1 = m1;
+    char const *s2 = m2;
 
-    return my_strncmp(m1_char, m2_char, el);
+    while (n-- && *s1 == *s2) {
+        s1++;
+        s2++;
+    }
+
+    return *s1 - *s2;
 }

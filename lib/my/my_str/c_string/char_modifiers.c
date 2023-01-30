@@ -9,18 +9,16 @@
 
 char my_lowcase(char chr)
 {
-    if (my_isupper(chr)) {
+    if (my_isupper(chr))
         return (chr - ('A' - 'a'));
-    } else {
+    else
         return chr;
-    }
 }
 
 char my_upcase(char chr)
 {
-    if (my_islower(chr)) {
+    if (my_islower(chr))
         return (chr - ('a' - 'A'));
-    } else {
+    else
         return chr;
-    }
 }

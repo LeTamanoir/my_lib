@@ -19,6 +19,7 @@
  * @param %S -> str_t
  * @param %s -> string
  * @param %d -> int
+ * @param %j -> join vector : expected join delim
  * @param %f -> float
  * @param %b -> base lowercase : expected base
  * @param %B -> base uppercase : expected base

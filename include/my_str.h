@@ -124,7 +124,7 @@ str_t *str_join(vec_str_t *vec, str_t *delim);
  *
  * @param str       string to perform the check on
  * @param start     start string
- * @return 1 or 0 if the string ends or doesn't I do to
+ * @return 1 if the string starts with start or 0 if it doesn't
  */
 int str_startswith(str_t *str, str_t *start);
 
@@ -133,7 +133,7 @@ int str_startswith(str_t *str, str_t *start);
  *
  * @param str   string to prerform the check on
  * @param end   end string
- * @return 1 or 0 if the string ends or doesn't I do to
+ * @return 1 if the string ends with end or 0 if it doesn't
  */
 int str_endsswith(str_t *str, str_t *end);
 
@@ -289,12 +289,23 @@ str_t **str_vadd(str_t **str, int argc, ...);
 /**
  * @brief creates a temporary string,
  *        use it only for readonly actions !
- *        its size is limited to 256 chars
+ *        its size is limited to 1024 chars
  *
  * @param init  the content of the string
  * @return the created string
  */
 str_t *str_temp(char const *init);
+
+/**
+ * @brief creates a temporary string of size n,
+ *        use it only for readonly actions !
+ *        its size is limited to 1024 chars
+ *
+ * @param init the content of the string
+ * @param n    the length to copy from init
+ * @return the created string
+ */
+str_t *str_ntemp(char const *init, size_t n);
 
 /**
  * @brief adds a character to a string

@@ -51,3 +51,21 @@ void map_set(map_t *map, str_t *key, void *data)
     elem = map_elem_create(key, data);
     vec_push_back((vec_t**)map->elems->data + hash_idx, &elem);
 }
+
+void map_del(map_t *map, str_t *key)
+{
+    unsigned int hash_idx = map_hash_key(key) % map->capacity;
+    vec_void_t *cands = NULL;
+
+    if (map->elems->data[hash_idx] == NULL)
+        return;
+
+    cands = map->elems->data[hash_idx];
+
+    for (size_t i = 0; i < cands->base.size; i++) {
+        if (str_eq(((map_elem_t*)cands->data[i])->key, key)) {
+            map_elem_free((map_elem_t*)cands->data[i]);
+            vec_remove((vec_t *)cands, i);
+        }
+    }
+}

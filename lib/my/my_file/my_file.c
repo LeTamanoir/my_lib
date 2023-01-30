@@ -87,7 +87,8 @@ void file_free(file_t *file)
         file->fd != STDERR_FILENO)
         file_close(file);
     obj_free(file->content);
-    obj_free(file->__cache);
+    if (file->__cache != NULL)
+        obj_free(file->__cache);
     obj_free(file->file_path);
-    free(file);
+    obj_free(file->current_line);
 }

@@ -80,5 +80,13 @@ void map_elem_free(map_elem_t *elem);
  */
 unsigned int map_hash_key(str_t *key);
 
+/**
+ * @brief deletes a key from a map
+ *
+ * @param map   the map to delete the key from
+ * @param key   the key to delete
+ */
+void map_del(map_t *map, str_t *key);
+
 
 #endif /* INCLUDE_MY_MAP_ */

@@ -29,7 +29,6 @@ void map_elem_free(map_elem_t *elem)
 {
     obj_free(elem->data);
     obj_free(elem->key);
-    free(elem);
 }
 
 void map_free(map_t *map)
@@ -43,5 +42,4 @@ void map_free(map_t *map)
         vec_free((vec_t*)elem_col);
     }
     obj_free(map->elems);
-    free(map);
 }

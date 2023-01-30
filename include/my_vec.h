@@ -38,10 +38,12 @@ size_t get_padded_size(size_t size);
  *
  * @param vec   the vector to preform the logic on
  * @param fn    the function to call, it will be called like this:
- *              fn(current_elem_in_vec, data);
+ *              fn(current_elem_in_vec, data)
+ *              if you want to block further execution return 1
+ *              else return 0
  * @param data  additionnal data that you can use in the fn
  */
-void vec_for_each(vec_t *vec, void (*fn)(void *, void *), void *data);
+void vec_for_each(vec_t *vec, int (*fn)(void *, void *), void *data);
 
 /**
  * @brief clears a vector

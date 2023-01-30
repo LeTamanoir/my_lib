@@ -9,6 +9,7 @@ CC = gcc
 
 INCLUDE_DIR	=	../../include
 
+NETWORK_DIR	=	./my_network
 FMT_DIR		=	./my_fmt
 OBJ_DIR		=	./my_obj
 YAML_DIR	=	./my_yaml
@@ -29,10 +30,16 @@ INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
 INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
 
 
+MY_NETWORK	=	$(NETWORK_DIR)/create.c 	\
+				$(NETWORK_DIR)/run.c 		\
+				$(NETWORK_DIR)/accept.c		\
+				$(NETWORK_DIR)/utils.c 		\
+
 MY_OBJ		=	$(OBJ_DIR)/my_obj.c
 
 MY_FMT		=	$(FMT_DIR)/my_fmt.c			\
 				$(FMT_DIR)/add_base.c		\
+				$(FMT_DIR)/add_join.c		\
 				$(FMT_DIR)/adders.c
 
 
@@ -97,6 +104,7 @@ MY_STR		=	$(STR_DIR)/my_str.c						\
 				$(STR_DIR)/checks.c						\
 				$(STR_DIR)/trim.c						\
 				$(STR_DIR)/print.c						\
+				$(STR_DIR)/str_temp.c					\
 				$(STR_DIR)/modifiers.c					\
 				$(STR_DIR)/format.c						\
 				$(STR_DIR)/misc.c						\
@@ -140,7 +148,7 @@ OBJ	=	$(MY_STDIO:.c=.o) $(MY_LIST:.c=.o) $(MY_STR:.c=.o)		\
 		$(MY_FILE:.c=.o) $(MY_MATRIX:.c=.o) $(MY_ARRAY:.c=.o)	\
 		$(MY_STDLIB:.c=.o) $(MY_MATH:.c=.o) $(MY_VEC:.c=.o)		\
 		$(MY_MAP:.c=.o) $(MY_YAML:.c=.o) $(MY_OBJ:.c=.o)		\
-		$(MY_FMT:.c=.o)
+		$(MY_FMT:.c=.o) $(MY_NETWORK:.c=.o)
 
 NAME	=	libmy.a
 
