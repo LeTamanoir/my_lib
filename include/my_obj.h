@@ -55,5 +55,4 @@ void obj_free(void *obj);
 void obj_vfree(int argc, ...);
 
 
-
 #endif /* INCLUDE_MY_OBJ_ */

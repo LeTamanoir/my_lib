@@ -9,6 +9,7 @@
     #define INCLUDE_MY_FMT_
     #include <stdarg.h>
     #include <stdint.h>
+
     #include "my_str.h"
 
 /**

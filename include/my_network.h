@@ -20,14 +20,14 @@
     #define NETWORK_CRLF        ("\r\n")
 
 
-typedef struct client_s {
+typedef struct {
     int sock;
     str_t *read;  // read data sent from the client.
     str_t *write; // write data to the client
 } client_t;
 
-typedef struct vec_client_s {
-    vec_base_t base;
+typedef struct {
+    VEC_META;
     client_t data[0];
 } vec_client_t;
 
@@ -56,7 +56,6 @@ int write_client(client_t *client);
 
 int write_server(int sock, str_t *buff);
 int read_server(int sock, str_t **buff);
-
 
 // int receive_data(int sock, str_t **buff);
 // int send_data(int sock, str_t *buff);

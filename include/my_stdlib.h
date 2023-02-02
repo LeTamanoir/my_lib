@@ -12,6 +12,7 @@
     #define SMART           __attribute__((cleanup(auto_free)))
     #define MAX_SWAP_SIZE   (1024)
 
+
 void auto_free(void *ptr);
 
 int my_nbrlen(long int nb, int base);

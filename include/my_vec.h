@@ -9,32 +9,53 @@
     #define INCLUDE_MY_VEC_
     #include <stddef.h>
 
-    #define VEC_DEF(t) typedef struct { vec_base_t; ##t data[0]; } vec_##t##_t;
+    #ifdef USE_MY_STR
+        #include "my_str.h"
+    #endif
+
+    #define VEC_META size_t capacity; size_t size; size_t __elem_size
 
 
 typedef struct {
-    size_t capacity;
-    size_t size;
-    size_t el_size;
-} vec_base_t;
-
-typedef struct {
-    vec_base_t;
+    VEC_META;
     char data[0];
 } vec_t;
 
-// @remark this one has to be defined manually
 typedef struct {
-    vec_base_t;
+    VEC_META;
     void *data[0];
 } vec_void_t;
 
-VEC_DEF(char)
-VEC_DEF(int)
-VEC_DEF(long)
-VEC_DEF(float)
-VEC_DEF(double)
-VEC_DEF(size_t)
+typedef struct {
+    VEC_META;
+    char data[0];
+} vec_char_t;
+
+typedef struct {
+    VEC_META;
+    int data[0];
+} vec_int_t;
+
+typedef struct {
+    VEC_META;
+    long data[0];
+} vec_long_t;
+
+typedef struct {
+    VEC_META;
+    float data[0];
+} vec_float_t;
+
+typedef struct {
+    VEC_META;
+    double data[0];
+} vec_double_t;
+
+typedef struct {
+    VEC_META;
+    size_t data[0];
+} vec_size_t_t;
+
 
 size_t get_padded_size(size_t size);
 

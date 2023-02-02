@@ -7,9 +7,9 @@
 
 #ifndef INCLUDE_MY_MAP_
     #define INCLUDE_MY_MAP_
+
     #include "my_vec.h"
     #include "my_str.h"
-
 
 typedef struct map_elem_s {
     str_t *key;

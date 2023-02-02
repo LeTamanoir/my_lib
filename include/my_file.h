@@ -10,8 +10,9 @@
     #include <unistd.h>
     #include <fcntl.h>
     #include <sys/stat.h>
-    #include "my_list.h"
+
     #include "my_str.h"
+
     #define F_R         (O_RDONLY)
     #define F_W         (O_WRONLY)
     #define F_RW        (O_RDWR)
