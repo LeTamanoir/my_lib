@@ -12,7 +12,7 @@
 
 static int overwrite_if_in_map(vec_void_t *cands, str_t *key, void *data)
 {
-    for (size_t i = 0; i < cands->base.size; i++) {
+    for (size_t i = 0; i < cands->size; i++) {
         if (str_eq(((map_elem_t*)cands->data[i])->key, key)) {
             ((map_elem_t*)cands->data[i])->data = data;
             return 1;
@@ -62,7 +62,7 @@ void map_del(map_t *map, str_t *key)
 
     cands = map->elems->data[hash_idx];
 
-    for (size_t i = 0; i < cands->base.size; i++) {
+    for (size_t i = 0; i < cands->size; i++) {
         if (str_eq(((map_elem_t*)cands->data[i])->key, key)) {
             map_elem_free((map_elem_t*)cands->data[i]);
             vec_remove((vec_t *)cands, i);

@@ -8,7 +8,6 @@
 #include "my_network.h"
 #include "my_stdio.h"
 #include "my_math.h"
-#include "my_str.h"
 #include "my_stdlib.h"
 #include "my_obj.h"
 

@@ -80,13 +80,12 @@ str_t *fmt_create(char const *fmt, va_list *ap)
 {
     fmt_state_t state = {str_create(""), ap, 0, -1};
 
-    while (*fmt != '\0') {
+    while (*fmt) {
         if (*fmt == '%') {
             fill_state(&state, &fmt);
             compute_format(&state, *fmt);
-        } else {
+        } else
             str_cadd(&state.buffer, *fmt);
-        }
         fmt++;
     }
 

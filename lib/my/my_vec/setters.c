@@ -12,14 +12,14 @@
 vec_t **vec_resize(vec_t **vec, size_t new_size)
 {
     vec_t *old = *vec;
-    *vec = vec_create(new_size, old->base.el_size);
+    *vec = vec_create(new_size, old->__elem_size);
 
     if (*vec == NULL)
         return NULL;
 
     obj_set_destructor(*vec, obj_get_destructor(old));
-    my_memcpy((*vec)->data, old->data, old->base.size * old->base.el_size);
-    (*vec)->base.size = old->base.size;
+    my_memcpy((*vec)->data, old->data, old->size * old->__elem_size);
+    (*vec)->size = old->size;
     obj_set_destructor(old, NULL);
     obj_free(old);
     return vec;
@@ -27,45 +27,45 @@ vec_t **vec_resize(vec_t **vec, size_t new_size)
 
 void vec_remove(vec_t *vec, size_t idx)
 {
-    my_memset(vec->data + idx * vec->base.el_size, 0, vec->base.el_size);
+    my_memset(vec->data + idx * vec->__elem_size, 0, vec->__elem_size);
 
-    if (idx < vec->base.size - 1) {
+    if (idx < vec->size - 1) {
         my_memcpy(
-            vec->data + idx * vec->base.el_size,
-            vec->data + (idx + 1) * vec->base.el_size,
-            (vec->base.size - idx) * vec->base.el_size
+            vec->data + idx * vec->__elem_size,
+            vec->data + (idx + 1) * vec->__elem_size,
+            (vec->size - idx) * vec->__elem_size
         );
     }
 
-    vec->base.size--;
+    vec->size--;
 }
 
 void vec_insert(vec_t **vec, void *elem, size_t idx)
 {
-    if (idx >= (*vec)->base.capacity)
+    if (idx >= (*vec)->capacity)
         vec_resize(vec, idx + 1);
 
     my_memcpy(
-        (*vec)->data + idx * (*vec)->base.el_size,
-        elem, (*vec)->base.el_size
+        (*vec)->data + idx * (*vec)->__elem_size,
+        elem, (*vec)->__elem_size
     );
-    (*vec)->base.size++;
+    (*vec)->size++;
 }
 
 void vec_clear(vec_t *vec)
 {
-    my_memset(vec->data, 0, vec->base.size * vec->base.el_size);
-    vec->base.size = 0;
+    my_memset(vec->data, 0, vec->size * vec->__elem_size);
+    vec->size = 0;
 }
 
 void vec_push_back(vec_t **vec, void *elem)
 {
-    size_t size = (*vec)->base.size;
-    size_t el_size = (*vec)->base.el_size;
+    if ((*vec)->size + 1 >= (*vec)->capacity)
+        vec_resize(vec, (*vec)->size + 1);
 
-    if (size + 1 >= (*vec)->base.capacity)
-        vec_resize(vec, size + 1);
-
-    my_memcpy((*vec)->data + size * el_size, elem, el_size);
-    (*vec)->base.size++;
+    my_memcpy(
+        (*vec)->data + (*vec)->size * (*vec)->__elem_size,
+        elem, (*vec)->__elem_size
+    );
+    (*vec)->size++;
 }

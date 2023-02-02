@@ -20,7 +20,7 @@ static int partition(
 {
     size_t pivot = end;
     size_t i = start - 1;
-    size_t el_size = v->base.el_size;
+    size_t el_size = v->__elem_size;
 
     for (size_t j = start; j < end; ++j) {
         if (cmp_fn(v, j, pivot) <= 0) {
@@ -53,5 +53,5 @@ void vec_sort(vec_t *vec, int (*cmp_fn)(vec_t *, size_t, size_t))
     if (cmp_fn == NULL)
         cmp_fn = &default_compare;
 
-    quick_sort(vec, cmp_fn, 0, vec->base.size - 1);
+    quick_sort(vec, cmp_fn, 0, vec->size - 1);
 }

@@ -48,7 +48,7 @@ static void update_socks(server_t *srv)
     FD_ZERO(&srv->read_set);
     FD_ZERO(&srv->write_set);
     FD_SET(srv->sock, &srv->read_set);
-    for (size_t i = 0; i < clients->base.size; ++i) {
+    for (size_t i = 0; i < clients->size; ++i) {
         if (clients->data[i].sock == -1)
             continue;
         FD_SET(clients->data[i].sock, &srv->read_set);
