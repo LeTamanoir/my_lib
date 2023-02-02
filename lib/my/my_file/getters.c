@@ -11,7 +11,9 @@
 #include "my_str.h"
 #include "my_file.h"
 #include "my_obj.h"
-#include "get_line_utils.h"
+
+int add_from_cache(file_t *file);
+int add_from_read(file_t *file);
 
 str_t *file_get_content(file_t *file)
 {

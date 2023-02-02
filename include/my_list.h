@@ -75,7 +75,7 @@ void list_pop_back(list_t *list);
  *              fn(current_elem_in_list->data, data);
  * @param data  additionnal data that you can use in the fn
  */
-void list_for_each(list_t *list, void (*fn)(void *, void *), void *data);
+void list_for_each(list_t *list, int (*fn)(void *, void *), void *data);
 
 /**
  * @brief frees a node of a list

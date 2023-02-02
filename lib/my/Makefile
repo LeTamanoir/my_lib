@@ -24,11 +24,6 @@ LIST_DIR	=	./my_list
 MATRIX_DIR	=	./my_matrix
 ARRAY_DIR	=	./my_array
 
-INCLUDE_FILE_DIR	=	$(FILE_DIR)/include
-INCLUDE_STDIO_DIR	=	$(STDIO_DIR)/include
-INCLUDE_LIST_DIR	=	$(LIST_DIR)/include
-INCLUDE_MATRIX_DIR	=	$(MATRIX_DIR)/include
-
 
 MY_NETWORK	=	$(NETWORK_DIR)/create.c 	\
 				$(NETWORK_DIR)/run.c 		\
@@ -40,6 +35,7 @@ MY_OBJ		=	$(OBJ_DIR)/my_obj.c
 MY_FMT		=	$(FMT_DIR)/my_fmt.c			\
 				$(FMT_DIR)/add_base.c		\
 				$(FMT_DIR)/add_join.c		\
+				$(FMT_DIR)/add_float.c		\
 				$(FMT_DIR)/adders.c
 
 
@@ -61,22 +57,22 @@ MY_MAP		=	$(MAP_DIR)/my_map.c				\
 				$(MAP_DIR)/utils.c
 
 
-MY_MATH		=	$(MATH_DIR)/my_int_sqrt.c			\
-				$(MATH_DIR)/my_pow.c	 			\
-				$(MATH_DIR)/my_is_prime.c
+MY_MATH		=	$(MATH_DIR)/my_pow.c
 
 
-MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c		\
-				$(STDLIB_DIR)/my_itoa.c		\
-				$(STDLIB_DIR)/my_atof.c		\
-				$(STDLIB_DIR)/my_ftoa.c		\
-				$(STDLIB_DIR)/my_nbrlen.c	\
-				$(STDLIB_DIR)/my_calloc.c	\
-				$(STDLIB_DIR)/my_memcpy.c	\
-				$(STDLIB_DIR)/my_memset.c	\
-				$(STDLIB_DIR)/my_memcmp.c	\
-				$(STDLIB_DIR)/auto_free.c	\
-				$(STDLIB_DIR)/my_swap.c		\
+MY_STDLIB	=	$(STDLIB_DIR)/my_atoi.c			\
+				$(STDLIB_DIR)/my_itoa.c			\
+				$(STDLIB_DIR)/my_atof.c			\
+				$(STDLIB_DIR)/my_ftoa.c			\
+				$(STDLIB_DIR)/my_ftoa_utils.c	\
+				$(STDLIB_DIR)/my_fftoa.c		\
+				$(STDLIB_DIR)/my_nbrlen.c		\
+				$(STDLIB_DIR)/my_calloc.c		\
+				$(STDLIB_DIR)/my_memcpy.c		\
+				$(STDLIB_DIR)/my_memset.c		\
+				$(STDLIB_DIR)/my_memcmp.c		\
+				$(STDLIB_DIR)/auto_free.c		\
+				$(STDLIB_DIR)/my_swap.c			\
 				$(STDLIB_DIR)/vfree.c
 
 
@@ -133,12 +129,8 @@ MY_STDIO	=	$(STDIO_DIR)/my_printf.c								\
 				$(STDIO_DIR)/my_put.c
 
 
-INCLUDE	=	-I$(INCLUDE_STDIO_DIR) -I$(INCLUDE_LIST_DIR) -I$(INCLUDE_DIR) \
-			-I$(INCLUDE_FILE_DIR) -I$(INCLUDE_MATRIX_DIR)
-
-
 CFLAGS += -Werror -Wextra -Wall
-CPPFLAGS += $(INCLUDE)
+CPPFLAGS += -I$(INCLUDE_DIR)
 
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3

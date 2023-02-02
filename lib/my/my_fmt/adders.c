@@ -39,13 +39,3 @@ void fmt_add_char(fmt_state_t *state)
 
     str_cadd(&state->buffer, data);
 }
-
-void fmt_add_float(fmt_state_t *state)
-{
-    double data = va_arg(*(state->ap), double);
-    int precision = (state->precision == -1) ? 6 : state->precision;
-    char *temp = my_ftoa(data, precision);
-
-    str_add(&state->buffer, temp);
-    free(temp);
-}

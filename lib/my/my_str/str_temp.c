@@ -26,4 +26,3 @@ str_t *str_ntemp(char const *init, size_t n)
 
     return (str_t*)&temp_str;
 }
-

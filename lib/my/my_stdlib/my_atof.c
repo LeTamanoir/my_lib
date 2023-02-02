@@ -17,8 +17,9 @@ double my_atof(char const *str)
     if (*str == '-') {
         sign = -1;
         str++;
-    }
-    while (*str != '\0' && (my_isnum(*str) || (*str == '.' && !found_dot))) {
+    } else if (*str == '+')
+        str++;
+    while (*str && (my_isnum(*str) || (*str == '.' && !found_dot))) {
         if (*str == '.') {
             found_dot = 1;
         } else {

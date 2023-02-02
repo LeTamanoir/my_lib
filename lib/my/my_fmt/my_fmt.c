@@ -15,6 +15,7 @@ void fmt_add_str(fmt_state_t *state);
 void fmt_add_str_t(fmt_state_t *state);
 void fmt_add_char(fmt_state_t *state);
 void fmt_add_float(fmt_state_t *state);
+void fmt_add_fast_float(fmt_state_t *state);
 void fmt_add_lobase(fmt_state_t *state);
 void fmt_add_upbase(fmt_state_t *state);
 void fmt_add_join(fmt_state_t *state);
@@ -26,6 +27,7 @@ static const fmt_map_t FORMATS[] = {
     { 's', &fmt_add_str },
     { 'd', &fmt_add_int },
     { 'f', &fmt_add_float },
+    { 'F', &fmt_add_fast_float },
     { 'b', &fmt_add_lobase },
     { 'B', &fmt_add_upbase },
     { 'j', &fmt_add_join },

@@ -16,9 +16,18 @@ void auto_free(void *ptr);
 
 int my_nbrlen(long int nb, int base);
 char *my_itoa(long int nb);
-int my_atoi(char const *str);
+long int my_atoi(char const *str);
 double my_atof(char const *str);
+
+/**
+ * @brief ftoa with full precision (slow)
+ */
 char *my_ftoa(double data, int precision);
+
+/**
+ * @brief ftoa with limited precision (fast)
+ */
+char *my_fftoa(double data, int precision);
 
 void *my_calloc(size_t count, size_t elem_size);
 void vfree(int argc, ...);

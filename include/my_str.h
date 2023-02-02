@@ -26,6 +26,8 @@ char *my_strncpy(char *dest, char const *src, size_t n);
 int my_strcmp(char const *s1, char const *s2);
 int my_strncmp(char const *s1, char const *s2, size_t n);
 char *my_revstr(char *str);
+char *my_strchr(char *str, char c);
+
 
 int my_isalpha(char chr);
 int my_islower(char chr);

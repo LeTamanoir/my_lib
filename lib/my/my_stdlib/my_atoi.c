@@ -7,20 +7,20 @@
 
 #include "my_str.h"
 
-int my_atoi(char const *str)
+long int my_atoi(char const *str)
 {
-    int nb = 0;
+    long int nb = 0;
     int sign = 1;
 
     if (*str == '-') {
         sign = -1;
         str++;
-    }
+    } else if (*str == '+')
+        str++;
 
-    while (*str != '\0' && my_isnum(*str)) {
+    while (*str && my_isnum(*str)) {
         nb = nb * 10 + (*str - '0');
         str++;
     }
-
     return nb * sign;
 }

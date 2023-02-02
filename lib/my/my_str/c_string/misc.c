@@ -24,6 +24,16 @@ char *my_revstr(char *str)
     return str;
 }
 
+char *my_strchr(char *str, char c)
+{
+    while (*str && *str != c)
+        str++;
+
+    if (*str == c)
+        return str;
+    return NULL;
+}
+
 int my_str_isint(char const *str)
 {
     if (str[0] == '\0')

@@ -8,19 +8,18 @@
 #ifndef INCLUDE_MY_MATH_
     #define INCLUDE_MY_MATH_
     #include <math.h>
-    #define MY_MAX(a, b)    ((a > b) ? (a) : (b))
-    #define MY_MIN(a, b)    ((a < b) ? (a) : (b))
-    #define MY_ABS(a)       ((a > 0) ? (a) : -(a))
-    #define MY_FABS(a)      ((a > 0.0) ? (a) : -(a))
-    #define MY_TO_DEG(r)    (r * (180.0 / (float)M_PI))
-    #define MY_TO_RAD(r)    (r * ((float)M_PI / 180.0))
+
+    #define MY_MAX(a, b)    (((a) > (b)) ? (a) : (b))
+    #define MY_MIN(a, b)    (((a) < (b)) ? (a) : (b))
+    #define MY_ABS(a)       (((a) > 0) ? (a) : -(a))
+    #define MY_FABS(a)      (((a) > 0.0) ? (a) : -(a))
+    #define MY_TO_DEG(r)    ((r) * (180.0 / (float)M_PI))
+    #define MY_TO_RAD(r)    ((r) * ((float)M_PI / 180.0))
 
 
-int my_int_sqrt(int nb);
-int my_is_prime(int nb);
-int my_pow(int number, int power);
-long int my_powl(long int number, int power);
-long long int my_powll(long long int number, int power);
+int my_pow(int number, unsigned int power);
+long int my_powl(long int number, unsigned int power);
+long long int my_powll(long long int number, unsigned int power);
 
 
 typedef struct vec2i_s {

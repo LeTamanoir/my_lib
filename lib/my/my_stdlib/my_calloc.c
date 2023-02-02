@@ -11,10 +11,10 @@ void *my_calloc(size_t count, size_t elem_size)
 {
     void *temp = malloc(count * elem_size);
 
-    if (temp == NULL) return NULL;
+    if (temp == NULL)
+        return NULL;
 
-    for (size_t i = 0; i < count * elem_size; i++)
-        ((char *)temp)[i] = 0;
+    my_memset(temp, 0, count * elem_size);
 
     return temp;
 }
