@@ -5,6 +5,7 @@
 ** str_temp
 */
 
+#include "my_stdlib.h"
 #include "my_str.h"
 
 str_t *str_temp(char const *init)
