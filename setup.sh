@@ -1,7 +1,7 @@
 #!/bin/bash
 
 display_help() {
-    echo "Epitech project setup tools:
+    echo "Epitech project setup tool:
 USAGE:
     ./setup.sh [project-name]"
 }

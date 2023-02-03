@@ -31,9 +31,9 @@ tests_run: unit_tests
 	./$(TEST_NAME)
 
 clean:
-	rm -f $(OBJ)
+	@../../clean.sh
 
 fclean:	clean
-	rm -f $(TEST_NAME)
+	@rm -f $(TEST_NAME)
 
 .PHONY: tests_run unit_tests clean fclean
