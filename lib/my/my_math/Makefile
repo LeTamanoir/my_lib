@@ -26,21 +26,18 @@ endif
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	libmy_math.a
+NAME	=	../libmy.a
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	ar rc $(NAME) $(OBJ)
-	cp $(NAME) ../
+	ar cq $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
 	../../../clean.sh
 
 fclean:	clean
-	rm -f $(NAME)
-	rm -f ../$(NAME)
 
 re:	fclean all
 

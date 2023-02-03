@@ -7,12 +7,10 @@
 
 CC = gcc
 
-LIB_DIR	=	./lib/my
 SRC_DIR	=	./src
 INCLUDE_DIR	=	./include
 
-LIB_MATH	=	-lm
-LIB_MY	=	-L.	-lmy
+LIB	=	-L./lib/my -lmy
 
 SRC	=	$(SRC_DIR)/main.c
 
@@ -20,7 +18,7 @@ INCLUDE	=	-I$(INCLUDE_DIR)
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += $(INCLUDE)
-LDDFLAGS += $(LIB_MY) $(LIB_MATH)
+LDDFLAGS += $(LIB)
 
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3

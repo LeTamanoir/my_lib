@@ -7,24 +7,21 @@
 
 #include "my_str.h"
 #include "my_stdio.h"
+#include "my_stdlib.h"
 #include "my_vec.h"
 #include "my_map.h"
 #include "my_yaml.h"
 #include "my_fmt.h"
 
-int main(int ac, char **av)
+int main(void)
 {
-    (void)ac;
-    (void)av;
+    SMART vec_int_t *test = (vec_int_t*)vec_create(20, sizeof(int));
 
-    my_printf("%f\n", 1.0 / 3.0);
-    my_printf("%f\n", 1.0 / 3.0);
-    my_printf("%f\n", -1.0 / 3.0);
-    my_printf("%f\n", -1.0 * 3.0);
-    my_printf("%f\n", -1.0 * 30.0);
-    my_printf("%f\n", 1.0 / 3.0);
-    my_printf("%f\n", 1.0 * 3.0);
-    my_printf("%f\n", 1.0 * 30.0);
+    for (size_t i = 10; i < 20; ++i)
+        vec_push_back((vec_t**)&test, &i);
+
+    for (size_t i = 0; i < test->size; ++i)
+        my_printf("test[%d] = %d\n", i, test->data[i]);
 
     return 0;
 }
