@@ -18,7 +18,7 @@ vec_t *vec_filter(vec_t *vec, int (*keep_fn)(vec_t *, size_t))
 
     for (size_t i = 0; i < vec->size; ++i)
         if (keep_fn(vec, i))
-            vec_push_back(&new, vec->data + i * vec->__elem_size);
+            vec_pushback(&new, vec->data + i * vec->__elem_size);
 
     return new;
 }

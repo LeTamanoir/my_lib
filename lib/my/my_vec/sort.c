@@ -8,34 +8,32 @@
 #include "my_stdlib.h"
 #include "my_vec.h"
 
-static int default_compare(vec_t *v, size_t i, size_t pivot)
+static int default_compare(void *a, void *b)
 {
-    return (((vec_int_t*)v)->data[i] < ((vec_int_t*)v)->data[pivot]);
+    return *(int*)a - *(int*)b;
 }
 
 static int partition(
-    vec_t *v, int (*cmp_fn)(vec_t *, size_t, size_t),
+    vec_t *v, int (*cmp_fn)(void *, void *),
     size_t start, size_t end
 )
 {
     size_t pivot = end;
     size_t i = start - 1;
-    size_t el_size = v->__elem_size;
 
     for (size_t j = start; j < end; ++j) {
-        if (cmp_fn(v, j, pivot) <= 0) {
+        if (cmp_fn(vec_at(v, j), vec_at(v, pivot)) <= 0) {
             i++;
-            my_swap(v->data + i * el_size, v->data + j * el_size, el_size);
+            my_swap(vec_at(v, i), vec_at(v, j), v->__elem_size);
         }
     }
     i++;
-    my_swap(v->data + i * el_size, v->data + end * el_size, el_size);
-
+    my_swap(vec_at(v, i), vec_at(v, end), v->__elem_size);
     return i;
 }
 
 static void quick_sort(
-    vec_t *v, int (*cmp_fn)(vec_t *, size_t, size_t),
+    vec_t *v, int (*cmp_fn)(void *, void *),
     size_t start, size_t end
 )
 {
@@ -48,7 +46,7 @@ static void quick_sort(
     quick_sort(v, cmp_fn, center + 1, end);
 }
 
-void vec_sort(vec_t *vec, int (*cmp_fn)(vec_t *, size_t, size_t))
+void vec_sort(vec_t *vec, int (*cmp_fn)(void *, void *))
 {
     if (cmp_fn == NULL)
         cmp_fn = &default_compare;

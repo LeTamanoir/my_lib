@@ -9,19 +9,11 @@
 #include "my_vec.h"
 #include "my_obj.h"
 
-vec_t **vec_resize(vec_t **vec, size_t new_size)
+vec_t **vec_resize(vec_t **vec, size_t new_cap)
 {
     vec_t *old = *vec;
-    *vec = vec_create(new_size, old->__elem_size);
+    *vec = obj_realloc(old, sizeof(vec_t) + new_cap * old->__elem_size);
 
-    if (*vec == NULL)
-        return NULL;
-
-    obj_set_destructor(*vec, obj_get_destructor(old));
-    my_memcpy((*vec)->data, old->data, old->size * old->__elem_size);
-    (*vec)->size = old->size;
-    obj_set_destructor(old, NULL);
-    obj_free(old);
     return vec;
 }
 
@@ -58,7 +50,7 @@ void vec_clear(vec_t *vec)
     vec->size = 0;
 }
 
-void vec_push_back(vec_t **vec, void *elem)
+void vec_pushback(vec_t **vec, void *elem)
 {
     if ((*vec)->size + 1 >= (*vec)->capacity)
         vec_resize(vec, (*vec)->size + 1);

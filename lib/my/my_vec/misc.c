@@ -16,3 +16,8 @@ size_t get_padded_size(size_t size)
 
     return size_pad;
 }
+
+void *vec_at(vec_t *vec, size_t idx)
+{
+    return vec->data + idx * vec->__elem_size;
+}
