@@ -120,6 +120,13 @@ void vec_pushback(vec_t **vec, void *elem);
 void vec_sort(vec_t *vec, int (*cmp_fn)(void *, void *));
 
 /**
+ * @brief removes the last element of a vector
+ *
+ * @param vec   the vector to remove the last element from
+ */
+void vec_popback(vec_t *vec);
+
+/**
  * @brief frees a vector composed of pointers
  *        every element must ve freeable with a single free call
  *
@@ -151,18 +158,20 @@ vec_t *vec_create(size_t nb_data, size_t el_size);
  *
  * @param vec       the vector to filter
  * @param keep_fn   the function to filter the elements
+ *                  if keep_fn(elem) == 1 then the element will be kept
  * @return a new vector with the filterd elements
  */
-vec_t *vec_filter(vec_t *vec, int (*keep_fn)(vec_t *, size_t));
+vec_t *vec_filter(vec_t *vec, int (*keep_fn)(void *));
 
 /**
  * @brief finds an item from a vector with a given search function
  *
  * @param vec       the vector to search
  * @param find_fn   the function to describe what you look for
+ *                  if find_fn(elem) == 1 then the element will be returned
  * @return the item if it exists or NULL
  */
-void *vec_find(vec_t *vec, int (*find_fn)(vec_t *, size_t));
+void *vec_find(vec_t *vec, int (*find_fn)(void *));
 
 
 #endif /* INCLUDE_MY_VEC_ */

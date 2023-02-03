@@ -43,7 +43,7 @@ void list_free(list_t *list);
  * @param list  the list to add the element to
  * @param data the data of the element
  */
-void list_push_front(list_t *list, void *data);
+void list_pushfront(list_t *list, void *data);
 
 /**
  * @brief adds a new element to the back of a list
@@ -51,21 +51,21 @@ void list_push_front(list_t *list, void *data);
  * @param list  the list to add the element to
  * @param data the data of the element
  */
-void list_push_back(list_t *list, void *data);
+void list_pushback(list_t *list, void *data);
 
 /**
  * @brief removes the first element of a list
  *
  * @param list  the list to remove the element from
  */
-void list_pop_front(list_t *list);
+void list_popfront(list_t *list);
 
 /**
  * @brief removes the last element of a list
  *
  * @param list  the list to remove the element from
  */
-void list_pop_back(list_t *list);
+void list_popback(list_t *list);
 
 /**
  * @brief runs a functions on every element of a list

@@ -9,7 +9,7 @@
 #include "my_vec.h"
 #include "my_obj.h"
 
-vec_t *vec_filter(vec_t *vec, int (*keep_fn)(vec_t *, size_t))
+vec_t *vec_filter(vec_t *vec, int (*keep_fn)(void *))
 {
     vec_t *new = vec_create(vec->size, vec->__elem_size);
 
@@ -17,8 +17,8 @@ vec_t *vec_filter(vec_t *vec, int (*keep_fn)(vec_t *, size_t))
         return NULL;
 
     for (size_t i = 0; i < vec->size; ++i)
-        if (keep_fn(vec, i))
-            vec_pushback(&new, vec->data + i * vec->__elem_size);
+        if (keep_fn(vec_at(vec, i)))
+            vec_pushback(&new, vec_at(vec, i));
 
     return new;
 }

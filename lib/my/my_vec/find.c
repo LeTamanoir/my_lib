@@ -8,11 +8,11 @@
 #include "my_stdlib.h"
 #include "my_vec.h"
 
-void *vec_find(vec_t *vec, int (*find_fn)(vec_t *, size_t))
+void *vec_find(vec_t *vec, int (*find_fn)(void *))
 {
     for (size_t i = 0; i < vec->size; ++i) {
-        if (find_fn(vec, i)) {
-            return vec->data + i * vec->__elem_size;
+        if (find_fn(vec_at(vec, i))) {
+            return vec_at(vec, i);
         }
     }
 

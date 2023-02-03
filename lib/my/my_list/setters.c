@@ -8,7 +8,7 @@
 #include "my_stdlib.h"
 #include "my_list.h"
 
-void list_push_front(list_t *list, void *data)
+void list_pushfront(list_t *list, void *data)
 {
     node_t *new_node = node_create();
     new_node->data = data;
@@ -24,7 +24,7 @@ void list_push_front(list_t *list, void *data)
     }
 }
 
-void list_push_back(list_t *list, void *data)
+void list_pushback(list_t *list, void *data)
 {
     node_t *new_node = node_create();
     new_node->data = data;
@@ -40,7 +40,7 @@ void list_push_back(list_t *list, void *data)
     }
 }
 
-void list_pop_front(list_t *list)
+void list_popfront(list_t *list)
 {
     if (list->front == NULL && list->back == NULL) {
         return;
@@ -59,7 +59,7 @@ void list_pop_front(list_t *list)
     node_free(temp);
 }
 
-void list_pop_back(list_t *list)
+void list_popback(list_t *list)
 {
     if (list->front == NULL && list->back == NULL) {
         return;
