@@ -12,7 +12,7 @@
 
 node_t *node_create(void)
 {
-    node_t *new_node = malloc(sizeof(node_t));
+    node_t *new_node = my_malloc(sizeof(node_t));
 
     if (new_node == NULL)
         return NULL;
@@ -50,11 +50,11 @@ void list_free(list_t *list)
         node_free(old);
     }
 
-    free(list);
+    my_free(list);
 }
 
 void node_free(node_t *node)
 {
     obj_free(node->data);
-    free(node);
+    my_free(node);
 }

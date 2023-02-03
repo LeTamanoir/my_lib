@@ -15,7 +15,7 @@ void fmt_add_float(fmt_state_t *state)
     char *temp = my_ftoa(data, precision);
 
     str_add(&state->buffer, temp);
-    free(temp);
+    my_free(temp);
 }
 
 void fmt_add_fast_float(fmt_state_t *state)
@@ -25,5 +25,5 @@ void fmt_add_fast_float(fmt_state_t *state)
     char *temp = my_fftoa(data, precision);
 
     str_add(&state->buffer, temp);
-    free(temp);
+    my_free(temp);
 }

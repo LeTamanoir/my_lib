@@ -36,17 +36,15 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	../libmy.a
 
-all:	$(NAME)
-
-$(NAME):	$(OBJ)
-	ar cq $(NAME) $(OBJ)
+all:	$(OBJ)
+	@ar cq $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
-	../../../clean.sh
+	@rm -f $(OBJ)
+
 
 fclean:	clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean re

@@ -15,7 +15,7 @@ static void fmt_add_base(fmt_state_t *state, int is_upper)
     unsigned long int nb = va_arg(*(state->ap), unsigned long int);
     int base = va_arg(*(state->ap), int);
     int len = my_nbrlen(nb, base);
-    char *res = malloc(sizeof(char) * (len + 1));
+    char *res = my_malloc(sizeof(char) * (len + 1));
     res[len] = '\0';
     int i = len - 1;
 
@@ -28,7 +28,7 @@ static void fmt_add_base(fmt_state_t *state, int is_upper)
     }
 
     str_add(&state->buffer, res);
-    free(res);
+    my_free(res);
 }
 
 void fmt_add_lobase(fmt_state_t *state)

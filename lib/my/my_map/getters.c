@@ -39,7 +39,7 @@ vec_str_t *map_get_keys(map_t *map)
             continue;
         for (size_t j = 0; j < elem_col->size; j++) {
             temp = str_dup(((map_elem_t*)elem_col->data[j])->key);
-            vec_push_back((vec_t**)&keys, &temp);
+            vec_pushback((vec_t**)&keys, &temp);
         }
     }
 

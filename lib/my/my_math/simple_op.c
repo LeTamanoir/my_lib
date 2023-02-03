@@ -14,13 +14,13 @@ mat_t *matrix_add(mat_t *m1, mat_t *m2)
         return NULL;
     }
 
-    mat_t *mat = malloc(sizeof(mat_t));
-    mat->m = malloc(sizeof(double *) * m1->y);
+    mat_t *mat = my_malloc(sizeof(mat_t));
+    mat->m = my_malloc(sizeof(double *) * m1->y);
     mat->x = m1->x;
     mat->y = m1->y;
 
     for (int i = 0; i < mat->y; i++) {
-        mat->m[i] = malloc(sizeof(double) * mat->x);
+        mat->m[i] = my_malloc(sizeof(double) * mat->x);
 
         for (int j = 0; j < mat->x; j++) {
             mat->m[i][j] = m1->m[i][j] + m2->m[i][j];
@@ -47,13 +47,13 @@ mat_t *matrix_mult(mat_t *m1, mat_t *m2)
         return NULL;
     }
 
-    mat_t *mat = malloc(sizeof(mat_t));
-    mat->m = malloc(sizeof(double *) * m1->y);
+    mat_t *mat = my_malloc(sizeof(mat_t));
+    mat->m = my_malloc(sizeof(double *) * m1->y);
     mat->x = m2->x;
     mat->y = m1->y;
 
     for (int i = 0; i < mat->y; i++) {
-        mat->m[i] = malloc(sizeof(double) * mat->x);
+        mat->m[i] = my_malloc(sizeof(double) * mat->x);
 
         for (int j = 0; j < mat->x; j++) {
             mat->m[i][j] = 0.0;
@@ -66,13 +66,13 @@ mat_t *matrix_mult(mat_t *m1, mat_t *m2)
 
 mat_t *matrix_mult_k(mat_t *m, double k)
 {
-    mat_t *mat = malloc(sizeof(mat_t));
-    mat->m = malloc(sizeof(double *) * m->y);
+    mat_t *mat = my_malloc(sizeof(mat_t));
+    mat->m = my_malloc(sizeof(double *) * m->y);
     mat->x = m->x;
     mat->y = m->y;
 
     for (int i = 0; i < mat->y; i++) {
-        mat->m[i] = malloc(sizeof(double) * mat->x);
+        mat->m[i] = my_malloc(sizeof(double) * mat->x);
 
         for (int j = 0; j < mat->x; j++) {
             mat->m[i][j] = m->m[i][j] * k;

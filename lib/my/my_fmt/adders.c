@@ -16,7 +16,7 @@ void fmt_add_int(fmt_state_t *state)
     char *temp = my_itoa(data);
 
     str_add(&state->buffer, temp);
-    free(temp);
+    my_free(temp);
 }
 
 void fmt_add_str(fmt_state_t *state)

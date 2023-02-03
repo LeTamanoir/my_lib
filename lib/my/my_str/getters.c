@@ -21,7 +21,7 @@ vec_str_t *str_split(str_t *str, str_t *delims)
         if (i == str->length || str_contains(delims, str->data[i])) {
             temp = str_create("");
             str_nadd(&temp, str->data + last_idx, i - last_idx);
-            vec_push_back((vec_t**)&arr, &temp);
+            vec_pushback((vec_t**)&arr, &temp);
             last_idx = i + 1;
         }
     }

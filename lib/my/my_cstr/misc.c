@@ -35,34 +35,35 @@ char *my_strchr(char *str, char c)
 
 int my_str_isint(char const *str)
 {
-    if (str[0] == '\0')
+    if (*str == '\0')
         return 0;
 
-    for (size_t i = 0; str[i] != '\0'; i++) {
-        if (i == 0 && (str[i] == '-' || str[i] == '+'))
-            continue;
-        if (!my_isnum(str[i]))
-            return 0;
-    }
+    if (*str == '-' || *str == '+')
+        str++;
 
+    while (*str) {
+        if (!my_isnum(*str))
+            return 0;
+        str++;
+    }
     return 1;
 }
 
 int my_str_isfloat(char const *str)
 {
-    int float_pt = 0;
+    int found_dot = 0;
 
-    if (str[0] == '\0')
+    if (*str == '\0')
         return 0;
 
-    for (size_t i = 0; str[i] != '\0'; i++) {
-        if (i == 0 && str[i] == '-')
-            continue;
-        if (!my_isnum(str[i]) && str[i] != '.')
-            return 0;
-        if (str[i] == '.')
-            float_pt++;
-    }
+    if (*str == '-' || *str == '+')
+        str++;
 
-    return (float_pt <= 1);
+    while (*str) {
+        if (!my_isnum(*str) && (*str != '.' || found_dot))
+            return 0;
+        found_dot |= (*str == '.');
+        str++;
+    }
+    return 1;
 }
