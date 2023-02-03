@@ -17,7 +17,7 @@ char *my_fftoa(double nb, int precision)
 
     nb -= (long int)nb;
     float_ = my_itoa((long int)(MY_FABS(nb) * my_powl(10, precision)));
-    res = malloc(sizeof(char) * (my_strlen(int_) + my_strlen(float_) + 2));
+    res = my_malloc(sizeof(char) * (my_strlen(int_) + my_strlen(float_) + 2));
     my_strcpy(res, int_);
     if (precision > 0) {
         my_strcat(res, ".");

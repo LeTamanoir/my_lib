@@ -12,7 +12,7 @@ char *my_itoa(long int nb)
 {
     int is_neg = nb < 0;
     int len = my_nbrlen(nb, 10) + is_neg;
-    char *res = malloc(sizeof(char) * (len + 1));
+    char *res = my_malloc(sizeof(char) * (len + 1));
     int i = len - 1;
 
     res[len] = '\0';

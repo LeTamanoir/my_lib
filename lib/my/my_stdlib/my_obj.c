@@ -11,23 +11,21 @@
 
 void *obj_alloc(size_t size)
 {
-    void *obj = malloc(sizeof(obj_meta_t) + size);
+    void *obj = my_malloc(sizeof(obj_meta_t) + size);
 
     obj_set_destructor(obj + sizeof(obj_meta_t), NULL);
 
     return obj + sizeof(obj_meta_t);
 }
 
-void obj_set_destructor(void *obj, void (*destructor)(void *))
+void *obj_realloc(void *obj, size_t size)
 {
-    obj_meta_t *meta = obj - sizeof(obj_meta_t);
-    meta->destructor = destructor;
-}
+    void *new = my_realloc(
+        obj - sizeof(obj_meta_t),
+        sizeof(obj_meta_t) + size
+    );
 
-void *obj_get_destructor(void *obj)
-{
-    obj_meta_t *meta = obj - sizeof(obj_meta_t);
-    return meta->destructor;
+    return new + sizeof(obj_meta_t);
 }
 
 void obj_free(void *obj)
@@ -38,7 +36,7 @@ void obj_free(void *obj)
     if (meta->destructor != NULL)
         meta->destructor(obj);
 
-    free(obj_start);
+    my_free(obj_start);
 }
 
 void obj_vfree(int argc, ...)

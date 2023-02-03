@@ -17,13 +17,14 @@ SRC	=	./my_atoi.c			\
 		./my_ftoa_utils.c	\
 		./my_fftoa.c		\
 		./my_nbrlen.c		\
-		./my_calloc.c		\
+		./my_alloc.c		\
 		./my_memcpy.c		\
 		./my_memset.c		\
 		./my_memcmp.c		\
 		./auto_free.c		\
 		./my_swap.c			\
-		./vfree.c			\
+		./my_free.c			\
+		./my_obj_utils.c	\
 		./my_obj.c
 
 CFLAGS += -Werror -Wextra -Wall
@@ -37,17 +38,12 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	../libmy.a
 
-all:	$(NAME)
-
-$(NAME):	$(OBJ)
-	ar cq $(NAME) $(OBJ)
+all:	$(OBJ)
+	@ar cq $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
-	../../../clean.sh
+	@rm -f $(OBJ)
 
-fclean:	clean
+re:	clean all
 
-re:	fclean all
-
-.PHONY: all clean fclean re
+.PHONY: all clean re
