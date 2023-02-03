@@ -13,6 +13,10 @@
     #define MAX_SWAP_SIZE   (1024)
 
 
+typedef struct {
+    size_t size;
+} alloc_meta_t;
+
 void auto_free(void *ptr);
 
 int my_nbrlen(long int nb, int base);
@@ -30,6 +34,9 @@ char *my_ftoa(double data, int precision);
  */
 char *my_fftoa(double data, int precision);
 
+void *my_malloc(size_t size);
+void my_free(void *ptr);
+void *my_realloc(void *ptr, size_t size);
 void *my_calloc(size_t count, size_t elem_size);
 void vfree(int argc, ...);
 

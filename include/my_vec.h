@@ -9,10 +9,6 @@
     #define INCLUDE_MY_VEC_
     #include <stddef.h>
 
-    #ifdef USE_MY_STR
-        #include "my_str.h"
-    #endif
-
     #define VEC_META size_t capacity; size_t size; size_t __elem_size
 
 
@@ -69,7 +65,7 @@ size_t get_padded_size(size_t size);
  *              else return 0
  * @param data  additionnal data that you can use in the fn
  */
-void vec_for_each(vec_t *vec, int (*fn)(void *, void *), void *data);
+void vec_foreach(vec_t *vec, void (*fn)(void *, size_t, void *), void *data);
 
 /**
  * @brief clears a vector
@@ -110,15 +106,18 @@ vec_t **vec_resize(vec_t **vec, size_t new_size);
  * @param vec   the vector to append the element to
  * @param elem  the element to add
  */
-void vec_push_back(vec_t **vec, void *elem);
+void vec_pushback(vec_t **vec, void *elem);
 
 /**
  * @brief sorts a vector
  *
  * @param vec       the vector to sort
  * @param cmp_fn    function to compare 2 elements
+ *                  if cmp_fn(a, b) < 0 then a < b
+ *                  if cmp_fn(a, b) > 0 then a > b
+ *                  else a == b
  */
-void vec_sort(vec_t *vec, int (*cmp_fn)(vec_t *, size_t, size_t));
+void vec_sort(vec_t *vec, int (*cmp_fn)(void *, void *));
 
 /**
  * @brief frees a vector composed of pointers
@@ -127,6 +126,15 @@ void vec_sort(vec_t *vec, int (*cmp_fn)(vec_t *, size_t, size_t));
  * @param vec       the vector to free
  */
 void vec_free(vec_t *vec);
+
+/**
+ * @brief gets an element from a vector at a given index
+ *
+ * @param vec the vector to get the element from
+ * @param idx the index of the element to get
+ * @return the element at the given index
+ */
+void *vec_at(vec_t *vec, size_t idx);
 
 /**
  * @brief creates a vector with vec_free as its default destructor
@@ -154,16 +162,7 @@ vec_t *vec_filter(vec_t *vec, int (*keep_fn)(vec_t *, size_t));
  * @param find_fn   the function to describe what you look for
  * @return the item if it exists or NULL
  */
-void *vec_find_fn(vec_t *vec, int (*find_fn)(vec_t *, size_t));
-
-/**
- * @brief finds the exact copy of an item in a vector
- *
- * @param vec       the vector to search
- * @param to_find   the data to find
- * @return the item if it exists or NULL
- */
-void *vec_find(vec_t *vec, void *to_find);
+void *vec_find(vec_t *vec, int (*find_fn)(vec_t *, size_t));
 
 
 #endif /* INCLUDE_MY_VEC_ */

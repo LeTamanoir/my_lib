@@ -24,6 +24,15 @@ typedef struct obj_meta_s {
 void *obj_alloc(size_t size);
 
 /**
+ * @brief reallocates an object
+ *
+ * @param obj   the object to reallocate
+ * @param size  the new size of the object
+ * @return the reallocated object
+ */
+void *obj_realloc(void *obj, size_t size);
+
+/**
  * @brief retrieves the destructor of an object
  *
  * @param obj   the object to get the destructor from
