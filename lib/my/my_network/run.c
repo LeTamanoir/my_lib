@@ -20,25 +20,27 @@ void close_client(client_t *client)
     str_clear(&client->write);
 }
 
-static int iterate_clients(client_t *client, server_t *srv)
+static void iterate_clients(vec_client_t *clients, server_t *srv)
 {
+    client_t *client = NULL;
     int rm_client = 0;
 
-    if (client->sock == -1)
-        return 0;
-    if (FD_ISSET(client->sock, &srv->write_set) &&
-        client->write->length > 0) {
-        write_client(client);
-        return 1;
+    for (size_t i = 0; i < clients->size; ++i) {
+        client = &clients->data[i];
+
+        if (client->sock == -1)
+            return;
+        if (FD_ISSET(client->sock, &srv->write_set) &&
+            client->write->length > 0) {
+            write_client(client);
+            return;
+        }
+        if (FD_ISSET(client->sock, &srv->read_set)) {
+            rm_client = (read_client(client) == 0);
+            srv->callback(client);
+            (rm_client) ? (close_client(client)) : (0);
+        }
     }
-    if (FD_ISSET(client->sock, &srv->read_set)) {
-        rm_client = (read_client(client) == 0);
-        srv->callback(client);
-        if (rm_client)
-            close_client(client);
-        return 1;
-    }
-    return 0;
 }
 
 static void update_socks(server_t *srv)
@@ -70,8 +72,7 @@ int server_run(server_t *serv)
             accept_client(serv);
             continue;
         }
-        vec_for_each((vec_t *)serv->clients,
-            (int (*)(void *, void *))&iterate_clients, serv);
+        iterate_clients(serv->clients, serv);
     }
     return 0;
 }

@@ -19,11 +19,10 @@ SRC	=	./my_str.c				\
 		./checks.c				\
 		./trim.c				\
 		./print.c				\
-		./str_temp.c			\
 		./modifiers.c			\
 		./format.c				\
 		./misc.c				\
-		./getters.c
+		./split.c
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += -I$(INCLUDE_DIR)

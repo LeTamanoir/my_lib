@@ -30,13 +30,14 @@ void *obj_realloc(void *obj, size_t size)
 
 void obj_free(void *obj)
 {
-    void *obj_start = obj - sizeof(obj_meta_t);
-    obj_meta_t *meta = obj_start;
+    void (*destructor)(void *) = NULL;
 
-    if (meta->destructor != NULL)
-        meta->destructor(obj);
+    destructor = ((obj_meta_t *)(obj - sizeof(obj_meta_t)))->destructor;
 
-    my_free(obj_start);
+    if (destructor != NULL)
+        destructor(obj);
+
+    my_free(obj - sizeof(obj_meta_t));
 }
 
 void obj_vfree(int argc, ...)

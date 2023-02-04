@@ -10,9 +10,9 @@
 #include "my_str.h"
 #include "my_math.h"
 
-static int available_client(vec_t *v, size_t i)
+static int available_client(void *elem)
 {
-    return ((vec_client_t *)v)->data[i].sock == -1;
+    return ((client_t*)elem)->sock == -1;
 }
 
 int accept_client(server_t *serv)
@@ -24,7 +24,7 @@ int accept_client(server_t *serv)
         return -1;
     if (new_sock >= FD_SETSIZE)
         return -1;
-    if ((new = vec_find_fn(
+    if ((new = vec_find(
         (vec_t *)serv->clients, &available_client)) == NULL)
         return -1;
     new->sock = new_sock;

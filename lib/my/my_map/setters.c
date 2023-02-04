@@ -49,7 +49,7 @@ void map_set(map_t *map, str_t *key, void *data)
         return;
 
     elem = map_elem_create(key, data);
-    vec_push_back((vec_t**)map->elems->data + hash_idx, &elem);
+    vec_pushback((vec_t**)map->elems->data + hash_idx, &elem);
 }
 
 void map_del(map_t *map, str_t *key)

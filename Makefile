@@ -30,7 +30,7 @@ NAME	=	[PROJECT-NAME]
 
 all:	$(NAME)
 
-$(NAME):	lib $(OBJ)
+$(NAME):	$(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LDDFLAGS)
 
 tests_run:
@@ -48,6 +48,6 @@ fclean:	clean
 	make -C ./tests/unit_tests fclean
 	rm -f $(NAME)
 
-re:	fclean all
+re:	fclean lib all
 
 .PHONY: all lib clean fclean re

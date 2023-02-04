@@ -32,9 +32,9 @@ static vec_client_t *init_clients(int max_conn)
 
     while (max_conn--) {
         temp.sock = -1;
-        temp.read = str_ncreate("", NETWORK_BUFF_SIZE);
-        temp.write = str_ncreate("", NETWORK_BUFF_SIZE);
-        vec_push_back((vec_t **)&clients, &temp);
+        temp.read = str_screate(NETWORK_BUFF_SIZE);
+        temp.write = str_screate(NETWORK_BUFF_SIZE);
+        vec_pushback((vec_t **)&clients, &temp);
     }
 
     return clients;

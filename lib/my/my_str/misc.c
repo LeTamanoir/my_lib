@@ -26,3 +26,23 @@ str_t **str_resize(str_t **str, size_t new_len)
 
     return str;
 }
+
+void str_replace(str_t **str, str_t const *old, str_t const *new)
+{
+    str_t *new_str = str_screate((*str)->length);
+
+    for (size_t i = 0, j = 0; i < (*str)->length; ++i) {
+        if ((*str)->data[i] != old->data[j]) {
+            j = 0;
+            str_cadd(&new_str, (*str)->data[i]);
+            continue;
+        }
+        ++j;
+        if (j == old->length) {
+            str_stradd(&new_str, new);
+            j = 0;
+        }
+    }
+    obj_free(*str);
+    *str = new_str;
+}

@@ -14,6 +14,21 @@
 
     #define MAX_TEMP_STR_SIZE   (256)
 
+    /**
+     * @brief creates a temporary string of size n (max size: 256)
+     */
+    #define STR_NTEMP(s, n) ((str_t*)&(__str_temp_t){n, MAX_TEMP_STR_SIZE, s})
+    /**
+     * @brief creates a temporary string (max size: 256)
+     */
+    #define STR_TEMP(s)     STR_NTEMP(s, my_strlen(s))
+
+
+typedef struct {
+    size_t length;
+    size_t capacity;
+    char data[MAX_TEMP_STR_SIZE];
+} __str_temp_t;
 
 typedef struct str_s {
     size_t length;
@@ -27,6 +42,14 @@ typedef struct {
 } vec_str_t;
 
 /**
+ * @brief creates a string with a given capacity
+ *
+ * @param n the capacity of the string
+ * @return the string
+ */
+str_t *str_screate(size_t n);
+
+/**
  * @brief splits a string into a vector of strings
  *
  * @param str       string to split
@@ -34,6 +57,15 @@ typedef struct {
  * @return split string as a vector
  */
 vec_str_t *str_split(str_t *str, str_t *delims);
+
+/**
+ * @brief replace all occurences of old with new in a string
+ *
+ * @param str   the string to perform the replacement on
+ * @param old   the string to replace
+ * @param new   the string to replace with
+ */
+void str_replace(str_t **str, str_t const *old, str_t const *new);
 
 /**
  * @brief joins a vector of strings
@@ -154,7 +186,7 @@ int str_contains(str_t *str, char c);
  * @param old   string to duplicate
  * @return the duplicate of the old string
  */
-str_t *str_dup(str_t *old);
+str_t *str_dup(str_t const *old);
 
 /**
  * @brief resizes a string
@@ -261,27 +293,6 @@ void str_dprint(int fd, str_t const *str);
 str_t **str_vadd(str_t **str, int argc, ...);
 
 /**
- * @brief creates a temporary string,
- *        use it only for readonly actions !
- *        its size is limited to 1024 chars
- *
- * @param init  the content of the string
- * @return the created string
- */
-str_t *str_temp(char const *init);
-
-/**
- * @brief creates a temporary string of size n,
- *        use it only for readonly actions !
- *        its size is limited to 1024 chars
- *
- * @param init the content of the string
- * @param n    the length to copy from init
- * @return the created string
- */
-str_t *str_ntemp(char const *init, size_t n);
-
-/**
  * @brief adds a character to a string
  *
  * @param str   destination string
@@ -340,7 +351,7 @@ str_t *str_reverse(str_t *str);
  * @param end       end index of the substring
  * @return the created substring
  */
-str_t *str_substr(str_t *str, size_t start, size_t end);
+str_t *str_substr(str_t const *str, size_t start, size_t end);
 
 /**
  * @brief converts a string to lowercase

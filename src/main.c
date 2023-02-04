@@ -14,21 +14,14 @@
 #include "my_fmt.h"
 #include "my_obj.h"
 
+
 int main(void)
 {
-    SMART vec_int_t *test = (vec_int_t*)vec_create(20, sizeof(int));
-    int temp = 0;
+    SMART str_t *str = str_create("Hello, World!");
 
-    for (size_t i = 0; i < 10; ++i) {
-        temp = rand() % 100 * i;
-        vec_pushback((vec_t**)&test, &temp);
-    }
+    str_replace(&str, STR_TEMP("Hel"), STR_TEMP("dadas"));
 
-    vec_sort((vec_t*)test, NULL);
-
-    for (size_t i = 0; i < test->size; ++i) {
-        my_printf("%d\n", test->data[i]);
-    }
+    str_println(str);
 
     return 0;
 }

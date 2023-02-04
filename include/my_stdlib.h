@@ -43,7 +43,7 @@ void vfree(int argc, ...);
 void my_swap(void *a, void *b, size_t el_size);
 
 void *my_memcpy(void *dest, const void *src, size_t n);
-int my_memcmp(void const *m1, void const *m2, size_t el);
+int my_memcmp(void const *m1, void const *m2, size_t n);
 void *my_memset(void *dest, char c, size_t len);
 
 
