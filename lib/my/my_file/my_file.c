@@ -39,7 +39,7 @@ file_t *file_create(char const *file_path, int const file_mode)
     if (file == NULL)
         return NULL;
 
-    obj_set_destructor(file, (void (*)(void *))&file_free);
+    obj_set_destructor(file, &file_free);
     stat(file_path, &file->stats);
     file->file_path = str_create(file_path);
     file->content = str_create("");
@@ -60,7 +60,7 @@ file_t *file_dcreate(int fd)
     if (file == NULL)
         return NULL;
 
-    obj_set_destructor(file, (void (*)(void *))&file_free);
+    obj_set_destructor(file, &file_free);
     file->file_path = str_create("");
     file->content = str_create("");
     file->__cache = str_create("");
@@ -79,8 +79,9 @@ void file_close(file_t *file)
     file->fd = -1;
 }
 
-void file_free(file_t *file)
+void file_free(void *ptr)
 {
+    file_t *file = (file_t *)ptr;
     if (file->fd != -1 &&
         file->fd != STDIN_FILENO &&
         file->fd != STDOUT_FILENO &&

@@ -9,10 +9,9 @@
 
 size_t my_strlen(char const *str)
 {
-    size_t len = 0;
+    char const *start = str;
 
-    while (*str++)
-        len++;
+    while (*str++);
 
-    return len;
+    return str - start - 1;
 }

@@ -31,7 +31,7 @@ list_t *list_create(void)
     if (list == NULL)
         return NULL;
 
-    obj_set_destructor(list, (void (*)(void *))&list_free);
+    obj_set_destructor(list, &list_free);
     list->front = NULL;
     list->back = NULL;
     list->size = 0;
@@ -39,8 +39,9 @@ list_t *list_create(void)
     return list;
 }
 
-void list_free(list_t *list)
+void list_free(void *ptr)
 {
+    list_t *list = (list_t*)ptr;
     node_t *temp = list->front;
     node_t *old = list->front;
 

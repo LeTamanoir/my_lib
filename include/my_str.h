@@ -12,12 +12,12 @@
     #include "my_cstr.h"
     #include "my_vec.h"
 
-    #define MAX_TEMP_STR_SIZE   (256)
+    #define STR_TMP_ST   (256)
 
     /**
      * @brief creates a temporary string of size n (max size: 256)
      */
-    #define STR_NTEMP(s, n) ((str_t*)&(__str_temp_t){n, MAX_TEMP_STR_SIZE, s})
+    #define STR_NTEMP(s, n) ((str_t*)(&(__str_temp_t){n, STR_TMP_ST, s}))
     /**
      * @brief creates a temporary string (max size: 256)
      */
@@ -27,7 +27,7 @@
 typedef struct {
     size_t length;
     size_t capacity;
-    char data[MAX_TEMP_STR_SIZE];
+    char data[STR_TMP_ST];
 } __str_temp_t;
 
 typedef struct str_s {

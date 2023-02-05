@@ -59,17 +59,17 @@ map_t *map_create(int capacity);
 /**
  * @brief frees a map along with all its elements
  *        the element with be freeable with only free
- * @param map   the map to free
+ * @param ptr   the map to free
  */
-void map_free(map_t *map);
+void map_free(void *ptr);
 
 /**
  * @brief helper function used by map_free to free a map element
  *        normally you shouldn't have use it
  *
- * @param elem  the element to free
+ * @param ptr  the element to free
  */
-void map_elem_free(map_elem_t *elem);
+void map_elem_free(void *ptr);
 
 /**
  * @brief hash a key to find its index in the map

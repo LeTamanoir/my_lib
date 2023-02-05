@@ -90,9 +90,9 @@ void file_close(file_t *file);
 /**
  * @brief closes a file and frees its dependecies
  *
- * @param file  the file to close and free
+ * @param ptr  the file to close and free
  */
-void file_free(file_t *file);
+void file_free(void *ptr);
 
 /**
  * @brief create a file instance from a FD

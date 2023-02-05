@@ -29,7 +29,7 @@ map_elem_t *map_elem_create(str_t *key, void *data)
     if (elem == NULL)
         return NULL;
 
-    obj_set_destructor(elem, (void (*)(void *))&map_elem_free);
+    obj_set_destructor(elem, &map_elem_free);
     elem->key = str_dup(key);
     elem->data = data;
 

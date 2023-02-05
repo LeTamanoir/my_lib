@@ -13,10 +13,16 @@
 vec_str_t *str_split(str_t *str, str_t *delims)
 {
     vec_str_t *arr = (vec_str_t*)vec_create(8, sizeof(str_t*));
-    obj_set_destructor(arr, (void (*)(void*))&vec_free);
+    obj_set_destructor(arr, &vec_free);
     size_t last_idx = 0;
     str_t *temp = NULL;
 
+    if (delims->length == 0) {
+        for (size_t i = 0; i < str->length; i++) {
+            temp = str_create((char [2]){str->data[i], 0});
+            vec_pushback((vec_t**)&arr, &temp);
+        } return arr;
+    }
     for (size_t i = 0; i <= str->length; i++) {
         if (i == str->length || str_contains(delims, str->data[i])) {
             temp = str_create("");
@@ -24,6 +30,5 @@ vec_str_t *str_split(str_t *str, str_t *delims)
             vec_pushback((vec_t**)&arr, &temp);
             last_idx = i + 1;
         }
-    }
-    return arr;
+    } return arr;
 }

@@ -33,9 +33,9 @@ list_t *list_create(void);
  * @brief frees a list and its content
  *        each node's data must be freeable with only one free call
  *
- * @param list      the list to free
+ * @param ptr      the list to free
  */
-void list_free(list_t *list);
+void list_free(void *ptr);
 
 /**
  * @brief adds a new element to the front of a list

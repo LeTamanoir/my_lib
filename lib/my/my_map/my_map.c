@@ -17,7 +17,7 @@ map_t *map_create(int capacity)
     if (map == NULL)
         return NULL;
 
-    obj_set_destructor(map, (void (*)(void *))&map_free);
+    obj_set_destructor(map, &map_free);
     map->capacity = capacity;
     map->elems = (vec_void_t*)vec_create(capacity, sizeof(void*));
     my_memset(map->elems->data, 0, sizeof(void*) * map->elems->capacity);
@@ -25,14 +25,17 @@ map_t *map_create(int capacity)
     return map;
 }
 
-void map_elem_free(map_elem_t *elem)
+void map_elem_free(void *ptr)
 {
+    map_elem_t *elem = (map_elem_t*)ptr;
+
     obj_free(elem->data);
     obj_free(elem->key);
 }
 
-void map_free(map_t *map)
+void map_free(void *ptr)
 {
+    map_t *map = (map_t*)ptr;
     vec_void_t *elem_col = NULL;
 
     for (size_t i = 0; i < map->elems->capacity; i++) {

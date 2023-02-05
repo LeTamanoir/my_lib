@@ -130,9 +130,9 @@ void vec_popback(vec_t *vec);
  * @brief frees a vector composed of pointers
  *        every element must ve freeable with a single free call
  *
- * @param vec       the vector to free
+ * @param ptr       the vector to free
  */
-void vec_free(vec_t *vec);
+void vec_free(void *ptr);
 
 /**
  * @brief gets an element from a vector at a given index

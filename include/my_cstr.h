@@ -19,7 +19,7 @@ size_t my_strlen(char const *str);
 char *my_strcat(char *dest, char const *src);
 char *my_strncat(char *dest, char const *src, size_t n);
 char *my_strdup(char const *src);
-void my_strcpy(char *dest, char const *src);
+char *my_strcpy(char *dest, char const *src);
 char *my_strncpy(char *dest, char const *src, size_t n);
 int my_strcmp(char const *s1, char const *s2);
 int my_strncmp(char const *s1, char const *s2, size_t n);

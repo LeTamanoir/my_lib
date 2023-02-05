@@ -5,27 +5,29 @@
 ** strcpy and strncpy
 */
 
+#include <string.h>
+
 #include "my_cstr.h"
 
-void my_strcpy(char *dest, char const *src)
+char *my_strcpy(char *dest, char const *src)
 {
-    size_t i = 0;
+    char *start = dest;
 
-    for (i = 0; src[i] != '\0'; i++)
-        dest[i] = src[i];
+    while (*src)
+        *dest++ = *src++;
+    *dest = '\0';
 
-    dest[i] = '\0';
+    return start;
 }
 
 char *my_strncpy(char *dest, char const *src, size_t n)
 {
-    size_t i = 0;
+    char *start = dest;
 
-    for (i = 0; src[i] != '\0' && i < n; i++)
-        dest[i] = src[i];
+    while (*src && n--)
+        *dest++ = *src++;
+    while (n-- > 0)
+        *dest++ = '\0';
 
-    for (; i <= n; i++)
-        dest[i] = '\0';
-
-    return dest;
+    return start;
 }

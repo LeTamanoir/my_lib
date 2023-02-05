@@ -9,26 +9,24 @@
 
 char *my_strcat(char *dest, char const *src)
 {
-    size_t str_len = my_strlen(dest);
-    int i;
+    char *start = dest;
 
-    for (i = 0; src[i] != '\0'; i++)
-        dest[str_len + i] = src[i];
+    dest += my_strlen(dest);
+    while (*src)
+        *dest++ = *src++;
+    *dest = '\0';
 
-    dest[str_len + i] = '\0';
-
-    return dest;
+    return start;
 }
 
 char *my_strncat(char *dest, char const *src, size_t n)
 {
-    size_t dest_len = my_strlen(dest);
-    size_t i = 0;
+    char *start = dest;
+    dest += my_strlen(dest);
 
-    for (i = 0; i < n && src[i] != '\0'; i++)
-        dest[dest_len + i] = src[i];
+    while (*src && n--)
+        *dest++ = *src++;
+    *dest = '\0';
 
-    dest[dest_len + i] = '\0';
-
-    return dest;
+    return start;
 }

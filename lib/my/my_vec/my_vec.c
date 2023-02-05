@@ -28,10 +28,10 @@ vec_t *vec_create(size_t nb_data, size_t elem_size)
     return vec;
 }
 
-void vec_free(vec_t *vec)
+void vec_free(void *ptr)
 {
-    vec_void_t *vec_void = (vec_void_t*)vec;
+    vec_void_t *vec = (vec_void_t*)ptr;
 
     for (size_t i = 0; i < vec->size; i++)
-        obj_free(vec_void->data[i]);
+        obj_free(vec->data[i]);
 }
