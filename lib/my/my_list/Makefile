@@ -10,9 +10,11 @@ CC = gcc
 INCLUDE_DIR	=	../../../include
 
 
-SRC	=	./my_list.c		\
-		./setters.c		\
-		./iterators.c
+SRC	=	./add.c			\
+		./create.c		\
+		./iterate.c		\
+		./free.c		\
+		./remove.c
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += -I$(INCLUDE_DIR)

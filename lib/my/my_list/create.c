@@ -38,24 +38,3 @@ list_t *list_create(void)
 
     return list;
 }
-
-void list_free(void *ptr)
-{
-    list_t *list = (list_t*)ptr;
-    node_t *temp = list->front;
-    node_t *old = list->front;
-
-    while (temp != NULL) {
-        old = temp;
-        temp = temp->next;
-        node_free(old);
-    }
-
-    my_free(list);
-}
-
-void node_free(node_t *node)
-{
-    obj_free(node->data);
-    my_free(node);
-}
