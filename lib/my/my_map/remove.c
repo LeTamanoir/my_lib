@@ -23,7 +23,6 @@ void map_del(map_t *map, str_t *key)
     while (temp != NULL) {
         elem = temp->data;
         if (str_eq(elem->key, key)) {
-            map_elem_free(elem);
             list_remove(cands, temp);
             return;
         }
