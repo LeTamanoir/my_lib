@@ -5,47 +5,34 @@
 ** convert
 */
 
+#include "my_stdlib.h"
 #include "my_str.h"
 
-int str_toint(str_t const *str)
+long str_toint(str_t const *str)
 {
-    size_t i = 0;
-    int nb = 0;
-    int sign = 1;
+    char *temp = str_tocstr(str);
+    long nb = my_atoi(temp);
 
-    if (str->data[i] == '-') {
-        sign = -1;
-        i++;
-    }
-
-    while (i < str->length && my_isnum(str->data[i])) {
-        nb = nb * 10 + (str->data[i] - '0');
-        i++;
-    }
-
-    return nb * sign;
+    free(temp);
+    return nb;
 }
 
 double str_tofloat(str_t const *str)
 {
-    size_t i = 0;
-    double sign = 1;
-    double nb = 0;
-    double offset = 1;
-    int found_dot = 0;
+    char *temp = str_tocstr(str);
+    double nb = my_atof(temp);
 
-    if (str->data[i] == '-') {
-        sign = -1;
-        i++;
-    }
-    while (i < str->length && (my_isnum(str->data[i]) ||
-        (str->data[i] == '.' && !found_dot))) {
-        if (str->data[i] == '.') {
-            found_dot = 1;
-        } else {
-            nb = nb * 10 + (str->data[i] - '0');
-            offset *= ((found_dot) ? 10 : 1);
-        }
-        i++;
-    } return sign * (nb / offset);
+    free(temp);
+    return nb;
+}
+
+char *str_tocstr(str_t const *str)
+{
+    char *cstr = malloc(sizeof(char) * (str->length + 1));
+
+    if (cstr == NULL)
+        return NULL;
+    my_strncpy(cstr, str->data, str->length);
+
+    return cstr;
 }

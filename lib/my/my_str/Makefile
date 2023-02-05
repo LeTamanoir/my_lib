@@ -10,19 +10,20 @@ CC = gcc
 INCLUDE_DIR	=	../../../include
 
 
-SRC	=	./my_str.c				\
-		./join.c				\
-		./adders.c				\
-		./content_check.c		\
-		./convert.c				\
-		./compare.c				\
-		./checks.c				\
-		./trim.c				\
-		./print.c				\
-		./modifiers.c			\
-		./format.c				\
-		./misc.c				\
-		./split.c
+SRC	=	./add.c 		\
+		./case.c 		\
+		./checks.c 		\
+		./compare.c		\
+		./convert.c 	\
+		./from.c 		\
+		./create.c 		\
+		./format.c 		\
+		./join.c 		\
+		./modify.c 		\
+		./print.c 		\
+		./split.c 		\
+		./trim.c 		\
+		./utils.c 		\
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += -I$(INCLUDE_DIR)

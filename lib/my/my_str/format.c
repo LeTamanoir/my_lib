@@ -6,7 +6,6 @@
 */
 
 #include <stdarg.h>
-
 #include "my_fmt.h"
 #include "my_stdlib.h"
 #include "my_str.h"

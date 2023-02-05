@@ -9,15 +9,6 @@
 #include "my_vec.h"
 #include "my_obj.h"
 
-vec_t **vec_resize(vec_t **vec, size_t new_cap)
-{
-    vec_t *old = *vec;
-
-    *vec = obj_realloc(old, sizeof(vec_t) + new_cap * old->__elem_size);
-
-    return vec;
-}
-
 void vec_insert(void *v, void *elem, size_t idx)
 {
     vec_t **vec = (vec_t**)v;

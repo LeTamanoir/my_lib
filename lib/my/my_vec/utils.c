@@ -5,6 +5,7 @@
 ** misc
 */
 
+#include "my_obj.h"
 #include "my_stdlib.h"
 #include "my_vec.h"
 
@@ -23,4 +24,13 @@ void *vec_at(void *v, size_t idx)
     vec_t *vec = (vec_t*)v;
 
     return vec->data + idx * vec->__elem_size;
+}
+
+vec_t **vec_resize(vec_t **vec, size_t new_cap)
+{
+    vec_t *old = *vec;
+
+    *vec = obj_realloc(old, sizeof(vec_t) + new_cap * old->__elem_size);
+
+    return vec;
 }
