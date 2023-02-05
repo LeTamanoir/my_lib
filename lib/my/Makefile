@@ -11,7 +11,7 @@
 # my_stdlib my_vec my_str my_cstr
 
 # Modules to use:
-LIB	=	my_math my_fmt my_stdio my_stdlib my_vec my_str my_cstr
+LIB	=	my_map my_list my_math my_fmt my_stdio my_stdlib my_vec my_str my_cstr
 
 NAME	=	libmy.a
 

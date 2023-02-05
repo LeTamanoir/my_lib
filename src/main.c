@@ -16,14 +16,20 @@
 
 int main(void)
 {
-    SMART vec_str_t *vec = vec_create(1, sizeof(str_t *));
+    SMART map_t *map = map_create(100);
+    str_t *str = NULL;
 
-    for (size_t i = 0; i < 10; ++i)
-        vec_pushback(&vec, &(str_t*){str_create("Hello")});
+    for (size_t i = 0; i < 10; ++i) {
+        str = my_itostr(i + 10);
+        map_set(map, str, str_dup(str));
+        obj_free(str);
+    }
 
-    for (size_t i = 0; i < vec->size; ++i)
-        str_println(vec->data[i]);
+    SMART vec_str_t *keys = map_get_keys(map);
+
+    for (size_t i = 0; i < keys->size; ++i) {
+        my_printf("%S: %S\n", keys->data[i], map_get(map, keys->data[i]));
+    }
 
     return 0;
 }
-

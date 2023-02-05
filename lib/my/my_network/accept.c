@@ -24,8 +24,7 @@ int accept_client(server_t *serv)
         return -1;
     if (new_sock >= FD_SETSIZE)
         return -1;
-    if ((new = vec_find(
-        (vec_t *)serv->clients, &available_client)) == NULL)
+    if ((new = vec_find(serv->clients, &available_client)) == NULL)
         return -1;
     new->sock = new_sock;
     str_clear(&new->read);
