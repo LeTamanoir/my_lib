@@ -17,6 +17,5 @@ void *vec_find(void *v, int (*find_fn)(void *))
             return vec_at(vec, i);
         }
     }
-
     return NULL;
 }

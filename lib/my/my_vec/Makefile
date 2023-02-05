@@ -10,13 +10,15 @@ CC = gcc
 INCLUDE_DIR	=	../../../include
 
 
-SRC	=	./my_vec.c			\
-		./setters.c			\
-		./find.c			\
-		./misc.c			\
-		./filter.c			\
-		./iterators.c		\
-		./sort.c
+SRC	=	./add.c			\
+		./create.c		\
+		./filter.c		\
+		./find.c		\
+		./free.c		\
+		./iterate.c		\
+		./remove.c		\
+		./sort.c		\
+		./utils.c
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += -I$(INCLUDE_DIR)

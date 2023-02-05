@@ -24,14 +24,3 @@ void *vec_at(void *v, size_t idx)
 
     return vec->data + idx * vec->__elem_size;
 }
-
-void vec_popback(void *v)
-{
-    vec_t *vec = (vec_t*)v;
-
-    if (vec->size == 0)
-        return;
-
-    my_memset(vec_at(vec, vec->size), 0, vec->__elem_size);
-    vec->size--;
-}
