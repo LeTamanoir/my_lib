@@ -9,8 +9,9 @@
 #include "my_vec.h"
 #include "my_obj.h"
 
-vec_t *vec_filter(vec_t *vec, int (*keep_fn)(void *))
+vec_t *vec_filter(void *v, int (*keep_fn)(void *))
 {
+    vec_t *vec = (vec_t*)v;
     vec_t *new = vec_create(vec->size, vec->__elem_size);
 
     if (new == NULL)

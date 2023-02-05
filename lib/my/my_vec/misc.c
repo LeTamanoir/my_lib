@@ -18,13 +18,17 @@ size_t get_padded_size(size_t size)
     return size_pad;
 }
 
-void *vec_at(vec_t *vec, size_t idx)
+void *vec_at(void *v, size_t idx)
 {
+    vec_t *vec = (vec_t*)v;
+
     return vec->data + idx * vec->__elem_size;
 }
 
-void vec_popback(vec_t *vec)
+void vec_popback(void *v)
 {
+    vec_t *vec = (vec_t*)v;
+
     if (vec->size == 0)
         return;
 

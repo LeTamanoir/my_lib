@@ -9,49 +9,22 @@
     #define INCLUDE_MY_VEC_
     #include <stddef.h>
 
-    #define VEC_META size_t capacity; size_t size; size_t __elem_size
+    #define VEC_META size_t capacity; size_t size; size_t __elem_size;
+    #define VEC_DEF(t, n) typedef struct { VEC_META t data[0]; } vec_##n##_t;
 
 
-typedef struct {
-    VEC_META;
+typedef struct vec_s {
+    VEC_META
     char data[0];
 } vec_t;
 
-typedef struct {
-    VEC_META;
-    void *data[0];
-} vec_void_t;
-
-typedef struct {
-    VEC_META;
-    char data[0];
-} vec_char_t;
-
-typedef struct {
-    VEC_META;
-    int data[0];
-} vec_int_t;
-
-typedef struct {
-    VEC_META;
-    long data[0];
-} vec_long_t;
-
-typedef struct {
-    VEC_META;
-    float data[0];
-} vec_float_t;
-
-typedef struct {
-    VEC_META;
-    double data[0];
-} vec_double_t;
-
-typedef struct {
-    VEC_META;
-    size_t data[0];
-} vec_size_t_t;
-
+VEC_DEF(void *, void)
+VEC_DEF(int, int)
+VEC_DEF(char, char)
+VEC_DEF(long, long)
+VEC_DEF(float, float)
+VEC_DEF(double, double)
+VEC_DEF(size_t, size)
 
 size_t get_padded_size(size_t size);
 
@@ -65,14 +38,14 @@ size_t get_padded_size(size_t size);
  *              else return 0
  * @param data  additionnal data that you can use in the fn
  */
-void vec_foreach(vec_t *vec, void (*fn)(void *, size_t, void *), void *data);
+void vec_foreach(void *vec, void (*fn)(void *, size_t, void *), void *data);
 
 /**
  * @brief clears a vector
  *
  * @param vec   the vector to clear
  */
-void vec_clear(vec_t *vec);
+void vec_clear(void *vec);
 
 /**
  * @brief removes an element from a vector at a given index
@@ -80,16 +53,16 @@ void vec_clear(vec_t *vec);
  * @param vec   the vector to remove the element from
  * @param idx   the index of the element to remove
  */
-void vec_remove(vec_t *vec, size_t idx);
+void vec_remove(void *vec, size_t idx);
 
 /**
  * @brief inserts an element into a vector at a given index
  *
- * @param vec   the vector to insert the element in
+ * @param vec   the ADRESS of the vector to insert the element in
  * @param elem  the element to insert
  * @param idx   the index at which the element will be inserted
  */
-void vec_insert(vec_t **vec, void *elem, size_t idx);
+void vec_insert(void *vec, void *elem, size_t idx);
 
 /**
  * @brief resizes a vector to a new given size
@@ -103,10 +76,10 @@ vec_t **vec_resize(vec_t **vec, size_t new_size);
 /**
  * @brief adds an element at the back of a vector
  *
- * @param vec   the vector to append the element to
- * @param elem  the element to add
+ * @param vec   the ADRESS of the vector to append the element to
+ * @param elem  the ADRESS of element to add
  */
-void vec_pushback(vec_t **vec, void *elem);
+void vec_pushback(void *vec, void *elem);
 
 /**
  * @brief sorts a vector
@@ -117,14 +90,14 @@ void vec_pushback(vec_t **vec, void *elem);
  *                  if cmp_fn(a, b) > 0 then a > b
  *                  else a == b
  */
-void vec_sort(vec_t *vec, int (*cmp_fn)(void *, void *));
+void vec_sort(void *vec, int (*cmp_fn)(void *, void *));
 
 /**
  * @brief removes the last element of a vector
  *
  * @param vec   the vector to remove the last element from
  */
-void vec_popback(vec_t *vec);
+void vec_popback(void *vec);
 
 /**
  * @brief frees a vector composed of pointers
@@ -141,17 +114,17 @@ void vec_free(void *ptr);
  * @param idx the index of the element to get
  * @return the element at the given index
  */
-void *vec_at(vec_t *vec, size_t idx);
+void *vec_at(void *vec, size_t idx);
 
 /**
- * @brief creates a vector with vec_free as its default destructor
- *        use obj_set_destructor to modify it if needed
+ * @brief creates a vector
+ *        use obj_set_destructor to modify the destructor (if needed)
  *
  * @param nb_data   the number of elements in the vector
  * @param el_size   the size of an element of the vector
  * @return the created vector
  */
-vec_t *vec_create(size_t nb_data, size_t el_size);
+void *vec_create(size_t nb_data, size_t el_size);
 
 /**
  * @brief filters a vector
@@ -161,7 +134,7 @@ vec_t *vec_create(size_t nb_data, size_t el_size);
  *                  if keep_fn(elem) == 1 then the element will be kept
  * @return a new vector with the filterd elements
  */
-vec_t *vec_filter(vec_t *vec, int (*keep_fn)(void *));
+vec_t *vec_filter(void *vec, int (*keep_fn)(void *));
 
 /**
  * @brief finds an item from a vector with a given search function
@@ -171,7 +144,7 @@ vec_t *vec_filter(vec_t *vec, int (*keep_fn)(void *));
  *                  if find_fn(elem) == 1 then the element will be returned
  * @return the item if it exists or NULL
  */
-void *vec_find(vec_t *vec, int (*find_fn)(void *));
+void *vec_find(void *vec, int (*find_fn)(void *));
 
 
 #endif /* INCLUDE_MY_VEC_ */

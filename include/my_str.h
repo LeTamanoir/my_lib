@@ -36,10 +36,7 @@ typedef struct str_s {
     char data[0];
 } str_t;
 
-typedef struct {
-    VEC_META;
-    str_t *data[0];
-} vec_str_t;
+VEC_DEF(str_t *, str)
 
 /**
  * @brief creates a string with a given capacity
@@ -53,7 +50,8 @@ str_t *str_screate(size_t n);
  * @brief splits a string into a vector of strings
  *
  * @param str       string to split
- * @param delims    string of delimiters
+ * @param delims    string of delimiters,
+ *                  if NULL or delims->length == 0 split by char
  * @return split string as a vector
  */
 vec_str_t *str_split(str_t *str, str_t *delims);

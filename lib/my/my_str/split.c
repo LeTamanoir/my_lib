@@ -17,7 +17,7 @@ vec_str_t *str_split(str_t *str, str_t *delims)
     size_t last_idx = 0;
     str_t *temp = NULL;
 
-    if (delims->length == 0) {
+    if (delims == NULL || delims->length == 0) {
         for (size_t i = 0; i < str->length; i++) {
             temp = str_create((char [2]){str->data[i], 0});
             vec_pushback((vec_t**)&arr, &temp);

@@ -16,16 +16,14 @@
 
 int main(void)
 {
-    SMART str_t *str = str_create("Hello, World!");
+    SMART vec_str_t *vec = vec_create(1, sizeof(str_t *));
 
-    str_replace(&str, STR_TEMP("Hel"), STR_TEMP("dadas"));
+    for (size_t i = 0; i < 10; ++i)
+        vec_pushback(&vec, &(str_t*){str_create("Hello")});
 
-    SMART vec_str_t *arr = str_split(str, STR_TEMP(""));
-
-    for (size_t i = 0; i < arr->size; ++i)
-        my_printf("%S\n", arr->data[i]);
-
-    str_println(str);
+    for (size_t i = 0; i < vec->size; ++i)
+        str_println(vec->data[i]);
 
     return 0;
 }
+

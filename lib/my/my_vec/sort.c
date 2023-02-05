@@ -46,8 +46,10 @@ static void quick_sort(
     quick_sort(v, cmp_fn, center + 1, end);
 }
 
-void vec_sort(vec_t *vec, int (*cmp_fn)(void *, void *))
+void vec_sort(void *v, int (*cmp_fn)(void *, void *))
 {
+    vec_t *vec = (vec_t*)v;
+
     if (cmp_fn == NULL)
         cmp_fn = &default_compare;
 

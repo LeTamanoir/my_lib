@@ -9,7 +9,7 @@
 #include "my_vec.h"
 #include "my_obj.h"
 
-vec_t *vec_create(size_t nb_data, size_t elem_size)
+void *vec_create(size_t nb_data, size_t elem_size)
 {
     if (elem_size > MAX_SWAP_SIZE)
         return NULL;
