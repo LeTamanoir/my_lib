@@ -17,7 +17,7 @@ typedef struct map_elem_s {
 } map_elem_t;
 
 typedef struct map_s {
-    int capacity;
+    size_t capacity;
     vec_void_t *elems;
 } map_t;
 
@@ -54,7 +54,7 @@ void *map_get(map_t *map, str_t *key);
  *                  number of elements in the map
  * @return a new map
  */
-map_t *map_create(int capacity);
+map_t *map_create(size_t capacity);
 
 /**
  * @brief frees a map along with all its elements

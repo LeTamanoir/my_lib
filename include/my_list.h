@@ -46,6 +46,14 @@ void list_free(void *ptr);
 void list_pushfront(list_t *list, void *data);
 
 /**
+ * @brief removes an element from a list
+ *
+ * @param list the list to remove the element from
+ * @param elem the element to remove
+ */
+void list_remove(list_t *list, node_t *elem);
+
+/**
  * @brief adds a new element to the back of a list
  *
  * @param list  the list to add the element to

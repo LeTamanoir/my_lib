@@ -10,9 +10,11 @@ CC = gcc
 INCLUDE_DIR	=	../../../include
 
 
-SRC	=	./my_map.c			\
-		./getters.c			\
-		./setters.c			\
+SRC	=	./create.c			\
+		./set.c				\
+		./free.c			\
+		./get.c				\
+		./remove.c			\
 		./utils.c
 
 CFLAGS += -Werror -Wextra -Wall

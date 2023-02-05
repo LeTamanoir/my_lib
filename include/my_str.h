@@ -47,6 +47,31 @@ VEC_DEF(str_t *, str)
 str_t *str_screate(size_t n);
 
 /**
+ * @brief converts a long int to a string
+ *
+ * @param nb the long int to convert
+ * @return the string
+ */
+str_t *my_itostr(long int nb);
+
+/**
+ * @brief converts a double to a string
+ *
+ * @param nb the double to convert
+ * @param precision the precision of the double
+ * @return the string
+ */
+str_t *my_ftostr(double nb, int precision);
+
+/**
+ * @brief converts a string to a c string
+ *
+ * @param str the string to convert
+ * @return the c string
+ */
+char *str_tocstr(str_t const *str);
+
+/**
  * @brief splits a string into a vector of strings
  *
  * @param str       string to split
@@ -139,7 +164,7 @@ int str_startswith(str_t *str, str_t *start);
  * @param end   end string
  * @return 1 if the string ends with end or 0 if it doesn't
  */
-int str_endsswith(str_t *str, str_t *end);
+int str_endswith(str_t *str, str_t *end);
 
 /**
  * @brief slices a string
@@ -323,7 +348,7 @@ int str_eq(str_t *s1, str_t *s2);
  * @param str   the string to extract the integer from
  * @return the integer represented by the string
  */
-int str_toint(str_t const *str);
+long int str_toint(str_t const *str);
 
 /**
  * @brief converts a string to a double
