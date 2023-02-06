@@ -6,6 +6,7 @@
 */
 
 #include "my_stdlib.h"
+#include "my_obj.h"
 #include "my_fmt.h"
 
 void fmt_add_int(fmt_state_t *state)

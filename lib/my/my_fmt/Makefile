@@ -10,11 +10,11 @@ CC = gcc
 INCLUDE_DIR	=	../../../include
 
 
-SRC	=	./my_fmt.c			\
-		./add_base.c		\
-		./add_join.c		\
-		./add_float.c		\
-		./adders.c
+SRC	=	./create.c		\
+		./base.c		\
+		./join.c		\
+		./float.c		\
+		./add.c
 
 
 CFLAGS += -Werror -Wextra -Wall
