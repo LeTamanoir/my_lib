@@ -23,7 +23,7 @@ typedef struct list_s {
 
 /**
  * @brief creates a doubly linked list with list_free as its default destructor
- *        use obj_set_destructor to modify it if needed
+ *        use obj_get_meta to modify it if needed
  *
  * @return a new list
  */

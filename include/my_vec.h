@@ -118,7 +118,7 @@ void *vec_at(void *vec, size_t idx);
 
 /**
  * @brief creates a vector
- *        use obj_set_destructor to modify the destructor (if needed)
+ *        use obj_get_meta to modify the destructor (if needed)
  *
  * @param nb_data   the number of elements in the vector
  * @param el_size   the size of an element of the vector

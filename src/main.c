@@ -22,7 +22,7 @@ int main(void)
         str_fadd(&str, "Hello World! %d\n", i);
     }
 
-    str_println(str);
+    my_printf("%o", str);
 
     return 0;
 }

@@ -33,20 +33,12 @@ void *obj_alloc(size_t size);
 void *obj_realloc(void *obj, size_t size);
 
 /**
- * @brief retrieves the destructor of an object
+ * @brief retrieves the metadata of an object
  *
- * @param obj   the object to get the destructor from
- * @return the destructor
+ * @param obj   the object to get the metadata from
+ * @return the metadata of the object
  */
-void *obj_get_destructor(void *obj);
-
-/**
- * @brief sets the destructor of a given oject
- *
- * @param obj          the object to which the destructor will be added
- * @param destructor   the destructor
- */
-void obj_set_destructor(void *obj, void (*destructor)(void *));
+obj_meta_t *obj_get_meta(void *obj);
 
 /**
  * @brief frees an object
