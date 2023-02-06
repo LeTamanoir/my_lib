@@ -41,7 +41,7 @@
  */
 
 typedef struct fmt_state_s {
-    str_t *buffer;
+    str_t **buffer;
     va_list *ap;
     char is_long;
     int precision;
@@ -60,6 +60,15 @@ typedef struct fmt_map_s {
  * @return the formatted string
  */
 str_t *fmt_create(char const *fmt, va_list *ap);
+
+/**
+ * @brief adds a formated string to an existing string
+ *
+ * @param str   the string to add to
+ * @param fmt   the format to use
+ * @param ap    the va_list to use
+ */
+void fmt_add(str_t **str, char const *fmt, va_list *ap);
 
 
 #endif /* INCLUDE_MY_FMT_ */

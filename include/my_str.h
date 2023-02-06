@@ -64,12 +64,12 @@ str_t *my_itostr(long int nb);
 str_t *my_ftostr(double nb, int precision);
 
 /**
- * @brief converts a string to a c string
+ * @brief null terminates the data to be used as a c string
  *
- * @param str the string to convert
- * @return the c string
+ * @param str the string to null terminate
+ * @return the string data null terminated
  */
-char *str_tocstr(str_t const *str);
+char *str_tocstr(str_t **str);
 
 /**
  * @brief splits a string into a vector of strings
@@ -215,9 +215,10 @@ str_t *str_dup(str_t const *old);
  * @brief resizes a string
  *
  * @param str       string to resize
+ * @param new_size  new size of the string
  * @return the string resized to a longer length
  */
-str_t **str_resize(str_t **str, size_t new_len);
+str_t **str_resize(str_t **str, size_t new_size);
 
 /**
  * @brief adds a char* to a string
@@ -345,18 +346,18 @@ int str_eq(str_t *s1, str_t *s2);
 /**
  * @brief converts a string to an int
  *
- * @param str   the string to extract the integer from
+ * @param str   the ADRESS of string to extract the integer from
  * @return the integer represented by the string
  */
-long int str_toint(str_t const *str);
+long int str_toint(str_t **str);
 
 /**
  * @brief converts a string to a double
  *
- * @param str   the string to extract the double from
+ * @param str   the ADRESS of string to extract the double from
  * @return the double represented by the string
  */
-double str_tofloat(str_t const *str);
+double str_tofloat(str_t **str);
 
 /**
  * @brief reverses a string in memory

@@ -8,31 +8,23 @@
 #include "my_stdlib.h"
 #include "my_str.h"
 
-long str_toint(str_t const *str)
+long int str_toint(str_t **str)
 {
-    char *temp = str_tocstr(str);
-    long nb = my_atoi(temp);
+    long int nb = my_atoi(str_tocstr(str));
 
-    free(temp);
     return nb;
 }
 
-double str_tofloat(str_t const *str)
+double str_tofloat(str_t **str)
 {
-    char *temp = str_tocstr(str);
-    double nb = my_atof(temp);
+    double nb = my_atof(str_tocstr(str));
 
-    free(temp);
     return nb;
 }
 
-char *str_tocstr(str_t const *str)
+char *str_tocstr(str_t **str)
 {
-    char *cstr = malloc(sizeof(char) * (str->length + 1));
+    str_cadd(str, '\0');
 
-    if (cstr == NULL)
-        return NULL;
-    my_strncpy(cstr, str->data, str->length);
-
-    return cstr;
+    return (*str)->data;
 }

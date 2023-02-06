@@ -27,7 +27,7 @@ static void fmt_add_base(fmt_state_t *state, int is_upper)
         nb /= base;
     }
 
-    str_add(&state->buffer, res);
+    str_add(state->buffer, res);
     my_free(res);
 }
 

@@ -19,7 +19,7 @@ all:
 	@for i in $(LIB); do make -C $$i; done
 
 clean:
-	@for i in $(LIB); do make -C $$i clean; done
+	@for i in $(LIB); do make -C $$i clean >/dev/null; done
 	@../../clean.sh
 
 fclean:	clean

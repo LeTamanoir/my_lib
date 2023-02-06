@@ -16,20 +16,13 @@
 
 int main(void)
 {
-    SMART map_t *map = map_create(100);
-    str_t *str = NULL;
+    SMART str_t *str = str_create("");
 
-    for (size_t i = 0; i < 10; ++i) {
-        str = my_itostr(i + 10);
-        map_set(map, str, str_dup(str));
-        obj_free(str);
+    for (size_t i = 0; i < 100; ++i) {
+        str_fadd(&str, "Hello World! %d\n", i);
     }
 
-    SMART vec_str_t *keys = map_get_keys(map);
-
-    for (size_t i = 0; i < keys->size; ++i) {
-        my_printf("%S: %S\n", keys->data[i], map_get(map, keys->data[i]));
-    }
+    str_println(str);
 
     return 0;
 }

@@ -65,7 +65,7 @@ static void fill_state(fmt_state_t *state, char const **str)
 static void compute_format(fmt_state_t *state, char type)
 {
     if (type == '%') {
-        str_cadd(&state->buffer, '%');
+        str_cadd(state->buffer, '%');
         return;
     }
     for (int i = 0; i < FORMATS_SIZE; ++i) {
@@ -76,18 +76,25 @@ static void compute_format(fmt_state_t *state, char type)
     }
 }
 
-str_t *fmt_create(char const *fmt, va_list *ap)
+void fmt_add(str_t **str, char const *fmt, va_list *ap)
 {
-    fmt_state_t state = {str_create(""), ap, 0, -1};
+    fmt_state_t state = {str, ap, 0, -1};
 
     while (*fmt) {
         if (*fmt == '%') {
             fill_state(&state, &fmt);
             compute_format(&state, *fmt);
         } else
-            str_cadd(&state.buffer, *fmt);
+            str_cadd(state.buffer, *fmt);
         fmt++;
     }
+}
 
-    return state.buffer;
+str_t *fmt_create(char const *fmt, va_list *ap)
+{
+    str_t *buffer = str_screate(my_strlen(fmt));
+
+    fmt_add(&buffer, fmt, ap);
+
+    return buffer;
 }

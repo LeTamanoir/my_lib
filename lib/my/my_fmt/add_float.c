@@ -14,7 +14,7 @@ void fmt_add_float(fmt_state_t *state)
     int precision = (state->precision == -1) ? 6 : state->precision;
     char *temp = my_ftoa(data, precision);
 
-    str_add(&state->buffer, temp);
+    str_add(state->buffer, temp);
     my_free(temp);
 }
 
@@ -24,6 +24,6 @@ void fmt_add_fast_float(fmt_state_t *state)
     int precision = (state->precision == -1) ? 6 : state->precision;
     char *temp = my_fftoa(data, precision);
 
-    str_add(&state->buffer, temp);
+    str_add(state->buffer, temp);
     my_free(temp);
 }
