@@ -18,11 +18,11 @@ int main(void)
 {
     SMART str_t *str = str_create("");
 
-    for (size_t i = 0; i < 100; ++i) {
-        str_fadd(&str, "Hello World! %d\n", i);
+    while (str->length < 1000000) {
+        str_add(&str, "Hello World !\n");
     }
 
-    my_printf("%o", str);
+    str_println(str);
 
     return 0;
 }

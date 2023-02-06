@@ -14,6 +14,8 @@
 int my_printf(const char *format, ...);
 int my_dprintf(int fd, const char * format, ...);
 
+str_t *my_sprintf(const char *fmt, ...);
+
 void my_putchar(char c);
 void my_putstr(char const *str);
 void my_putstderr(char const *str);

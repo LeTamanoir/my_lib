@@ -8,6 +8,7 @@
 #ifndef INCLUDE_MY_STDLIB_
     #define INCLUDE_MY_STDLIB_
     #include <stdlib.h>
+    #include <stdint.h>
 
     #define SMART           __attribute__((cleanup(auto_free)))
     #define MAX_SWAP_SIZE   (1024)
@@ -38,13 +39,13 @@ void *my_malloc(size_t size);
 void my_free(void *ptr);
 void *my_realloc(void *ptr, size_t size);
 void *my_calloc(size_t count, size_t elem_size);
-void vfree(int argc, ...);
+void my_vfree(int argc, ...);
 
 void my_swap(void *a, void *b, size_t el_size);
 
 void *my_memcpy(void *dest, const void *src, size_t n);
 int my_memcmp(void const *m1, void const *m2, size_t n);
-void *my_memset(void *dest, char c, size_t len);
+void *my_memset(void *dest, unsigned char c, size_t len);
 
 
 #endif /* INCLUDE_MY_STDLIB_ */

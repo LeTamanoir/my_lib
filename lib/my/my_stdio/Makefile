@@ -12,6 +12,7 @@ INCLUDE_DIR	=	../../../include
 
 SRC	=	./my_printf.c		\
 		./my_dprintf.c		\
+		./my_sprintf.c 		\
 		./my_put.c
 
 CFLAGS += -Werror -Wextra -Wall

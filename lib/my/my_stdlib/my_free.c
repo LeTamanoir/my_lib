@@ -13,7 +13,7 @@ void my_free(void *ptr)
     free(ptr - sizeof(alloc_meta_t));
 }
 
-void vfree(int argc, ...)
+void my_vfree(int argc, ...)
 {
     va_list ap;
 

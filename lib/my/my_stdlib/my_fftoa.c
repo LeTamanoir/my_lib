@@ -23,6 +23,6 @@ char *my_fftoa(double nb, int precision)
         my_strcat(res, ".");
         my_strcat(res, float_);
     }
-    vfree(2, int_, float_);
+    my_vfree(2, int_, float_);
     return res;
 }
