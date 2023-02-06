@@ -10,20 +10,9 @@ CC = gcc
 INCLUDE_DIR	=	../../../include
 
 
-SRC	=	./my_atoi.c			\
-		./my_itoa.c			\
-		./my_atof.c			\
-		./my_ftoa.c			\
-		./my_ftoa_utils.c	\
-		./my_fftoa.c		\
-		./my_nbrlen.c		\
-		./my_alloc.c		\
-		./my_memcpy.c		\
-		./my_memset.c		\
-		./my_memcmp.c		\
-		./auto_free.c		\
-		./my_swap.c			\
-		./my_free.c
+SRC	=	./get.c		\
+		./free.c	\
+		./create.c
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += -I$(INCLUDE_DIR)

@@ -36,7 +36,7 @@ vec_str_t *map_get_keys(map_t *map)
     node_t *temp = NULL;
     str_t *key = NULL;
 
-    obj_set_destructor(keys, &vec_free);
+    obj_get_meta(keys)->destructor = &vec_free;
     for (size_t i = 0; i < map->capacity; i++) {
         elem_col = map->elems->data[i];
         if (elem_col == NULL)

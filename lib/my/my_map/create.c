@@ -17,7 +17,7 @@ map_t *map_create(size_t capacity)
     if (map == NULL)
         return NULL;
 
-    obj_set_destructor(map, &map_free);
+    obj_get_meta(map)->destructor = &map_free;
     map->capacity = capacity;
     map->elems = vec_create(capacity, sizeof(void *));
     my_memset(map->elems->data, 0, sizeof(void *) * map->capacity);

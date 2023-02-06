@@ -39,7 +39,7 @@ file_t *file_create(char const *file_path, int const file_mode)
     if (file == NULL)
         return NULL;
 
-    obj_set_destructor(file, &file_free);
+    obj_get_meta(file)->destructor = &file_free;
     stat(file_path, &file->stats);
     file->file_path = str_create(file_path);
     file->content = str_create("");
@@ -60,7 +60,7 @@ file_t *file_dcreate(int fd)
     if (file == NULL)
         return NULL;
 
-    obj_set_destructor(file, &file_free);
+    obj_get_meta(file)->destructor = &file_free;
     file->file_path = str_create("");
     file->content = str_create("");
     file->__cache = str_create("");

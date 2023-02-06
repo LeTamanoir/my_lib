@@ -31,7 +31,7 @@ list_t *list_create(void)
     if (list == NULL)
         return NULL;
 
-    obj_set_destructor(list, &list_free);
+    obj_get_meta(list)->destructor = &list_free;
     list->front = NULL;
     list->back = NULL;
     list->size = 0;

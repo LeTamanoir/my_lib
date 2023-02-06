@@ -13,7 +13,7 @@
 vec_str_t *str_split(str_t *str, str_t *delims)
 {
     vec_str_t *arr = vec_create(8, sizeof(str_t*));
-    obj_set_destructor(arr, &vec_free);
+    obj_get_meta(arr)->destructor = &vec_free;
     size_t last_idx = 0;
     str_t *temp = NULL;
 
