@@ -16,13 +16,12 @@ static void det_normalize(mat_t *mat, double pivot, int col, int pivot_line)
 
         pivot_ = mat->m[j][col];
 
-        for (int i = 0; i < mat->x; i++) {
+        for (int i = 0; i < mat->x; i++)
             mat->m[j][i] -= (mat->m[pivot_line][i] / pivot) * pivot_;
-        }
     }
 }
 
-double matrix_det(mat_t *mat)
+double matrix_dot(mat_t *mat)
 {
     int pivot_line = 0;
     double pivot = 0.0;

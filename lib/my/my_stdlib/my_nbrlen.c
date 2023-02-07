@@ -5,9 +5,11 @@
 ** my_nbr_len
 */
 
-int my_nbrlen(long int nb, int base)
+#include "my_stdlib.h"
+
+size_t my_nbrlen(long int nb, int base)
 {
-    int nb_digit = 0;
+    size_t nb_digit = 0;
 
     if (nb == 0)
         return 1;

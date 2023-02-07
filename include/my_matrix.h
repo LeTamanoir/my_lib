@@ -28,7 +28,7 @@ void matrix_print(mat_t *mat, int prec);
 void matrix_fill(mat_t *mat, ...);
 void matrix_free(mat_t *mat);
 
-double matrix_det(mat_t *mat);
+double matrix_dot(mat_t *mat);
 
 
 #endif /* INCLUDE_MY_MATRIX_ */

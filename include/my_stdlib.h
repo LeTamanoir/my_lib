@@ -20,7 +20,7 @@ typedef struct {
 
 void auto_free(void *ptr);
 
-int my_nbrlen(long int nb, int base);
+size_t my_nbrlen(long int nb, int base);
 char *my_itoa(long int nb);
 long int my_atoi(char const *str);
 double my_atof(char const *str);
@@ -37,9 +37,9 @@ char *my_fftoa(double data, int precision);
 
 void *my_malloc(size_t size);
 void my_free(void *ptr);
+void my_vfree(int argc, ...);
 void *my_realloc(void *ptr, size_t size);
 void *my_calloc(size_t count, size_t elem_size);
-void my_vfree(int argc, ...);
 
 void my_swap(void *a, void *b, size_t el_size);
 

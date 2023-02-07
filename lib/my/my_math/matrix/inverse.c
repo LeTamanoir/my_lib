@@ -32,9 +32,8 @@ static void gauss_normalize(mat_t *mat, int col, int pivot_line)
 
         pivot = mat->m[j][col];
 
-        for (int i = 0; i < mat->x; i++) {
+        for (int i = 0; i < mat->x; i++)
             mat->m[j][i] -= mat->m[pivot_line][i] * pivot;
-        }
     }
 }
 

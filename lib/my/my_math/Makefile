@@ -10,12 +10,13 @@ CC = gcc
 INCLUDE_DIR	=	../../../include
 
 
-SRC	=	./my_pow.c			\
-		./my_matrix.c 		\
-		./advanced_op.c		\
-		./simple_op.c		\
-		./inverse.c			\
-		./determinant.c
+SRC	=	./my_pow.c					\
+		./my_matrix/create.c 		\
+		./my_matrix/dot.c	 		\
+		./my_matrix/inverse.c 		\
+		./my_matrix/operation.c		\
+		./my_matrix/transp.c 		\
+		./my_matrix/utils.c
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += -I$(INCLUDE_DIR)
