@@ -6,12 +6,11 @@ on:
 
 jobs:
   check-coding-style:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     env:
-      DELIVERY_DIR: $GITHUB_WORKSPACE
       REPORTS_DIR: "/tmp"
-      EXPORT_FILE: "/mnt/reports/coding-style-reports.log"
+      EXPORT_FILE: "/tmp/coding-style-reports.log"
 
     steps:
       - name: Checkout the repo
@@ -24,10 +23,14 @@ jobs:
 
       - name: Run the coding-style docker
       
-        run: |
-          echo "1: $DELIVERY_DIR - 2: $GITHUB_WORKSPACE" &&
-          docker run --rm -i -v "$DELIVERY_DIR":"/mnt/delivery" -v "$REPORTS_DIR":"/mnt/reports" ghcr.io/epitech/coding-style-checker:latest "/mnt/delivery" "/mnt/reports"
+        run: >
+          docker run --rm -i
+          -v "$GITHUB_WORKSPACE":"/mnt/delivery"
+          -v "$REPORTS_DIR":"/mnt/reports"
+          ghcr.io/epitech/coding-style-checker:latest
+          "/mnt/delivery" "/mnt/reports"
 
       - name: Check for the errors
-        run:
+        run: |
+          ls /tmp
           cat $EXPORT_FILE
