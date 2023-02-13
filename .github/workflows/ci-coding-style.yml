@@ -1,0 +1,33 @@
+name: Coding-style
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-coding-style:
+    runs-on: ubuntu-22.04
+
+    env:
+      DELIVERY_DIR: "${{ env.GITHUB_WORKSPACE }}"
+      REPORTS_DIR: "/tmp"
+      EXPORT_FILE: "/mnt/reports/coding-style-reports.log"
+
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+
+      - name: Pull the coding-style docker
+        run: |
+          docker pull ghcr.io/epitech/coding-style-checker:latest && 
+          sudo docker image prune -f
+
+      - name: Run the coding-style docker
+      
+        run: |
+          echo "1: $DELIVERY_DIR - 2: $GITHUB_WORKSPACE" &&
+          docker run --rm -i -v "$DELIVERY_DIR":"/mnt/delivery" -v "$REPORTS_DIR":"/mnt/reports" ghcr.io/epitech/coding-style-checker:latest "/mnt/delivery" "/mnt/reports"
+
+      - name: Check for the errors
+        run:
+          cat $EXPORT_FILE
