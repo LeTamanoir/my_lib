@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     env:
-      DELIVERY_DIR: "${{ env.GITHUB_WORKSPACE }}"
+      DELIVERY_DIR: $GITHUB_WORKSPACE
       REPORTS_DIR: "/tmp"
       EXPORT_FILE: "/mnt/reports/coding-style-reports.log"
 
