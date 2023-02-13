@@ -22,7 +22,6 @@ jobs:
           sudo docker image prune -f
 
       - name: Run the coding-style docker
-      
         run: >
           docker run --rm -i
           -v "$GITHUB_WORKSPACE":"/mnt/delivery"
@@ -31,6 +30,9 @@ jobs:
           "/mnt/delivery" "/mnt/reports"
 
       - name: Check for the errors
-        run: |
-          ls /tmp
-          cat $EXPORT_FILE
+        run: >
+          if [[ "$(cat $EXPORT_FILE)" == "" ]]; then
+            echo "SUCCESS" && exit 0;
+          else 
+            cat $EXPORT_FILE && exit 1;
+          fi
