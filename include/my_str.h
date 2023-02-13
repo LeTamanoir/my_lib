@@ -332,7 +332,7 @@ str_t **str_cadd(str_t **str, char const new);
  * @param new   string to add
  * @return the concatenation of the 2 strings stored in str
  */
-str_t **str_stradd(str_t **str, str_t const *new);
+str_t **str_sadd(str_t **str, str_t const *new);
 
 /**
  * @brief checks if 2 strings are equal

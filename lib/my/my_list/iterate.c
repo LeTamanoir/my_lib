@@ -8,13 +8,12 @@
 #include "my_stdlib.h"
 #include "my_list.h"
 
-void list_for_each(list_t *list, int (*fn)(void *, void *), void *data)
+void list_foreach(list_t *list, void (*fn)(void *, void *), void *data)
 {
     node_t *temp = list->front;
 
     while (temp != NULL) {
-        if (fn(temp->data, data))
-            return;
+        fn(temp->data, data);
         temp = temp->next;
     }
 }

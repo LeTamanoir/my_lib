@@ -11,7 +11,7 @@
 
 size_t get_padded_size(size_t size)
 {
-    size_t size_pad = 1;
+    size_t size_pad = 128;
 
     while (size_pad < size)
         size_pad *= 2;

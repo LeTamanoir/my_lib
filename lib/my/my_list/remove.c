@@ -36,11 +36,10 @@ void list_popfront(list_t *list)
     list->size--;
 
     list->front = list->front->next;
-    if (list->front == NULL) {
+    if (list->front == NULL)
         list->back = NULL;
-    } else {
+    else
         list->front->prev = NULL;
-    }
 
     node_free(temp);
 }
@@ -55,11 +54,10 @@ void list_popback(list_t *list)
     list->size--;
 
     list->back = list->back->prev;
-    if (list->back == NULL) {
+    if (list->back == NULL)
         list->front = NULL;
-    } else {
+    else
         list->back->next = NULL;
-    }
 
     node_free(temp);
 }

@@ -24,7 +24,7 @@ str_t **str_add(str_t **str, char const *new)
     return str;
 }
 
-str_t **str_stradd(str_t **str, str_t const *new)
+str_t **str_sadd(str_t **str, str_t const *new)
 {
     if ((*str)->length + new->length > (*str)->capacity)
         str_resize(str, (*str)->length + new->length);

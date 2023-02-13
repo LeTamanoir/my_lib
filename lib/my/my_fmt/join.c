@@ -14,5 +14,5 @@ void fmt_add_join(fmt_state_t *state)
     str_t *delim = va_arg(*(state->ap), str_t *);
     SMART str_t *temp = str_join(vec, delim);
 
-    str_stradd(state->buffer, temp);
+    str_sadd(state->buffer, temp);
 }

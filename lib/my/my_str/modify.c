@@ -46,7 +46,7 @@ void str_replace(str_t **str, str_t const *old, str_t const *new)
         }
         ++j;
         if (j == old->length) {
-            str_stradd(&new_str, new);
+            str_sadd(&new_str, new);
             j = 0;
         }
     }

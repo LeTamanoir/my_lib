@@ -7,6 +7,7 @@
 
 #ifndef INCLUDE_MY_LIST_
     #define INCLUDE_MY_LIST_
+    #include <stddef.h>
 
 
 typedef struct node_s {
@@ -18,7 +19,7 @@ typedef struct node_s {
 typedef struct list_s {
     node_t *front;
     node_t *back;
-    int size;
+    size_t size;
 } list_t;
 
 /**
@@ -83,7 +84,15 @@ void list_popback(list_t *list);
  *              fn(current_elem_in_list->data, data);
  * @param data  additionnal data that you can use in the fn
  */
-void list_for_each(list_t *list, int (*fn)(void *, void *), void *data);
+void list_foreach(list_t *list, void (*fn)(void *, void *), void *data);
+
+/**
+ * @brief sorts a linked list
+ *
+ * @param list      the list to sort
+ * @param cmp_fn    the function to use to compare two elements
+ */
+void list_sort(list_t *list, int (*cmp_fn)(void *, void *));
 
 /**
  * @brief frees a node of a list

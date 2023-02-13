@@ -13,7 +13,7 @@ static int default_compare(void *a, void *b)
     return *(int*)a - *(int*)b;
 }
 
-static int partition(
+static size_t partition(
     vec_t *v, int (*cmp_fn)(void *, void *),
     size_t start, size_t end
 )

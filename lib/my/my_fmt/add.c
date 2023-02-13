@@ -31,7 +31,7 @@ void fmt_add_str_t(fmt_state_t *state)
 {
     str_t *data = va_arg(*(state->ap), str_t *);
 
-    str_stradd(state->buffer, data);
+    str_sadd(state->buffer, data);
 }
 
 void fmt_add_char(fmt_state_t *state)

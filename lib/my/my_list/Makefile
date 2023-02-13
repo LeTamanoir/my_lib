@@ -14,6 +14,7 @@ SRC	=	./add.c			\
 		./create.c		\
 		./iterate.c		\
 		./free.c		\
+		./sort.c		\
 		./remove.c
 
 CFLAGS += -Werror -Wextra -Wall

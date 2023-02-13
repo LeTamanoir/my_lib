@@ -14,8 +14,8 @@ str_t *str_join(vec_str_t *vec, str_t *delim)
 
     for (size_t i = 0; i < vec->size; ++i) {
         if (i != 0)
-            str_stradd(&new, delim);
-        str_stradd(&new, vec->data[i]);
+            str_sadd(&new, delim);
+        str_sadd(&new, vec->data[i]);
     }
 
     return new;
