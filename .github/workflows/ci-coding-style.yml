@@ -35,4 +35,5 @@ jobs:
             echo "SUCCESS";
           else 
             echo "::error:: $(cat $EXPORT_FILE)";
+            exit 1;
           fi
