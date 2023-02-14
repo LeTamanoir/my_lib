@@ -18,8 +18,7 @@ jobs:
 
       - name: Pull the coding-style docker
         run: |
-          docker pull ghcr.io/epitech/coding-style-checker:latest && 
-          sudo docker image prune -f
+          docker pull ghcr.io/epitech/coding-style-checker:latest
 
       - name: Run the coding-style docker
         run: >
