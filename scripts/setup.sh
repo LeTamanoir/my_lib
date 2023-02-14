@@ -18,7 +18,6 @@ temp=''
 files=(
     '.gitignore'
     'Makefile'
-    '.vscode/settings.json'
     'src/main.c'
 )
 
