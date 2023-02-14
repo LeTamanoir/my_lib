@@ -41,7 +41,7 @@ lib:
 
 clean:
 	rm -f $(OBJ)
-	./clean.sh
+	@./scripts/clean.sh
 
 fclean:	clean
 	make -C ./lib/my fclean

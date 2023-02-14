@@ -21,7 +21,7 @@ all:
 
 clean:
 	@for i in $(LIB); do make -C $$i clean >/dev/null; done
-	@../../clean.sh
+	@../../scripts/clean.sh
 
 fclean:	clean
 	@rm -f $(NAME)
