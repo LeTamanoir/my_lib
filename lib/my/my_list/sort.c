@@ -21,7 +21,7 @@ static node_t *partition(
     node_t *pivot = end;
     node_t *i = start->prev;
 
-    for (node_t *j = start; j != end; j = j->next) {   
+    for (node_t *j = start; j != end; j = j->next) {
         if (cmp_fn(j->data, pivot->data) <= 0) {
             i = (i != NULL) ? i->next : start;
             my_swap(&i->data, &j->data, sizeof(void *));
