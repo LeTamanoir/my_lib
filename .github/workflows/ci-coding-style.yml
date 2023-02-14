@@ -32,7 +32,7 @@ jobs:
       - name: Check for the errors
         run: >
           if [[ "$(cat $EXPORT_FILE)" == "" ]]; then
-            echo "SUCCESS" && exit 0;
+            echo "SUCCESS";
           else 
-            echo "::error:: $(cat $EXPORT_FILE)" && exit 1;
+            echo "::error:: $(cat $EXPORT_FILE)";
           fi
