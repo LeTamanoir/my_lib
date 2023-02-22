@@ -8,7 +8,7 @@
 #ifndef INCLUDE_MY_LIST_
     #define INCLUDE_MY_LIST_
     #include <stddef.h>
-
+    #include "my_vec.h"
 
 typedef struct node_s {
     void *data;
@@ -22,6 +22,8 @@ typedef struct list_s {
     size_t size;
 } list_t;
 
+VEC_DEF(list_t *, list);
+
 /**
  * @brief creates a doubly linked list with list_free as its default destructor
  *        use obj_get_meta to modify it if needed
@@ -32,7 +34,7 @@ list_t *list_create(void);
 
 /**
  * @brief frees a list and its content
- *        each node's data must be freeable with only one free call
+ *        each node's data must be free-able with only one free call
  *
  * @param ptr      the list to free
  */

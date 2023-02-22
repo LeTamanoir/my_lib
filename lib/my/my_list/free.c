@@ -6,14 +6,13 @@
 */
 
 #include "my_obj.h"
-#include "my_stdlib.h"
 #include "my_list.h"
 
 void list_free(void *ptr)
 {
     list_t *list = (list_t*)ptr;
     node_t *temp = list->front;
-    node_t *old = list->front;
+    node_t *old = NULL;
 
     while (temp != NULL) {
         old = temp;

@@ -7,8 +7,7 @@
 
 CC = gcc
 
-INCLUDE_DIR	=	../../../include
-
+INCLUDE	=	-I../../../include
 
 SRC	=	./add.c			\
 		./create.c		\
@@ -18,7 +17,7 @@ SRC	=	./add.c			\
 		./remove.c
 
 CFLAGS += -Werror -Wextra -Wall
-CPPFLAGS += -I$(INCLUDE_DIR)
+CPPFLAGS += $(INCLUDE)
 
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3

@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2022
-** int specifier test
+** unit_tests
 ** File description:
-** tests for specifier %b
+** sample test file
 */
 
 #include <criterion/criterion.h>

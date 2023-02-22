@@ -25,17 +25,12 @@ int str_startswith(str_t *str, str_t *start)
 
 int str_endswith(str_t *str, str_t *end)
 {
-    long start = str->length - end->length;
-    size_t i = 0;
-    int status = 0;
+    size_t i = str->length - end->length - 1;
 
-    if (start >= 0) {
-        while (i < str->length && str->data[i] == end->data[i])
-            i++;
-        status = str->data[i] - end->data[i];
-    }
+    while (i < str->length - 1 && str->data[i] == end->data[i])
+        i++;
 
-    return status;
+    return i == str->length;
 }
 
 int str_isalpha(str_t const *str)

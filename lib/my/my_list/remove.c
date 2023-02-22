@@ -5,7 +5,6 @@
 ** remove elements
 */
 
-#include "my_stdlib.h"
 #include "my_list.h"
 
 void list_remove(list_t *list, node_t *elem)

@@ -7,7 +7,7 @@
 
 #include "my_str.h"
 
-int str_eq(str_t *s1, str_t *s2)
+int str_eq(str_t const *s1, str_t const *s2)
 {
     if (s1->length != s2->length)
         return 0;
@@ -15,7 +15,7 @@ int str_eq(str_t *s1, str_t *s2)
     return (str_compare(s1, s2) == 0);
 }
 
-int str_ncompare(str_t *s1, str_t *s2, size_t n)
+int str_ncompare(str_t const *s1, str_t const *s2, size_t n)
 {
     size_t i = 0;
     int status = 0;
@@ -33,7 +33,7 @@ int str_ncompare(str_t *s1, str_t *s2, size_t n)
     return status;
 }
 
-int str_compare(str_t *s1, str_t *s2)
+int str_compare(str_t const *s1, str_t const *s2)
 {
     size_t i = 0;
     int status = 0;

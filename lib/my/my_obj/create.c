@@ -5,7 +5,6 @@
 ** allocator
 */
 
-#include <stdarg.h>
 #include "my_stdlib.h"
 #include "my_obj.h"
 

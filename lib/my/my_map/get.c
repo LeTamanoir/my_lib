@@ -12,7 +12,7 @@
 #include "my_stdlib.h"
 #include "my_map.h"
 
-void *map_get(map_t *map, str_t *key)
+void *map_get(map_t const *map, str_t const *key)
 {
     unsigned int hash_idx = map_hash_key(key) % map->capacity;
     list_t *cands = NULL;
@@ -29,23 +29,20 @@ void *map_get(map_t *map, str_t *key)
     return NULL;
 }
 
-vec_str_t *map_get_keys(map_t *map)
+vec_str_t *map_get_keys(map_t const *map)
 {
     vec_str_t *keys = vec_create(map->capacity, sizeof(str_t*));
-    list_t *elem_col = NULL;
-    node_t *temp = NULL;
+    list_t *col = NULL;
     str_t *key = NULL;
 
     obj_get_meta(keys)->destructor = &vec_free;
     for (size_t i = 0; i < map->capacity; i++) {
-        elem_col = map->elems->data[i];
-        if (elem_col == NULL)
+        col = map->elems->data[i];
+        if (col == NULL)
             continue;
-        temp = elem_col->front;
-        while (temp != NULL) {
+        for (node_t *temp = col->front; temp != NULL; temp = temp->next) {
             key = str_dup(((map_elem_t*)temp->data)->key);
             vec_pushback(&keys, &key);
-            temp = temp->next;
         }
     } return keys;
 }

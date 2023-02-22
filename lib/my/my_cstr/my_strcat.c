@@ -24,7 +24,7 @@ char *my_strncat(char *dest, char const *src, size_t n)
     char *start = dest;
     dest += my_strlen(dest);
 
-    while (*src && n--)
+    while (n-- && *src)
         *dest++ = *src++;
     *dest = '\0';
 

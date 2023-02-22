@@ -8,6 +8,7 @@
 #ifndef INCLUDE_MY_MAP_
     #define INCLUDE_MY_MAP_
 
+    #include "my_list.h"
     #include "my_vec.h"
     #include "my_str.h"
 
@@ -18,7 +19,7 @@ typedef struct map_elem_s {
 
 typedef struct map_s {
     size_t capacity;
-    vec_void_t *elems;
+    vec_list_t *elems;
 } map_t;
 
 /**
@@ -27,7 +28,7 @@ typedef struct map_s {
  * @param map   the map to get the keys from
  * @return a vector of the keys stored in strings
  */
-vec_str_t *map_get_keys(map_t *map);
+vec_str_t *map_get_keys(map_t const *map);
 
 /**
  * @brief set a value in a map, it will overwrite if it already exists
@@ -36,7 +37,7 @@ vec_str_t *map_get_keys(map_t *map);
  * @param key   the key of the entry
  * @param data  the data of the entry
  */
-void map_set(map_t *map, str_t *key, void *data);
+void map_set(map_t *map, str_t const *key, void *data);
 
 /**
  * @brief get the value from a map with a given key
@@ -45,7 +46,7 @@ void map_set(map_t *map, str_t *key, void *data);
  * @param key   the key as a string
  * @return the element assiciated with the key, or NULL if undefined
  */
-void *map_get(map_t *map, str_t *key);
+void *map_get(map_t const *map, str_t const *key);
 
 /**
  * @brief create a new map
@@ -78,7 +79,7 @@ void map_elem_free(void *ptr);
  * @param key   the string of key to hash
  * @return the index of where the data is in the map
  */
-unsigned int map_hash_key(str_t *key);
+unsigned int map_hash_key(str_t const *key);
 
 /**
  * @brief deletes a key from a map
@@ -86,7 +87,7 @@ unsigned int map_hash_key(str_t *key);
  * @param map   the map to delete the key from
  * @param key   the key to delete
  */
-void map_del(map_t *map, str_t *key);
+void map_del(map_t *map, str_t const *key);
 
 
 #endif /* INCLUDE_MY_MAP_ */

@@ -6,7 +6,6 @@
 */
 
 #include "my_obj.h"
-#include "my_stdlib.h"
 #include "my_vec.h"
 
 size_t get_padded_size(size_t size)

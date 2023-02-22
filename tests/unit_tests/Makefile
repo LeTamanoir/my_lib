@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2022
 ## Makefile
 ## File description:
-## the makefile for compiling my lib
+## unit_tests
 ##
 
 CC = gcc

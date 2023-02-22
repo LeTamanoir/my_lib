@@ -7,15 +7,14 @@
 
 CC = gcc
 
-INCLUDE_DIR	=	../../../include
-
+INCLUDE	=	-I../../../include
 
 SRC	=	./get.c		\
 		./free.c	\
 		./create.c
 
 CFLAGS += -Werror -Wextra -Wall
-CPPFLAGS += -I$(INCLUDE_DIR)
+CPPFLAGS += $(INCLUDE)
 
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3

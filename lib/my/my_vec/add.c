@@ -7,7 +7,6 @@
 
 #include "my_stdlib.h"
 #include "my_vec.h"
-#include "my_obj.h"
 
 void vec_insert(void *v, void *elem, size_t idx)
 {

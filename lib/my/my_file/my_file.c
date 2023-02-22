@@ -29,7 +29,7 @@ static int file_is_valid(char const *file_path)
     return 0;
 }
 
-file_t *file_create(char const *file_path, int const file_mode)
+file_t *file_create(char const *file_path, int file_mode)
 {
     if (file_is_valid(file_path) != 0)
         return NULL;
@@ -75,17 +75,17 @@ file_t *file_dcreate(int fd)
 
 void file_close(file_t *file)
 {
-    close(file->fd);
+    if (file->fd != STDIN_FILENO &&
+        file->fd != STDOUT_FILENO &&
+        file->fd != STDERR_FILENO)
+        close(file->fd);
     file->fd = -1;
 }
 
 void file_free(void *ptr)
 {
     file_t *file = (file_t *)ptr;
-    if (file->fd != -1 &&
-        file->fd != STDIN_FILENO &&
-        file->fd != STDOUT_FILENO &&
-        file->fd != STDERR_FILENO)
+    if (file->fd != -1)
         file_close(file);
     obj_free(file->content);
     if (file->__cache != NULL)

@@ -5,7 +5,6 @@
 ** list utils
 */
 
-#include "my_stdlib.h"
 #include "my_list.h"
 
 void list_pushfront(list_t *list, void *data)

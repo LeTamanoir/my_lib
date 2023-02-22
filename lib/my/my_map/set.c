@@ -11,23 +11,21 @@
 #include "my_obj.h"
 #include "my_str.h"
 
-static int overwrite_if_in_map(list_t *cands, str_t *key, void *data)
+static int overwrite_if_in_map(list_t *cands, str_t const *key, void *data)
 {
-    node_t *temp = cands->front;
     map_elem_t *elem = NULL;
 
-    while (temp != NULL) {
+    for (node_t *temp = cands->front; temp != NULL; temp = temp->next) {
         elem = temp->data;
         if (str_eq(elem->key, key)) {
             elem->data = data;
             return 1;
         }
-        temp = temp->next;
     }
     return 0;
 }
 
-map_elem_t *map_elem_create(str_t *key, void *data)
+map_elem_t *map_elem_create(str_t const *key, void *data)
 {
     map_elem_t *elem = obj_alloc(sizeof(map_elem_t));
 
@@ -41,7 +39,7 @@ map_elem_t *map_elem_create(str_t *key, void *data)
     return elem;
 }
 
-void map_set(map_t *map, str_t *key, void *data)
+void map_set(map_t *map, str_t const *key, void *data)
 {
     unsigned int hash_idx = map_hash_key(key) % map->capacity;
     map_elem_t *elem = NULL;

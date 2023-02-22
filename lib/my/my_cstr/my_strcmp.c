@@ -19,7 +19,7 @@ int my_strcmp(char const *s1, char const *s2)
 
 int my_strncmp(char const *s1, char const *s2, size_t n)
 {
-    while (*s1 && *s2 && n-- && *s1 == *s2) {
+    while (n-- && *s1 && *s2 && *s1 == *s2) {
         s1++;
         s2++;
     }

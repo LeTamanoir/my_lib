@@ -37,7 +37,7 @@ typedef struct file_s {
  * @param file_mode     the mode in which the file will be open
  * @return a new file instance or NULL if there was an error
  */
-file_t *file_create(char const *file_path, int const file_mode);
+file_t *file_create(char const *file_path, int file_mode);
 
 /**
  * @brief gets a new line in a file stored in a string
@@ -45,7 +45,7 @@ file_t *file_create(char const *file_path, int const file_mode);
  * @param file  the file to get the line from
  * @return the new line in the file
  */
-str_t *file_get_line(file_t *file);
+str_t *file_getline(file_t *file);
 
 /**
  * @brief loads the content of the file into file->content

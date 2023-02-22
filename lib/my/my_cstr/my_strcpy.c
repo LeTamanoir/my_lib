@@ -5,8 +5,6 @@
 ** strcpy and strncpy
 */
 
-#include <string.h>
-
 #include "my_cstr.h"
 
 char *my_strcpy(char *dest, char const *src)
@@ -24,7 +22,7 @@ char *my_strncpy(char *dest, char const *src, size_t n)
 {
     char *start = dest;
 
-    while (*src && n--)
+    while (n-- && *src)
         *dest++ = *src++;
     while (n-- > 0)
         *dest++ = '\0';

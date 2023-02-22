@@ -29,7 +29,7 @@ str_t *file_get_content(file_t *file)
     return *ct;
 }
 
-str_t *file_get_line(file_t *file)
+str_t *file_getline(file_t *file)
 {
     int can_add = 1;
     int size = 0;

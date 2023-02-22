@@ -10,7 +10,6 @@
 #include "my_stdlib.h"
 #include "my_vec.h"
 #include "my_map.h"
-#include "my_yaml.h"
 #include "my_list.h"
 #include "my_fmt.h"
 #include "my_obj.h"

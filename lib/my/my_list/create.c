@@ -6,7 +6,6 @@
 */
 
 #include "my_stdlib.h"
-#include "my_str.h"
 #include "my_list.h"
 #include "my_obj.h"
 

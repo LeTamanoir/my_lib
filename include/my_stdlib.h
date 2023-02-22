@@ -9,6 +9,7 @@
     #define INCLUDE_MY_STDLIB_
     #include <stdlib.h>
     #include <stdint.h>
+    #include <stdbool.h>
 
     #define SMART           __attribute__((cleanup(auto_free)))
     #define MAX_SWAP_SIZE   (1024)

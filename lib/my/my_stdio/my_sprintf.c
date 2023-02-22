@@ -19,5 +19,5 @@ char *my_sprintf(const char *fmt, ...)
     buff = fmt_create(fmt, &ap);
     va_end(ap);
 
-    return my_strdup(str_tocstr(&buff));
+    return str_tocstr(buff);
 }

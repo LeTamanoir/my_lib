@@ -15,13 +15,9 @@
     #define STR_TMP_ST   (256)
 
     /**
-     * @brief creates a temporary string of size n (max size: 256)
-     */
-    #define STR_NTEMP(s, n) ((str_t*)(&(__str_temp_t){n, STR_TMP_ST, s}))
-    /**
      * @brief creates a temporary string (max size: 256)
      */
-    #define STR_TEMP(s)     STR_NTEMP(s, my_strlen(s))
+    #define STR(s) ((str_t*)(&(__str_temp_t){my_strlen(s), STR_TMP_ST, s}))
 
 
 typedef struct {
@@ -69,7 +65,7 @@ str_t *my_ftostr(double nb, int precision);
  * @param str the string to null terminate
  * @return the string data null terminated
  */
-char *str_tocstr(str_t **str);
+char *str_tocstr(str_t *str);
 
 /**
  * @brief splits a string into a vector of strings
@@ -183,7 +179,7 @@ str_t **str_slice(str_t **str, size_t start, size_t end);
  * @param s2    second string to compare
  * @return <0, 0 or >0 if s1 is respectively smaller, equal or greater than s2
  */
-int str_compare(str_t *s1, str_t *s2);
+int str_compare(str_t const *s1, str_t const *s2);
 
 /**
  * @brief compares the n first characters of 2 strings
@@ -192,7 +188,7 @@ int str_compare(str_t *s1, str_t *s2);
  * @param s2    second string to compare
  * @return <0, 0 or >0 if s1 is respectively smaller, equal or greater than s2
  */
-int str_ncompare(str_t *s1, str_t *s2, size_t n);
+int str_ncompare(str_t const *s1, str_t const *s2, size_t n);
 
 /**
  * @brief checks if a string contains a character
@@ -341,7 +337,7 @@ str_t **str_sadd(str_t **str, str_t const *new);
  * @param s2    string 2
  * @return 1 if string 1 and string 2 are equal or 0
  */
-int str_eq(str_t *s1, str_t *s2);
+int str_eq(str_t const *s1, str_t const *s2);
 
 /**
  * @brief converts a string to an int
@@ -349,7 +345,7 @@ int str_eq(str_t *s1, str_t *s2);
  * @param str   the ADRESS of string to extract the integer from
  * @return the integer represented by the string
  */
-long int str_toint(str_t **str);
+long int str_toint(str_t *str);
 
 /**
  * @brief converts a string to a double
@@ -357,7 +353,7 @@ long int str_toint(str_t **str);
  * @param str   the ADRESS of string to extract the double from
  * @return the double represented by the string
  */
-double str_tofloat(str_t **str);
+double str_tofloat(str_t *str);
 
 /**
  * @brief reverses a string in memory

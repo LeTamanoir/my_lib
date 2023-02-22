@@ -20,13 +20,13 @@ void map_elem_free(void *ptr)
 void map_free(void *ptr)
 {
     map_t *map = (map_t*)ptr;
-    vec_void_t *elem_col = NULL;
+    list_t *col = NULL;
 
     for (size_t i = 0; i < map->capacity; ++i) {
-        elem_col = map->elems->data[i];
-        if (elem_col == NULL)
+        col = map->elems->data[i];
+        if (col == NULL)
             continue;
-        obj_free(elem_col);
+        obj_free(col);
     }
     obj_free(map->elems);
 }

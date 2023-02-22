@@ -53,9 +53,9 @@ str_t *str_dup(str_t const *old)
 
 str_t *str_substr(str_t const *str, size_t start, size_t end)
 {
-    str_t *new = str_dup(str);
+    str_t *new = str_screate(end - start);
 
-    str_slice(&new, start, end);
+    str_nadd(&new, str->data + start, end - start);
 
     return new;
 }

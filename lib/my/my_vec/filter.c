@@ -5,9 +5,7 @@
 ** filter
 */
 
-#include "my_stdlib.h"
 #include "my_vec.h"
-#include "my_obj.h"
 
 vec_t *vec_filter(void *v, int (*keep_fn)(void *))
 {

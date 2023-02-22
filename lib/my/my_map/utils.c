@@ -7,7 +7,7 @@
 
 #include "my_str.h"
 
-unsigned int map_hash_key(str_t *key)
+unsigned int map_hash_key(str_t const *key)
 {
     unsigned int h = 0x811c9dc5U;
 

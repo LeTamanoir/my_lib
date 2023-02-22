@@ -5,7 +5,6 @@
 ** iterators
 */
 
-#include "my_stdlib.h"
 #include "my_list.h"
 
 void list_foreach(list_t *list, void (*fn)(void *, void *), void *data)
