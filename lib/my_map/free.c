@@ -5,16 +5,15 @@
 ** map free
 */
 
-#include "my_obj.h"
+#include <stdlib.h>
+
 #include "my_list.h"
 #include "my_map.h"
 
-void map_elem_free(void *ptr)
+void map_elem_free(map_elem_t *elem)
 {
-    map_elem_t *elem = (map_elem_t*)ptr;
-
-    obj_free(elem->data);
-    obj_free(elem->key);
+    free(elem->data);
+    free(elem->key);
 }
 
 void map_free(void *ptr)
@@ -26,7 +25,8 @@ void map_free(void *ptr)
         col = map->elems->data[i];
         if (col == NULL)
             continue;
-        obj_free(col);
+        list_free_fn(col, (void (*)(void*))&map_elem_free);
     }
-    obj_free(map->elems);
+    free(map->elems);
+    free(map);
 }

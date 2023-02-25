@@ -5,6 +5,9 @@
 ** compare
 */
 
+#include <string.h>
+
+#include "my_utils.h"
 #include "my_str.h"
 
 int str_eq(str_t const *s1, str_t const *s2)
@@ -17,36 +20,14 @@ int str_eq(str_t const *s1, str_t const *s2)
 
 int str_ncompare(str_t const *s1, str_t const *s2, size_t n)
 {
-    size_t i = 0;
-    int status = 0;
+    size_t min = MIN(n, MIN(s1->length, s2->length));
 
-    if (s1->length == 0 || s2->length == 0)
-        return 0;
-    while (
-        i < s1->length - 1 && i < s2->length - 1 &&
-        i < n && s1->data[i] == s2->data[i]
-    ) {
-        i++;
-    }
-    status = s1->data[i] - s2->data[i];
-
-    return status;
+    return memcmp(s1->data, s2->data, min);
 }
 
 int str_compare(str_t const *s1, str_t const *s2)
 {
-    size_t i = 0;
-    int status = 0;
+    size_t min = MIN(s1->length, s2->length);
 
-    if (s1->length == 0 || s2->length == 0)
-        return 0;
-    while (
-        i < s1->length - 1 && i < s2->length - 1 &&
-        s1->data[i] == s2->data[i]
-    ) {
-        i++;
-    }
-    status = s1->data[i] - s2->data[i];
-
-    return status;
+    return memcmp(s1->data, s2->data, min);
 }

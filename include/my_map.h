@@ -65,12 +65,11 @@ map_t *map_create(size_t capacity);
 void map_free(void *ptr);
 
 /**
- * @brief helper function used by map_free to free a map element
- *        normally you shouldn't have use it
+ * @brief helper function used by map_free to free a map_elem
  *
- * @param ptr  the element to free
+ * @param elem  the element to free
  */
-void map_elem_free(void *ptr);
+void map_elem_free(map_elem_t *elem);
 
 /**
  * @brief hash a key to find its index in the map
@@ -79,7 +78,7 @@ void map_elem_free(void *ptr);
  * @param key   the string of key to hash
  * @return the index of where the data is in the map
  */
-unsigned int map_hash_key(str_t const *key);
+size_t map_hash_key(str_t const *key);
 
 /**
  * @brief deletes a key from a map

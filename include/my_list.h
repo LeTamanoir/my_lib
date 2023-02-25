@@ -9,6 +9,8 @@
     #define INCLUDE_MY_LIST_
     #include <stddef.h>
 
+    #include "my_vec.h"
+
 
 typedef struct node_s {
     void *data;
@@ -22,6 +24,7 @@ typedef struct list_s {
     size_t size;
 } list_t;
 
+VEC_DEF(list_t *, list)
 
 /**
  * @brief creates a doubly linked list with list_free as its default destructor
@@ -29,7 +32,15 @@ typedef struct list_s {
  *
  * @return a new list
  */
-list_t *new_list(void);
+list_t *list_create(void);
+
+/**
+ * @brief frees a list and its elements using a custom destructor
+ *
+ * @param list    the list to free
+ * @param free_fn the destructor to use
+ */
+void list_free_fn(list_t *list, void (*free_fn)(void *));
 
 /**
  * @brief frees a list
@@ -116,7 +127,7 @@ void list_sort(list_t *list, int (*cmp)(void *, void *));
  *
  * @return a new node
  */
-node_t *new_node(void);
+node_t *node_create(void);
 
 /**
  * @brief finds an element in a list

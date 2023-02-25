@@ -6,17 +6,21 @@
 */
 
 #include <stdarg.h>
-#include "my_fmt.h"
-#include "my_stdlib.h"
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "my_str.h"
 
 str_t **str_fadd(str_t **str, char const *fmt, ...)
 {
     va_list ap;
+    char *new = NULL;
 
     va_start(ap, fmt);
-    fmt_add(str, fmt, &ap);
+    vasprintf(&new, fmt, ap);
     va_end(ap);
 
+    str_add(str, new);
+    free(new);
     return str;
 }

@@ -5,10 +5,8 @@
 ** split string
 */
 
-#include "my_stdlib.h"
 #include "my_str.h"
 #include "my_vec.h"
-#include "my_obj.h"
 
 static size_t count_delims(str_t *str, str_t *delims)
 {
@@ -24,7 +22,6 @@ static size_t count_delims(str_t *str, str_t *delims)
 vec_str_t *str_split(str_t *str, str_t *delims)
 {
     vec_str_t *arr = vec_create(count_delims(str, delims), sizeof(str_t*));
-    obj_get_meta(arr)->destructor = &vec_free;
     size_t last_idx = 0;
     str_t *temp = NULL;
 

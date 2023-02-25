@@ -5,7 +5,8 @@
 ** setters
 */
 
-#include "my_stdlib.h"
+#include <string.h>
+
 #include "my_vec.h"
 
 void vec_insert(void *v, void *elem, size_t idx)
@@ -15,7 +16,7 @@ void vec_insert(void *v, void *elem, size_t idx)
     if (idx >= (*vec)->capacity)
         vec_resize(vec, idx + 1);
 
-    my_memcpy(vec_at(*vec, idx), elem, (*vec)->__elem_size);
+    memcpy(vec_at(*vec, idx), elem, (*vec)->_elem_size);
     (*vec)->size++;
 }
 
@@ -26,6 +27,6 @@ void vec_pushback(void *v, void *elem)
     if ((*vec)->size + 1 >= (*vec)->capacity)
         vec_resize(vec, (*vec)->size + 1);
 
-    my_memcpy(vec_at(*vec, (*vec)->size), elem, (*vec)->__elem_size);
+    memcpy(vec_at(*vec, (*vec)->size), elem, (*vec)->_elem_size);
     (*vec)->size++;
 }

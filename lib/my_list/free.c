@@ -9,7 +9,7 @@
 
 #include "my_list.h"
 
-void list_free(list_t *list)
+void list_free_fn(list_t *list, void (*free_fn)(void *))
 {
     node_t *temp = list->front;
     node_t *old = NULL;
@@ -17,8 +17,13 @@ void list_free(list_t *list)
     while (temp != NULL) {
         old = temp;
         temp = temp->next;
-        free(old->data);
+        free_fn(old->data);
         free(old);
     }
     free(list);
+}
+
+void list_free(list_t *list)
+{
+    list_free_fn(list, &free);
 }

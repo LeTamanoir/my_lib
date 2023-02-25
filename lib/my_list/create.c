@@ -8,21 +8,21 @@
 #include <stdlib.h>
 #include "my_list.h"
 
-node_t *new_node(void)
+node_t *node_create(void)
 {
-    node_t *new_node = malloc(sizeof(node_t));
+    node_t *new = malloc(sizeof(node_t));
 
-    if (new_node == NULL)
+    if (new == NULL)
         return NULL;
 
-    new_node->prev = NULL;
-    new_node->next = NULL;
-    new_node->data = NULL;
+    new->prev = NULL;
+    new->next = NULL;
+    new->data = NULL;
 
-    return new_node;
+    return new;
 }
 
-list_t *new_list(void)
+list_t *list_create(void)
 {
     list_t *list = malloc(sizeof(list_t));
 

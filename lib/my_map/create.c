@@ -5,21 +5,22 @@
 ** map implementation
 */
 
+#include <stdlib.h>
+#include <string.h>
+
 #include "my_map.h"
 #include "my_list.h"
-#include "my_obj.h"
 
 map_t *map_create(size_t capacity)
 {
-    map_t *map = obj_alloc(sizeof(map_t));
+    map_t *map = malloc(sizeof(map_t));
 
     if (map == NULL)
         return NULL;
 
-    obj_get_meta(map)->destructor = &map_free;
     map->capacity = capacity;
-    map->elems = vec_create(capacity, sizeof(node_t *));
-    my_memset(map->elems->data, 0, sizeof(void *) * map->capacity);
+    map->elems = vec_create(capacity, sizeof(list_t *));
+    memset(map->elems->data, 0, sizeof(list_t *) * map->capacity);
 
     return map;
 }

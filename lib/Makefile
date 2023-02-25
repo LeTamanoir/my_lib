@@ -6,13 +6,10 @@
 ##
 
 # Modules available:
-# my_network my_file my_math my_map
-# my_list my_stdio my_fmt
-# my_stdlib my_vec my_str my_cstr
+# my_map my_list my_btree my_vec my_str
 
 # Modules to use:
-LIB	=	my_file my_map my_list my_math my_fmt my_stdio my_obj \
-		my_stdlib my_vec my_str my_cstr
+LIB	=	my_map my_list my_vec my_btree my_str
 
 NAME	=	libmy.a
 
@@ -21,7 +18,6 @@ all:
 
 clean:
 	@for i in $(LIB); do make -C $$i clean >/dev/null; done
-	@../../scripts/clean.sh
 
 fclean:	clean
 	@rm -f $(NAME)

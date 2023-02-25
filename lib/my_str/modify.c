@@ -5,7 +5,9 @@
 ** modifiers
 */
 
-#include "my_obj.h"
+#include <stdlib.h>
+#include <string.h>
+
 #include "my_str.h"
 
 str_t **str_slice(str_t **str, size_t start, size_t end)
@@ -50,13 +52,13 @@ void str_replace(str_t **str, str_t const *old, str_t const *new)
             j = 0;
         }
     }
-    obj_free(*str);
+    free(*str);
     *str = new_str;
 }
 
 str_t **str_clear(str_t **str)
 {
-    my_memset((*str)->data, 0, sizeof(char) * (*str)->capacity);
+    memset((*str)->data, 0, sizeof(char) * (*str)->capacity);
     (*str)->length = 0;
 
     return str;

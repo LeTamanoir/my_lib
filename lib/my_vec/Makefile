@@ -7,7 +7,7 @@
 
 CC = gcc
 
-INCLUDE	=	-I../../../include
+INCLUDE	=	-I../../include
 
 
 SRC	=	./add.c			\

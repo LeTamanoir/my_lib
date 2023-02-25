@@ -13,7 +13,7 @@ void list_insert(list_t *list, node_t *after, void *data)
         list_pushback(list, data);
         return;
     }
-    node_t *new = new_node();
+    node_t *new = node_create();
     new->data = data;
     new->next = after->next;
     new->prev = after;
@@ -24,7 +24,7 @@ void list_insert(list_t *list, node_t *after, void *data)
 
 void list_pushfront(list_t *list, void *data)
 {
-    node_t *node = new_node();
+    node_t *node = node_create();
     node->data = data;
     list->size++;
 
@@ -40,7 +40,7 @@ void list_pushfront(list_t *list, void *data)
 
 void list_pushback(list_t *list, void *data)
 {
-    node_t *node = new_node();
+    node_t *node = node_create();
     node->data = data;
     list->size++;
 

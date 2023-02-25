@@ -5,24 +5,21 @@
 ** vector
 */
 
-#include "my_stdlib.h"
+#include <stdlib.h>
+
 #include "my_vec.h"
-#include "my_obj.h"
 
-void *vec_create(size_t nb_data, size_t elem_size)
+void *vec_create(size_t nb_data, size_t el_size)
 {
-    if (elem_size > MAX_SWAP_SIZE)
-        return NULL;
-
     size_t capacity = get_padded_size(nb_data);
-    vec_t *vec = obj_alloc(sizeof(vec_t) + elem_size * capacity);
+    vec_t *vec = malloc(sizeof(vec_t) + el_size * capacity);
 
     if (vec == NULL)
         return NULL;
 
     vec->size = 0;
     vec->capacity = capacity;
-    vec->__elem_size = elem_size;
+    vec->_elem_size = el_size;
 
     return vec;
 }

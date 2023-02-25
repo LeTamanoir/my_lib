@@ -6,19 +6,19 @@
 */
 
 #include <stdarg.h>
-#include "my_stdio.h"
-#include "my_stdlib.h"
+#include <string.h>
+
 #include "my_str.h"
 #include "my_vec.h"
 
 str_t **str_add(str_t **str, char const *new)
 {
-    size_t new_len = my_strlen(new);
+    size_t new_len = strlen(new);
 
     if ((*str)->length + new_len > (*str)->capacity)
         str_resize(str, (*str)->length + new_len);
 
-    my_memcpy((*str)->data + (*str)->length, new, new_len);
+    memcpy((*str)->data + (*str)->length, new, new_len);
     (*str)->length += new_len;
 
     return str;
@@ -29,7 +29,7 @@ str_t **str_sadd(str_t **str, str_t const *new)
     if ((*str)->length + new->length > (*str)->capacity)
         str_resize(str, (*str)->length + new->length);
 
-    my_memcpy((*str)->data + (*str)->length, new->data, new->length);
+    memcpy((*str)->data + (*str)->length, new->data, new->length);
     (*str)->length += new->length;
 
     return str;
@@ -63,7 +63,7 @@ str_t **str_nadd(str_t **str, char const *new, size_t n)
     if ((*str)->length + n > (*str)->capacity)
         str_resize(str, (*str)->length + n);
 
-    my_memcpy((*str)->data + (*str)->length, new, n);
+    memcpy((*str)->data + (*str)->length, new, n);
     (*str)->length += n;
 
     return str;

@@ -5,13 +5,12 @@
 ** iterators
 */
 
-#include "my_stdlib.h"
 #include "my_vec.h"
 
-void vec_foreach(void *v, void (*fn)(void *, size_t, void *), void *data)
+void vec_foreach(void *v, void (*fn)(void *, void *), void *data)
 {
     vec_t *vec = (vec_t*)v;
 
     for (size_t i = 0; i < vec->size; i++)
-        fn(vec_at(vec, i), i, data);
+        fn(vec_at(vec, i), data);
 }

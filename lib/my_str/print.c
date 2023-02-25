@@ -5,7 +5,9 @@
 ** print
 */
 
-#include "my_stdio.h"
+#include <unistd.h>
+#include <stdio.h>
+
 #include "my_str.h"
 
 void str_print(str_t const *str)
@@ -16,7 +18,7 @@ void str_print(str_t const *str)
 void str_println(str_t const *str)
 {
     write(1, str->data, str->length);
-    my_putchar('\n');
+    putchar('\n');
 }
 
 void str_dprint(int fd, str_t const *str)

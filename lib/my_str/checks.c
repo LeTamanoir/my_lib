@@ -5,6 +5,8 @@
 ** checks
 */
 
+#include <ctype.h>
+
 #include "my_str.h"
 
 int str_contains(str_t *str, char c)
@@ -39,7 +41,7 @@ int str_isalpha(str_t const *str)
         return 0;
 
     for (size_t i = 0; i < str->length; ++i)
-        if (!my_isalpha(str->data[i]))
+        if (!isalpha(str->data[i]))
             return 0;
 
     return 1;
@@ -51,7 +53,7 @@ int str_isnum(str_t const *str)
         return 0;
 
     for (size_t i = 0; i < str->length; ++i)
-        if (!my_isnum(str->data[i]))
+        if (!isdigit(str->data[i]))
             return 0;
 
     return 1;

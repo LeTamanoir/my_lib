@@ -2,22 +2,20 @@
 ## EPITECH PROJECT, 2022
 ## Makefile
 ## File description:
-## the makefile for my_network
+## the makefile for my_btree
 ##
 
 CC = gcc
 
-INCLUDE_DIR	=	../../../include
+INCLUDE	=	-I../../include
 
-
-SRC	=	./create.c 		\
-		./run.c 		\
-		./accept.c		\
-		./utils.c 		\
-
+SRC	=	./add.c			\
+		./create.c		\
+		./free.c		\
+		./find.c
 
 CFLAGS += -Werror -Wextra -Wall
-CPPFLAGS += -I$(INCLUDE_DIR)
+CPPFLAGS += $(INCLUDE)
 
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3

@@ -5,7 +5,8 @@
 ** misc
 */
 
-#include "my_obj.h"
+#include <stdlib.h>
+
 #include "my_vec.h"
 
 size_t get_padded_size(size_t size)
@@ -22,7 +23,7 @@ void *vec_at(void *v, size_t idx)
 {
     vec_t *vec = (vec_t*)v;
 
-    return vec->data + idx * vec->__elem_size;
+    return vec->data + idx * vec->_elem_size;
 }
 
 vec_t **vec_resize(vec_t **vec, size_t new_size)
@@ -30,7 +31,7 @@ vec_t **vec_resize(vec_t **vec, size_t new_size)
     size_t new_cap = get_padded_size(new_size);
     vec_t *old = *vec;
 
-    *vec = obj_realloc(old, sizeof(vec_t) + new_cap * old->__elem_size);
+    *vec = realloc(old, sizeof(vec_t) + new_cap * old->_elem_size);
     (*vec)->capacity = new_cap;
 
     return vec;

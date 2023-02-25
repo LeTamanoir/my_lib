@@ -11,17 +11,15 @@
 
 void map_del(map_t *map, str_t const *key)
 {
-    unsigned int hash_idx = map_hash_key(key) % map->capacity;
-    list_t *cands = NULL;
-    map_elem_t *elem = NULL;
+    size_t idx = map_hash_key(key) % map->capacity;
+    list_t *cands = map->elems->data[idx];
 
-    if ((cands = map->elems->data[hash_idx]) == NULL)
+    if (cands == NULL || cands->size == 0)
         return;
 
-    for (node_t *temp = cands->front; temp != NULL; temp = temp->next) {
-        elem = temp->data;
-        if (str_eq(elem->key, key)) {
-            list_remove(cands, temp);
+    for (node_t *n = cands->front; n != NULL; n = n->next) {
+        if (str_eq(((map_elem_t *)n->data)->key, key)) {
+            list_remove(cands, n);
             return;
         }
     }

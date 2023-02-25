@@ -9,7 +9,6 @@
     #define INCLUDE_MY_STR_
     #include <stddef.h>
 
-    #include "my_cstr.h"
     #include "my_vec.h"
 
     #define STR_TMP_ST   (256)

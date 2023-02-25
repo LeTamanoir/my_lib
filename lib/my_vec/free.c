@@ -5,13 +5,20 @@
 ** free vector
 */
 
-#include "my_obj.h"
+#include <stdlib.h>
+
 #include "my_vec.h"
 
-void vec_free(void *ptr)
+void vec_free_fn(void *vec, void (*free_fn)(void *))
 {
-    vec_void_t *vec = (vec_void_t*)ptr;
+    vec_void_t *v = (vec_void_t *)vec;
 
-    for (size_t i = 0; i < vec->size; i++)
-        obj_free(vec->data[i]);
+    for (size_t i = 0; i < v->size; i++)
+        free_fn(v->data[i]);
+    free(v);
+}
+
+void vec_free(void *vec)
+{
+    vec_free_fn(vec, &free);
 }

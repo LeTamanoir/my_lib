@@ -9,7 +9,7 @@
     #define INCLUDE_MY_VEC_
     #include <stddef.h>
 
-    #define VEC_META size_t capacity; size_t size; size_t __elem_size;
+    #define VEC_META size_t capacity; size_t size; size_t _elem_size;
     #define VEC_DEF(t, n) typedef struct { VEC_META t data[0]; } vec_##n##_t;
 
 
@@ -34,11 +34,9 @@ size_t get_padded_size(size_t size);
  * @param vec   the vector to preform the logic on
  * @param fn    the function to call, it will be called like this:
  *              fn(current_elem_in_vec, data)
- *              if you want to block further execution return 1
- *              else return 0
  * @param data  additionnal data that you can use in the fn
  */
-void vec_foreach(void *vec, void (*fn)(void *, size_t, void *), void *data);
+void vec_foreach(void *vec, void (*fn)(void *, void *), void *data);
 
 /**
  * @brief clears a vector
@@ -46,6 +44,14 @@ void vec_foreach(void *vec, void (*fn)(void *, size_t, void *), void *data);
  * @param vec   the vector to clear
  */
 void vec_clear(void *vec);
+
+/**
+ * @brief frees a vector using a custom destructor
+ *
+ * @param vec       the vector to free
+ * @param free_fn   the destructor to use
+ */
+void vec_free_fn(void *vec, void (*free_fn)(void *));
 
 /**
  * @brief removes an element from a vector at a given index
@@ -85,12 +91,12 @@ void vec_pushback(void *vec, void *elem);
  * @brief sorts a vector
  *
  * @param vec       the vector to sort
- * @param cmp_fn    function to compare 2 elements
- *                  if cmp_fn(a, b) < 0 then a < b
- *                  if cmp_fn(a, b) > 0 then a > b
+ * @param cmp    function to compare 2 elements
+ *                  if cmp(a, b) < 0 then a < b
+ *                  if cmp(a, b) > 0 then a > b
  *                  else a == b
  */
-void vec_sort(void *vec, int (*cmp_fn)(void *, void *));
+void vec_sort(void *vec, int (*cmp)(void *, void *));
 
 /**
  * @brief removes the last element of a vector
@@ -101,11 +107,10 @@ void vec_popback(void *vec);
 
 /**
  * @brief frees a vector composed of pointers
- *        every element must ve freeable with a single free call
  *
- * @param ptr       the vector to free
+ * @param vec       the vector to free
  */
-void vec_free(void *ptr);
+void vec_free(void *vec);
 
 /**
  * @brief gets an element from a vector at a given index
@@ -130,21 +135,21 @@ void *vec_create(size_t nb_data, size_t el_size);
  * @brief filters a vector
  *
  * @param vec       the vector to filter
- * @param keep_fn   the function to filter the elements
- *                  if keep_fn(elem) == 1 then the element will be kept
+ * @param keep   the function to filter the elements
+ *                  if keep(elem) == 1 then the element will be kept
  * @return a new vector with the filterd elements
  */
-vec_t *vec_filter(void *vec, int (*keep_fn)(void *));
+vec_t *vec_filter(void *vec, int (*keep)(void *));
 
 /**
  * @brief finds an item from a vector with a given search function
  *
  * @param vec       the vector to search
- * @param find_fn   the function to describe what you look for
- *                  if find_fn(elem) == 1 then the element will be returned
+ * @param find   the function to describe what you look for
+ *                  if find(elem) == 1 then the element will be returned
  * @return the item if it exists or NULL
  */
-void *vec_find(void *vec, int (*find_fn)(void *));
+void *vec_find(void *vec, int (*find)(void *));
 
 
 #endif /* INCLUDE_MY_VEC_ */
