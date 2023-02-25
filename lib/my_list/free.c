@@ -2,17 +2,23 @@
 ** EPITECH PROJECT, 2022
 ** my_list
 ** File description:
-** iterators
+** list free
 */
+
+#include <stdlib.h>
 
 #include "my_list.h"
 
-void list_foreach(list_t *list, void (*fn)(void *, void *), void *data)
+void list_free(list_t *list)
 {
     node_t *temp = list->front;
+    node_t *old = NULL;
 
     while (temp != NULL) {
-        fn(temp->data, data);
+        old = temp;
         temp = temp->next;
+        free(old->data);
+        free(old);
     }
+    free(list);
 }

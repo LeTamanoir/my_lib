@@ -7,14 +7,15 @@
 
 CC = gcc
 
-INCLUDE	=	-I../../../include
+INCLUDE	=	-I../../include
 
 SRC	=	./add.c			\
 		./create.c		\
 		./iterate.c		\
 		./free.c		\
 		./sort.c		\
-		./remove.c
+		./remove.c		\
+		./find.c
 
 CFLAGS += -Werror -Wextra -Wall
 CPPFLAGS += $(INCLUDE)

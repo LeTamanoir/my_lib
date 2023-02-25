@@ -5,13 +5,12 @@
 ** linked list
 */
 
-#include "my_stdlib.h"
+#include <stdlib.h>
 #include "my_list.h"
-#include "my_obj.h"
 
-node_t *node_create(void)
+node_t *new_node(void)
 {
-    node_t *new_node = my_malloc(sizeof(node_t));
+    node_t *new_node = malloc(sizeof(node_t));
 
     if (new_node == NULL)
         return NULL;
@@ -23,14 +22,13 @@ node_t *node_create(void)
     return new_node;
 }
 
-list_t *list_create(void)
+list_t *new_list(void)
 {
-    list_t *list = obj_alloc(sizeof(list_t));
+    list_t *list = malloc(sizeof(list_t));
 
     if (list == NULL)
         return NULL;
 
-    obj_get_meta(list)->destructor = &list_free;
     list->front = NULL;
     list->back = NULL;
     list->size = 0;
