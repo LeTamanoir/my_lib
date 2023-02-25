@@ -8,7 +8,7 @@
 #ifndef INCLUDE_MY_LIST_
     #define INCLUDE_MY_LIST_
     #include <stddef.h>
-    #include "my_vec.h"
+
 
 typedef struct node_s {
     void *data;
@@ -22,7 +22,6 @@ typedef struct list_s {
     size_t size;
 } list_t;
 
-VEC_DEF(list_t *, list);
 
 /**
  * @brief creates a doubly linked list with list_free as its default destructor
@@ -30,15 +29,14 @@ VEC_DEF(list_t *, list);
  *
  * @return a new list
  */
-list_t *list_create(void);
+list_t *new_list(void);
 
 /**
- * @brief frees a list and its content
- *        each node's data must be free-able with only one free call
+ * @brief frees a list
  *
- * @param ptr      the list to free
+ * @param list      the list to free
  */
-void list_free(void *ptr);
+void list_free(list_t *list);
 
 /**
  * @brief adds a new element to the front of a list
@@ -47,6 +45,23 @@ void list_free(void *ptr);
  * @param data the data of the element
  */
 void list_pushfront(list_t *list, void *data);
+
+/**
+ * @brief inserts a new element after another one
+ *
+ * @param list   the list to insert the element into
+ * @param after  the element to insert the new element after
+ * @param data   the data of the new element
+ */
+void list_insert(list_t *list, node_t *after, void *data);
+
+/**
+ * @brief unlinks an element from a list
+ *
+ * @param list  the list to unlink the element from
+ * @param elem  the element to unlink
+ */
+void list_unlink(list_t *list, node_t *elem);
 
 /**
  * @brief removes an element from a list
@@ -92,23 +107,26 @@ void list_foreach(list_t *list, void (*fn)(void *, void *), void *data);
  * @brief sorts a linked list
  *
  * @param list      the list to sort
- * @param cmp_fn    the function to use to compare two elements
+ * @param cmp    the function to use to compare two elements
  */
-void list_sort(list_t *list, int (*cmp_fn)(void *, void *));
-
-/**
- * @brief frees a node of a list
- *
- * @param node  the node to free
- */
-void node_free(node_t *node);
+void list_sort(list_t *list, int (*cmp)(void *, void *));
 
 /**
  * @brief creates a node for a list
  *
  * @return a new node
  */
-node_t *node_create(void);
+node_t *new_node(void);
+
+/**
+ * @brief finds an element in a list
+ *
+ * @param list  the list to search in
+ * @param data  the data to search for
+ * @param cmp   the function to use to compare two elements
+ * @return void*
+ */
+void *list_find(list_t *list, void *data, int (*cmp)(void *, void *));
 
 
 #endif /* INCLUDE_MY_LIST_ */
