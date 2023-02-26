@@ -12,7 +12,7 @@
 #include "my_vec.h"
 #include "my_str.h"
 
-static int overwrite_if_in_list(list_t *cands, str_t const *key, void *data)
+static int overwrite_in_list(list_t *cands, str_t const *key, void *data)
 {
     map_elem_t *elem = NULL;
 
@@ -53,7 +53,7 @@ void map_set(map_t *map, str_t const *key, void *data)
         vec_insert(&map->elems, &temp, idx);
     }
 
-    if (overwrite_if_in_list(map->elems->data[idx], key, data))
+    if (overwrite_in_list(map->elems->data[idx], key, data))
         return;
 
     elem = map_elem_create(key, data);

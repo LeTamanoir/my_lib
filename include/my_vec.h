@@ -9,12 +9,19 @@
     #define INCLUDE_MY_VEC_
     #include <stddef.h>
 
-    #define VEC_META size_t capacity; size_t size; size_t _elem_size;
-    #define VEC_DEF(t, n) typedef struct { VEC_META t data[0]; } vec_##n##_t;
+    #define VEC_DEF(t, n) \
+      typedef struct { \
+        size_t capacity; \
+        size_t size; \
+        size_t _elem_size; \
+        t data[0]; \
+      } vec_##n##_t;
 
 
-typedef struct vec_s {
-    VEC_META
+typedef struct {
+    size_t capacity;
+    size_t size;
+    size_t _elem_size;
     char data[0];
 } vec_t;
 

@@ -81,9 +81,9 @@ vec_str_t *str_split(str_t *str, str_t *delims);
  *
  * @param str   the string to perform the replacement on
  * @param old   the string to replace
- * @param new   the string to replace with
+ * @param src   the string to replace with
  */
-void str_replace(str_t **str, str_t const *old, str_t const *new);
+void str_replace(str_t **str, str_t const *old, str_t const *src);
 
 /**
  * @brief joins a vector of strings
@@ -219,20 +219,20 @@ str_t **str_resize(str_t **str, size_t new_size);
  * @brief adds a char* to a string
  *
  * @param str   destination string
- * @param new   char* to add
+ * @param src   char* to add
  * @return the string with the char* added to its content
  */
-str_t **str_add(str_t **str, char const *new);
+str_t **str_add(str_t **str, char const *src);
 
 /**
  * @brief adds n characters of a char* to a string
  *
  * @param str   destination string
- * @param new   char* to add
+ * @param src   char* to add
  * @param n     number of characters to add
  * @return the string with n characters added to its content
  */
-str_t **str_nadd(str_t **str, char const *new, size_t n);
+str_t **str_nadd(str_t **str, char const *src, size_t n);
 
 /**
  * @brief adds formatted char* to a string (using printf syntax)
@@ -315,19 +315,19 @@ str_t **str_vadd(str_t **str, int argc, ...);
  * @brief adds a character to a string
  *
  * @param str   destination string
- * @param new   character to add
+ * @param src   character to add
  * @return string with the character added to its content
  */
-str_t **str_cadd(str_t **str, char const new);
+str_t **str_cadd(str_t **str, char const chr);
 
 /**
  * @brief concatenates a string to another one
  *
  * @param str   destination string
- * @param new   string to add
+ * @param src   string to add
  * @return the concatenation of the 2 strings stored in str
  */
-str_t **str_sadd(str_t **str, str_t const *new);
+str_t **str_sadd(str_t **str, str_t const *src);
 
 /**
  * @brief checks if 2 strings are equal
