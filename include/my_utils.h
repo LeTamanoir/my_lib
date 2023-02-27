@@ -11,5 +11,4 @@
     #define MIN(x, y) ((x) < (y) ? (x) : (y))
     #define MAX(x, y) ((x) > (y) ? (x) : (y))
 
-
 #endif /* INCLUDE_MY_UTILS_ */

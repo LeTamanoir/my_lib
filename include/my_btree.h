@@ -9,7 +9,6 @@
     #define INCLUDE_MY_BTREE_
     #include <stddef.h>
 
-
 typedef struct bnode_s {
     void *data;
     struct bnode_s *left;
@@ -21,7 +20,6 @@ typedef struct btree_s {
     size_t size;
     int (*_cmp)(void *, void *);
 } btree_t;
-
 
 /**
  * @brief creates a new btree
@@ -62,6 +60,5 @@ void btree_insert(btree_t *tree, void *data);
  * @return the data if found, NULL otherwise
  */
 void *btree_find(btree_t *root, void *data);
-
 
 #endif /* INCLUDE_MY_BTREE_ */

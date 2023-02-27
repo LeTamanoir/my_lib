@@ -2,30 +2,28 @@
 ** EPITECH PROJECT, 2022
 ** my_str
 ** File description:
-** str from type
+** str from int / long int / double
 */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "my_str.h"
 
 str_t *my_itostr(long int nb)
 {
-    char *tmp = NULL;
-    asprintf(&tmp, "%ld", nb);
-    str_t *new = str_create(tmp);
-    free(tmp);
+    size_t len = snprintf(NULL, 0, "%ld", nb);
+    str_t *str = str_screate(len);
+    snprintf(str->data, len, "%ld", nb);
 
-    return new;
+    return str;
 }
 
 str_t *my_ftostr(double nb, int precision)
 {
-    char *tmp = NULL;
-    asprintf(&tmp, "%.*f", precision, nb);
-    str_t *new = str_create(tmp);
-    free(tmp);
+    size_t len = snprintf(NULL, 0, "%.*lf", precision, nb);
+    str_t *str = str_screate(len);
+    snprintf(str->data, len + 1, "%.*lf", precision, nb);
 
-    return new;
+    return str;
 }

@@ -6,21 +6,25 @@
 */
 
 #include <stdarg.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "my_str.h"
 
 str_t **str_fadd(str_t **str, char const *fmt, ...)
 {
     va_list ap;
-    char *new = NULL;
 
     va_start(ap, fmt);
-    vasprintf(&new, fmt, ap);
+    size_t len = vsnprintf(NULL, 0, fmt, ap);
     va_end(ap);
 
-    str_add(str, new);
-    free(new);
+    str_resize(str, (*str)->length + len + 1);
+
+    va_start(ap, fmt);
+    vsnprintf((*str)->data + (*str)->length, len, fmt, ap);
+    va_end(ap);
+    (*str)->length += len;
+
     return str;
 }

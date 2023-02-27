@@ -11,13 +11,12 @@
 
     #include "my_vec.h"
 
-    #define STR_TMP_ST   (256)
+    #define STR_TMP_ST (256)
 
     /**
-     * @brief creates a temporary string (max size: 256)
-     */
-    #define STR(s) ((str_t*)(&(__str_temp_t){my_strlen(s), STR_TMP_ST, s}))
-
+    * @brief creates a temporary string (max size: 256)
+    */
+    #define STR(s) ((str_t *) (&(__str_temp_t){my_strlen(s), STR_TMP_ST, s}))
 
 typedef struct {
     size_t length;
@@ -48,6 +47,14 @@ str_t *str_screate(size_t n);
  * @return the string
  */
 str_t *my_itostr(long int nb);
+
+/**
+ * @brief hash a string
+ *
+ * @param str the string to hash
+ * @return the hash of the string
+ */
+size_t str_hash(str_t const *str);
 
 /**
  * @brief converts a double to a string
@@ -387,6 +394,5 @@ str_t *str_tolowcase(str_t *str);
  * @return string in uppercase
  */
 str_t *str_toupcase(str_t *str);
-
 
 #endif /* INCLUDE_MY_STR_ */

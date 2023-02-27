@@ -9,9 +9,8 @@
     #define INCLUDE_MY_MAP_
 
     #include "my_list.h"
-    #include "my_vec.h"
     #include "my_str.h"
-
+    #include "my_vec.h"
 
 typedef struct map_elem_s {
     str_t *key;
@@ -88,6 +87,5 @@ size_t map_hash_key(str_t const *key);
  * @param key   the key to delete
  */
 void map_del(map_t *map, str_t const *key);
-
 
 #endif /* INCLUDE_MY_MAP_ */

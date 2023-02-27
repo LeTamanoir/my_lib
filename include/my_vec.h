@@ -10,13 +10,12 @@
     #include <stddef.h>
 
     #define VEC_DEF(t, n) \
-      typedef struct { \
-        size_t capacity; \
-        size_t size; \
-        size_t _elem_size; \
-        t data[0]; \
-      } vec_##n##_t;
-
+        typedef struct { \
+            size_t capacity; \
+            size_t size; \
+            size_t _elem_size; \
+            t data[0]; \
+        } vec_##n##_t;
 
 typedef struct {
     size_t capacity;
@@ -103,7 +102,7 @@ void vec_pushback(void *vec, void *elem);
  *                  if cmp(a, b) > 0 then a > b
  *                  else a == b
  */
-void vec_sort(void *vec, int (*cmp)(void *, void *));
+void vec_sort(void *vec, int (*cmp)(void const *, void const *));
 
 /**
  * @brief removes the last element of a vector
@@ -157,6 +156,5 @@ vec_t *vec_filter(void *vec, int (*keep)(void *));
  * @return the item if it exists or NULL
  */
 void *vec_find(void *vec, int (*find)(void *));
-
 
 #endif /* INCLUDE_MY_VEC_ */

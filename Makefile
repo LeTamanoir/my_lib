@@ -28,7 +28,7 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	[PROJECT-NAME]
 
-all:	$(NAME)
+all:	lib $(NAME)
 
 $(NAME):	$(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LDDFLAGS)

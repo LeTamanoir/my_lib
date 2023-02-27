@@ -11,7 +11,6 @@
 
     #include "my_vec.h"
 
-
 typedef struct node_s {
     void *data;
     struct node_s *prev;
@@ -138,6 +137,5 @@ node_t *node_create(void);
  * @return void*
  */
 void *list_find(list_t *list, void *data, int (*cmp)(void *, void *));
-
 
 #endif /* INCLUDE_MY_LIST_ */
