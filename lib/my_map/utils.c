@@ -7,9 +7,9 @@
 
 #include "my_str.h"
 
-unsigned int map_hash_key(str_t const *key)
+size_t map_hash_key(str_t const *key)
 {
-    unsigned int h = 0x811c9dc5U;
+    size_t h = 0x811c9dc5U;
 
     for (size_t i = 0; i < key->length; ++i)
         h = (h ^ key->data[i]) * 0x01000193U;

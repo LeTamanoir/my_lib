@@ -14,18 +14,16 @@
 
 void *map_get(map_t const *map, str_t const *key)
 {
-    unsigned int hash_idx = map_hash_key(key) % map->capacity;
-    list_t *cands = NULL;
-    node_t *temp = NULL;
+    size_t idx = map_hash_key(key) % map->capacity;
+    list_t *cands = map->elems->data[idx];
 
-    if ((cands = map->elems->data[hash_idx]) == NULL)
+    if (cands == NULL || cands->size == 0)
         return NULL;
-    temp = cands->front;
-    while (temp != NULL) {
-        if (str_eq(((map_elem_t*)temp->data)->key, key))
-            return ((map_elem_t*)temp->data)->data;
-        temp = temp->next;
-    }
+
+    for (node_t *n = cands->front; n != NULL; n = n->next)
+        if (str_eq(((map_elem_t*)n->data)->key, key))
+            return ((map_elem_t*)n->data)->data;
+
     return NULL;
 }
 

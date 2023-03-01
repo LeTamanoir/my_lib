@@ -79,7 +79,7 @@ void map_elem_free(void *ptr);
  * @param key   the string of key to hash
  * @return the index of where the data is in the map
  */
-unsigned int map_hash_key(str_t const *key);
+size_t map_hash_key(str_t const *key);
 
 /**
  * @brief deletes a key from a map
