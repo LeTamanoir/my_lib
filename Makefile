@@ -10,7 +10,7 @@ CC = gcc
 SRC_DIR	=	./src
 INCLUDE_DIR	=	./include
 
-LIB	=	-L./lib/my -lmy
+LIB	=	-L./lib -lmy
 
 SRC	=	$(SRC_DIR)/main.c
 
@@ -28,7 +28,7 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	[PROJECT-NAME]
 
-all:	$(NAME)
+all:	lib	$(NAME)
 
 $(NAME):	$(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LDDFLAGS)
@@ -37,14 +37,14 @@ tests_run:
 	make -C ./tests/unit_tests
 
 lib:
-	make -C ./lib/my
+	make -C ./lib
 
 clean:
-	rm -f $(OBJ)
 	@./scripts/clean.sh
+	rm -f $(OBJ)
 
 fclean:	clean
-	make -C ./lib/my fclean
+	make -C ./lib fclean
 	make -C ./tests/unit_tests fclean
 	rm -f $(NAME)
 

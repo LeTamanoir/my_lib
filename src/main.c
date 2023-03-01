@@ -1,9 +1,11 @@
 /*
-** EPITECH PROJECT, 2022
+** EPITECH PROJECT, 2023
 ** [PROJECT-NAME]
 ** File description:
 ** [PROJECT-NAME] main entry
 */
+
+#include <time.h>
 
 #include "my_str.h"
 #include "my_stdio.h"
@@ -31,8 +33,10 @@ int main(void)
 {
     SMART list_t *l = list_create();
 
-    for (int i = 0; i < 10; i++)
-        list_pushback(l, alloc_int(i * 123213));
+    srand(time(NULL));
+
+    for (int i = 0; i < 100; i++)
+        list_pushback(l, alloc_int(rand() % 1000));
 
     list_sort(l, NULL);
 

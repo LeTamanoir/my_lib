@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2022
+** EPITECH PROJECT, 2023
 ** my_list
 ** File description:
 ** linked_list declarations
@@ -47,6 +47,23 @@ void list_free(void *ptr);
  * @param data the data of the element
  */
 void list_pushfront(list_t *list, void *data);
+
+/**
+ * @brief removes an element from a list without freeing it
+ *
+ * @param list the list to remove the element from
+ * @param elem the element to remove
+ */
+void list_unlink(list_t *list, node_t *elem);
+
+/**
+ * @brief inserts a new element after another one
+ *
+ * @param list  the list to add the element to
+ * @param after the element to add the new element after
+ * @param data  the data of the new element
+ */
+void list_insert(list_t *list, node_t *after, void *data);
 
 /**
  * @brief removes an element from a list
