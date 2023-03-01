@@ -5,38 +5,31 @@
 ** [PROJECT-NAME] main entry
 */
 
-#include "my_str.h"
-#include "my_stdio.h"
-#include "my_stdlib.h"
-#include "my_vec.h"
-#include "my_map.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "my_list.h"
-#include "my_fmt.h"
-#include "my_obj.h"
-
-int *alloc_int(int data)
-{
-    int *ptr = obj_alloc(sizeof(int));
-    *ptr = data;
-    return ptr;
-}
-
-void print_list(list_t *l)
-{
-    for (node_t *n = l->front; n != NULL; n = n->next)
-        my_printf("%d\n", *(int*)n->data);
-}
+#include "my_map.h"
+#include "my_str.h"
+#include "my_vec.h"
 
 int main(void)
 {
-    SMART list_t *l = list_create();
+    vec_int_t *temp = vec_create(100, sizeof(int));
 
-    for (int i = 0; i < 10; i++)
-        list_pushback(l, alloc_int(i * 123213));
+    for (int i = 0; i < 100; i++)
+        vec_pushback(&temp, &(int){rand() % 1000});
 
-    list_sort(l, NULL);
+    for (size_t i = 0; i < temp->size; i++)
+        printf("%d - ", temp->data[i]);
 
-    print_list(l);
+    puts("\n\n");
 
+    vec_sort(temp, NULL);
+
+    for (size_t i = 0; i < temp->size; i++)
+        printf("%d - ", temp->data[i]);
+
+    free(temp);
     return 0;
 }
