@@ -37,6 +37,6 @@ void vec_popback(void *v)
     if (vec->size == 0)
         return;
 
-    my_memset(vec_at(vec, vec->size), 0, vec->__elem_size);
+    my_memset(vec_at(vec, vec->size - 1), 0, vec->__elem_size);
     vec->size--;
 }

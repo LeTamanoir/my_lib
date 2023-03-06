@@ -14,8 +14,8 @@ static size_t count_delims(str_t *str, str_t *delims)
 {
     size_t count = 0;
 
-    for (size_t i = 0; i < str->length; ++i)
-        if (str_contains(delims, str->data[i]))
+    for (size_t i = 0; i <= str->length; ++i)
+        if (i == str->length || str_contains(delims, str->data[i]))
             ++count;
 
     return count;
